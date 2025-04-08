@@ -1,0 +1,73 @@
+\chapter{IOS}
+\label{chap:introduction}
+
+
+
+\section{Nền tảng iOS và các thành phần cơ bản}
+    \subsection{Kiến trúc tầng của iOS}
+    \begin{flushleft}
+        chèn cái ảnh vàovào
+        IOS có kiến trúc nhiều tầng, mỗi tầng cung cấp các framework và dịch vụ khác nhau:\\
+            Cocoa Touch: Tầng cao nhất, cung cấp cáp framework cốt lõi như UIKit và SwiftUI cho phát triển giao diện người dùng.\\
+            Media: Chứa các công nghệ đồ họa, âm thanh và video như Core Graphics, Core Animation, AVFoundation.\\
+            Core Services: Cung cấp các dịch vụ cơ bản như Core Data, Core Location, và Foundation framework.\\
+            Core OS: Tầng thấp nhất, bao gồm kernel, file system, bảo mật, và các dịch vụ hệ thống cấp thấp.\\
+       
+    \end{flushleft}
+   \subsection{ Vòng đời ứng dụng IOS}	
+   \begin{flushleft}
+    Khi user mở điện thoại của mình lên thì không có ứng dụng nào chạy cả ngoài những thứ nằm trong Operation system . Application của bạn cũng sẽ không chạy. Sau khi user nhấn vào icon của app, Springboard sẽ kích hoạt application của bạn. Application cùng với các thư viện của nó sẽ được thực thi và được tải vào bộ nhớ, trong khi đó thì Springboard sẽ nhận nhiệm vụ hiển thị màn hình launch screen của ứng dụng. Sau cùng thì ứng dụng của bạn bắt đầu được chạy và application delegate sẽ nhận được các notification.
+Các iOS app chạy trên các thiết bị đều có các trạng thái chuyển đổi như: Not running, In active, Active, Background, Suspended. Tại bất kì thời điểm nào, app của bạn đều rơi vào các trạng thái trên.
+chèn ảnh vàovào
+   \end{flushleft}
+   \begin{flushleft}
+    NotRunning:Ứng dụng chưa được khởi chạy hoặc đã bị hệ thống chấm dứt.
+    Inactive: Ứng dụng đang chạy ở foreground nhưng không nhận events (ví dụ: khi có cuộc gọi đến).\\
+    Active:Trạng thái bình thường khi ứng dụng chạy ở foreground và đang xử lý events.\\
+    Background: Ứng dụng không hiển thị nhưng vẫn chạy và thực thi mã.\\
+    Suspended: Ứng dụng ở background nhưng không chạy mã, có thể bị hệ thống chấm dứt để giải phóng tài nguyên.
+   \end{flushleft}
+   \subsection{App Delegate và Scene Delegate}	
+   \subsection{Luồng làm việc của người dùng và Storyboards
+   }
+\section{Mô hình kiến trúc ứng dụng iOS
+}
+    \subsection{Model-View-Controller (MVC)}
+    \subsection{Model-View-Presenter (MVP)}
+    \subsection{Model-View-ViewModel (MVVM)}
+    \subsection{Model-View-Controller-ViewState (MVCVS)}
+    \subsection{Viper}
+    \subsection{The ELM Architecture (TEA)}
+    \subsection{Coordinator Patterns}
+\section{
+    Quản lý trạng thái trong ứng dụng iOS
+}
+    \subsection{Cách tiếp cận quản lý trạng thái}
+    \subsection{State Containers}
+\section{Quản lý phụ thuộc
+}
+    \subsection{Các loại Dependency Injection}
+    \subsection{DI Containers}
+\section{Cách thiết kế giao diện người dùng}
+    \subsection{UIKit}
+    \subsection{SwiftUI}
+    \subsection{So sánh UIKit và SwiftUI}
+\section{Xử lý dữ liệu và lưu trữ}
+    \subsection{Core Data}
+    \subsection{Realm}
+    \subsection{SQLite}
+    \subsection{UserDefaults}
+    \subsection{Keychain}
+\section{Networking và API Calls}
+    \subsection{Tổng quan về Networking trong iOS}
+    \subsection{Vai trò của Networking trong kiến trúc ứng dụng iOS}
+    \subsection{Các mẫu thiết kế phổ biến trong Networking}
+    \subsection{URLSession}
+    \subsection{Alamofire}
+    \subsection{Moya}
+\section{Xử lý bất đồng bộ}
+    \subsection{Completion Handlers}
+    \subsection{Promises}
+    \subsection{Async/Await}
+    \subsection{Combine Framework}
+\section{Kết luậnluận}

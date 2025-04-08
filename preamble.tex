@@ -7,4 +7,11 @@
 \usepackage{caption}
 \usepackage{float}
 \usepackage{geometry}
-\geometry{a4paper, margin=2.5cm}
+
+% Định dạng tiêu đề section để hiển thị dạng 1, 2, 3 thay vì 1.1, 1.2
+\usepackage{titlesec}
+\renewcommand{\thesection}{\arabic{section}} % Hiển thị số section dạng 1, 2, 3
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{} 
+
+% Đảm bảo chỉ đánh số đến mức section (bỏ đánh số subsection nếu muốn)
+\setcounter{secnumdepth}{22}

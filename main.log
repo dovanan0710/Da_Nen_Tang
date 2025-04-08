@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.4.8)  8 APR 2025 13:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.4.8)  8 APR 2025 16:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -458,60 +458,71 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layouthoffset=\dimen172
 \Gm@layoutvoffset=\dimen173
 \Gm@dimlist=\toks27
- (C:\Users\an071\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))) (C:\Users\an071\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
+ (C:\Users\an071\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\an071\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
+Package: titlesec 2025/01/04 v2.17 Sectioning titles
+\ttl@box=\box56
+\beforetitleunit=\skip55
+\aftertitleunit=\skip56
+\ttl@plus=\dimen174
+\ttl@minus=\dimen175
+\ttl@toksa=\toks28
+\titlewidth=\dimen176
+\titlewidthlast=\dimen177
+\titlewidthfirst=\dimen178
+)) (C:\Users\an071\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count303
-\l__pdf_internal_box=\box56
-) (main.aux
-LaTeX Font Info:    Trying to load font information for T5+cmr on input line 8.
+\l__pdf_internal_box=\box57
+) (main.aux (chapters/IOS.aux)
+LaTeX Font Info:    Trying to load font information for T5+cmr on input line 9.
  (C:\Users\an071\AppData\Local\Programs\MiKTeX\tex/latex/vntex\t5cmr.fd
 File: t5cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 Package babel Info: 'vietnamese' activates 'vietnamese' shorthands.
-(babel)             Reported  on input line 8.
+(babel)             Reported  on input line 9.
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for T5/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for T5/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
  (C:\Users\an071\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count304
-\scratchdimen=\dimen174
-\scratchbox=\box57
+\scratchdimen=\dimen179
+\scratchbox=\box58
 \nofMPsegments=\count305
 \nofMParguments=\count306
-\everyMPshowfont=\toks28
+\everyMPshowfont=\toks29
 \MPscratchCnt=\count307
-\MPscratchDim=\dimen175
+\MPscratchDim=\dimen180
 \MPnumerator=\count308
 \makeMPintoPDFobject=\count309
-\everyMPtoPDFconversion=\toks29
+\everyMPtoPDFconversion=\toks30
 ) (C:\Users\an071\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (C:\Users\an071\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 4.
+Package hyperref Info: Link coloring OFF on input line 3.
  (main.out) (main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
@@ -524,19 +535,19 @@ Package caption Info: End \AtBeginDocument code.
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
 * driver: pdftex
-* paper: a4paper
+* paper: <default>
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
-* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
-* \paperwidth=597.50787pt
-* \paperheight=845.04684pt
-* \textwidth=455.24411pt
-* \textheight=702.78308pt
-* \oddsidemargin=-1.1381pt
-* \evensidemargin=-1.1381pt
-* \topmargin=-38.1381pt
+* h-part:(L,W,R)=(92.14519pt, 430.00462pt, 92.14519pt)
+* v-part:(T,H,B)=(95.39737pt, 556.47656pt, 143.09605pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=430.00462pt
+* \textheight=556.47656pt
+* \oddsidemargin=19.8752pt
+* \evensidemargin=19.8752pt
+* \topmargin=-13.87262pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=12.0pt
@@ -554,30 +565,43 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+\openout2 = `chapters/IOS.aux'.
+
+(chapters/IOS.tex
+Ch\uhorn \ohorn ng 1.
 
 
 [1
 
-{C:/Users/an071/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (main.aux)
+
+
+{C:/Users/an071/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}])
+
+[2]
+Overfull \vbox (531.57507pt too high) has occurred while \output is active []
+
+
+
+[3] (main.aux (chapters/IOS.aux))
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+(rerunfilecheck)             Checksum: BF6D7E51B0F0C2CAD399638DA37A8130;7712.
  ) 
 Here is how much of TeX's memory you used:
- 13001 strings out of 473523
- 207595 string characters out of 5714631
- 607621 words of memory out of 5000000
- 36093 multiletter control sequences out of 15000+600000
- 560107 words of font info for 38 fonts, out of 8000000 for 9000
+ 13424 strings out of 473523
+ 213862 string characters out of 5714631
+ 626246 words of memory out of 5000000
+ 36455 multiletter control sequences out of 15000+600000
+ 565970 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,5n,82p,385b,451s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/an071/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr12.pfb>
-Output written on main.pdf (1 page, 14293 bytes).
+ 80i,5n,82p,781b,523s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/an071/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnbx12.pfb><C:/Users/an071/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr12.pfb>
+Output written on main.pdf (3 pages, 69957 bytes).
 PDF statistics:
- 16 PDF objects out of 1000 (max. 8388607)
- 2 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 212 PDF objects out of 1000 (max. 8388607)
+ 47 named destinations out of 1000 (max. 500000)
+ 345 words of extra memory for PDF output out of 10000 (max. 10000000)
 
