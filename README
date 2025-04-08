@@ -1,0 +1,21 @@
+project/
+├── main.tex                 # File chính (master document)
+├── preamble.tex             # Các gói và thiết lập đầu tài liệu
+├── titlepage.tex            # Trang bìa
+├── abstract.tex             # Tóm tắt nội dung
+├── chapters/                # Thư mục chứa các chương
+│   ├── chapter1.tex
+│   ├── chapter2.tex
+│   └── ...
+├── images/                  # Hình ảnh minh họa
+│   ├── fig1.png
+│   └── ...
+├── tables/                  # Bảng (có thể để file .tex riêng hoặc CSV)
+│   ├── table1.tex
+│   └── ...
+├── bibliography.bib         # Tài liệu tham khảo (dùng BibTeX)
+├── appendices/              # Phụ lục
+│   ├── appendixA.tex
+│   └── ...
+└── output/                  # Nơi chứa file PDF sau khi biên dịch
+    └── main.pdf
