@@ -1,0 +1,34 @@
+\section{Quản lý trạng thái trong ứng dụng iOS}
+
+Quản lý trạng thái hiệu quả là một phần quan trọng trong kiến trúc ứng dụng iOS, đặc biệt khi ứng dụng phát triển về quy mô và độ phức tạp.
+
+\subsection{Các cách tiếp cận quản lý trạng thái}
+
+\paragraph*{1. Quản lý trạng thái cục bộ}
+\begin{itemize}
+  \item \textbf{Trạng thái trong ViewController:} Lưu trữ trạng thái trong các thuộc tính của ViewController.
+  \item \textbf{Property Observers:} Sử dụng \texttt{didSet} để phản ứng với thay đổi trạng thái.
+\end{itemize}
+
+\paragraph*{2. Reactive Programming}
+\begin{itemize}
+  \item \textbf{Combine Framework:} Framework reactive chính thức của Apple.
+  \item \textbf{RxSwift:} Thư viện reactive phổ biến trong cộng đồng iOS.
+\end{itemize}
+\paragraph*{3. Redux-like Architecture}
+\begin{itemize}
+  \item \textbf{Store:} Lưu trữ trạng thái toàn cục.
+  \item \textbf{Actions:} Mô tả ý định thay đổi trạng thái.
+  \item \textbf{Reducers:} Xử lý các Action và trả về trạng thái mới.
+\end{itemize}
+
+\subsection{State Containers}
+
+\textbf{The Composable Architecture (TCA)} là một framework được phát triển bởi Point-Free, cung cấp cách tiếp cận có nguyên tắc để xây dựng ứng dụng iOS:
+
+\begin{itemize}
+  \item \textbf{State:} Mô tả trạng thái của một feature.
+  \item \textbf{Action:} Các sự kiện có thể xảy ra trong ứng dụng.
+  \item \textbf{Environment:} Các dependency cần thiết cho logic.
+  \item \textbf{Reducer:} Xử lý logic và cập nhật trạng thái tương ứng.
+\end{itemize}

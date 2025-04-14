@@ -1,0 +1,44 @@
+\section{Cách thiết kế giao diện người dùng}
+iOS cung cấp hai framework chính để xây dựng giao diện người dùng: \textbf{UIKit} và \textbf{SwiftUI}.
+
+\subsection{UIKit}
+UIKit là framework UI truyền thống cho iOS, sử dụng mô hình lập trình mệnh lệnh và dựa trên lớp:
+\begin{itemize}
+  \item \textbf{Auto Layout:} Giúp tạo UI thích ứng với các kích thước màn hình khác nhau.
+  \item \textbf{View Controller Lifecycle:} Hiểu rõ vòng đời của \textbf{UIViewController} là chìa khóa để quản lý tài nguyên và trạng thái.
+  \item \textbf{Reusable Views:} Tái sử dụng views để cải thiện hiệu suất vào khả năng bảo trì.
+\end{itemize}
+
+\subsection{SwiftUI}
+SwiftUI là framework UI khai báo mới của Apple, giới thiệu từ iOS 13.
+\begin{itemize}
+  \item \textbf{View Basics:} Sử dụng cấu trúc \texttt{protocol View} để xây dựng UI.
+  \item \textbf{State và Binding:} Sử dụng \texttt{property wrappers} để quản lý trạng thái.
+  \item \textbf{ObservableObject và EnvironmentObject:} Cung cấp các cơ chế để quản lý trạng thái phức tạp.
+\end{itemize}
+
+\subsection{So sánh UIKit và SwiftUI}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Khía cạnh} & \textbf{UIKit} & \textbf{SwiftUI} \\
+\hline
+Năm ra mắt & 2008 & 2019 \\
+\hline
+Loại lập trình & Mệnh lệnh & Khai báo \\
+\hline
+Cấu trúc & Dựa trên lớp (Class-based) & Dựa trên struct (Struct-based) \\
+\hline
+Trạng thái & Tự quản lý & Property wrappers \\
+\hline
+Hỗ trợ iOS & iOS 2+ & iOS 13+ \\
+\hline
+Độ ổn định & Rất ổn định & Đang phát triển \\
+\hline
+Học tập & Phức tạp & Dễ dàng hơn \\
+\hline
+Tùy biến & Rất linh hoạt & Hạn chế hơn \\
+\hline
+\end{tabular}
+\end{center}

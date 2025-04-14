@@ -1,0 +1,111 @@
+\section{Xử lý bất đồng bộ}
+
+Xử lý tác vụ bất đồng bộ là một phần thiết yếu trong kiến trúc ứng dụng iOS hiện đại, giúp đảm bảo giao diện người dùng mượt mà và phản hồi tốt. Swift cung cấp nhiều phương pháp để xử lý bất đồng bộ, từ truyền thống đến hiện đại, mỗi phương pháp có ưu và nhược điểm riêng phù hợp với từng hoàn cảnh.
+
+\subsection{Completion Handlers}
+
+\textbf{Định nghĩa:} Completion handlers là cách truyền thống nhất để xử lý bất đồng bộ trong iOS, sử dụng closures được gọi sau khi tác vụ hoàn thành.
+
+\textbf{Cơ chế hoạt động:}
+\begin{itemize}
+    \item Hàm bất đồng bộ nhận một closure làm tham số.
+    \item Closure này được gọi khi tác vụ bất đồng bộ hoàn thành.
+    \item Thường sử dụng kiểu \texttt{Result} để phân biệt giữa thành công và thất bại.
+\end{itemize}
+
+\textbf{Ưu điểm:}
+\begin{itemize}
+    \item Dễ hiểu và được sử dụng rộng rãi.
+    \item Không cần thư viện bên ngoài.
+    \item Tương thích với tất cả các phiên bản iOS.
+\end{itemize}
+
+\textbf{Nhược điểm:}
+\begin{itemize}
+    \item Dễ rơi vào \textit{callback hell} khi chuỗi nhiều tác vụ.
+    \item Khó khăn trong việc truyền lỗi giữa các callback.
+    \item Có thể quên gọi completion handler nếu không cẩn thận.
+    \item Khó thực hiện song song hoặc tuần tự tác vụ một cách tối ưu.
+\end{itemize}
+
+\subsection{Promises}
+
+\textbf{Định nghĩa:} Promises là mô hình xử lý bất đồng bộ dựa trên hướng đối tượng, thường được sử dụng qua các thư viện như \texttt{PromiseKit}.
+
+\textbf{Cơ chế hoạt động:}
+\begin{itemize}
+    \item \texttt{Promise} đại diện cho kết quả trong tương lai.
+    \item Sử dụng \texttt{.then} để xử lý chuỗi kết quả.
+    \item \texttt{.catch} để xử lý lỗi một cách tập trung.
+    \item Có thể kết hợp và biến đổi Promise dễ dàng.
+\end{itemize}
+
+\textbf{Ưu điểm:}
+\begin{itemize}
+    \item Cú pháp rõ ràng, tránh callback hell.
+    \item Dễ dàng thực hiện các tác vụ song song hoặc tuần tự.
+    \item Quản lý lỗi tập trung.
+    \item Hỗ trợ chaining và transform dữ liệu.
+\end{itemize}
+
+\textbf{Nhược điểm:}
+\begin{itemize}
+    \item Cần cài đặt thư viện bên thứ ba.
+    \item Có thể mất thời gian làm quen ban đầu.
+    \item Khó debug hơn so với code đồng bộ.
+\end{itemize}
+
+\subsection{Async/Await}
+
+\textbf{Định nghĩa:} Từ iOS 15, Swift hỗ trợ cú pháp \texttt{async/await} để viết code bất đồng bộ như code đồng bộ.
+
+\textbf{Cơ chế hoạt động:}
+\begin{itemize}
+    \item \texttt{async} đánh dấu hàm bất đồng bộ.
+    \item \texttt{await} tạm dừng thực thi cho đến khi có kết quả.
+    \item Hỗ trợ cấu trúc concurrency rõ ràng với \texttt{Task}, \texttt{TaskGroup}.
+    \item Dễ dàng kết hợp với \texttt{try-catch} để xử lý lỗi.
+\end{itemize}
+
+\textbf{Ưu điểm:}
+\begin{itemize}
+    \item Cú pháp gọn gàng, dễ đọc.
+    \item Dễ quản lý luồng logic và xử lý lỗi tự nhiên.
+    \item Không cần lồng closure.
+    \item Tích hợp sâu trong hệ sinh thái Apple.
+\end{itemize}
+
+\textbf{Nhược điểm:}
+\begin{itemize}
+    \item Yêu cầu iOS 15 trở lên.
+    \item Cần refactor lại call stack cho async.
+    \item Có thể xảy ra rò rỉ bộ nhớ nếu không quản lý \texttt{Task.cancel()} cẩn thận.
+\end{itemize}
+
+\subsection{Combine Framework}
+
+\textbf{Định nghĩa:} Combine là framework lập trình reactive do Apple phát triển, ra mắt từ iOS 13. Thích hợp cho xử lý bất đồng bộ dựa trên dữ liệu và sự kiện.
+
+\textbf{Cơ chế hoạt động:}
+\begin{itemize}
+    \item Dựa trên mô hình \textit{Publisher/Subscriber}.
+    \item Tạo chuỗi pipeline để xử lý và biến đổi dữ liệu.
+    \item Hỗ trợ quản lý backpressure.
+    \item Kết hợp mạnh với \texttt{SwiftUI}.
+\end{itemize}
+
+\textbf{Ưu điểm:}
+\begin{itemize}
+    \item Tích hợp chặt chẽ với Swift và hệ sinh thái Apple.
+    \item Hàng trăm operators hỗ trợ biến đổi và lọc dữ liệu.
+    \item Tự động quản lý bộ nhớ bằng \texttt{AnyCancellable}.
+    \item Xử lý đồng bộ và bất đồng bộ theo mô hình dữ liệu.
+\end{itemize}
+
+\textbf{Nhược điểm:}
+\begin{itemize}
+    \item Learning curve cao, cần hiểu lập trình reactive.
+    \item Yêu cầu iOS 13 trở lên.
+    \item Debugging các pipeline phức tạp.
+    \item Không hỗ trợ đa nền tảng như \texttt{RxSwift}.
+\end{itemize}

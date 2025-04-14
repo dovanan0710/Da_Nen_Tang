@@ -1,0 +1,168 @@
+\section{Xử lý Dữ liệu}
+
+Quản lý dữ liệu là một phần quan trọng trong phát triển ứng dụng iOS. Apple cung cấp nhiều giải pháp khác nhau để lưu trữ và truy xuất dữ liệu, phù hợp với các mục đích và quy mô sử dụng khác nhau. Dưới đây là so sánh và mô tả chi tiết các giải pháp lưu trữ dữ liệu phổ biến trong hệ sinh thái iOS.
+
+\subsection{Core Data}
+
+\textbf{Định nghĩa:} Core Data là một framework của Apple dùng để quản lý graph đối tượng và vòng đời dữ liệu trong ứng dụng iOS, không phải là một cơ sở dữ liệu thuần túy. 
+
+\textbf{Kiến trúc Core Data:}
+\begin{itemize}
+    \item \textbf{NSManagedObjectModel:} Mô tả cấu trúc của các entities, attributes và relationships.
+    \item \textbf{NSManagedObjectContext:} Không gian làm việc để thực hiện các thao tác CRUD.
+    \item \textbf{NSPersistentStoreCoordinator:} Điều phối giữa object model và persistent store.
+    \item \textbf{NSPersistentContainer:} Đóng gói stack Core Data (từ iOS 10 trở lên).
+    \item \textbf{NSFetchRequest:} Truy vấn dữ liệu từ persistent store.
+\end{itemize}
+
+\textbf{Đặc điểm chính:}
+\begin{itemize}
+    \item Quản lý object graph và mối quan hệ phức tạp.
+    \item Lưu trữ dữ liệu sử dụng SQLite backend.
+    \item Tải dữ liệu một cách lười biếng (lazy loading).
+    \item Tích hợp kiểm tra dữ liệu và hỗ trợ migration/versioning.
+\end{itemize}
+
+\textbf{Ưu điểm:}
+\begin{itemize}
+    \item Tích hợp tốt với hệ sinh thái Apple.
+    \item Công cụ thiết kế mô hình dữ liệu trực quan.
+    \item Hỗ trợ đồng bộ hóa với CloudKit.
+    \item Quản lý bộ nhớ thông minh.
+\end{itemize}
+
+\textbf{Nhược điểm:}
+\begin{itemize}
+    \item Đường cong học tập dốc.
+    \item Debug khó khăn.
+    \item Threading phức tạp và không thread-safe.
+\end{itemize}
+
+\textbf{Khi nên dùng:}
+\begin{itemize}
+    \item Ứng dụng có dữ liệu phức tạp với nhiều quan hệ.
+    \item Dự án dài hạn cần bảo trì tốt.
+\end{itemize}
+
+\subsection{Realm}
+
+\textbf{Định nghĩa:} Realm là cơ sở dữ liệu di động mã nguồn mở, được thiết kế để thay thế Core Data với hiệu suất cao và API đơn giản.
+
+\textbf{Đặc điểm chính:}
+\begin{itemize}
+    \item Hoạt động đa nền tảng (iOS, Android).
+    \item Truy cập dữ liệu trực tiếp (zero-copy architecture).
+    \item Hỗ trợ lập trình reactive.
+    \item Thread-safe theo từng instance Realm.
+    \item Hỗ trợ mã hóa và đồng bộ hóa thời gian thực.
+\end{itemize}
+
+\textbf{Ưu điểm:}
+\begin{itemize}
+    \item API đơn giản, dễ học.
+    \item Hiệu suất cao.
+    \item Hỗ trợ đồng bộ thời gian thực.
+    \item Tài liệu rõ ràng, cộng đồng lớn.
+\end{itemize}
+
+\textbf{Nhược điểm:}
+\begin{itemize}
+    \item Không tích hợp sâu với iOS.
+    \item Không hỗ trợ struct, phải dùng class kế thừa từ \texttt{Object}.
+    \item Một số giới hạn trong model threading và truy vấn phức tạp.
+\end{itemize}
+
+\textbf{Khi nên dùng:}
+\begin{itemize}
+    \item Ứng dụng cross-platform.
+    \item Dự án yêu cầu hiệu suất cao và real-time sync.
+    \item Ưu tiên offline-first.
+\end{itemize}
+
+\subsection{SQLite}
+
+\textbf{Định nghĩa:} SQLite là hệ quản trị cơ sở dữ liệu quan hệ nhỏ gọn, không yêu cầu server, được sử dụng phổ biến nhất trên thế giới.
+
+\textbf{Đặc điểm chính:}
+\begin{itemize}
+    \item Tự chứa và không cần cấu hình.
+    \item Nhẹ, đáng tin cậy, cross-platform.
+    \item Hỗ trợ đầy đủ SQL.
+    \item Tuân thủ chuẩn ACID.
+\end{itemize}
+
+\textbf{Ưu điểm:}
+\begin{itemize}
+    \item Kiểm soát toàn diện schema và truy vấn.
+    \item Phù hợp với các truy vấn phức tạp.
+    \item Dễ dàng backup và khôi phục.
+\end{itemize}
+
+\textbf{Nhược điểm:}
+\begin{itemize}
+    \item Phải tự xử lý thread-safe và migration.
+    \item Không có hỗ trợ object mapping tự động.
+    \item Không phù hợp với reactive programming.
+\end{itemize}
+
+\textbf{Khi nên dùng:}
+\begin{itemize}
+    \item Cần kiểm soát hoàn toàn cơ sở dữ liệu.
+    \item Ứng dụng cần truy vấn SQL phức tạp.
+    \item Không cần tích hợp chặt với hệ sinh thái iOS.
+\end{itemize}
+
+\subsection{UserDefaults}
+
+\textbf{Định nghĩa:} Là hệ thống lưu trữ key-value đơn giản, phù hợp cho dữ liệu nhỏ và không nhạy cảm.
+
+\textbf{Đặc điểm chính:}
+\begin{itemize}
+    \item Lưu dữ liệu dạng key-value.
+    \item API đơn giản, hỗ trợ các kiểu cơ bản như String, Int, Bool, Date, v.v.
+    \item Tự động đồng bộ hóa và cache nội bộ.
+    \item Có thể đồng bộ với iCloud.
+\end{itemize}
+
+\textbf{Ưu điểm:}
+\begin{itemize}
+    \item Dễ sử dụng, hiệu suất cao cho dữ liệu nhỏ.
+    \item Không yêu cầu cấu hình.
+    \item Phù hợp lưu trạng thái người dùng và cài đặt.
+\end{itemize}
+
+\textbf{Nhược điểm:}
+\begin{itemize}
+    \item Không phù hợp với dữ liệu lớn hoặc nhạy cảm.
+    \item Không có khả năng filter, query, transaction.
+\end{itemize}
+
+\textbf{Khi nên dùng:}
+\begin{itemize}
+    \item Lưu theme, ngôn ngữ, âm thanh.
+    \item Đánh dấu đã hoàn thành hướng dẫn sử dụng.
+    \item Lưu cấu hình đơn giản hoặc flag.
+\end{itemize}
+
+\subsection{Keychain}
+
+\textbf{Định nghĩa:} Là hệ thống lưu trữ an toàn để bảo vệ thông tin nhạy cảm như mật khẩu và token.
+
+\textbf{Đặc điểm chính:}
+\begin{itemize}
+    \item Lưu trữ bảo mật với mã hóa mạnh.
+    \item Tồn tại sau khi ứng dụng bị xóa.
+    \item Hỗ trợ xác thực sinh trắc học.
+    \item Có thể chia sẻ giữa các ứng dụng cùng nhà phát triển.
+    \item Hỗ trợ đồng bộ iCloud.
+\end{itemize}
+
+\textbf{Ưu điểm:}
+\begin{itemize}
+    \item Bảo mật cao, phù hợp với dữ liệu nhạy cảm.
+    \item Hỗ trợ xác thực bằng Face ID, Touch ID.
+    \item Dữ liệu tồn tại lâu dài.
+\end{itemize}
+\textbf{Nhược điểm:} \begin{itemize} \item API phức tạp, khó sử dụng hơn so với các giải pháp khác. \item Truy cập và thao tác dữ liệu chậm hơn so với lưu trữ thông thường. \item Khó debug và kiểm tra. \end{itemize}
+
+\textbf{Khi nên dùng:} \begin{itemize} \item Lưu trữ mật khẩu, token xác thực, hoặc thông tin nhạy cảm. \item Cần đảm bảo an toàn dữ liệu người dùng. \item Ứng dụng có yêu cầu bảo mật cao. \end{itemize}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.4.8)  8 APR 2025 16:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.4.8)  14 APR 2025 10:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -473,7 +473,7 @@ Package: titlesec 2025/01/04 v2.17 Sectioning titles
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count303
 \l__pdf_internal_box=\box57
-) (main.aux (chapters/IOS.aux)
+) (main.aux (chapters/IOS/IOS.aux)
 LaTeX Font Info:    Trying to load font information for T5+cmr on input line 9.
  (C:\Users\an071\AppData\Local\Programs\MiKTeX\tex/latex/vntex\t5cmr.fd
 File: t5cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
@@ -565,43 +565,114 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\openout2 = `chapters/IOS.aux'.
+\openout2 = `chapters/IOS/IOS.aux'.
 
-(chapters/IOS.tex
+(chapters/IOS/IOS.tex
 Ch\uhorn \ohorn ng 1.
+(chapters/IOS/lecture_1.tex
+<images/kientrucios.png, id=147, 575.90157pt x 424.58624pt>
+File: images/kientrucios.png Graphic file (type png)
+<use images/kientrucios.png>
+Package pdftex.def Info: images/kientrucios.png  used on input line 7.
+(pdftex.def)             Requested size: 344.005pt x 253.62642pt.
 
 
 [1
 
 
 
-{C:/Users/an071/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}])
+{C:/Users/an071/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./images/kientrucios.png>]
+<images/vongdoiios.png, id=158, 556.32843pt x 234.8775pt>
+File: images/vongdoiios.png Graphic file (type png)
+<use images/vongdoiios.png>
+Package pdftex.def Info: images/vongdoiios.png  used on input line 26.
+(pdftex.def)             Requested size: 344.005pt x 145.23906pt.
 
-[2]
-Overfull \vbox (531.57507pt too high) has occurred while \output is active []
+
+[2 <./images/vongdoiios.png>]) (chapters/IOS/lecture_2.tex
+<images/mohinhkientrucios.png, id=165, 576.65437pt x 502.87875pt>
+File: images/mohinhkientrucios.png Graphic file (type png)
+<use images/mohinhkientrucios.png>
+Package pdftex.def Info: images/mohinhkientrucios.png  used on input line 6.
+(pdftex.def)             Requested size: 344.005pt x 300.00308pt.
+
+
+[3]
+
+[4 <./images/mohinhkientrucios.png>]
+
+[5]
+Overfull \hbox (5.73604pt too wide) in paragraph at lines 80--81
+[]\T5/cmr/m/n/12 ViewModel c¦n hé trñ kh£
+ []
+
+
+Overfull \hbox (3.7698pt too wide) in paragraph at lines 81--82
+[]\T5/cmr/m/n/12 ViewModel ph£i cung c§p
+ []
 
 
 
-[3] (main.aux (chapters/IOS.aux))
+[6]
+
+[7]
+
+[8]) (chapters/IOS/lecture_3.tex
+LaTeX Font Info:    Trying to load font information for T5+cmtt on input line 10.
+ (C:\Users\an071\AppData\Local\Programs\MiKTeX\tex/latex/vntex\t5cmtt.fd
+File: t5cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+
+[9]) (chapters/IOS/lecture_4.tex) (chapters/IOS/lecture_5.tex
+
+[10]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 23.
+ (C:\Users\an071\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 23.
+ (C:\Users\an071\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)) (chapters/IOS/lecture_6.tex
+
+[11]
+
+[12]
+
+[13]
+
+[14]
+
+[15]) (chapters/IOS/lecture_7.tex
+
+[16]
+
+[17]
+
+[18]) (chapters/IOS/lecture_8.tex
+
+[19]))
+
+[20] (main.aux (chapters/IOS/IOS.aux))
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: BF6D7E51B0F0C2CAD399638DA37A8130;7712.
+(rerunfilecheck)             Checksum: 578F4AA8AAD98947FAF6056AD0C7C05D;6153.
  ) 
 Here is how much of TeX's memory you used:
- 13424 strings out of 473523
- 213862 string characters out of 5714631
- 626246 words of memory out of 5000000
- 36455 multiletter control sequences out of 15000+600000
- 565970 words of font info for 44 fonts, out of 8000000 for 9000
+ 13614 strings out of 473523
+ 218250 string characters out of 5714631
+ 625437 words of memory out of 5000000
+ 36582 multiletter control sequences out of 15000+600000
+ 573108 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,5n,82p,781b,523s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/an071/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnbx12.pfb><C:/Users/an071/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr12.pfb>
-Output written on main.pdf (3 pages, 69957 bytes).
+ 80i,6n,82p,764b,525s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\an071\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\an071\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcbx1200.pk><C:/Users/an071/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnbx12.pfb><C:/Users/an071/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr12.pfb><C:/Users/an071/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnti12.pfb><C:/Users/an071/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vntt12.pfb>
+Output written on main.pdf (20 pages, 388270 bytes).
 PDF statistics:
- 212 PDF objects out of 1000 (max. 8388607)
- 47 named destinations out of 1000 (max. 500000)
- 345 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 288 PDF objects out of 1000 (max. 8388607)
+ 60 named destinations out of 1000 (max. 500000)
+ 304 words of extra memory for PDF output out of 10000 (max. 10000000)
 
