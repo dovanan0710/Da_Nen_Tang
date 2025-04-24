@@ -1,0 +1,114 @@
+
+\section{Giới thiệu tổng quan}
+
+    % 1.1.
+    \subsection{Bối cảnh nghiên cứu}
+    \renewcommand{\labelitemi}{--}    
+    \begin{flushleft}
+            \hspace*{0.8cm}Sự phát triển nhanh chóng của thị trường di động đã làm thay đổi cách thức xây dựng ứng dụng. Theo báo cáo của Statista (2023), số lượng người dùng smartphone toàn cầu đạt 6.92 tỷ vào năm 2023, và dự kiến tăng lên 7.5 tỷ vào năm 2025. Điều này đặt ra bài toán lớn cho các nhà phát triển: làm thế nào để tạo ra ứng dụng chạy trơn tru trên cả iOS và Android mà không cần xây dựng hai hệ thống độc lập?
+    \end{flushleft}
+
+    \begin{flushleft}
+        \hspace*{0.8cm}Trước đây, việc phát triển ứng dụng riêng biệt cho từng nền tảng đòi hỏi chi phí cao, thời gian dài và nguồn nhân lực lớn. Ví dụ, một công ty startup cần khoảng 18 tháng và khoảng 500.000 USD để phát triển song song hai ứng dụng native cho cả iOS và Android.
+    \end{flushleft}
+
+    \begin{flushleft}
+        \hspace*{0.8cm}Theo Business of Apps, chi phí thuê một lập trình viên mobile native tại Mỹ dao động khoảng 100.000–133.000 USD mỗi năm, nên với hai lập trình viên trong 18 tháng, tổng chi phí nhân sự đã lên tới khoảng 300.000–400.000 USD, chưa kể các chi phí thiết kế, QA và quản lý dự án.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Kể từ khi Facebook phát hành React Native vào năm 2015, startup có thể sử dụng JavaScript để viết giao diện và logic nghiệp vụ, giảm thiểu lượng mã phải viết riêng cho từng nền tảng.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Đến năm 2017, Google giới thiệu Flutter, framework sử dụng ngôn ngữ Dart và engine Skia, cho phép render UI trực tiếp trên mọi nền tảng mà không phụ thuộc vào widget native của hệ điều hành.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Nhờ khả năng tái sử dụng mã nguồn chung giữa iOS và Android lên đến 50–80\%, startup có thể giảm từ 30\% đến 40\% chi phí phát triển so với native thuần túy.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Báo cáo của Cleveroad cũng cho thấy chi phí phát triển ứng dụng cross‑platform thường nằm trong khoảng 60.000–200.000 USD, so với 70.000–250.000 USD cho từng ứng dụng native riêng biệt, tiết kiệm được 30–40\% tổng ngân sách. 
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Cross‑platform còn rút ngắn đáng kể thời gian ra mắt sản phẩm nhờ sử dụng chung codebase và quy trình test tập trung, giúp tiết kiệm đến 20–30\% thời gian phát triển so với native song song.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Ví dụ, một ứng dụng phức tạp trung bình mất 7–16 tuần để phát triển native riêng lẻ, nhưng chỉ cần khoảng 11–20 tuần với React Native hoặc Flutter nhờ tính năng hot reload và workflow thống nhất.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Như vậy, thay vì chi 18 tháng với 500.000 USD, startup nay chỉ cần khoảng 12–14 tháng và khoảng 200.000–250.000 USD để hoàn thành cả hai nền tảng, thể hiện rõ lợi thế của React Native (2015) và Flutter (2017) trong việc tối ưu cả chi phí lẫn thời gian phát triển.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Theo khảo sát của Stack Overflow (2023), 42\% nhà phát triển ưu tiên sử dụng Flutter, trong khi React Native chiếm 38\%. Sự cạnh tranh giữa hai framework này phản ánh nhu cầu ngày càng lớn về giải pháp "viết một lần, chạy mọi nơi" (Write Once, Run Anywhere), đồng thời đặt ra câu hỏi về hiệu năng và khả năng tùy biến của chúng.
+      \end{flushleft}
+
+% 
+\subsection{Mục tiêu nghiên cứu}
+\renewcommand{\labelitemi}{--}    
+    \begin{flushleft}
+        \hspace*{0.8cm}Bài nghiên cứu hướng đến ba mục tiêu chính:
+        \setlength{\leftmargini}{1.5cm}
+        \begin{itemize}
+            \item Phân tích ưu/nhược điểm của kiến trúc đa nền tảng so với native: Đánh giá khả năng tiết kiệm chi phí, thời gian phát triển. Đồng thời Xác định rào cản về hiệu năng và trải nghiệm người dùng (UX).
+            \item Xác định rào cản về hiệu năng và trải nghiệm người dùng (UX). Đo lường các chỉ số kỹ thuật như FPS (Frame Per Second), RAM tiêu thụ, và thời gian phản hồi. Sau đó so sánh với ứng dụng native để xác định mức độ chênh lệch.
+            \item Đề xuất giải pháp lựa chọn framework phù hợp: Dựa trên yêu cầu về ngân sách, thời gian và đặc thù dự án. Ví dụ như Flutter cho ứng dụng game, React Native cho ứng dụng doanh nghiệp.
+        \end{itemize}
+    \end{flushleft}
+
+% 4.3
+\subsection{Phạm vi và đối tượng}
+\renewcommand{\labelitemi}{--}    
+    \begin{flushleft}
+        \hspace*{0.8cm}Nghiên cứu tập trung vào hai framework hàng đầu trong phát triển đa nền tảng:
+        \setlength{\leftmargini}{1.5cm}
+        \begin{itemize}
+            \item React Native: Được Facebook phát triển, dựa trên JavaScript và có ưu thế về hệ sinh thái mở rộng (npm, Expo).
+            \item Flutter: Được Google phát triển, sử dụng ngôn ngữ Dart. Nổi bật với hiệu năng cao và khả năng tùy biến UI.
+        \end{itemize}
+    \end{flushleft}
+
+    \begin{flushleft}
+        \hspace*{0.8cm}Lý do lựa chọn
+        \setlength{\leftmargini}{1.5cm}
+        \begin{itemize}
+            \item React Native và Flutter chiếm 80\% thị phần framework đa nền tảng (theo SlashData, 2023).
+            \item •	Cả hai đều có cộng đồng hỗ trợ mạnh, tài liệu đầy đủ và được áp dụng rộng rãi trong các dự án thực tế.
+        \end{itemize}
+    \end{flushleft}
+
+    \begin{flushleft}
+        \hspace*{0.8cm}Nguồn dữ liệu
+        \setlength{\leftmargini}{1.5cm}
+        \begin{itemize}
+            \item Nghiên cứu thực nghiệm của Wenhao (2018):
+            \item[] o	Đo hiệu năng FPS khi cuộn màn hình trên 10 ứng dụng mẫu.
+            \item[] o	Kết luận: Flutter đạt 60 FPS, React Native đạt 45–50 FPS.
+            \item Báo cáo của Biorn-Hansen (2021):
+            \item[] o	Đánh giá mức tiêu thụ RAM và CPU trên 15 ứng dụng thương mại.
+            \item[] o	Kết quả: Ứng dụng native sử dụng 150MB RAM, Flutter 200MB, React Native 180MB.
+        \end{itemize}
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Giới hạn nghiên cứu:
+        \setlength{\leftmargini}{1.5cm}
+        \begin{itemize}
+            \item Không xem xét các framework ít phổ biến như Xamarin hay Ionic.
+            \item Dữ liệu hiệu năng dựa trên môi trường thử nghiệm, có thể khác biệt trong thực tế.
+        \end{itemize}
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Kết luận phần Giới Thiệu
+        \setlength{\leftmargini}{1.5cm}
+        \begin{itemize}
+            \item Việc lựa chọn kiến trúc đa nền tảng không chỉ phụ thuộc vào công nghệ mà còn vào mục tiêu kinh doanh và nguồn lực của doanh nghiệp. Nghiên cứu này cung cấp cái nhìn toàn diện về React Native và Flutter, giúp nhà phát triển đưa ra quyết định dựa trên dữ liệu định lượng và phân tích chuyên sâu.
+        \end{itemize}
+      \end{flushleft}
+
