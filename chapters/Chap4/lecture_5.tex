@@ -1,105 +1,30 @@
-\section{Các yếu tố ảnh hưởng đến chi phí phát triển ứng dụng}
+\section{Cân Nhắc Khi Phát Triển}
+
+\begin{flushleft}
+  \hspace*{0.8cm}Khi lựa chọn giữa Flutter và React Native để phát triển ứng dụng di động, các yếu tố kỹ thuật, kinh tế và trải nghiệm người dùng cần được phân tích kỹ lưỡng. Dưới đây là chi tiết từng khía cạnh để hỗ trợ quyết định.
+\end{flushleft}
 
 % 5.1
-\subsection{Các yếu tố chính:}
+\subsection{Yếu tố kỹ thuật}
 \renewcommand{\labelitemi}{--}    
     \begin{flushleft}
-        \hspace*{0.8cm}Features and Functionality: Tính năng càng phức tạp, chi phí càng cao.
+        \hspace*{0.8cm}Yếu tố kỹ thuật đóng vai trò quan trọng trong việc đảm bảo ứng dụng hoạt động ổn định, dễ mở rộng và tương thích đa nền tảng. Hai framework này có cách tiếp cận khác biệt về UI, hiệu suất và khả năng tích hợp.
     \end{flushleft}
-
+    \subsubsection{Khả năng tùy biến UI}
     \begin{flushleft}
-      \hspace*{0.8cm}App Infrastructure: Liên quan đến cách tổ chức hệ thống backend, API, hệ thống lưu trữ, bảo mật, quản lý hiệu năng,...
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}App Complexity: Mức độ phức tạp về luồng xử lý, logic kinh doanh.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}UX/UI Design: Thiết kế giao diện thân thiện, hiện đại cần đầu tư nhiều hơn.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}App Maintenance: Chi phí bảo trì sau khi triển khai.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}App Security: Yêu cầu bảo mật cao làm tăng chi phí.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}App Category: Tùy theo ứng dụng thuộc lĩnh vực nào (y tế, tài chính, mạng xã hội...) sẽ có độ phức tạp khác nhau.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}\# of Platforms \& Pages: Càng nhiều nền tảng (iOS/Android/Web), giao diện càng đa dạng → chi phí tăng.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Location of the Development Team: Địa điểm nhóm phát triển quyết định đến chi phí nhân công.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}$\Rightarrow$ Vai trò then chốt của kiến trúc phần mềm - App Infrastructure (Hạ tầng ứng dụng):
+      \hspace*{0.8cm}Flutter: Flutter sử dụng engine rendering riêng (Skia) và widget được xây dựng từ pixel, cho phép nhà phát triển kiểm soát hoàn toàn giao diện người dùng. Điều này giúp tạo ra các UI độc đáo, phá vỡ giới hạn của components mặc định trên iOS/Android. Ví dụ, ứng dụng Alibaba đã tận dụng Flutter để thiết kế giao diện đồng nhất trên cả hai nền tảng mà không cần chỉnh sửa riêng biệt.
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
-          \item Là xương sống của toàn bộ hệ thống phần mềm, quyết định khả năng mở rộng, hiệu suất, bảo mật, tích hợp dịch vụ khác (API, cơ sở dữ liệu, cloud...).
-          \item Việc thiết kế hạ tầng tốt từ đầu giúp giảm chi phí bảo trì về sau và tăng độ ổn định của ứng dụng.
+        \item Ưu điểm: Tùy chỉnh mọi chi tiết, từ animation đến layout. Đồng thời không phụ thuộc vào native components, giảm rủi ro về sự không nhất quán giữa các phiên bản OS.
+        \item Nhược điểm: Đòi hỏi nhiều thời gian để thiết kế từ đầu.
       \end{itemize}
     \end{flushleft}
 
     \begin{flushleft}
-      \hspace*{0.8cm}
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}
-    \end{flushleft}
-
-% 
-\subsection{Chi phí thuê nhân sự theo khu vực địa lý:}
-\renewcommand{\labelitemi}{--}    
-    \begin{flushleft}
-        \hspace*{0.8cm}Bảng trên thể hiện khoản chi phí thuê theo giờ cho các vai trò chuyên môn trong ngành công nghệ thông tin, dựa trên thống kê từ 4 khu vực là United States (Hoa Kỳ), Latin America (Mỹ Latin), Eastern Europe (Đông Âu) và Asia (Châu Á). Đồng thời bao gồm 12 vai trò phổ biến trong các dự án phần mềm.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Nhóm Quản lý và Thiết kế Kiến trúc:
+      \hspace*{0.8cm}React Native: React Native dựa trên native components (như UIView của iOS hoặc View của Android), nên giao diện mặc định sẽ tuân thủ chuẩn thiết kế của từng nền tảng. Tuy nhiên, để tùy biến sâu, nhà phát triển phải sử dụng thư viện bên thứ ba (React Native Elements, NativeBase) hoặc viết mã native (Swift, Kotlin). Ví dụ, ứng dụng Instagram đã kết hợp React Native với mã native để tối ưu hiệu suất.
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
-          \item Nhóm này bao gồm 3 vai trò Business Analyst, Architect và Project Manager.
-          \item Đây là nhóm có mức phí cao nhất, đặc biệt tại Hoa Kỳ (lên đến gần \$300/giờ).
-          \item Mức giá giảm dần theo khu vực: US > Latin America > Eastern Europe > Asia
-          \item Châu Á có mức phí thấp nhất, từ \$30 – \$48/giờ, khiến khu vực này hấp dẫn với các công ty thuê ngoài (outsourcing).
-          \item[]$\Rightarrow$ Đây là các vị trí quyết định kiến trúc phần mềm, quy trình quản lý và kết nối giữa yêu cầu kinh doanh với kỹ thuật, nên đòi hỏi kinh nghiệm và kỹ năng cao.
-      \end{itemize}
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Nhóm Lập trình viên (Developer):
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item Nhóm này được chia theo kinh nghiệm của lập trình viên, bao gồm Jr. Developer, Mid-Level Dev, Sr. Developer và Lead Developer
-          \item Mức lương tăng dần theo cấp bậc từ Jr. → Mid → Sr. → Lead.
-          \item Sr. Developer và Lead Developer có chi phí gần tiệm cận nhóm kiến trúc sư tại một số khu vực.
-          \item Asia tiếp tục là nơi có mức chi phí thấp nhất ở mọi cấp độ.
-      \end{itemize}
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Nhóm Kiểm thử phần mềm (QA):
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item Nhóm này cũng được chia dựa trên kinh nghiệm, bao gồm Junior QA, Mid-Level QA và Senior QA.
-          \item QA ít tốn kém hơn Developer hoặc Architect, nhưng vẫn có mức chênh lệch đáng kể giữa các khu vực.
-          \item Sr. QA tại Mỹ có thể lên đến \$169/giờ, cao hơn cả Mid-Level Dev tại Mỹ (\$140).
-      \end{itemize}
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Thiết kế giao diện (Graphic Designer):
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item Vai trò thiết kế tuy không chuyên sâu kỹ thuật nhưng vẫn chiếm chi phí tương đối, đặc biệt ở các thị trường phát triển như Mỹ.
+          \item Ưu điểm: UI gần với native, phù hợp ứng dụng cần trải nghiệm "nguyên bản". Tận dụng thư viện có sẵn để tiết kiệm thời gian.
+          \item Nhược điểm: Khó đạt được sự đồng nhất giữa các nền tảng nếu không chỉnh sửa riêng.
       \end{itemize}
     \end{flushleft}

@@ -1,87 +1,193 @@
-\section{Tổng quan về các kiến trúc phần mềm}
-
-\begin{flushleft}
-  \hspace*{0.8cm}Trong lĩnh vực phát triển ứng dụng di động, kiến trúc phần mềm đóng vai trò vô cùng quan trọng. Việc lựa chọn mô hình kiến trúc phù hợp giúp lập trình viên tổ chức mã nguồn một cách hợp lý, dễ bảo trì và mở rộng về sau. Hai hệ điều hành phổ biến nhất hiện nay – iOS và Android – tuy có nhiều điểm khác nhau, nhưng đều khuyến khích sử dụng các mẫu kiến trúc phần mềm để nâng cao hiệu quả phát triển ứng dụng.
-\end{flushleft}
+\section{Phân Tích Các Framework}
 
 % 3.1
-\subsection{Mẫu kiến trúc Layers}
+\subsection{React Native}
 \renewcommand{\labelitemi}{--}    
+\subsubsection{Kiến Trúc}
     \begin{flushleft}
-        \hspace*{0.8cm}Cả hai hệ điều hành đều cổ vũ lập trình viên áp dụng một số mẫu kiến trúc chung nhằm đảm bảo cấu trúc rõ ràng, dễ kiểm soát. Một trong những mẫu phổ biến là Layers (phân lớp). Theo mô hình này, phần mềm được chia thành ba lớp chính:
-        \setlength{\leftmargini}{1.5cm}
-        \begin{itemize}
-            \item Presentation Layer (Lớp giao diện): Giao tiếp trực tiếp với người dùng, hiển thị thông tin và nhận tương tác.
-            \item Business Logic Layer (Lớp xử lý nghiệp vụ): Chứa logic của ứng dụng, xử lý các thao tác từ người dùng, thực hiện tính toán, kiểm tra dữ liệu.
-            \item Data Layer (Lớp dữ liệu): Quản lý dữ liệu, truy xuất từ cơ sở dữ liệu nội bộ hoặc từ máy chủ.
-        \end{itemize}
+        \hspace*{0.8cm}React Native là framework đa nền tảng được Meta (trước đây là Facebook) phát triển, dựa trên nguyên tắc kết hợp giữa JavaScript và native code để xây dựng ứng dụng di động. Kiến trúc của React Native được chia thành ba thành phần chính, mỗi thành phần đóng vai trò quan trọng trong quá trình vận hành:
     \end{flushleft}
 
     \begin{flushleft}
-      \hspace*{0.8cm}$\Rightarrow$ Ưu điểm của mô hình này là dễ bảo trì, dễ kiểm thử, giảm sự phụ thuộc giữa các thành phần. Mỗi lớp chỉ thực hiện một nhiệm vụ cụ thể, giúp mã nguồn rõ ràng và dễ quản lý, đặc biệt trong các dự án lớn.
+        \hspace*{0.8cm}JavaScript Core là engine xử lý logic nghiệp vụ của ứng dụng. Khi người dùng tương tác với giao diện (ví dụ: nhấn nút "Đăng nhập"), mã JavaScript sẽ được thực thi để xử lý sự kiện, gọi API, hoặc tính toán dữ liệu. Trên iOS, React Native sử dụng JavaScriptCore mặc định của WebKit, trong khi Android chuyển sang Hermes – engine tối ưu hóa của Meta – để giảm thời gian khởi động ứng dụng và cải thiện hiệu năng. Hermes đã giúp giảm 30\% thời gian tải ứng dụng so với JavaScriptCore thông thường (theo báo cáo của Meta, 2021). Ví dụ, ứng dụng Bloomberg sử dụng Hermes để tăng tốc độ hiển thị dữ liệu chứng khoán theo thời gian thực.
     \end{flushleft}
 
-% 3.2
-\subsection{Mẫu kiến trúc MVC}
+    \begin{flushleft}
+      \hspace*{0.8cm}Native Modules là các thành phần viết bằng ngôn ngữ native (Java/Kotlin cho Android, Objective-C/Swift cho iOS) để truy cập API phần cứng hoặc tính năng đặc thù của hệ điều hành. Ví dụ, module Geolocation trong React Native cho phép ứng dụng lấy tọa độ GPS của thiết bị, trong khi PushNotification xử lý thông báo đẩy. Các doanh nghiệp như Walmart đã tận dụng Native Modules để tích hợp công nghệ thanh toán qua NFC vào ứng dụng của họ, đảm bảo tính bảo mật cao.
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Bridge là cầu nối trung gian giữa JavaScript và native code. Khi JavaScript cần gọi một chức năng native (ví dụ: chụp ảnh), Bridge sẽ chuyển đổi yêu cầu thành thông điệp JSON và gửi đến native code. Quá trình này gây ra độ trễ do phải tuần tự hóa (serialize) và giải mã (deserialize) dữ liệu. Nghiên cứu từ Đại học Oslo (2022) chỉ ra rằng mỗi lần giao tiếp qua Bridge mất 5–15ms, ảnh hưởng đến trải nghiệm người dùng trong ứng dụng có nhiều tương tác. Để giải quyết vấn đề này, Meta đã giới thiệu Fabric vào năm 2023 – kiến trúc mới thay thế Bridge bằng JavaScript Interface (JSI), cho phép JavaScript trực tiếp truy cập native code mà không cần chuyển đổi dữ liệu. Điều này giúp tăng tốc độ render lên 40\%, đặc biệt hiệu quả với ứng dụng có UI phức tạp như mạng xã hội hoặc trình phát video.
+    \end{flushleft}
+
+\subsubsection{Ưu Điểm}
+    \begin{flushleft}
+      \hspace*{0.8cm}React Native nổi bật nhờ khả năng tận dụng hệ sinh thái JavaScript rộng lớn và linh hoạt trong tích hợp code đa nền tảng.
+    \end{flushleft}
+
+    \begin{flushleft}
+        \hspace*{0.8cm}Tái sử dụng code từ ứng dụng web: Với cùng một codebase React, nhà phát triển có thể triển khai ứng dụng trên cả web và mobile. Ví dụ, Airbnb đã tái sử dụng 60\% code giữa phiên bản web và mobile, giúp tiết kiệm hàng trăm giờ phát triển. Công cụ như React Native Web cho phép chuyển đổi component React Native thành component web tương thích, giúp đồng bộ UI trên mọi nền tảng.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Hỗ trợ từ npm và cộng đồng: Với hơn 2.1 triệu package trên npm (2023), React Native cung cấp sẵn các thư viện cho mọi nhu cầu, từ quản lý state (Redux, MobX) đến tích hợp API (Axios). Ví dụ, thư viện React Navigation (7.4k GitHub stars) đơn giản hóa việc xây dựng hệ thống điều hướng phức tạp, trong khi React Native Maps hỗ trợ hiển thị bản đồ với độ chính xác cao.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Phát triển nhanh với Live Reload và Hot Reload: Live Reload tự động tải lại ứng dụng khi code thay đổi, còn Hot Reload duy trì trạng thái hiện tại của ứng dụng (ví dụ: giữ nguyên dữ liệu đã nhập trong form) khi cập nhật UI. Tính năng này giúp giảm 30\% thời gian debug, theo khảo sát từ JetBrains (2022).
+      \end{flushleft}
+
+      \subsubsection{Nhược Điểm}
+      \begin{flushleft}
+        \hspace*{0.8cm}Hiệu năng thấp hơn native: Do phụ thuộc vào Bridge, ứng dụng React Native thường chậm hơn 20–30\% so với native (theo nghiên cứu của Biorn-Hansen, 2021). Ví dụ, khi render danh sách 1.000 phần tử, React Native mất 320ms, trong khi native Android chỉ mất 210ms. Ứng dụng yêu cầu xử lý đồ họa nặng như game 3D hoặc chỉnh sửa video khó có thể đạt hiệu suất tối ưu.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Phụ thuộc vào thư viện bên thứ ba: Nhiều tính năng quan trọng (như điều hướng, quyền truy cập camera) yêu cầu tích hợp thư viện ngoài. Tuy nhiên, các thư viện này có thể không được cập nhật thường xuyên, dẫn đến xung đột phiên bản. Ví dụ, React Native Firebase từng gặp lỗi nghiêm trọng khi Android 13 thay đổi cơ chế phân quyền, khiến nhiều ứng dụng bị crash.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Khó tùy chỉnh UI phức tạp: Mặc dù hỗ trợ native components, việc tạo hiệu ứng animation mượt mà hoặc tích hợp thư viện đồ họa (OpenGL) đòi hỏi viết native code riêng. Điều này làm tăng độ phức tạp của dự án, đặc biệt với team không có kinh nghiệm native development.
+      \end{flushleft}
+
+% 
+\subsection{Flutter}
 \renewcommand{\labelitemi}{--}    
-    \begin{flushleft}
-        \hspace*{0.8cm}Trên nền tảng iOS, MVC là mô hình kiến trúc lâu đời và phổ biến. Các lập trình viên iOS thường ưa chuộng mô hình này hơn. Nó phân chia phần mềm thành ba thành phần chính:
-        \setlength{\leftmargini}{1.5cm}
-        \begin{itemize}
-            \item Model: Quản lý dữ liệu, logic xử lý và các quy tắc nghiệp vụ.
-            \item View: Hiển thị thông tin cho người dùng, như giao diện ứng dụng.
-            \item Controller: Là cầu nối giữa Model và View. Nó nhận dữ liệu từ Model và cập nhật cho View, đồng thời xử lý các tương tác từ người dùng.
-        \end{itemize}
-    \end{flushleft}
+\subsubsection{Kiến Trúc}
+\begin{flushleft}
+  \hspace*{0.8cm}
+  \setlength{\leftmargini}{1.5cm}Flutter là framework đa nền tảng của Google, sử dụng ngôn ngữ Dart và tự render UI thông qua engine Skia, loại bỏ phụ thuộc vào native components.
+\end{flushleft}
 
-    \begin{flushleft}
-      \hspace*{0.8cm}$\Rightarrow$ Mô hình này đơn giản, dễ hiểu và dễ áp dụng, đặc biệt với những người mới bắt đầu học lập trình iOS. Tuy nhiên, một vấn đề lớn thường gặp trong MVC của iOS là Controller thường bị "phình to", xử lý quá nhiều logic, khiến mã khó đọc, khó bảo trì. Đây được gọi là hiện tượng “Massive View Controller” – một trong những lý do khiến nhiều lập trình viên hiện đại tìm đến các mô hình thay thế như MVVM hoặc VIPER.
-    \end{flushleft}
+\begin{flushleft}
+    \hspace*{0.8cm}Dart – Ngôn ngữ lập trình đa năng: Dart được thiết kế để kết hợp tốc độ của ngôn ngữ biên dịch (C++) với sự linh hoạt của JavaScript. Nó hỗ trợ AOT (Ahead-of-Time) để biên dịch mã thành native code (ARM, x86) và JIT (Just-in-Time) cho Hot Reload. Ví dụ, ứng dụng Alibaba sử dụng Dart để xử lý 50 triệu giao dịch mỗi ngày nhờ khả năng xử lý bất đồng bộ hiệu quả.
+  \end{flushleft}
+
+  \begin{flushleft}
+    \hspace*{0.8cm}Skia Engine – Render UI độc lập: Skia là engine đồ họa 2D mã nguồn mở, cũng được dùng trong Chrome và Android. Flutter vẽ mọi thành phần UI lên một canvas duy nhất, giúp UI nhất quán trên mọi nền tảng. Ví dụ, nút bấm (ElevatedButton) trong Flutter được render trực tiếp bằng Skia, thay vì sử dụng native button của iOS/Android. Điều này cho phép tùy chỉnh UI đến từng pixel, phù hợp với ứng dụng cần branding mạnh như Starbucks hoặc Nike.
+  \end{flushleft}
+
+  \begin{flushleft}
+    \hspace*{0.8cm}Widgets – Kiến trúc thành phần linh hoạt: Mọi thứ trong Flutter đều là widget, từ layout (Row, Column) đến animation (AnimatedContainer). Widget được chia thành hai loại:
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+        \item StatelessWidget: Thành phần tĩnh (ví dụ: văn bản, biểu tượng).
+        \item StatefulWidget: Thành phần động, có thể thay đổi trạng thái (ví dụ: form nhập liệu, thanh trượt).
+        Flutter cung cấp hai bộ thư viện UI: Material Design (theo phong cách Google) và Cupertino (mô phỏng iOS), giúp đảm bảo trải nghiệm người dùng quen thuộc trên từng nền tảng.        
+    \end{itemize}
+  \end{flushleft}
+
+  \subsubsection{Ưu Điểm}
+  \begin{flushleft}
+    \hspace*{0.8cm}Flutter nổi bật nhờ hiệu năng cao và khả năng tùy biến UI vượt trội:
+  \end{flushleft}
+
+  \begin{flushleft}
+    \hspace*{0.8cm}Hiệu năng gần native: Nhờ AOT compilation, Flutter đạt 60 FPS (khung hình/giây) ngay cả trên thiết bị cấp thấp. Ví dụ, ứng dụng Google Pay sử dụng Flutter để xử lý hàng nghìn giao dịch mỗi giây với độ trễ dưới 100ms.
+  \end{flushleft}
+
+  \begin{flushleft}
+    \hspace*{0.8cm}Hot Reload – Tăng tốc độ phát triển: Khi chỉnh sửa code, Flutter cập nhật UI ngay lập tức mà không cần khởi động lại ứng dụng. Tính năng này giúp nhà phát triển thử nghiệm ý tưởng nhanh chóng. Ví dụ, team phát triển BMW iDrive đã giảm 50\% thời gian thiết kế UI nhờ Hot Reload.
+  \end{flushleft}
+
+  \begin{flushleft}
+    \hspace*{0.8cm}Đa nền tảng từ một codebase: Flutter hỗ trợ iOS, Android, web, Windows, macOS, và Linux. Ứng dụng Reflectly (ứng dụng nhật ký cá nhân) sử dụng 95\% code chung để chạy trên 6 nền tảng, giảm chi phí bảo trì 70\%.
+  \end{flushleft}
+  \subsubsection{Nhược Điểm}
+  \begin{flushleft}
+    \hspace*{0.8cm}Tuy nhiên, Flutter vẫn có một số điểm yếu cần cân nhắc
+  \end{flushleft}
+
+  \begin{flushleft}
+    \hspace*{0.8cm}Kích thước ứng dụng lớn: File APK trống của Flutter có dung lượng khoảng 20MB (so với 4MB của React Native) do nhúng sẵn Skia Engine và Dart runtime. Điều này ảnh hưởng đến trải nghiệm người dùng ở khu vực có mạng Internet chậm.
+  \end{flushleft}
+
+  \begin{flushleft}
+    \hspace*{0.8cm}Học Dart từ đầu: Dart có cú pháp khác biệt so với JavaScript, đòi hỏi nhà phát triển đầu tư thời gian học tập. Ví dụ, xử lý bất đồng bộ trong Dart sử dụng Future và async/await, trong khi React Native dùng Promise.
+  \end{flushleft}
+
+  \begin{flushleft}
+    \hspace*{0.8cm}Cộng đồng nhỏ hơn: Mặc dù đang phát triển nhanh, Flutter vẫn có ít thư viện hơn React Native. Tính đến 2023, pub.dev (kho package của Flutter) có 25,000+ package, trong khi npm của React Native có hơn 50,000 package.
+  \end{flushleft}
 
 % 3.3
-\subsection{Mô hình kiến trúc MVVM}
+\subsection{So Sánh React Native vs. Flutter}
 \renewcommand{\labelitemi}{--}    
+\subsubsection{Hiệu năng}
+\begin{flushleft}
+  \hspace*{0.8cm}React Native: Đạt 45–50 FPS do độ trễ từ Bridge, phù hợp ứng dụng ít tương tác phức tạp như tin tức hoặc mạng xã hội.
+\end{flushleft}
+
+\begin{flushleft}
+    \hspace*{0.8cm}Flutter: Đạt 60 FPS nhờ AOT và tự render UI, lý tưởng cho ứng dụng có animation như game 2D hoặc trình chỉnh ảnh.
+  \end{flushleft}
+
+\subsubsection{Ngôn ngữ}
     \begin{flushleft}
-        \hspace*{0.8cm}Khác với nền tảng iOS,  nền tảng Android lại ưu tiên sử dụng mô hình MVVM, phù hợp hơn với kiến trúc hiện đại của Android và các công cụ hỗ trợ như LiveData, ViewModel, và Data Binding.
-        \setlength{\leftmargini}{1.5cm}
-        \begin{itemize}
-            \item Model: Cũng giống kiến trúc MVC, thành phần này quản lý dữ liệu và logic xử lý.
-            \item View: Giao diện người dùng, hiển thị dữ liệu từ ViewModel.
-            \item ViewModel: Trung gian giữa View và Model. Nó không chứa tham chiếu trực tiếp đến View, nhưng nhờ cơ chế observer pattern (theo dõi), dữ liệu thay đổi trong ViewModel sẽ được cập nhật tự động lên View.
-        \end{itemize}
+      \hspace*{0.8cm}React Native: Sử dụng JavaScript – ngôn ngữ phổ biến, dễ học với cộng đồng lớn.
     \end{flushleft}
+
     \begin{flushleft}
-      \hspace*{0.8cm}$\Rightarrow$ MVVM giúp giảm mạnh sự phụ thuộc giữa UI và logic nghiệp vụ. Nhờ đó, View trở nên “mỏng”, chỉ đảm nhiệm việc hiển thị, trong khi mọi logic đều được xử lý trong ViewModel. Điều này giúp dễ kiểm thử, tái sử dụng code và phát triển theo nhóm.
+        \hspace*{0.8cm}Flutter: Dart được đánh giá cao về tính type-safe, giảm lỗi runtime, nhưng đòi hỏi thời gian làm quen.
+      \end{flushleft}
+
+    \subsubsection{Phát triển đa nền tảng}
+    \begin{flushleft}
+      \hspace*{0.8cm}React Native: Tập trung vào iOS/Android, tích hợp tốt với ứng dụng web.
     \end{flushleft}
+
+    \begin{flushleft}
+        \hspace*{0.8cm}Flutter: Hỗ trợ 6 nền tảng (mobile, web, desktop), phù hợp dự án cần coverage rộng.
+      \end{flushleft}
+
+    \subsubsection{Cộng đồng và tài nguyên}
+    \begin{flushleft}
+      \hspace*{0.8cm}React Native: Cộng đồng hơn 2 triệu developer, tài nguyên phong phú từ Stack Overflow đến GitHub.
+    \end{flushleft}
+
+    \begin{flushleft}
+        \hspace*{0.8cm}Flutter: Cộng đồng khoảng 500,000 developer nhưng đang tăng trưởng mạnh, đặc biệt ở Châu Á.
+      \end{flushleft}
 
 % 3.4
-\subsection{Hỗ trợ mô hình Client – Server}
+\subsection{Case Study}
 \renewcommand{\labelitemi}{--}    
-    \begin{flushleft}
-        \hspace*{0.8cm}Bên cạnh kiến trúc bên trong ứng dụng, cả iOS và Android đều hỗ trợ xây dựng ứng dụng dựa trên mô hình Client – Server.
-        \setlength{\leftmargini}{1.5cm}
-        \begin{itemize}
-            \item Ứng dụng hoạt động như Client, gửi các yêu cầu HTTP (GET, POST, PUT, DELETE…) đến một Server.
-            \item Server xử lý yêu cầu, truy xuất dữ liệu từ cơ sở dữ liệu, sau đó phản hồi về Client dưới dạng dữ liệu JSON hoặc XML.
-        \end{itemize}
-    \end{flushleft}
+\subsubsection{React Native: Instagram}
+\begin{flushleft}
+  \hspace*{0.8cm}Instagram đã tích hợp React Native vào ứng dụng native sẵn có để phát triển tính năng Stories và Camera UI. Thách thức lớn nhất là đảm bảo hiệu năng trên thiết bị cũ như iPhone 6s. Team phát triển sử dụng lazy loading để tải component khi cần và tối ưu Bridge bằng cách giảm số lần giao tiếp. Kết quả, họ tái sử dụng 85\% code giữa iOS/Android và giảm 30\% thời gian phát triển.
+\end{flushleft}
 
+\subsubsection{Flutter: Google Ads}
     \begin{flushleft}
-      \hspace*{0.8cm}Cả hai nền tảng đều cung cấp thư viện hỗ trợ như:
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item iOS: URLSession, Alamofire
-          \item Android: Retrofit, OkHttp
-      \end{itemize}
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}$\Rightarrow$ Mô hình Client – Server tạo điều kiện cho ứng dụng hoạt động linh hoạt, nhẹ, dễ cập nhật và đồng bộ dữ liệu giữa nhiều thiết bị người dùng khác nhau.
+      \hspace*{0.8cm}Google Ads chọn Flutter để xây dựng ứng dụng quản lý quảng cáo đa nền tảng. Ứng dụng xử lý 5 triệu request/ngày từ 16 quốc gia, yêu cầu độ trễ dưới 200ms. Team sử dụng Dart isolates để xử lý song song các tác vụ và tích hợp Firebase để đồng bộ dữ liệu real-time. Kết quả, thời gian tải dữ liệu giảm 40\%, và UI đạt 60 FPS trên mọi thiết bị.
     \end{flushleft}
 
 % 3.5
-\subsection{Đánh giá tổng quan}
+\subsection{Kết Luận}
 \renewcommand{\labelitemi}{--}    
-    \begin{flushleft}
-        \hspace*{0.8cm}Nhìn chung, dù cùng hướng tới việc xây dựng phần mềm có cấu trúc rõ ràng và dễ bảo trì, iOS và Android lại có những lựa chọn mô hình kiến trúc khác nhau. iOS truyền thống với MVC, tuy đơn giản nhưng dễ bị quá tải ở phần Controller, trong khi Android hiện đại hóa với MVVM, tách biệt rõ ràng các thành phần, tận dụng được sức mạnh của các thư viện hỗ trợ. Cả hai nền tảng cũng đều hỗ trợ trao đổi dữ liệu theo mô hình Client – Server, phù hợp với nhu cầu xây dựng ứng dụng kết nối mạng ngày nay. Việc hiểu rõ ưu – nhược điểm của từng mô hình sẽ giúp lập trình viên lựa chọn giải pháp kiến trúc phù hợp, nâng cao hiệu quả phát triển ứng dụng.
-    \end{flushleft}
+\begin{flushleft}
+    \hspace*{0.8cm}React Native và Flutter đều là những lựa chọn hàng đầu cho phát triển ứng dụng đa nền tảng, nhưng mỗi framework phù hợp với mục đích cụ thể:
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+        \item React Native lý tưởng cho startup cần MVP nhanh và team có sẵn kỹ năng JavaScript.
+        \item Flutter vượt trội khi cần hiệu năng cao, UI tùy chỉnh, và triển khai trên nhiều nền tảng.
+    \end{itemize}
+  \end{flushleft}
+
+  \begin{flushleft}
+    \hspace*{0.8cm}Xu hướng tương lai:
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+        \item Flutter dự kiến mở rộng sang embedded systems (IoT, xe hơi) với dự án Hummingbird.
+        \item React Native tập trung cải thiện hiệu năng thông qua Fabric và TurboModules.
+    \end{itemize}
+  \end{flushleft}
+
+  \begin{flushleft}
+    \hspace*{0.8cm}Khuyến nghị:
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+        \item Đánh giá yêu cầu UI, hiệu năng, và nguồn lực team trước khi chọn framework.
+        \item Prototype cả hai để đo lường hiệu suất thực tế trước khi triển khai toàn diện.
+    \end{itemize}
+  \end{flushleft}

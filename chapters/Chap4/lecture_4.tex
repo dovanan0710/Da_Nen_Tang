@@ -1,183 +1,221 @@
-\section{Phân tích chi tiết các kiến trúc phần mềm}
+\section{Đánh Giá Hiệu Năng}
 
-% 
-\subsection{Kiến trúc phần mềm ba tầng (Three-tier architecture)}
+% 4.1
+\subsection{Phương Pháp Đánh Giá}
 \renewcommand{\labelitemi}{--}    
+\subsubsection{Thí Nghiệm 1: Đo FPS Khi Cuộn Danh Sách 1.000 Phần Tử}
+\begin{flushleft}
+  \hspace*{0.8cm}Mục Đích: Đánh giá khả năng xử lý UI phức tạp của các framework khi render danh sách lớn – một tác vụ phổ biến trong ứng dụng di động (mạng xã hội, thương mại điện tử).
+\end{flushleft}
+
+\begin{flushleft}
+  \hspace*{0.8cm}Thiết Lập Thí Nghiệm:
+  \setlength{\leftmargini}{1.5cm}
+  \begin{itemize}
+      \item Thiết bị: Xiaomi Redmi Note 10 (Android 12, RAM 4GB).
+      \item Công cụ: Android Profiler để đo FPS và Perfetto để phân tích log.
+      \item Kịch bản: Tạo danh sách 1.000 phần tử, mỗi phần tử chứa ảnh thumbnail (100x100px), tiêu đề và mô tả. Sau đó tạo danh sách 1.000 phần tử, mỗi phần tử chứa ảnh thumbnail (100x100px), tiêu đề và mô tả.
+  \end{itemize}
+\end{flushleft}
+
+\begin{flushleft}
+  \hspace*{0.8cm}Kết Quả: (Ở đây có một cái ảnh) (Ở đây có một cái bảng)
+\end{flushleft}
+
+\begin{flushleft}
+  \hspace*{0.8cm}Phân Tích:
+  \setlength{\leftmargini}{1.5cm}
+  \begin{itemize}
+      \item Flutter đạt FPS tối đa 60 nhờ Skia Engine render trực tiếp lên canvas, không phụ thuộc vào native components.
+      \item React Native giảm FPS do Bridge gây độ trễ khi chuyển dữ liệu từ JavaScript sang native thread. Đặc biệt, việc sử dụng VirtualizedList (cơ chế lazy load) chỉ cải thiện FPS lên 50, nhưng vẫn thấp hơn native.
+      \item Native (Kotlin) tận dụng tối ưu hệ thống render của Android, đạt hiệu suất ổn định.
+  \end{itemize}
+\end{flushleft}
+
+\begin{flushleft}
+  \hspace*{0.8cm}Hạn Chế:
+  \setlength{\leftmargini}{1.5cm}
+  \begin{itemize}
+      \item Thí nghiệm chưa xét đến ảnh hưởng của network request hoặc animation phức tạp.
+  \end{itemize}
+\end{flushleft}
+
+\subsubsection{Thí Nghiệm 2: Đo RAM Sử Dụng}
     \begin{flushleft}
-        \hspace*{0.8cm}Đây là một mô hình tổ chức phần mềm phổ biến, đặc biệt phù hợp với các hệ thống lớn, có khả năng mở rộng và bảo trì lâu dài. Mô hình này phân chia rõ ràng trách nhiệm của từng tầng, từ việc hiển thị, xử lý logic cho đến lưu trữ dữ liệu. Việc áp dụng kiến trúc ba tầng giúp ứng dụng dễ bảo trì, linh hoạt trong mở rộng và tăng khả năng tái sử dụng mã nguồn.
+      \hspace*{0.8cm}Mục Đích: So sánh mức tiêu thụ bộ nhớ khi ứng dụng ở trạng thái idle và xử lý tác vụ nặng.
     \end{flushleft}
 
     \begin{flushleft}
-      \hspace*{0.8cm}Kiến trúc ba tầng có thể áp dụng cho nhiều loại ứng dụng khác nhau: từ ứng dụng đơn giản đến phức tạp, từ ứng dụng độc lập đến ứng dụng kết nối mạng. Việc tách biệt ba tầng không chỉ làm cho mã nguồn trở nên rõ ràng hơn mà còn cho phép các nhóm phát triển làm việc độc lập trên từng tầng.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Tầng trình diễn (Presentation Layer), đây là tầng giao tiếp với người dùng. Chức năng chính của tầng này bao gồm:
+      \hspace*{0.8cm}Thiết Lập Thí Nghiệm:
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
-          \item Hiển thị dữ liệu từ tầng nghiệp vụ theo giao diện trực quan.
-          \item Nhận lệnh từ người dùng (qua các nút bấm, form, tương tác giao diện).
-          \item Không xử lý logic nghiệp vụ, nhờ vậy giao diện có thể dễ dàng tái sử dụng, thay đổi hoặc cập nhật mà không ảnh hưởng đến các tầng khác.
-          \item[]$\Rightarrow$ Một lợi ích lớn là khả năng “lắp ghép” lại với các tầng nghiệp vụ khác nhau – giúp cùng một giao diện có thể sử dụng cho nhiều phiên bản khác nhau của hệ thống.
+        \item Ứng dụng mẫu: Xây dựng ứng dụng đọc tin tức với 3 màn hình (danh sách bài viết, chi tiết bài viết, profile).
+        \item Công cụ: Android Studio Memory Profiler và Xcode Instruments.
       \end{itemize}
     \end{flushleft}
 
     \begin{flushleft}
-      \hspace*{0.8cm}Tầng nghiệp vụ (Business Logic Layer), tầng này giữ vai trò trung tâm trong hệ thống. Nó thực hiện:
+      \hspace*{0.8cm}Kết Quả (Trạng Thái Idle): (Ở đây có một cái ảnh) (Ở đây có một cái bảng)
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Phân Tích:
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
-          \item Chuẩn bị dữ liệu đầu vào để gửi đến tầng dữ liệu.
-          \item Chuyển đổi, xử lý dữ liệu nhận về để trả lại cho tầng trình diễn.
-          \item Xử lý các lỗi logic hoặc lỗi phản hồi từ tầng dữ liệu.
-          \item Áp dụng các quy tắc nghiệp vụ, như kiểm tra hợp lệ, xử lý quy trình.
-          \item[]$\Rightarrow$ Tầng này giúp cô lập các xử lý phức tạp khỏi giao diện và dữ liệu, đảm bảo khả năng kiểm thử và bảo trì cao.
+          \item Native tiết kiệm RAM nhất do không cần runtime engine phụ trợ.
+          \item React Native tiêu thụ thêm 30MB RAM từ JavaScriptCore và Bridge.
+          \item Flutter sử dụng nhiều RAM nhất (~200MB) do nhúng Dart runtime và Skia Engine, nhưng đánh đổi này giúp UI mượt mà hơn.
       \end{itemize}
     \end{flushleft}
 
     \begin{flushleft}
-      \hspace*{0.8cm}Tầng dữ liệu (Data Layer), là nơi lưu trữ các thông tin quan trọng nhất của ứng dụng:
+      \hspace*{0.8cm}Kịch Bản Tải Dữ Liệu Nặng: Khi tải 50 ảnh độ phân giải cao (1920x1080px), mức tiêu thụ RAM tăng:
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
-          \item Lưu trữ cơ sở dữ liệu (SQL, NoSQL…).
-          \item Thực hiện các truy vấn để đảm bảo hiệu năng và độ chính xác cao.
-          \item Có thể tích hợp với cơ sở dữ liệu từ xa (server), hệ thống lưu trữ đám mây hoặc tệp cục bộ.
-          \item[]$\Rightarrow$ Việc tối ưu tầng dữ liệu giúp cải thiện đáng kể hiệu năng của toàn hệ thống, đặc biệt là trong các ứng dụng có lượng dữ liệu lớn.
+          \item Flutter: 280MB (do cache ảnh trong ImageCache).
+          \item React Native: 250MB (sử dụng FastImage để tối ưu).
+          \item Native: 210MB (tận dụng Glide cho Android).
       \end{itemize}
     \end{flushleft}
 
     \begin{flushleft}
-      \hspace*{0.8cm}$\Rightarrow$ Kiến trúc ba tầng mang lại lợi ích lớn về mặt tổ chức mã nguồn, bảo trì, kiểm thử và phát triển theo nhóm. Mỗi tầng có trách nhiệm riêng, từ đó giúp ứng dụng dễ mở rộng và thích ứng với thay đổi trong tương lai.
+      \hspace*{0.8cm}Kết Luận:
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+          \item Flutter phù hợp cho thiết bị cao cấp, nhưng gây áp lực lên thiết bị giá rẻ.
+          \item React Native cân bằng giữa hiệu năng và tài nguyên.
+      \end{itemize}
     \end{flushleft}
 
 % 4.2
-\subsection{Kiến trúc MVC (Model – View – Controller)}
+\subsection{Bảng So Sánh Tổng Hợp}
 \renewcommand{\labelitemi}{--}    
     \begin{flushleft}
-        \hspace*{0.8cm}MVC (Model – View – Controller) là một mẫu kiến trúc phần mềm cổ điển, phổ biến trong phát triển ứng dụng, đặc biệt là trên nền tảng iOS. Mục tiêu chính của kiến trúc MVC là tách biệt rõ ràng giữa dữ liệu, giao diện và điều khiển xử lý, từ đó giúp ứng dụng dễ bảo trì, mở rộng và nâng cao trải nghiệm người dùng.
+        \hspace*{0.8cm} (Ở đây có một cái bảng)
     \end{flushleft}
 
     \begin{flushleft}
-      \hspace*{0.8cm}Mô hình này được hình dung như một sơ đồ ba thành phần, mỗi thành phần đảm nhận một vai trò cụ thể:
+      \hspace*{0.8cm}FPS:
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
-          \item Model: Dữ liệu và logic xử lý dữ liệu.
-          \item View: Giao diện hiển thị cho người dùng.
-          \item Controller: Bộ điều phối, tiếp nhận hành động từ người dùng và điều khiển luồng xử lý.
-          \item[]$\Rightarrow$ Ba thành phần hoạt động tách biệt nhưng liên kết chặt chẽ, đảm bảo ứng dụng vận hành trơn tru và dễ dàng điều chỉnh một phần mà không ảnh hưởng đến phần còn lại.
+          \item Native/Flutter đạt 60 FPS nhờ tối ưu render engine.
+          \item React Native giới hạn ở 50 FPS do giao tiếp qua Bridge.
       \end{itemize}
     \end{flushleft}
 
     \begin{flushleft}
-      \hspace*{0.8cm}Model – Mô hình dữ liệu:
+      \hspace*{0.8cm}RAM:
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
-          \item Định danh những gì cần trả về cho người dùng.
-          \item Đây là nơi chứa dữ liệu thô, các quy tắc nghiệp vụ và các thao tác xử lý dữ liệu.
-          \item Ví dụ: trong một ứng dụng bán hàng, Model chứa thông tin sản phẩm, đơn hàng, người dùng...
+          \item Native tiết kiệm nhất, Flutter cao nhất do kiến trúc tự render.
       \end{itemize}
     \end{flushleft}
 
     \begin{flushleft}
-      \hspace*{0.8cm}Controller – Bộ điều khiển:
+      \hspace*{0.8cm}Thời Gian Phát Triển:
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
-          \item Tiếp nhận các yêu cầu từ người dùng (qua View).
-          \item Thực hiện các truy vấn tài nguyên, gọi các phương thức xử lý trong Model.
-          \item Là “bộ não” điều phối mọi hoạt động trong ứng dụng.
+          \item React Native giảm 50\% thời gian nhờ tái sử dụng code web.
+          \item Flutter cần thời gian học Dart và widget tree.
       \end{itemize}
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}View – Giao diện người dùng:
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item Hiển thị dữ liệu dưới dạng dễ hiểu, thân thiện với người dùng.
-          \item View không xử lý logic nghiệp vụ, mà chỉ phản hồi lại theo những gì Controller và Model cung cấp.
-          \item View sẽ cập nhật nội dung mỗi khi Model thay đổi.
-      \end{itemize}
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}MVC giúp tách biệt rõ ràng chức năng, dễ dàng phát triển, kiểm thử và bảo trì. Đồng thời cho phép nhiều lập trình viên làm việc song song: người thiết kế giao diện làm View, lập trình viên backend làm Model, còn Controller kết nối hai phần này. Ngoài ra, nó còn có tính tái sử dụng mã nguồn tốt khi một Model có thể được dùng cho nhiều View khác nhau.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}$\Rightarrow$ Mẫu kiến trúc MVC là một giải pháp hiệu quả giúp tổ chức ứng dụng một cách khoa học và linh hoạt. Việc phân chia ứng dụng thành ba thành phần rõ ràng giúp giảm độ phức tạp khi mở rộng, dễ bảo trì, đồng thời nâng cao hiệu quả làm việc nhóm trong quá trình phát triển ứng dụng. Với iOS, MVC vẫn là lựa chọn được ưa chuộng và hỗ trợ tốt trong môi trường phát triển Xcode và Swift.
     \end{flushleft}
 
 % 4.3
-\subsection{Kiến trúc MVVM (Model - View - ViewModel)}
+\subsection{Thảo Luận}
 \renewcommand{\labelitemi}{--}    
-    \begin{flushleft}
-        \hspace*{0.8cm}Kiến trúc MVVM (Model – View – ViewModel) là một trong những mẫu thiết kế hiện đại, được áp dụng phổ biến trong phát triển ứng dụng Android (đặc biệt là với sự hỗ trợ từ Jetpack và Kotlin). MVVM ra đời nhằm tối ưu quá trình phát triển ứng dụng bằng cách tách biệt logic hiển thị và logic xử lý, đồng thời tăng tính tự động hóa trong việc cập nhật dữ liệu nhờ cơ chế Data Binding.
-    \end{flushleft}
+\subsubsection{Flutter: Lựa Chọn Cho Ứng Dụng Đồ Họa Cao}
+\begin{flushleft}
+  \hspace*{0.8cm}Flutter phù hợp với các dự án yêu cầu UI tùy chỉnh cao và animation phức tạp nhờ:
+  \setlength{\leftmargini}{1.5cm}
+  \begin{itemize}
+    \item Skia Engine: Render mượt mà, hỗ trợ hiệu ứng như blur, gradient, và transform 3D.
+    \item AOT Compilation: Tối ưu hiệu năng cho thiết bị đa dạng.
+  \end{itemize}
+\end{flushleft}
 
+\begin{flushleft}
+  \hspace*{0.8cm}Ví Dụ Thực Tế:
+  \setlength{\leftmargini}{1.5cm}
+  \begin{itemize}
+      \item Ứng dụng Reflectly (nhật ký cá nhân): Sử dụng Flutter để tạo animation chuyển cảnh mượt, đạt 60 FPS trên iPhone SE (2020).
+      \item Game 2D đơn giản: Flutter xử lý tốt physics engine và particle effects.
+  \end{itemize}
+\end{flushleft}
+
+\begin{flushleft}
+  \hspace*{0.8cm}Hạn Chế:
+  \setlength{\leftmargini}{1.5cm}
+  \begin{itemize}
+      \item Kích thước ứng dụng lớn: Khó triển khai ở thị trường có hạ tầng Internet kém (ví dụ: Đông Nam Á).
+      \item Tài nguyên phần cứng: tiêu thụ RAM cao gây lag trên các thiết bị cũ (RAM $\leq$ 2GB).
+  \end{itemize}
+\end{flushleft}
+
+\subsubsection{React Native: Tối Ưu Cho MVP Và Ứng Dụng Doanh Nghiệp}
     \begin{flushleft}
-      \hspace*{0.8cm}MVVM có cấu trúc gần giống với MVC, nhưng thay vì để Controller điều khiển toàn bộ luồng xử lý, MVVM đưa vào một tầng trung gian là ViewModel – chịu trách nhiệm “kết nối thông minh” giữa dữ liệu (Model) và giao diện (View):
+      \hspace*{0.8cm}React Native phù hợp với các dự án cần triển khai nhanh và tích hợp hệ thống sẵn có:
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
-          \item Tương tự như MVC, View hiển thị dữ liệu, Model chứa dữ liệu và logic xử lý.
-          \item Tuy nhiên, Controller được thay thế bằng ViewModel, giúp giảm bớt sự ràng buộc giữa View và Model.
+        \item Tái Sử Dụng Code Web: Giảm chi phí phát triển, phù hợp startup. Ví dụ: Ứng dụng Delivery Foodcủa Grab tái sử dụng 70\% code từ web.
+        \item Hỗ Trợ Module Native: Dễ dàng tích hợp SDK thanh toán (Visa, Mastercard) hoặc xác thực (Firebase Auth).
       \end{itemize}
     \end{flushleft}
 
     \begin{flushleft}
-      \hspace*{0.8cm}Model – Dữ liệu và logic xử lý:
+      \hspace*{0.8cm}Ví Dụ Thực Tế:
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
-          \item Là nơi lưu trữ các dữ liệu chính của ứng dụng (như thông tin người dùng, sản phẩm...).
-          \item Xử lý các nghiệp vụ như tính toán, truy xuất dữ liệu từ cơ sở dữ liệu hoặc API.
-          \item Model không trực tiếp liên hệ với View, mà thông qua ViewModel.
+          \item Ứng dụng Bloomberg: Sử dụng React Native để đồng bộ dữ liệu chứng khoán real-time giữa web và mobile.
+          \item Doanh Nghiệp: Walmart, Microsoft Teams sử dụng React Native để duy trì codebase chung.
       \end{itemize}
     \end{flushleft}
 
     \begin{flushleft}
-      \hspace*{0.8cm}View – Giao diện hiển thị:
+      \hspace*{0.8cm}Hạn Chế:
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
-          \item Là phần người dùng tương tác trực tiếp (giao diện ứng dụng).
-          \item View trong MVVM không xử lý logic nghiệp vụ mà chỉ phản ánh lại các dữ liệu từ ViewModel.
-          \item Nhờ vào Data Binding, View có thể tự động cập nhật khi dữ liệu trong ViewModel thay đổi – giúp giảm mã lặp và tăng hiệu suất phát triển.
+          \item Hiệu Năng: Không phù hợp ứng dụng xử lý ảnh/video thời gian thực
+          \item Phụ Thuộc Thư Viện: Cập nhật phiên bản thường xuyên để tránh lỗi bảo mật.
+      \end{itemize}
+    \end{flushleft}
+
+    \subsubsection{Native: Giải Pháp Tối Ưu Cho Ứng Dụng Chuyên Sâu}
+    \begin{flushleft}
+      \hspace*{0.8cm}Native (Kotlin/Swift) vẫn là lựa chọn hàng đầu cho:
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+        \item Ứng dụng yêu cầu phần cứng: AR/VR (ARKit, ARCore), xử lý AI trên thiết bị (Core ML).
+        \item Dự Án Lớn: Ngân hàng, y tế – nơi cần tối ưu bảo mật và hiệu năng.
       \end{itemize}
     \end{flushleft}
 
     \begin{flushleft}
-      \hspace*{0.8cm}ViewModel – Cầu nối thông minh:
+      \hspace*{0.8cm}Ví Dụ:
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
-          \item Chứa các Model và chuẩn bị dữ liệu để hiển thị cho View.
-          \item Tạo ra các LiveData hoặc Observable để View có thể theo dõi và tự động cập nhật giao diện khi dữ liệu thay đổi.
-          \item Đồng thời, ViewModel cũng xử lý việc truyền dữ liệu từ View sang Model, giúp cập nhật ngược lại khi người dùng nhập liệu hoặc thực hiện thao tác.
+          \item Instagram: Chuyển sang native code cho tính năng Reels để đạt độ trễ dưới 50ms.
+          \item Ứng dụng Ngân Hàng: Techcombank sử dụng native để xử lý giao dịch an toàn.
       \end{itemize}
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Một điểm mạnh nổi bật của MVVM là cơ chế Data Binding – liên kết dữ liệu hai chiều:
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item Khi một đối tượng thuộc nhóm View (như EditText) thay đổi, dữ liệu tương ứng trong ViewModel (hoặc Model) cũng tự động cập nhật.
-          \item Ngược lại, khi ViewModel thay đổi giá trị, View cũng cập nhật lại ngay lập tức.
-          \item[]$\Rightarrow$ Điều này giúp hạn chế lỗi khi cập nhật giao diện và rút ngắn thời gian phát triển, đặc biệt là trong các ứng dụng có nhiều thao tác tương tác dữ liệu.
-      \end{itemize}
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}$\Rightarrow$ MVVM là một mô hình kiến trúc mạnh mẽ, phù hợp với các ứng dụng hiện đại cần cập nhật giao diện linh hoạt, liên tục. Với sự hỗ trợ từ Data Binding và LiveData (trong Android), ViewModel giúp đơn giản hóa việc xử lý dữ liệu và đồng bộ giao diện, đồng thời giảm sự phụ thuộc giữa các thành phần, nâng cao khả năng bảo trì và mở rộng về sau. MVVM hiện là lựa chọn ưu tiên trong các dự án Android có quy mô từ vừa đến lớn.
     \end{flushleft}
 
 % 4.4
-\subsection{Kiến trúc Client/Server}
+\subsection{Kết Luận}
 \renewcommand{\labelitemi}{--}    
-    \begin{flushleft}
-        \hspace*{0.8cm}Trong thời đại số, đa số các ứng dụng cần trao đổi dữ liệu qua Internet. Mô hình Client/Server trở thành kiến trúc không thể thiếu, đặc biệt với các ứng dụng có tính năng đồng bộ dữ liệu, chia sẻ thông tin theo thời gian thực, hoặc sử dụng tài nguyên trên máy chủ từ xa. Đồng thời, cần kết hợp với các kiến trúc nội bộ như MVC hoặc MVVM để tối ưu hóa việc xây dựng giao diện và xử lý logic.
-    \end{flushleft}
+\begin{flushleft}
+  \hspace*{0.8cm}Việc lựa chọn framework phụ thuộc vào mục tiêu dự án và nguồn lực:
+  \setlength{\leftmargini}{1.5cm}
+  \begin{itemize}
+      \item Flutter: Ưu tiên UI/UX và đa nền tảng.
+      \item React Native: Tập trung MVP và tích hợp hệ sinh thái web.
+      \item Native: Phát triển ứng dụng chuyên sâu, tận dụng tối đa phần cứng.
+  \end{itemize}
+\end{flushleft}
 
-    \begin{flushleft}
-      \hspace*{0.8cm}Kiến trúc Client/Server mô tả mô hình trong đó ứng dụng Client (thiết bị người dùng) gửi yêu cầu đến Server (máy chủ từ xa), thường qua HTTP Request, WebSocket, hoặc Web Service. Các chức năng chính bao gồm:
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item Client: Gửi yêu cầu (request), hiển thị dữ liệu, tương tác với người dùng.
-          \item Server: Xử lý yêu cầu, truy cập cơ sở dữ liệu, trả về dữ liệu kết quả.
-          \item[]$\Rightarrow$ Kiến trúc này phù hợp cho các ứng dụng có nhiều người dùng, cần chia sẻ dữ liệu như mạng xã hội, ứng dụng ngân hàng, thương mại điện tử…
-      \end{itemize}
-    \end{flushleft}
+\begin{flushleft}
+  \hspace*{0.8cm}Xu Hướng 2024:
+  \setlength{\leftmargini}{1.5cm}
+  \begin{itemize}
+      \item Flutter cải thiện kích thước ứng dụng với Impeller Engine (thay Skia).
+      \item React Native tăng tốc độ render qua Fabric và TurboModules.
+  \end{itemize}
+\end{flushleft}
