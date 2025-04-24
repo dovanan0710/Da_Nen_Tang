@@ -1,0 +1,336 @@
+\section{Lịch sử ngành lập trình di động}
+
+% 2.1
+\subsection{Tổng quan về lịch sử ngành lập trình di động}
+\renewcommand{\labelitemi}{--}    
+\begin{flushleft}
+    \hspace*{0.8cm}Ngành lập trình di động gắn liền với sự phát triển không ngừng của thiết bị di động – từ những chiếc điện thoại đơn giản chỉ dùng để nghe gọi cho đến các thiết bị thông minh mạnh mẽ như ngày nay. Trong suốt quá trình phát triển, thiết kế của thiết bị di động đã trải qua nhiều giai đoạn, mỗi giai đoạn đều đặt ra những yêu cầu và xu hướng mới cho ngành lập trình.
+\end{flushleft}
+
+% 2.2
+\subsection{Một số thiết kế của điện thoại di động qua từng thời kỳ}
+\renewcommand{\labelitemi}{--}    
+    \begin{flushleft}
+        \hspace*{0.8cm}Giai đoạn điện thoại dạng “bag” (túi xách):
+        \setlength{\leftmargini}{1.5cm}
+        \begin{itemize}
+            \item Vào những năm 1980, những chiếc điện thoại di động đầu tiên ra đời với thiết kế to, nặng và cần mang theo như một chiếc túi xách. Chúng chủ yếu dùng để nghe gọi, không có giao diện người dùng phức tạp. Lúc này, lập trình di động chưa thực sự tồn tại vì các thiết bị không hỗ trợ cài đặt thêm phần mềm.
+        \end{itemize}
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Thế hệ điện thoại nhỏ gọn cầm tay:
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+          \item Khi công nghệ vi mạch tiến bộ, điện thoại trở nên nhỏ gọn hơn và có thể cầm vừa lòng bàn tay. Các thiết bị này bắt đầu có màn hình đơn sắc và bàn phím vật lý đơn giản. Một số dòng điện thoại bắt đầu hỗ trợ các ứng dụng đơn giản như đồng hồ, lịch hay trò chơi (ví dụ: Snake trên Nokia). Đây là thời điểm lập trình di động bắt đầu hình thành, với các ứng dụng viết bằng ngôn ngữ như C hoặc Java ME.
+      \end{itemize}
+  \end{flushleft}
+
+  \begin{flushleft}
+    \hspace*{0.8cm}Thời kỳ điện thoại vỏ gập (flip phone):
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+        \item Vào đầu những năm 2000, điện thoại vỏ gập trở nên phổ biến nhờ thiết kế thời trang và tiện lợi. Một số hãng còn tích hợp thêm camera, nhạc chuông đa âm, và khả năng kết nối internet cơ bản (WAP). Lập trình viên lúc này bắt đầu xây dựng các ứng dụng Java nhỏ để chạy trên nền tảng Java ME hoặc Brew.
+    \end{itemize}
+\end{flushleft}
+
+\begin{flushleft}
+  \hspace*{0.8cm}Sự xuất hiện của điện thoại có bàn phím QWERTY
+  \setlength{\leftmargini}{1.5cm}
+  \begin{itemize}
+      \item BlackBerry là đại diện tiêu biểu cho dòng điện thoại với bàn phím đầy đủ, hướng đến người dùng doanh nhân. Giao diện người dùng lúc này đã phát triển hơn, hỗ trợ email, trình duyệt web và một số ứng dụng văn phòng. Lập trình di động trở nên chuyên nghiệp hơn với SDK riêng cho từng hệ điều hành.
+  \end{itemize}
+\end{flushleft}
+
+\begin{flushleft}
+  \hspace*{0.8cm}Kỷ nguyên của điện thoại thông minh với màn hình cảm ứng
+  \setlength{\leftmargini}{1.5cm}
+  \begin{itemize}
+      \item Năm 2007, iPhone ra đời đã mở ra một kỷ nguyên mới: điện thoại thông minh với màn hình cảm ứng và rất ít nút vật lý. Android cũng nhanh chóng phát triển sau đó. Đây là bước ngoặt lớn của ngành lập trình di động, khi các nền tảng như iOS và Android cung cấp công cụ phát triển mạnh mẽ, chợ ứng dụng (App Store, Google Play) và cộng đồng lập trình viên đông đảo.
+  \end{itemize}
+\end{flushleft}
+
+\begin{flushleft}
+  \hspace*{0.8cm} Có thể dễ dàng nhận thấy xu hướng thiết bị hiện đại là: màn hình lớn, đa chức năng. Ngày nay, các thiết bị di động có màn hình lớn, hiệu năng cao, pin lâu và khả năng xử lý mạnh mẽ như một chiếc máy tính thu nhỏ. Một số thiết bị như iPad còn được dùng thay thế laptop và hỗ trợ cả nghe gọi thông qua các ứng dụng. Điều này đặt ra yêu cầu cao cho lập trình viên: ứng dụng phải tối ưu giao diện trên nhiều kích thước màn hình, hỗ trợ đa nhiệm, tiết kiệm pin và bảo mật tốt.
+\end{flushleft}
+
+% 2.3
+\subsection{Motorola DynaTAC 8000X – Bước ngoặt đầu tiên của điện thoại di động}
+\renewcommand{\labelitemi}{--}    
+\begin{flushleft}
+    \hspace*{0.8cm}Chiếc Motorola DynaTAC 8000X được ra mắt vào năm 1983, đánh dấu cột mốc quan trọng trong lịch sử viễn thông khi trở thành chiếc điện thoại di động đầu tiên được thương mại hóa. Tuy thô sơ so với tiêu chuẩn ngày nay, DynaTAC đã đặt nền móng cho ngành công nghiệp điện thoại di động và sau này là lập trình di động.
+\end{flushleft}
+
+\begin{flushleft}
+  \hspace*{0.8cm}Thông số và đặc điểm nổi bật:
+  \setlength{\leftmargini}{1.5cm}
+  \begin{itemize}
+      \item Năm sản xuất: 1983. Đây là thời điểm đánh dấu sự bắt đầu chính thức của kỷ nguyên điện thoại di động cá nhân.
+      \item Kích thước: 13 x 1.75 x 3.5 inch (~33 x 4.4 x 8.9 cm). Với kích thước khá lớn, người dùng thường phải cầm bằng cả hai tay. Thiết kế của máy trông giống như một "cục gạch" nên còn được gọi là “brick phone”.
+      \item Khối lượng: 2.5 pounds (~1.1 kg). Rất nặng so với điện thoại hiện đại, chỉ phù hợp với người dùng có nhu cầu đặc biệt hoặc có tài chính dư dả.
+      \item Giá bán: \$3,995 vào thời điểm ra mắt. Mức giá này tương đương khoảng hơn 10.000 USD theo tỷ giá điều chỉnh lạm phát hiện nay – biến nó thành một món hàng xa xỉ.
+      \item Chi phí sử dụng: bao gồm 2 loại, phí thuê bao hàng tháng (Monthly fee) và  phí theo từng phút gọi (Pay per minute). Người dùng không chỉ trả tiền để sở hữu máy, mà còn phải trả phí sử dụng rất cao để duy trì dịch vụ.
+  \end{itemize}
+\end{flushleft}
+
+\begin{flushleft}
+  \hspace*{0.8cm}Ý nghĩa của chiếc điện thoại này đối với ngành lập trình di động:
+  \setlength{\leftmargini}{1.5cm}
+  \begin{itemize}
+      \item Tuy Motorola DynaTAC 8000X chưa hỗ trợ các ứng dụng như điện thoại thông minh ngày nay, nhưng sự ra đời của nó đã khởi động một thị trường mới – nơi mà các nhà sản xuất, kỹ sư phần cứng và sau này là lập trình viên di động bắt đầu tham gia để khai phá tiềm năng công nghệ không dây.
+      \item Dù lúc này chưa có khái niệm về lập trình ứng dụng di động, sự ra đời của DynaTAC đã mở ra nhu cầu phát triển các nền tảng và hệ điều hành di động trong tương lai.
+  \end{itemize}
+\end{flushleft}
+
+% 2.4
+\subsection{Từ “cục gạch” đến trải nghiệm người dùng hiện đại}
+\renewcommand{\labelitemi}{--}    
+    \begin{flushleft}
+        \hspace*{0.8cm}Sau khi điện thoại di động ra đời, công nghệ không ngừng phát triển để biến chúng từ những thiết bị to lớn, cồng kềnh và đắt đỏ trở thành vật dụng phổ biến và gần như không thể thiếu trong đời sống hàng ngày. Cùng với đó, nhu cầu về trải nghiệm người dùng (User Experience - UX) trên thiết bị di động ngày càng trở nên quan trọng, kéo theo sự phát triển mạnh mẽ của ngành lập trình di động.
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Vì sao trải nghiệm người dùng trở nên quan trọng?
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+        \item Điện thoại không còn là mặt hàng xa xỉ. Giá thành của thiết bị di động đã giảm đáng kể, nhờ vào sự cạnh tranh giữa các hãng sản xuất và tiến bộ trong công nghệ. Điều này giúp điện thoại thông minh tiếp cận được đông đảo người dùng ở mọi tầng lớp xã hội. Khi người dùng ngày càng đông, họ bắt đầu có nhiều lựa chọn và kỳ vọng cao hơn đối với chất lượng ứng dụng.
+        \item Công nghệ phần cứng phát triển vượt bậc Thiết bị ngày càng nhỏ gọn, nhẹ, pin lâu hơn, màn hình sắc nét, cảm ứng nhạy, thậm chí có khả năng chống va đập và chống xước tốt. Những cải tiến này tạo điều kiện cho các ứng dụng di động trở nên phong phú, đa dạng về giao diện và chức năng. Khi phần cứng đủ mạnh, việc đầu tư cho trải nghiệm phần mềm trở nên cấp thiết.
+      \end{itemize}
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Sự thay đổi trong vai trò của các nhà sản xuất phần cứng
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+        \item Ban đầu, chính các nhà sản xuất phần cứng cũng là người viết phần mềm cho thiết bị của họ. Tuy nhiên họ không muốn và không thể tiếp tục phát triển phần mềm phù hợp với nhu cầu ngày càng đa dạng của người dùng. Đồng thời, các hãng cũng không sẵn sàng chia sẻ các bí mật công nghệ về phần cứng của mình cho cộng đồng để đảm bảo tính bảo mật và lợi thế cạnh tranh.
+        \item[] $\Rightarrow$ Điều này dẫn đến một nhu cầu cấp thiết: phải có một cầu nối giữa phần cứng và phần mềm – giúp các lập trình viên bên ngoài có thể viết ứng dụng cho các thiết bị mà không cần biết quá sâu về phần cứng bên trong.
+        \item[] $\Rightarrow$ Sự ra đời của các chuẩn mở. Để giải quyết vấn đề này, các chuẩn chung bắt đầu được hình thành, tạo ra giao diện lập trình ứng dụng (API) hoặc môi trường trung gian giúp kết nối giữa phần cứng và phần mềm. Chuẩn Web trên di động là một trong những hướng đi đầu tiên. Các trình duyệt web di động cho phép người dùng truy cập thông tin mà không cần cài đặt ứng dụng. Lập trình viên bắt đầu phát triển các trang web tối ưu hóa cho điện thoại, đặt nền móng cho khái niệm "ứng dụng web di động".
+      \end{itemize}
+  \end{flushleft}
+
+% 2.5
+\subsection{Chuẩn WAP – Khởi đầu cho trình duyệt web trên di động}
+\renewcommand{\labelitemi}{--}    
+    \begin{flushleft}
+        \hspace*{0.8cm}Khi điện thoại di động bắt đầu được sử dụng phổ biến hơn, nhu cầu truy cập thông tin (như tin tức, thời tiết, thể thao...) ngay trên thiết bị di động cũng xuất hiện. Tuy nhiên, vào thời điểm đó, hạ tầng mạng di động còn rất hạn chế (chậm, không ổn định, băng thông thấp), nên không thể dùng được các trang web HTML như trên máy tính.
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}WAP – Wireless Application Protocol là gì?
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+          \item WAP (Giao thức ứng dụng không dây) là một chuẩn giao tiếp được thiết kế riêng cho các thiết bị di động, nhằm giúp chúng có thể trao đổi dữ liệu với máy chủ web thông qua mạng không dây yếu kém và không ổn định.
+          \item WAP được xem là một phiên bản đơn giản hóa của giao thức HTTP, tối ưu hóa cho môi trường mạng di động thời kỳ đầu (2G, GPRS...).
+      \end{itemize}
+  \end{flushleft}
+
+  \begin{flushleft}
+    \hspace*{0.8cm}Các đặc điểm nổi bật của WAP:
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+        \item Sử dụng WML (Wireless Markup Language) thay vì HTML: WML được thiết kế nhẹ hơn rất nhiều so với HTML, giúp hiển thị nội dung văn bản trên các thiết bị có màn hình nhỏ, không hỗ trợ hình ảnh phức tạp. Nó hoạt động giống như HTML nhưng bị giới hạn về thẻ và cấu trúc, chỉ đủ để hiển thị nội dung cơ bản như tiêu đề, đoạn văn, liên kết.
+        \item Tối ưu cho mạng yếu: WAP được xây dựng nhằm giảm thiểu dung lượng dữ liệu truyền tải và xử lý dễ dàng hơn trên các thiết bị có cấu hình thấp.
+    \end{itemize}
+  \end{flushleft}
+
+  \begin{flushleft}
+    \hspace*{0.8cm}Một số trang web nổi bật ứng dụng WAP:
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+        \item CNN – Cung cấp tin tức thời sự trên nền WAP.
+        \item ESPN – Cung cấp tin thể thao, tỷ số trực tiếp cho người dùng di động.
+    \end{itemize}
+  \end{flushleft}
+
+  \begin{flushleft}
+    \hspace*{0.8cm}Đây là những ví dụ tiêu biểu cho việc các nhà phát triển ứng dụng web bắt đầu quan tâm đến nền tảng di động, dù hạn chế rất nhiều so với web truyền thống.
+  \end{flushleft}
+
+  \begin{flushleft}
+    \hspace*{0.8cm}$\Rightarrow$ Ý nghĩa của WAP đối với lập trình di động:
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+        \item Đặt nền móng đầu tiên cho khái niệm “ứng dụng web di động”.
+        \item Tạo ra môi trường để lập trình viên có thể bắt đầu viết ứng dụng cho điện thoại, dù thông qua giao diện web đơn giản.
+        \item Mở ra kỷ nguyên nội dung số trên di động – không chỉ dùng điện thoại để nghe gọi, mà còn để tiếp cận thông tin như trên máy tính.
+    \end{itemize}
+  \end{flushleft}
+
+% 2.6
+\subsection{Sự phát triển của thanh toán di động và bước ngoặt trong lập trình ứng dụng}
+\renewcommand{\labelitemi}{--}    
+    \begin{flushleft}
+        \hspace*{0.8cm}Trong quá trình phát triển của điện thoại di động, một trong những yếu tố quan trọng thúc đẩy sự phát triển mạnh mẽ của ứng dụng đó chính là khả năng thanh toán trên thiết bị di động.
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Thanh toán qua SMS – hình thức phổ biến đầu tiên:
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+          \item Ở giai đoạn đầu, SMS (Short Message Service) không chỉ là phương tiện giao tiếp, mà còn được tận dụng để thực hiện các giao dịch thanh toán đơn giản. Người dùng gửi tin nhắn đến một đầu số dịch vụ (ví dụ như 8xxx, 6xxx...), sau đó được nhận lại một nội dung như nhạc chuông, hình nền, truyện cười… với mức phí cao hơn nhiều lần so với SMS thông thường.
+          \item Những tin nhắn như vậy được gọi là tin nhắn giá trị gia tăng (VAS – Value Added Service). Đây là hình thức kinh doanh dịch vụ nội dung số đầu tiên trên nền tảng di động.
+      \end{itemize}
+  \end{flushleft}
+
+  \begin{flushleft}
+    \hspace*{0.8cm}Các hình thức thanh toán khác ra đời:
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+        \item Thẻ cào điện thoại: Người dùng có thể nạp tiền qua thẻ cào rồi trừ trực tiếp vào tài khoản để mua dịch vụ hoặc vật phẩm trong ứng dụng.
+        \item Web charging: Một hình thức thanh toán thông qua kết nối internet di động. Khi người dùng truy cập vào một trang web di động và chọn mua dịch vụ, hệ thống sẽ tự động trừ tiền vào tài khoản điện thoại.
+    \end{itemize}
+  \end{flushleft}
+
+  \begin{flushleft}
+    \hspace*{0.8cm}Những phương thức này tuy đơn giản nhưng đã mở ra cánh cửa đầu tiên cho thương mại điện tử trên thiết bị di động, đồng thời tạo điều kiện cho lập trình viên phát triển các ứng dụng có khả năng kiếm tiền trực tiếp từ người dùng.
+  \end{flushleft}
+
+  \begin{flushleft}
+    \hspace*{0.8cm}Sự chuyển mình mạnh mẽ của ngành lập trình di động
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+        \item Nhu cầu thanh toán di động tăng cao, cùng với lượng người dùng điện thoại không ngừng mở rộng, khiến các công ty lớn như Apple, Google và nhiều công ty công nghệ khác bắt đầu đầu tư mạnh mẽ vào thị trường di động. Họ xây dựng nền tảng hệ điều hành riêng, kho ứng dụng, API thân thiện với lập trình viên, tạo ra một hệ sinh thái hoàn chỉnh cho phát triển ứng dụng.
+        \item Tuy nhiên chỉ riêng Microsoft chậm chân hơn và không kịp bắt kịp làn sóng này – điển hình là sự thất bại của Windows Phone.
+        \item Trước đó, việc lập trình cho di động trên nền J2ME (Java 2 Micro Edition) là một cơn ác mộng với các lập trình viên. Mỗi thiết bị lại có kích thước màn hình, bàn phím, khả năng xử lý khác nhau. Giao diện đơn điệu, không có chuẩn hóa và thiếu các công cụ hỗ trợ phát triển chuyên nghiệp.
+        \item Tuy nhiên, khi phần cứng phát triển vượt bậc (RAM lớn hơn, màn hình cảm ứng, CPU nhanh hơn...), lập trình di động không còn khổ sở như trước nữa. Các nền tảng mới như iOS (Swift, Objective-C) và Android (Java/Kotlin) ra đời, cho phép lập trình viên dễ dàng tạo ra các ứng dụng hấp dẫn, hiện đại và mượt mà hơn bao giờ hết.
+    \end{itemize}
+  \end{flushleft}
+
+% 2.7
+\subsection{Thị trường di động trên toàn thế giới}
+\renewcommand{\labelitemi}{--}    
+    \begin{flushleft}
+        \hspace*{0.8cm}Trước năm 2010, thị trường điện thoại di động trên toàn cầu – đặc biệt là tại Việt Nam – đang nằm trong tay một "ông lớn" không thể chối cãi, đó chính là Nokia.
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Nokia – Ông vua không ngai của thời kỳ tiền smartphone:
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+          \item Từ các dòng điện thoại đen trắng đơn giản cho đến những mẫu máy có màu, có bàn phím QWERTY, hỗ trợ chơi nhạc MP3, chụp hình hay cài game Java... Nokia đã định hình trải nghiệm di động cho cả một thế hệ người dùng.
+          \item Tại Việt Nam, thương hiệu Nokia từng là biểu tượng của sự bền bỉ, dễ dùng và phổ biến, với các dòng máy huyền thoại như Nokia 1100, 6300, N70, N95...
+      \end{itemize}
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Bên cạnh Nokia, thị phần còn lại được chia cho các hãng như Blackberry, Samsung, HTC, Sony Ericsson… Mỗi nhà sản xuất này lại cố gắng phát triển hệ điều hành riêng hoặc sử dụng một nền tảng khác biệt để tạo lợi thế cạnh tranh:
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+          \item Symbian (Nokia)
+          \item Blackberry OS (Blackberry)
+          \item Windows Mobile, Windows CE (Microsoft)
+          \item Palm OS, Linux Mobile, Bada OS (Samsung)
+      \end{itemize}
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Tuy nhiên, điểm chung của các hệ điều hành thời kỳ này là thiếu sự nhất quán và không thân thiện với lập trình viên:
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+          \item Giao diện không đồng bộ, trải nghiệm người dùng không ổn định.
+          \item Tài liệu phát triển thiếu thốn, công cụ lập trình rối rắm.
+          \item Không có kho ứng dụng tập trung – việc phân phối ứng dụng rất khó khăn.
+          \item[]$\Rightarrow$ Chính vì vậy, dù hệ điều hành liên tục được tạo ra và chết yểu, các nhà phát triển phần mềm lúc đó vẫn còn thờ ơ và đủng đỉnh, vì chưa có động lực hay hệ sinh thái rõ ràng để đầu tư nghiêm túc.
+      \end{itemize}
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Bước ngoặt chỉ tới và thay đổi hoàn toàn khi iPhone xuất hiện.
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+          \item Năm 2007, Apple ra mắt iPhone thế hệ đầu tiên, và đến năm 2008, App Store chính thức được giới thiệu.
+          \item Đây là bước ngoặt làm thay đổi toàn bộ ngành công nghiệp di động.
+          \item iPhone mang đến trải nghiệm cảm ứng mượt mà, giao diện hiện đại, không bàn phím vật lý, tạo ra cuộc cách mạng về thiết kế smartphone.
+          \item App Store là nơi tập trung ứng dụng đầu tiên, vừa giúp người dùng dễ tiếp cận phần mềm, vừa mở ra cơ hội kiếm tiền cho lập trình viên.
+          \item Bộ công cụ phát triển (SDK) dành cho iOS rất mạnh mẽ, tài liệu rõ ràng, cộng đồng lớn, khiến việc lập trình trở nên hấp dẫn hơn bao giờ hết.
+          \item[]$\Rightarrow$ Từ đây, ngành lập trình di động bắt đầu bước sang một kỷ nguyên mới – nơi trải nghiệm người dùng, hiệu năng phần mềm và hệ sinh thái là chìa khóa thành công.
+      \end{itemize}
+    \end{flushleft}
+
+% 2.8
+\subsection{Thị trường và sự cạnh tranh trong ngành lập trình di động}
+\renewcommand{\labelitemi}{--}    
+    \begin{flushleft}
+        \hspace*{0.8cm}Ba ông lớn từng thống trị ngành di động: Microsoft – Apple – Google. Khi thị trường di động bắt đầu bùng nổ, ba cái tên lớn nhất cùng lúc định hình nên cuộc đua tam mã trong cả phần cứng, hệ điều hành và hệ sinh thái ứng dụng: Microsoft, Apple và Google.
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Microsoft – Tham vọng lớn, nhưng chậm chân:
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+          \item Sau khi nhận ra sự bùng nổ của smartphone, Microsoft quyết định đặt cược lớn vào mảng di động, bằng cách mua lại bộ phận sản xuất điện thoại của Nokia vào năm 2013.
+          \item Họ kỳ vọng sẽ thống nhất mọi nền tảng phần mềm dưới một triết lý chung gọi là Windows Universal Platform (UWP) – nghĩa là một ứng dụng có thể chạy được trên cả PC, tablet, lẫn điện thoại.
+          \item Tuy nhiên, Windows Phone xuất hiện quá muộn so với iOS và Android. Kho ứng dụng thì nghèo nàn, cộng đồng lập trình viên ít mặn mà. Mặc dù trải nghiệm người dùng có phần mượt mà nhưng thiếu sự linh hoạt và cá nhân hóa.
+          \item[]$\Rightarrow$ Kết quả là Windows Phone dần bị khai tử, để lại bài học đắt giá về tốc độ thích nghi trong thời đại công nghệ thay đổi nhanh chóng.
+      \end{itemize}
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Apple – Người dẫn đầu cả về trải nghiệm và hệ sinh thái
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+          \item Apple từ lâu đã nổi tiếng với triết lý thiết kế "từ trong ra ngoài" – tức là tự sản xuất cả phần cứng và phần mềm, từ đó kiểm soát chặt chẽ chất lượng sản phẩm.
+          \item Họ tạo ra một hệ sinh thái khép kín và nhất quán. iPhone với thiết kế cao cấp, mượt mà. Hệ điều hành iOS tối ưu cao, ít lỗi, bảo mật tốt. App Store với quy trình kiểm duyệt nghiêm ngặt, đảm bảo chất lượng ứng dụng.
+          \item Ngoài ra, Apple còn biết cách thu hút lập trình viên bằng các công cụ mạnh mẽ như Xcode, Swift và hệ thống tài liệu phát triển phong phú.
+          \item[]$\Rightarrow$ Cho đến nay, Apple vẫn giữ vị thế hàng đầu trong mảng smartphone cao cấp và có tỷ lệ người dùng trung thành cao nhất.
+      \end{itemize}
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Google – Người chơi hệ mở và "ông trùm" Android
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+          \item Không tự sản xuất phần cứng đại trà như Apple, Google chọn cách xây dựng hệ điều hành Android theo triết lý mã nguồn mở.
+          \item Android nhanh chóng được các hãng sản xuất phần cứng trên toàn thế giới (Samsung, Oppo, Xiaomi, Huawei...) áp dụng rộng rãi, khiến nó trở thành nền tảng phổ biến nhất toàn cầu.
+          \item Mặc dù Android ban đầu bị đánh giá là phân mảnh và thiếu ổn định, nhưng theo thời gian Google đã cải thiện hệ điều hành liên tục qua các phiên bản. Cửa hàng ứng dụng Google Play cũng dần trở nên nghiêm ngặt hơn về nội dung. Các thiết bị Pixel do chính Google sản xuất giúp Google kiểm soát tốt hơn trải nghiệm người dùng.
+          \item[]$\Rightarrow$ Nhờ vào thế mạnh về công nghệ, dữ liệu và hệ sinh thái khổng lồ (Gmail, Google Maps, YouTube…), Google vẫn duy trì được vị thế vững chắc trong ngành di động toàn cầu.
+      \end{itemize}
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}$\Rightarrow$Ba ông lớn, ba con đường phát triển – nhưng chính sự cạnh tranh đó đã thúc đẩy ngành lập trình di động trở nên đa dạng, sôi động và phát triển mạnh mẽ như hiện nay.
+    \end{flushleft}
+
+% 2.9
+\subsection{Hai hệ điều hành phổ biến nhất ngày nay: iOS và Android.}
+\renewcommand{\labelitemi}{--}    
+    \begin{flushleft}
+        \hspace*{0.8cm}Hệ điều hành iOS:
+        \setlength{\leftmargini}{1.5cm}
+        \begin{itemize}
+            \item iOS được phát triển và quản lý bởi Apple, được sử dụng trên các thiết bị di động của hãng như iPhone, iPad, và iPod Touch. iOS được biết đến với tính ổn định, hiệu suất cao và bảo mật chặt chẽ.
+            \item Trước đây, lập trình iOS chủ yếu sử dụng Objective-C, một ngôn ngữ được Apple phát triển cho hệ điều hành của mình. Tuy nhiên, từ năm 2014, Apple đã giới thiệu Swift, một ngôn ngữ lập trình hiện đại, dễ học và hiệu quả hơn so với Objective-C, dành cho việc phát triển ứng dụng iOS. XCode là môi trường phát triển tích hợp (IDE) chính thức do Apple cung cấp để lập trình ứng dụng trên iOS.
+            \item Apple cung cấp một số framework mạnh mẽ như UIKit và SwiftUI để xây dựng giao diện người dùng và quản lý các tính năng ứng dụng. Bên cạnh đó, các công cụ như Xcode cho phép lập trình viên kiểm tra, mô phỏng, và tối ưu hóa ứng dụng cho các thiết bị của Apple.
+            \item iOS có triết lý “đóng”, nghĩa là Apple quản lý chặt chẽ toàn bộ hệ sinh thái của mình. Điều này bao gồm cả việc phân phối ứng dụng thông qua App Store, nơi các ứng dụng phải trải qua quá trình kiểm duyệt nghiêm ngặt trước khi được phép phát hành. Điều này giúp đảm bảo chất lượng và bảo mật cho người dùng.
+            \item Mặc dù iOS chủ yếu sử dụng các công cụ của Apple, nhưng cũng có các framework đa nền tảng như Flutter, React Native, Xamarin và Unity giúp lập trình viên xây dựng ứng dụng chạy trên cả iOS và Android mà không cần viết mã riêng cho từng hệ điều hành.
+        \end{itemize}
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Hệ điều hành Android:
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+          \item Android là một hệ điều hành mã nguồn mở, được phát triển bởi Google và dựa trên nền tảng Linux. Android được sử dụng rộng rãi trên các thiết bị của nhiều nhà sản xuất khác nhau, chẳng hạn như Samsung, HTC, Sony, và nhiều hãng khác. Điều này tạo ra sự đa dạng về phần cứng, cho phép người dùng có nhiều lựa chọn hơn khi chọn thiết bị di động.
+          \item Lập trình Android chủ yếu sử dụng Java và Kotlin. Java đã là ngôn ngữ chính cho phát triển Android trong nhiều năm, nhưng từ 2017, Google chính thức công nhận Kotlin là ngôn ngữ chính cho lập trình Android, nhờ tính năng hiện đại và sự dễ dàng trong việc tích hợp với Java.
+          \item Android Studio là môi trường phát triển chính thức được Google cung cấp, hỗ trợ các công cụ mạnh mẽ để lập trình viên có thể thiết kế giao diện, kiểm tra ứng dụng trên các thiết bị ảo, và tối ưu hóa ứng dụng cho các phiên bản Android khác nhau. Android Studio tích hợp nhiều công cụ như Android Emulator, Gradle, và Firebase để cải thiện quy trình phát triển.
+          \item Một trong những điểm mạnh của Android là tính mở của nó. Hệ điều hành Android là mã nguồn mở, cho phép các nhà sản xuất khác nhau, như Samsung, Huawei, và Xiaomi, tùy chỉnh hệ điều hành này theo nhu cầu của họ. Điều này dẫn đến một sự đa dạng lớn trong các phiên bản Android, từ giao diện người dùng đến các tính năng bổ sung.
+          \item Android hỗ trợ nhiều framework đa nền tảng như Flutter, React Native, Xamarin, và Unity. Những công cụ này cho phép lập trình viên viết ứng dụng một lần và triển khai trên cả iOS và Android, tiết kiệm thời gian và công sức.
+      \end{itemize}
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Các nền tảng đa nền tảng:
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+          \item Bên cạnh iOS và Android, các công cụ lập trình đa nền tảng như Flutter, Xamarin, React Native, và Unity đang ngày càng phổ biến. Những công cụ này cho phép lập trình viên phát triển ứng dụng một lần và chạy trên nhiều hệ điều hành, giúp tiết kiệm thời gian phát triển và chi phí duy trì. Mặc dù chúng có những ưu điểm về hiệu quả, nhưng vẫn có một số hạn chế về hiệu suất và tính tương thích so với việc phát triển ứng dụng gốc (native) trên từng hệ điều hành.
+          \item Flutter (do Google phát triển) cho phép lập trình viên viết ứng dụng bằng Dart và cung cấp giao diện người dùng mượt mà với hiệu suất cao.
+          \item React Native (do Facebook phát triển) giúp lập trình viên viết ứng dụng bằng JavaScript và tái sử dụng các component từ ứng dụng web.
+          \item Xamarin (do Microsoft phát triển) sử dụng C\# và giúp lập trình viên xây dựng ứng dụng gốc cho cả iOS và Android.
+          \item Unity chủ yếu được sử dụng để phát triển trò chơi, nhưng cũng có thể được dùng để tạo ứng dụng di động bằng ngôn ngữ C\#.
+      \end{itemize}
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}$\Rightarrow$ Nhìn chung, sự phát triển của các hệ điều hành di động và các công cụ phát triển đa nền tảng đã giúp ngành lập trình di động trở thành một lĩnh vực sôi động và đầy tiềm năng.
+      4o mini	
+    \end{flushleft}

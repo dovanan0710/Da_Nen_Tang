@@ -1,0 +1,87 @@
+\section{Tổng quan về các kiến trúc phần mềm}
+
+\begin{flushleft}
+  \hspace*{0.8cm}Trong lĩnh vực phát triển ứng dụng di động, kiến trúc phần mềm đóng vai trò vô cùng quan trọng. Việc lựa chọn mô hình kiến trúc phù hợp giúp lập trình viên tổ chức mã nguồn một cách hợp lý, dễ bảo trì và mở rộng về sau. Hai hệ điều hành phổ biến nhất hiện nay – iOS và Android – tuy có nhiều điểm khác nhau, nhưng đều khuyến khích sử dụng các mẫu kiến trúc phần mềm để nâng cao hiệu quả phát triển ứng dụng.
+\end{flushleft}
+
+% 3.1
+\subsection{Mẫu kiến trúc Layers}
+\renewcommand{\labelitemi}{--}    
+    \begin{flushleft}
+        \hspace*{0.8cm}Cả hai hệ điều hành đều cổ vũ lập trình viên áp dụng một số mẫu kiến trúc chung nhằm đảm bảo cấu trúc rõ ràng, dễ kiểm soát. Một trong những mẫu phổ biến là Layers (phân lớp). Theo mô hình này, phần mềm được chia thành ba lớp chính:
+        \setlength{\leftmargini}{1.5cm}
+        \begin{itemize}
+            \item Presentation Layer (Lớp giao diện): Giao tiếp trực tiếp với người dùng, hiển thị thông tin và nhận tương tác.
+            \item Business Logic Layer (Lớp xử lý nghiệp vụ): Chứa logic của ứng dụng, xử lý các thao tác từ người dùng, thực hiện tính toán, kiểm tra dữ liệu.
+            \item Data Layer (Lớp dữ liệu): Quản lý dữ liệu, truy xuất từ cơ sở dữ liệu nội bộ hoặc từ máy chủ.
+        \end{itemize}
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}$\Rightarrow$ Ưu điểm của mô hình này là dễ bảo trì, dễ kiểm thử, giảm sự phụ thuộc giữa các thành phần. Mỗi lớp chỉ thực hiện một nhiệm vụ cụ thể, giúp mã nguồn rõ ràng và dễ quản lý, đặc biệt trong các dự án lớn.
+    \end{flushleft}
+
+% 3.2
+\subsection{Mẫu kiến trúc MVC}
+\renewcommand{\labelitemi}{--}    
+    \begin{flushleft}
+        \hspace*{0.8cm}Trên nền tảng iOS, MVC là mô hình kiến trúc lâu đời và phổ biến. Các lập trình viên iOS thường ưa chuộng mô hình này hơn. Nó phân chia phần mềm thành ba thành phần chính:
+        \setlength{\leftmargini}{1.5cm}
+        \begin{itemize}
+            \item Model: Quản lý dữ liệu, logic xử lý và các quy tắc nghiệp vụ.
+            \item View: Hiển thị thông tin cho người dùng, như giao diện ứng dụng.
+            \item Controller: Là cầu nối giữa Model và View. Nó nhận dữ liệu từ Model và cập nhật cho View, đồng thời xử lý các tương tác từ người dùng.
+        \end{itemize}
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}$\Rightarrow$ Mô hình này đơn giản, dễ hiểu và dễ áp dụng, đặc biệt với những người mới bắt đầu học lập trình iOS. Tuy nhiên, một vấn đề lớn thường gặp trong MVC của iOS là Controller thường bị "phình to", xử lý quá nhiều logic, khiến mã khó đọc, khó bảo trì. Đây được gọi là hiện tượng “Massive View Controller” – một trong những lý do khiến nhiều lập trình viên hiện đại tìm đến các mô hình thay thế như MVVM hoặc VIPER.
+    \end{flushleft}
+
+% 3.3
+\subsection{Mô hình kiến trúc MVVM}
+\renewcommand{\labelitemi}{--}    
+    \begin{flushleft}
+        \hspace*{0.8cm}Khác với nền tảng iOS,  nền tảng Android lại ưu tiên sử dụng mô hình MVVM, phù hợp hơn với kiến trúc hiện đại của Android và các công cụ hỗ trợ như LiveData, ViewModel, và Data Binding.
+        \setlength{\leftmargini}{1.5cm}
+        \begin{itemize}
+            \item Model: Cũng giống kiến trúc MVC, thành phần này quản lý dữ liệu và logic xử lý.
+            \item View: Giao diện người dùng, hiển thị dữ liệu từ ViewModel.
+            \item ViewModel: Trung gian giữa View và Model. Nó không chứa tham chiếu trực tiếp đến View, nhưng nhờ cơ chế observer pattern (theo dõi), dữ liệu thay đổi trong ViewModel sẽ được cập nhật tự động lên View.
+        \end{itemize}
+    \end{flushleft}
+    \begin{flushleft}
+      \hspace*{0.8cm}$\Rightarrow$ MVVM giúp giảm mạnh sự phụ thuộc giữa UI và logic nghiệp vụ. Nhờ đó, View trở nên “mỏng”, chỉ đảm nhiệm việc hiển thị, trong khi mọi logic đều được xử lý trong ViewModel. Điều này giúp dễ kiểm thử, tái sử dụng code và phát triển theo nhóm.
+    \end{flushleft}
+
+% 3.4
+\subsection{Hỗ trợ mô hình Client – Server}
+\renewcommand{\labelitemi}{--}    
+    \begin{flushleft}
+        \hspace*{0.8cm}Bên cạnh kiến trúc bên trong ứng dụng, cả iOS và Android đều hỗ trợ xây dựng ứng dụng dựa trên mô hình Client – Server.
+        \setlength{\leftmargini}{1.5cm}
+        \begin{itemize}
+            \item Ứng dụng hoạt động như Client, gửi các yêu cầu HTTP (GET, POST, PUT, DELETE…) đến một Server.
+            \item Server xử lý yêu cầu, truy xuất dữ liệu từ cơ sở dữ liệu, sau đó phản hồi về Client dưới dạng dữ liệu JSON hoặc XML.
+        \end{itemize}
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Cả hai nền tảng đều cung cấp thư viện hỗ trợ như:
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+          \item iOS: URLSession, Alamofire
+          \item Android: Retrofit, OkHttp
+      \end{itemize}
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}$\Rightarrow$ Mô hình Client – Server tạo điều kiện cho ứng dụng hoạt động linh hoạt, nhẹ, dễ cập nhật và đồng bộ dữ liệu giữa nhiều thiết bị người dùng khác nhau.
+    \end{flushleft}
+
+% 3.5
+\subsection{Đánh giá tổng quan}
+\renewcommand{\labelitemi}{--}    
+    \begin{flushleft}
+        \hspace*{0.8cm}Nhìn chung, dù cùng hướng tới việc xây dựng phần mềm có cấu trúc rõ ràng và dễ bảo trì, iOS và Android lại có những lựa chọn mô hình kiến trúc khác nhau. iOS truyền thống với MVC, tuy đơn giản nhưng dễ bị quá tải ở phần Controller, trong khi Android hiện đại hóa với MVVM, tách biệt rõ ràng các thành phần, tận dụng được sức mạnh của các thư viện hỗ trợ. Cả hai nền tảng cũng đều hỗ trợ trao đổi dữ liệu theo mô hình Client – Server, phù hợp với nhu cầu xây dựng ứng dụng kết nối mạng ngày nay. Việc hiểu rõ ưu – nhược điểm của từng mô hình sẽ giúp lập trình viên lựa chọn giải pháp kiến trúc phù hợp, nâng cao hiệu quả phát triển ứng dụng.
+    \end{flushleft}
