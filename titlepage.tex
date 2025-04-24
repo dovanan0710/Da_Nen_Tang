@@ -1,0 +1,106 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{setspace}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{pgf} % thêm nếu chưa có
+\usepackage{geometry}
+\usepackage{xcolor} % nếu chưa có
+\usepackage{times}
+\definecolor{darkblue}{RGB}{0, 0, 139}
+\geometry{a4paper, margin=2.5cm}
+
+
+\begin{document}
+\newgeometry{top=2.5cm,bottom=2.5cm,left=3.5cm,right=2.5cm}
+\thispagestyle{empty}
+
+% Vẽ khung viền
+\begin{tikzpicture}[remember picture, overlay]
+
+  % Viền ngoài cùng
+  \draw[line width=1pt, darkblue!50!black]
+    ([xshift=1.5cm,yshift=-1cm]current page.north west) rectangle
+    ([xshift=-0.5cm,yshift=1cm]current page.south east);
+  
+  % Viền giữa
+  \draw[line width=3pt, darkblue!80!black]
+    ([xshift=1.6cm,yshift=-1.1cm]current page.north west) rectangle
+    ([xshift=-0.6cm,yshift=1.1cm]current page.south east);
+  
+  % Viền trong
+  \draw[line width=0.5pt, darkblue!50!black]
+    ([xshift=1.8cm,yshift=-1.3cm]current page.north west) rectangle
+    ([xshift=-0.8cm,yshift=1.3cm]current page.south east);
+  
+  % Các khối vuông góc
+  
+  
+  \end{tikzpicture}
+  
+
+
+\begin{center}
+    \vspace{-1.1cm}
+    ĐẠI HỌC BÁCH KHOA HÀ NỘI\\
+    TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNG\\
+    \rule{0.6\textwidth}{0.4pt} \\
+    \vspace{0.9cm}
+    \includegraphics[width=3cm]{images/logo.png} \\
+    \vspace{1.4cm}
+    {\LARGE \textbf{BÀI TẬP LỚN}}\\[0.3cm]
+    {\normalsize MÔN: PHÁT TRIỂN ỨNG DỤNG ĐA NỀN TẢNG}\\
+    \textit{(Mã học phần: IT4788)}\\[1.6cm]
+    \raggedright \textit{\Large Chương 2:}\\
+    \begin{center}
+        \textbf{\Large TỔNG QUAN VỀ KIẾN TRÚC CỦA DI ĐỘNG}
+    \end{center}
+\end{center}
+
+\vspace{2.6cm}
+
+\begin{tabular}{ll}
+  \textbf{Nhóm} & : 2 \\
+  \textbf{Mã lớp học} & : 159462 \\
+  \textbf{Giảng viên hướng dẫn} & : Nguyễn Tiến Thành \\
+  \multicolumn{2}{l}{\textbf{Danh sách sinh viên thực hiện:}} \\
+\end{tabular}
+  
+
+\vspace{0.3cm}
+
+\renewcommand{\arraystretch}{1.5}
+\begin{center}
+\begin{tabular}{|c|>{\centering\arraybackslash}m{4cm}|c|m{6.5cm}|c|}
+\hline
+\textbf{STT} & \textbf{Họ và tên sinh viên} & \textbf{Mã SV} & \textbf{Email} & \textbf{Lớp} \\
+\hline
+1 & Nguyễn Việt Hoàng & 20215384 & HoangNV215384@sis.hust.edu.vn & IT1-02 \\
+\hline
+2 & Hoàng Nguyễn Huy & 20215393 & HuyHN215393@sis.hust.edu.vn & IT1-02 \\
+\hline
+3 & Đỗ Văn An & 20215294 & An.DV215294@sis.hust.edu.vn & IT1-01 \\
+\hline
+4 & Nguyễn Thị Ngân & 20215436 & Ngan.NT215436@sis.hust.edu.vn & IT1-01 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \textit{\textbf{Hà Nội, Tháng 4 năm 2025}}
+\end{center}
+
+\restoregeometry
+\end{document}
+
+
