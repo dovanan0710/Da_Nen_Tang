@@ -1,40 +1,58 @@
+\documentclass[12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{times}
+\geometry{a4paper, margin=2.5cm}
+\definecolor{darkblue}{RGB}{0, 0, 139}
 
+% Định dạng tiêu đề section
+\usepackage{titlesec}
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+\renewcommand{\thesubsubsection}{\thesubsection\arabic{subsubsection}.}
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\setcounter{secnumdepth}{22}
+
+\begin{document}
+
+% ======== TRANG BÌA =========
 \newgeometry{top=2.5cm,bottom=2.5cm,left=3.5cm,right=2.5cm}
 \thispagestyle{empty}
 
 % Vẽ khung viền
 \begin{tikzpicture}[remember picture, overlay]
-
-  % Viền ngoài cùng
   \draw[line width=1pt, darkblue!50!black]
     ([xshift=1.5cm,yshift=-1cm]current page.north west) rectangle
     ([xshift=-0.5cm,yshift=1cm]current page.south east);
-  
-  % Viền giữa
+
   \draw[line width=3pt, darkblue!80!black]
     ([xshift=1.6cm,yshift=-1.1cm]current page.north west) rectangle
     ([xshift=-0.6cm,yshift=1.1cm]current page.south east);
-  
-  % Viền trong
+
   \draw[line width=0.5pt, darkblue!50!black]
     ([xshift=1.8cm,yshift=-1.3cm]current page.north west) rectangle
     ([xshift=-0.8cm,yshift=1.3cm]current page.south east);
-  
-  % Các khối vuông góc
-  
-  
-  \end{tikzpicture}
-  
-
+\end{tikzpicture}
 
 \begin{center}
     \vspace{-1.1cm}
     ĐẠI HỌC BÁCH KHOA HÀ NỘI\\
     TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNG\\
-    \rule{0.6\textwidth}{0.4pt} \\
-    \vspace{0.9cm}
-    \includegraphics[width=3cm]{images/logo.png} \\
-    \vspace{1.4cm}
+    \rule{0.6\textwidth}{0.4pt} \\[0.9cm]
+    \includegraphics[width=3cm]{images/logo.png} \\[1.4cm]
     {\LARGE \textbf{BÀI TẬP LỚN}}\\[0.3cm]
     {\normalsize MÔN: PHÁT TRIỂN ỨNG DỤNG ĐA NỀN TẢNG}\\
     \textit{(Mã học phần: IT4788)}\\[1.6cm]
@@ -52,10 +70,8 @@
   \textbf{Giảng viên hướng dẫn} & : Nguyễn Tiến Thành \\
   \multicolumn{2}{l}{\textbf{Danh sách sinh viên thực hiện:}} \\
 \end{tabular}
-  
 
 \vspace{0.3cm}
-
 \renewcommand{\arraystretch}{1.5}
 
 \begin{center}
@@ -76,11 +92,18 @@
 \end{center}
 
 \vspace{1.2cm}
-
 \begin{center}
     \textit{\textbf{Hà Nội, Tháng 4 năm 2025}}
 \end{center}
-
 \restoregeometry
 
+% ========== NỘI DUNG CHÍNH ==========
+\tableofcontents
+\listoffigures
+\listoftables
 
+\include{chapters/Chap1/Chap1}
+\include{chapters/IOS/IOS}
+\include{chapters/Chap4/Chap4}
+
+\end{document}
