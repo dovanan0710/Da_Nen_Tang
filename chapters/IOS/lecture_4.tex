@@ -2,15 +2,118 @@
 Quản lý phụ thuộc (Dependency Injection - DI) là một kỹ thuật quan trọng để tạo ra mã có thể kiểm thử và bảo trì.
 
 \subsection{Các loại Dependency Injection}
-\begin{itemize}
-  \item \textbf{Constructor Injection:} Cung cấp dependencies thông qua initializer.
-  \item \textbf{Property Injection:} Cung cấp dependencies thông qua thuộc tính.
-  \item \textbf{Method Injection:} Cung cấp dependencies cho một phương thức cụ thể.
-\end{itemize}
 
+Dependency Injection (DI) là một kỹ thuật thiết kế phần mềm giúp tăng tính linh hoạt và khả năng kiểm thử của ứng dụng. DI cho phép các đối tượng cần các phụ thuộc (dependencies) của chúng được cung cấp từ bên ngoài thay vì tự tạo ra. Có ba loại Dependency Injection phổ biến trong lập trình iOS:
+
+\paragraph*{1. Constructor Injection}
+Constructor Injection là một phương pháp cung cấp dependencies thông qua một initializer (hàm khởi tạo) của lớp. Các đối tượng cần phụ thuộc sẽ được truyền vào trong quá trình khởi tạo của lớp, giúp đối tượng có thể sử dụng ngay lập tức những dependencies cần thiết mà không cần phải tự tạo chúng. Phương pháp này giúp đảm bảo rằng các đối tượng luôn được khởi tạo với các giá trị hợp lệ và không có tình trạng thiếu dependencies.
+
+Ví dụ về Constructor Injection:
+
+\begin{lstlisting}[language=Swift]
+  class NetworkManager {
+      private let apiClient: APIClient
+  
+      init(apiClient: APIClient) {
+          self.apiClient = apiClient
+      }
+  }
+  \end{lstlisting}
+  
+Trong ví dụ này, NetworkManager nhận một đối tượng APIClient thông qua constructor và sử dụng nó để thực hiện các thao tác mạng. Đây là cách tiếp cận mạnh mẽ vì mọi phụ thuộc đều phải được cung cấp trong khi khởi tạo.
+\paragraph*{2. Property Injection}
+Property Injection là một phương pháp cung cấp dependencies thông qua các thuộc tính của lớp sau khi đối tượng đã được khởi tạo. Thay vì truyền phụ thuộc vào trong initializer, các dependencies sẽ được gán trực tiếp vào các thuộc tính của đối tượng. Phương pháp này mang lại sự linh hoạt trong việc thay đổi hoặc thay thế các dependencies sau khi đối tượng đã được tạo ra.
+
+Ví dụ về Property Injection:
+\begin{lstlisting}[language=Swift]
+  class NetworkManager {
+    var apiClient: APIClient?
+}
+  \end{lstlisting}
+  Ở đây, apiClient có thể được gán giá trị sau khi một đối tượng NetworkManager đã được khởi tạo. Tuy nhiên, phương pháp này có thể gây khó khăn trong việc đảm bảo rằng đối tượng luôn có tất cả các phụ thuộc cần thiết, vì một số phụ thuộc có thể chưa được gán.
+
+\paragraph*{3. Method Injection}
+  Method Injection là một phương pháp cung cấp dependencies cho một phương thức cụ thể. Thay vì cung cấp dependencies ở cấp độ lớp như Constructor Injection hay Property Injection, Method Injection cho phép một phương thức nhận vào dependencies mà nó cần trong khi gọi. Phương pháp này rất hữu ích khi chỉ có một số phương thức cụ thể yêu cầu một phụ thuộc đặc biệt mà không cần phải cung cấp nó cho toàn bộ lớp.
+
+  Ví dụ về Method Injection:
+  \begin{lstlisting}[language=Swift]
+    class DataManager {
+        func fetchData(apiClient: APIClient) {
+        }
+    }
+    \end{lstlisting}
+    Ở đây, fetchData nhận một đối tượng APIClient làm tham số và sử dụng nó trong quá trình thực hiện yêu cầu mạng. Điều này giúp đảm bảo rằng APIClient chỉ được cung cấp cho các phương thức cần nó, thay vì phải được lưu trữ trong toàn bộ lớp.
 \subsection{DI Containers}
-DI Containers giúp quản lý và cung cấp dependencies một cách tự động:
-\begin{itemize}
-  \item \textbf{Swinject:} Là một DI container phổ biến cho Swift.
-  \item \textbf{Service Locator:} Là một giải pháp thay thế cho DI.
-\end{itemize}
+    DI Containers (Dependency Injection Containers) giúp quản lý và cung cấp dependencies một cách tự động và có tổ chức. Thay vì phải tạo đối tượng một cách thủ công và tự mình xử lý tất cả các dependencies, DI Containers cho phép bạn khai báo các phụ thuộc và giải quyết chúng một cách tự động, giúp mã nguồn trở nên dễ duy trì và mở rộng hơn. Một số DI Containers phổ biến trong iOS bao gồm:
+
+    \begin{itemize}
+      \item \textbf{Swinject:} Swinject là một DI container phổ biến trong cộng đồng iOS, được viết bằng Swift. Nó cung cấp một cách tiếp cận mạnh mẽ để quản lý dependencies trong các ứng dụng iOS, giúp giảm thiểu sự phụ thuộc trực tiếp giữa các lớp. Swinject hỗ trợ tạo đối tượng tự động và cung cấp các dependencies cho các lớp khác khi cần thiết, đồng thời giúp việc kiểm thử và tái sử dụng mã nguồn trở nên dễ dàng hơn.
+
+      \textbf{Ví dụ về Swinject:}
+      \begin{lstlisting}[language=Swift]
+        import Swinject
+
+        class NetworkManager {
+            func fetchData() {
+                print("Fetching data from the network...")
+            }
+        }
+
+        class ViewController {
+            private let networkManager: NetworkManager
+
+            init(networkManager: NetworkManager) {
+                self.networkManager = networkManager
+            }
+
+            func startFetchingData() {
+                networkManager.fetchData()
+            }
+        }
+
+    let container = Container()
+    container.register(NetworkManager.self) { _ in NetworkManager() }
+    container.register(ViewController.self) { r in
+    ViewController(networkManager: r.resolve(NetworkManager.self)!)
+        }
+
+    let viewController = container.resolve(ViewController.self)!
+        viewController.startFetchingData()
+      \end{lstlisting}
+      Trong ví dụ trên, Swinject giúp chúng ta dễ dàng đăng ký và giải quyết dependencies. Container quản lý các đối tượng và tự động cung cấp chúng khi yêu cầu.
+
+      \item \textbf{Service Locator:} Service Locator là một giải pháp thay thế cho Dependency Injection. Thay vì truyền dependencies qua constructor hoặc các phương thức, Service Locator cung cấp một trung tâm quản lý các dịch vụ, nơi các lớp có thể yêu cầu các dịch vụ khi cần. Mặc dù phương pháp này giảm thiểu sự cần thiết phải truyền dependencies, nhưng nó có thể dẫn đến mã nguồn khó kiểm soát hơn khi số lượng dependencies tăng lên. Do đó, mặc dù Service Locator là một giải pháp đơn giản và dễ triển khai, nhưng nó có thể gây khó khăn trong việc theo dõi sự thay đổi của các dependencies trong ứng dụng lớn.
+
+      \textbf{Ví dụ về Service Locator:}
+      \begin{lstlisting}[language=Swift]
+        class NetworkManager {
+            func fetchData() {
+                print("Fetching data from the network...")
+            }
+        }
+
+        class ServiceLocator {
+            static var shared = ServiceLocator()
+            private var services = [String: Any]()
+
+            func register<T>(_ service: T) {
+                let key = String(describing: T.self)
+                services[key] = service
+            }
+
+            func resolve<T>() -> T? {
+                let key = String(describing: T.self)
+                return services[key] as? T
+            }
+        }
+
+
+        let networkManager = NetworkManager()
+        ServiceLocator.shared.register(networkManager)
+
+        let retrievedNetworkManager = ServiceLocator.shared.resolve() as NetworkManager?
+        retrievedNetworkManager?.fetchData()
+      \end{lstlisting}
+      Trong ví dụ này, Service Locator chịu trách nhiệm quản lý và cung cấp đối tượng `NetworkManager` khi cần thiết. Mặc dù đơn giản, nhưng cách tiếp cận này có thể gây khó khăn trong việc duy trì mã nguồn khi có nhiều dependencies.
+    \end{itemize}
+    
