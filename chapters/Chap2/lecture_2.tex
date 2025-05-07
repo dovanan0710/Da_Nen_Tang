@@ -1,0 +1,136 @@
+\section{Cơ chế hoạt động của hệ điều hành Android}
+
+% 2.1
+\subsection{Android trên nền tảng Linux}
+\renewcommand{\labelitemi}{--}    
+\begin{flushleft}
+    \hspace*{0.8cm}Android được xây dựng trên nhân (kernel) của Linux, nghĩa là Android sử dụng Linux kernel làm lớp điều hành phần cứng, nhưng phần còn lại (giao diện, app framework…) là do Google phát triển riêng.Lý do chính Android dùng Linux kernel là Linux là mã nguồn mở, ổn định, có độ bảo mật tốt, Hỗ trợ quản lý bộ nhớ, xử lý tiến trình (process/thread), cấp quyền truy cập rất phù hợp với thiết bị di động.\\
+    Google đã tùy biến kernel Linux để phù hợp hơn với điện thoại:
+    \begin{center}
+        \renewcommand{\arraystretch}{1.5}
+        \begin{tabular}{|l|p{11cm}|}
+        \hline
+        \textbf{Tính năng bổ sung } & \textbf{Công dụng
+        } \\
+        \hline
+        WakeLocks & Quản lý việc “đánh thức” CPU để tiết kiệm pin        \\
+        \hline
+        Ashmem & Quản lý chia sẻ bộ nhớ giữa các tiến trình        \\
+        \hline
+        Binder IPC & Giao tiếp liên tiến trình – nền tảng cho các service trong Android        \\
+        \hline
+        Logger & Ghi log hệ thống        \\
+        \hline
+        Alarm Drivers & Quản lý đồng hồ báo thức (dùng cho các app nền) \\
+        \hline
+        \end{tabular}
+        \end{center}  
+\end{flushleft}
+
+\renewcommand{\labelitemi}{--}    
+    \begin{flushleft}
+        \hspace*{0.8cm}Mỗi ứng dụng gắn với một định danh người dùng riêng. UID (User ID) là mã định danh người dùng cấp hệ điều hành. Trong Android, mỗi ứng dụng (app) được xem như một người dùng độc lập, và hệ thống cấp cho nó một UID riêng biệt.
+        \setlength{\leftmargini}{1.5cm}
+        \begin{itemize}
+            \item Nguồn gốc UID: Android dựa trên Linux kernel, và Linux có mô hình đa người dùng. Mỗi tiến trình (process) trong Linux chạy dưới quyền của một user cụ thể, phân biệt bằng UID.Android tận dụng mô hình này để tăng tính bảo mật cho các ứng dụng $\rightarrow$ Khi một app được cài đặt, Android tạo một UID mới cho app đó (trừ khi nó khai báo muốn dùng hàm shareUserId), App chạy dưới UID này, giống như một "người dùng" mới trong hệ thống.
+            \item UID quan trọng vì: Mỗi app có vùng dữ liệu riêng (trong /data/data/<tên gói>) mà chỉ UID đó mới truy cập được. Không app nào có thể truy cập trực tiếp vào dữ liệu của app khác — trừ khi quyền được cấp thông qua hệ thống permission(Cách ly ứng dụng) và kiểm soát quyền truy cập tập tin, cơ sở dữ liệu, socket. Ghi log và debug app. Cấp phép hoặc từ chối quyền (ví dụ camera, GPS...)
+        \end{itemize}
+    \end{flushleft}
+
+% 2.2
+\subsection{Cơ chế sandbox}
+\renewcommand{\labelitemi}{--}    
+    \begin{flushleft}
+        \hspace*{0.8cm}Sandbox trong Android là một môi trường cách ly, nơi mỗi ứng dụng (app) được “nhốt” vào một không gian riêng biệt, không thể trực tiếp can thiệp hay truy cập vào dữ liệu hoặc tiến trình của ứng dụng khác. Hình dung như mỗi app sống trong một “phòng riêng” với cửa khóa, không ai ra vào nếu không có chìa khóa (quyền được cấp).
+        \setlength{\leftmargini}{1.5cm}
+        \begin{itemize}
+            \item Cách Android thực hiện sandbox: kết hợp nhiều công nghệ
+        \end{itemize}
+        \begin{center}
+            \renewcommand{\arraystretch}{1.5}
+            \begin{tabular}{|p{4.5cm}|p{11cm}|}
+            \hline
+            \textbf{Cơ chế} & \textbf{Mục đích} \\
+            \hline
+            UID riêng biệt cho mỗi app	 & Mỗi app chạy như một "user" độc lập trên nền tảng Linux            \\
+            \hline
+            Filesystem permissions	 & App chỉ được phép truy cập vào vùng dữ liệu riêng (ví dụ: /data/data/com.example.app) \\
+            \hline
+            Máy ảo (VM)	 & (trước đây là Dalvik, nay là ART) chạy mã bytecode riêng biệt cho từng app            \\
+            \hline
+            Permission system	 & 	Nếu app muốn truy cập tài nguyên ngoài sandbox (camera, GPS…), nó phải xin quyền rõ ràng từ người dùng            \\
+            \hline
+            SEAndroid (Security-Enhanced Android)	 & 	Dựa trên SELinux, kiểm soát hành vi ở mức nhân hệ điều hành            \\
+            \hline
+            \end{tabular}
+            \end{center}
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Sandbox bảo vệ những thứ sau:
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+          \item Dữ liệu app(database, file, cache...): Không app nào khác có thể truy cập nếu không được cấp quyền
+            \item Mã nguồn (classes.dex): Không bị sửa đổi/thay thế bởi app khác
+            \item Giao tiếp giữa app: Chỉ có thể qua các cơ chế an toàn như Intent, ContentProvider, Binder
+            \item Tài nguyên hệ thống (camera, GPS, v.v.): Chỉ truy cập được nếu người dùng cho phép thông qua hệ thống permission
+        \end{itemize}
+        \hspace*{0.8cm}Ví dụ: Giả sử có 2 app:
+        App1 là ghi chú cá nhân,
+        App2 là trò chơi.
+        Cơ chế bảo vệ làm cho App2 không thể đọc được ghi chú của App1, trừ khi App1 cung cấp dữ liệu qua Intent, ContentProvider\\
+        \hspace*{0.8cm}Tóm lại, Sandbox là lá chắn vô hình bảo vệ mỗi ứng dụng Android như một thế giới riêng biệt. Nó giúp người dùng yên tâm cài đặt nhiều ứng dụng mà không sợ bị can thiệp trái phép
+  \end{flushleft}
+
+% 2.3
+\subsection{Máy ảo (VM) riêng cho mỗi ứng dụng}
+
+\begin{flushleft}
+  \hspace*{0.8cm}Máy ảo là một chương trình mô phỏng một hệ thống máy tính khác, cho phép chạy phần mềm như thể đang chạy trên một máy thật. Điều này không can thiệp trực tiếp vào phần cứng và mỗi máy ảo có môi trường riêng, cách ly hoàn toàn. Trong Android, Máy ảo giúp chạy mã bytecode của ứng dụng Android, đảm bảo rằng app không ảnh hưởng đến hệ thống và không truy cập trái phép vào tài nguyên hệ điều hành.(mã bytecode chứa trong file .dex, là phần quan trọng nằm trong file apk).
+\end{flushleft}
+
+\begin{flushleft}
+  \hspace*{0.8cm}Dalvik VM ($Android \leq 4.x$): Là máy ảo đầu tiên của Android, dựa trên register-based architecture(phần lớn các phép toán được thực hiện trên các thanh ghi thay vì trực tiếp trên bộ nhớ), dùng JIT (Just-In-Time) compilation là mã được biên dịch khi đang chạy app. Lợi ích là cài nhanh, ít tốn bộ nhớ
+  Nhược điểm là app khởi động chậm, hiệu suất kém.
+  Dùng từ Android 1.0 đến Android 4.4 (KitKat).  
+\end{flushleft}
+
+\begin{flushleft}
+    \hspace*{0.8cm}ART (Android Runtime): Thay thế Dalvik từ Android 5.0 (Lollipop), dùng AOT (Ahead-Of-Time) compilation để mã được biên dịch thành mã máy ngay khi cài app.
+    Lợi ích là khởi chạy nhanh, hiệu suất cao.
+    Nhược điểm là cài đặt lâu hơn, chiếm nhiều bộ nhớ.
+    Sau Android 7.0, ART còn hỗ trợ thêm JIT lẫn AOT $\rightarrow$ tối ưu thời gian chạy lẫn bộ nhớ.   
+\end{flushleft}
+
+\begin{flushleft}
+    \hspace*{0.8cm}Quy trình thực thi của Dalvik VM và ART:
+    \begin{center}
+        \renewcommand{\arraystretch}{1.3}
+        \begin{tabular}{|p{4cm}|p{5cm}|p{5cm}|}
+        \hline
+        \textbf{Giai đoạn} & \textbf{Dalvik VM} &  \textbf{ART}\\
+        \hline
+        Khi cài app	 & Chép file .dex vào hệ thống & Biên dịch .dex thành mã máy .oat\\
+        \hline
+        Khi chạy app & Dịch bytecode thành mã máy & Chạy mã máy đã biên dịch sẵn\\
+        \hline
+        Khi mở lại app	 & Vẫn dịch lại	& Mở cực nhanh, không cần dịch lại\\
+        \hline
+        \end{tabular}
+        \end{center}  
+    \hspace*{0.8cm} Lý do Google chuyển từ Dalvik sang ART: Hiệu suất tăng mạnh (app khởi động nhanh hơn), tiết kiệm pin hơn, tối ưu RAM và bộ nhớ tốt hơn, chuẩn bị cho tương lai với các công nghệ như: Android Instant Apps, Dynamic Delivery
+\end{flushleft}
+
+\renewcommand{\labelitemi}{--}    
+    \begin{flushleft}
+        \hspace*{0.8cm}Mỗi ứng dụng là một tiến trình độc lập. Trong Android, mỗi ứng dụng (app) khi được khởi chạy sẽ được cấp phát một tiến trình riêng biệt (process). Tiến trình này có vùng nhớ riêng, UID riêng, máy ảo riêng, hoạt động độc lập, không can thiệp lẫn nhau.
+    \end{flushleft}
+
+    \begin{flushleft}
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+        \item Lợi ích: App không thể truy cập dữ liệu, bộ nhớ hay tiến trình của app khác (bảo mật), nếu 1 app lag/crash, không ảnh hưởng app khác(tối ưu hiệu năng), có thể theo dõi, dừng, hoặc khởi động lại tiến trình một cách riêng lẻ(quản lí tài nguyên), khi hệ thống cần RAM, Android có thể tắt tiến trình app ít dùng mà không ảnh hưởng toàn hệ thống(tự động giải phóng)
+        \item Android tạo ra một tiến trình mới: khi người dùng mở ứng dụng lần đầu, app được khởi động lại sau khi bị hệ thống giải phóng
+        \item Vùng nhớ riêng trong mỗi tiến trình: mỗi tiến trình chỉ "thấy" được biến, đối tượng trong phạm vi của nó, dữ liệu trong thư mục app, không thể trực tiếp truy cập đến vùng nhớ của tiến trình khác (do cơ chế sandbox, UID, VM kết hợp bảo vệ).
+      \end{itemize}
+    \end{flushleft}

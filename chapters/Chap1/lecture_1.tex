@@ -1,50 +1,37 @@
 
 \section{Tổng quan về kiến trúc hệ thống}
+\begin{flushleft}
+    \hspace*{0.8cm}Kiến trúc hệ thống là nền tảng quan trọng trong phát triển ứng dụng di động, nơi các thành phần như thiết bị, ứng dụng và server phối hợp hoạt động. Trong phần này, người đọc sẽ tìm hiểu về vai trò của kiến trúc trong việc đảm bảo hiệu suất, khả năng mở rộng và tính ổn định của ứng dụng. Các yếu tố như tính đồng nhất, tính trong suốt và tính khả chuyển sẽ được trình bày như những tiêu chí thiết kế quan trọng. Bên cạnh đó, những mô hình kiến trúc phổ biến và công nghệ hỗ trợ như microservices, containerization, cùng các công cụ DevOps sẽ giúp hình dung rõ hơn về cách xây dựng một hệ thống di động hiện đại và hiệu quả.
+\end{flushleft}
     % 1.1.
     \subsection{Tổng quan về kiến trúc hệ thống trong ứng dụng di động}
     \renewcommand{\labelitemi}{--}    
     \begin{flushleft}
-            \hspace*{0.8cm}Khái niệm kiến trúc hệ thống: Kiến trúc hệ thống trong phát triển ứng dụng di động bao gồm nhiều thành phần như phần cứng thiết bị, ứng dụng di động và hệ thống server hỗ trợ. Mục tiêu của kiến trúc là tạo ra một hệ thống đồng nhất, trong suốt và khả chuyển.
+            \hspace*{0.8cm}Kiến trúc hệ thống trong phát triển ứng dụng di động là nền tảng kỹ thuật bao gồm ba thành phần chính: phần cứng thiết bị, ứng dụng di động và hệ thống server hỗ trợ phía sau. Mục tiêu chính của kiến trúc này là thiết lập một hệ thống có khả năng vận hành đồng nhất, đảm bảo tính trong suốt giữa các thành phần và đạt được mức độ khả chuyển cao.
     \end{flushleft}
 
     \begin{flushleft}
-        \hspace*{0.8cm}Cần quan tâm đến kiến trúc hệ thống vì kiến trúc hệ thống:
-        \setlength{\leftmargini}{1.5cm}
-        \begin{itemize}
-            \item Ảnh hưởng trực tiếp đến hiệu suất và khả năng mở rộng của ứng dụng.
-            \item Giúp ứng dụng hoạt động ổn định, hạn chế lỗi phát sinh.
-            \item Dễ dàng phát hiện và xử lý lỗi giữa các thành phần.
-        \end{itemize}
+        \hspace*{0.8cm}Việc xây dựng kiến trúc hệ thống hợp lý đóng vai trò quan trọng đối với sự thành công của một ứng dụng. Trước hết, kiến trúc hệ thống ảnh hưởng trực tiếp đến hiệu suất hoạt động cũng như khả năng mở rộng trong tương lai. Bên cạnh đó, một kiến trúc ổn định sẽ giúp ứng dụng hoạt động mượt mà và hạn chế lỗi phát sinh trong quá trình sử dụng. Quan trọng hơn, khi các thành phần trong hệ thống được tổ chức rõ ràng, việc phát hiện và xử lý lỗi sẽ trở nên nhanh chóng và chính xác hơn.
     \end{flushleft}
 
     % 1.2.
     \subsection{Các yếu tố quan trọng trong kiến trúc hệ thống}
     \renewcommand{\labelitemi}{--}
     \begin{flushleft}
-        \hspace*{0.8cm}Tính đồng nhất:
-        \setlength{\leftmargini}{1.5cm}
-        \begin{itemize}
-            \item Dữ liệu cần có sự nhất quán giữa client và server.
-            \item Sử dụng RESTful API hoặc GraphQL để chuẩn hóa giao tiếp giữa các thành phần.
-            \item Các hệ thống cần đảm bảo dữ liệu được lưu trữ và đồng bộ hóa đúng cách.
-        \end{itemize}
-
-        \hspace*{0.8cm}Tính trong suốt:
-        \setlength{\leftmargini}{1.5cm}
-        \begin{itemize}
-            \item Các thành phần trong hệ thống cần có khả năng phát hiện lỗi và thông báo rõ ràng.
-            \item Sử dụng các công cụ logging, monitoring như Firebase Crashlytics, Sentry để theo dõi lỗi.
-            \item Cấu trúc hệ thống phải cho phép dễ dàng kiểm tra và sửa lỗi nhanh chóng.
-        \end{itemize}
-
-        \hspace*{0.8cm}Tính khả chuyển:
-        \setlength{\leftmargini}{1.5cm}
-        \begin{itemize}
-            \item Hệ thống cần có kiến trúc linh hoạt để dễ dàng thay đổi thành phần mà không làm gián đoạn hoạt động.
-            \item Sử dụng microservices hoặc modular architecture để tách biệt các thành phần.
-            \item Ứng dụng công nghệ containerization như Docker, Kubernetes để tăng tính khả chuyển.
-        \end{itemize}
+        \hspace*{0.8cm}Một kiến trúc hệ thống hiệu quả cần đảm bảo ba yếu tố cốt lõi: tính đồng nhất, tính trong suốt và tính khả chuyển.
     \end{flushleft}
+
+    \begin{flushleft}
+        \hspace*{0.8cm}Tính đồng nhất là yêu cầu đầu tiên đối với một hệ thống hiện đại. Để đảm bảo sự nhất quán về dữ liệu giữa client và server, các kiến trúc sư phần mềm thường sử dụng các giao thức và tiêu chuẩn truyền thông như RESTful API hoặc GraphQL. Các chuẩn này không chỉ hỗ trợ chuẩn hóa quá trình giao tiếp giữa các thành phần mà còn giúp quản lý dữ liệu được lưu trữ và đồng bộ hóa một cách chính xác và hiệu quả trong toàn hệ thống.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Tính trong suốt đóng vai trò thiết yếu trong việc phát hiện và xử lý lỗi. Một hệ thống được thiết kế tốt cần có khả năng ghi nhận và thông báo lỗi một cách rõ ràng. Để đạt được điều này, các công cụ như Firebase Crashlytics hoặc Sentry thường được tích hợp vào quá trình vận hành nhằm hỗ trợ theo dõi sự cố theo thời gian thực. Đồng thời, kiến trúc hệ thống cũng cần hỗ trợ việc kiểm tra và sửa lỗi một cách nhanh chóng, đảm bảo giảm thiểu gián đoạn trong quá trình vận hành.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Tính khả chuyển đề cập đến mức độ linh hoạt của hệ thống khi có sự thay đổi về công nghệ hoặc thành phần. Trong kiến trúc hiện đại, việc áp dụng mô hình microservices hoặc modular architecture cho phép chia tách các thành phần độc lập, từ đó giúp việc thay thế hay nâng cấp trở nên dễ dàng mà không gây ảnh hưởng đến toàn hệ thống. Ngoài ra, công nghệ containerization như Docker hoặc Kubernetes cũng được sử dụng phổ biến nhằm tăng khả năng triển khai linh hoạt và đồng nhất giữa các môi trường khác nhau.
+      \end{flushleft}
 
     % 1.3.
     \subsection{Các mô hình kiến trúc phổ biến trong ứng dụng di động}
