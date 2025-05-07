@@ -2,383 +2,380 @@
 
 % 2.1
 \subsection{Khái niệm kiến trúc đa nền tảng}
-\renewcommand{\labelitemi}{--}    
+\renewcommand{\labelitemi}{--}
+
+\subsubsection{Định nghĩa}
 \begin{flushleft}
-  \subsubsection{Định nghĩa}
-    \begin{flushleft}
-      \hspace*{0.8cm}Kiến trúc đa nền tảng (cross-platform architecture) là phương pháp phát triển ứng dụng sử dụng một codebase duy nhất để triển khai trên nhiều hệ điều hành (iOS, Android) và nền tảng (web, desktop). Thay vì viết mã riêng biệt cho từng nền tảng, lập trình viên tập trung vào một hệ thống mã nguồn chung, sau đó sử dụng các công cụ hoặc framework để biên dịch và tối ưu hóa cho từng môi trường đích.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Ví dụ:
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item React Native: Mã JavaScript được biên dịch thành native code (Objective-C/Swift cho iOS, Java/Kotlin cho Android) thông qua cơ chế "bridge".
-          \item Flutter: Sử dụng ngôn ngữ Dart và Skia Engine để render UI độc lập, không phụ thuộc vào hệ điều hành.
-      \end{itemize}
-    \end{flushleft}
-
-  \subsubsection{Nguyên tắc "Write Once, Run Anywhere" (WORA)}
-    \begin{flushleft}
-      \hspace*{0.8cm}Nguyên tắc này được Sun Microsystems giới thiệu từ những năm 1990, nhấn mạnh vào khả năng tái sử dụng mã nguồn tối đa và giảm thiểu công sức phát triển. WORA dựa trên hai yếu tố chính:
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-        \item Tính độc lập nền tảng: Code không bị ràng buộc bởi hệ điều hành hoặc phần cứng cụ thể.
-        \item Tính nhất quán: Logic nghiệp vụ và giao diện người dùng được thiết kế để hoạt động đồng nhất trên mọi thiết bị.
-      \end{itemize}
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Ứng dụng thực tế:
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item Microsoft Teams: Sử dụng React Native để triển khai ứng dụng trên iOS, Android và Windows với 90\% code chung.
-          \item Google Pay: Flutter cho phép người dùng thanh toán trên cả mobile và web từ một codebase duy nhất.
-      \end{itemize}
-    \end{flushleft}
-
-  \subsubsection{Lợi ích của kiến trúc đa nền tảng}
-    \begin{flushleft}
-      \hspace*{0.8cm}Tiết kiệm thời gian và chi phí
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-        \item Thời gian phát triển: Giảm 50–80\% so với phương pháp native (theo InfoQ, 2022).
-        \item Chi phí nhân lực: Chỉ cần một nhóm phát triển thay vì nhiều nhóm chuyên biệt.
-        \item Ví dụ: Startup DeliveryNow tiết kiệm \$300,000 trong 12 tháng nhờ sử dụng Flutter để xây dựng ứng dụng cho cả iOS và Android.
-      \end{itemize}
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Dễ dàng bảo trì và mở rộng
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item Cập nhật đồng bộ: Sửa lỗi hoặc thêm tính năng mới chỉ cần thực hiện một lần trên codebase chung.
-          \item Tích hợp CI/CD: Tự động hóa quy trình triển khai giúp giảm rủi ro và tăng tốc độ phát hành.
-      \end{itemize}
-    \end{flushleft}
-
-  \subsubsection{Thách thức và hạn chế}
-    \begin{flushleft}
-      \hspace*{0.8cm}Hiệu năng không bằng native
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-        \item Xử lý đồ họa nặng: Ứng dụng đa nền tảng thường chậm hơn 15–30\% so với native khi xử lý animation phức tạp hoặc game 3D (theo Biorn-Hansen, 2021).
-        \item Ví dụ: Pokémon GO ban đầu thử nghiệm với Unity (cross-platform) nhưng phải chuyển sang native do lag khi render map 3D.
-      \end{itemize}
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Khó tùy chỉnh giao diện
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item UI không nhất quán: Các framework đa nền tảng thường sử dụng UI tổng quát, khó đáp ứng đặc thù thiết kế của từng nền tảng (Material Design cho Android, Cupertino cho iOS).
-          \item Ví dụ: Spotify (React Native) phải viết lại một số thành phần UI bằng native code để đảm bảo trải nghiệm mượt mà.
-      \end{itemize}
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Phụ thuộc vào cộng đồng và công cụ
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item Plugin không ổn định: Nhiều thư viện phụ thuộc vào cộng đồng, dễ gặp lỗi hoặc ngừng hỗ trợ.
-          \item Ví dụ: Plugin React Native Maps từng gặp lỗi hiển thị trên iOS 14, khiến nhiều ứng dụng bị crash.
-      \end{itemize}
-    \end{flushleft}
-
-  \subsubsection{Công cụ phát triển}
-    \begin{flushleft}
-      \hspace*{0.8cm}Phát triển ứng dụng đa nền tảng yêu cầu sử dụng các công cụ chuyên biệt để tối ưu quy trình xây dựng, kiểm thử và triển khai. Dưới đây là các công cụ phổ biến cho từng nền tảng: (Có một cái bảng ở đây)
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Giải thích:
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-        \item IDE: Android Studio và XCode là công cụ chính thức cho phát triển native. IntelliJ IDEA hỗ trợ nâng cao cho dự án phức tạp.
-        \item Bộ giả lập: Mô phỏng đa dạng thiết bị để kiểm tra ứng dụng trên các điều kiện phần cứng khác nhau.
-      \end{itemize}
-    \end{flushleft}
+    \hspace*{0.8cm}Kiến trúc đa nền tảng (cross-platform architecture) là một phương pháp phát triển ứng dụng dựa trên một bộ mã nguồn chung, giúp triển khai đồng thời trên nhiều hệ điều hành như iOS, Android, cũng như các nền tảng khác như web hoặc desktop. Thay vì xây dựng từng phiên bản riêng biệt cho từng hệ điều hành, lập trình viên sử dụng các framework hoặc công cụ trung gian để biên dịch mã nguồn và tối ưu hóa cho từng môi trường cụ thể.
 \end{flushleft}
+
+\begin{flushleft}
+    \hspace*{0.8cm}Các framework tiêu biểu cho kiến trúc đa nền tảng bao gồm:
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+        \item \textbf{React Native}: Sử dụng JavaScript và biên dịch mã qua "bridge" thành mã máy tương ứng (Objective-C/Swift cho iOS, Java/Kotlin cho Android).
+        \item \textbf{Flutter}: Dựa trên ngôn ngữ Dart và sử dụng Skia Engine để render giao diện trực tiếp, độc lập với hệ điều hành.
+    \end{itemize}
+\end{flushleft}
+
+\subsubsection{Nguyên tắc "Write Once, Run Anywhere" (WORA)}
+\begin{flushleft}
+    \hspace*{0.8cm}Nguyên tắc WORA, được Sun Microsystems giới thiệu từ thập niên 1990, nhấn mạnh vào khả năng tái sử dụng mã nguồn tối đa và giảm chi phí phát triển. Nguyên tắc này dựa trên hai yếu tố cốt lõi:
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+        \item \textbf{Tính độc lập nền tảng}: Mã nguồn không bị phụ thuộc vào hệ điều hành hoặc phần cứng cụ thể.
+        \item \textbf{Tính nhất quán}: Logic nghiệp vụ và giao diện hoạt động đồng bộ trên mọi thiết bị.
+    \end{itemize}
+\end{flushleft}
+
+\begin{flushleft}
+    \hspace*{0.8cm}Một số ứng dụng thực tế đã áp dụng hiệu quả nguyên tắc này:
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+        \item \textbf{Microsoft Teams}: Dùng React Native để triển khai trên iOS, Android và Windows với hơn 90\% mã nguồn dùng chung.
+        \item \textbf{Google Pay}: Xây dựng trên Flutter, hỗ trợ cả mobile và web từ một codebase duy nhất.
+    \end{itemize}
+\end{flushleft}
+
+\subsubsection{Lợi ích của kiến trúc đa nền tảng}
+\begin{flushleft}
+    \hspace*{0.8cm}So với phát triển native, kiến trúc đa nền tảng mang lại nhiều lợi ích về mặt chi phí, thời gian và khả năng bảo trì:
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+        \item \textbf{Tiết kiệm thời gian và chi phí}: Theo InfoQ (2022), thời gian phát triển có thể giảm 50–80\%, đồng thời chỉ cần một đội ngũ phát triển thay vì nhiều nhóm chuyên biệt.
+        \item \textbf{Ví dụ thực tế}: Startup DeliveryNow tiết kiệm được 300,000 USD trong vòng 12 tháng khi sử dụng Flutter cho cả iOS và Android.
+        \item \textbf{Bảo trì dễ dàng}: Việc cập nhật tính năng hoặc sửa lỗi được thực hiện một lần và áp dụng đồng thời cho mọi nền tảng.
+        \item \textbf{Tích hợp CI/CD}: Quy trình phát hành được tự động hóa, giảm rủi ro và nâng cao tốc độ triển khai.
+    \end{itemize}
+\end{flushleft}
+
+\subsubsection{Thách thức và hạn chế}
+\begin{flushleft}
+    \hspace*{0.8cm}Mặc dù mang lại nhiều lợi thế, kiến trúc đa nền tảng vẫn tồn tại những điểm hạn chế nhất định:
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+        \item \textbf{Hiệu năng thấp hơn native}: Theo Biorn-Hansen (2021), ứng dụng đa nền tảng có thể chậm hơn 15–30\% khi xử lý đồ họa nặng như animation hoặc game 3D.
+        \item \textbf{Ví dụ}: Pokémon GO từng thử nghiệm với Unity (cross-platform) nhưng phải chuyển sang native do hiện tượng lag khi render bản đồ 3D.
+        \item \textbf{Khó tùy chỉnh giao diện}: Các framework đa nền tảng sử dụng UI tổng quát, khó đáp ứng đặc trưng thiết kế như Material Design (Android) hay Cupertino (iOS).
+        \item \textbf{Ví dụ}: Spotify (React Native) phải viết lại nhiều thành phần UI bằng mã native để đảm bảo trải nghiệm người dùng.
+        \item \textbf{Phụ thuộc vào cộng đồng và công cụ}: Nhiều plugin do cộng đồng phát triển có thể thiếu ổn định hoặc ngừng duy trì.
+        \item \textbf{Ví dụ}: React Native Maps từng gặp lỗi nghiêm trọng trên iOS 14, dẫn đến crash hàng loạt.
+    \end{itemize}
+\end{flushleft}
+
+\subsubsection{Công cụ phát triển}
+\begin{flushleft}
+  \hspace*{0.8cm}Phát triển ứng dụng đa nền tảng đòi hỏi lập trình viên sử dụng các công cụ chuyên biệt nhằm tối ưu quy trình xây dựng, kiểm thử và triển khai. Những công cụ này bao gồm IDE (môi trường phát triển tích hợp), bộ giả lập thiết bị, công cụ kiểm thử và hệ thống quản lý mã nguồn.
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/cong-cu-android-ios.png}
+    \caption{So sánh công cụ phát triển giữa Android và iOS}
+    \label{fig:android_ios_tools}
+  \end{figure}
+
+  \hspace*{0.8cm}Hình~\ref{fig:android_ios_tools} thể hiện sự khác biệt giữa các công cụ được sử dụng trong hệ sinh thái Android và iOS. Việc lựa chọn công cụ phù hợp phụ thuộc vào hệ điều hành mục tiêu, ngôn ngữ lập trình và kinh nghiệm của lập trình viên.
+\end{flushleft}
+
 
 % 2.2
 \subsection{Các yếu tố quyết định khi lựa chọn đa nền tảng}
 \renewcommand{\labelitemi}{--}    
+\begin{flushleft}
+
+  \subsubsection{Phân tích nhóm người dùng mục tiêu}
     \begin{flushleft}
-      \subsubsection{Phân tích nhóm người dùng mục tiêu}
-        \begin{flushleft}
-          \hspace*{0.8cm}Thị phần hệ điều hành:
-          \setlength{\leftmargini}{1.5cm}
-          \begin{itemize}
-            \item iOS: Chiếm 27\% thị trường toàn cầu, phổ biến ở Mỹ và Châu Âu.
-            \item Android: Chiếm 73\%, thống trị tại Châu Á và Châu Phi (Statista, 2023).
-          \end{itemize}
-        \end{flushleft}
-
-        \begin{flushleft}
-          \hspace*{0.8cm}Chiến lược tiếp cận:
-          \setlength{\leftmargini}{1.5cm}
-          \begin{itemize}
-              \item Nếu nhắm đến người dùng cao cấp (iOS), ưu tiên framework hỗ trợ thiết kế Cupertino (Flutter).
-              \item Nếu nhắm đến thị trường đại chúng (Android), React Native phù hợp hơn nhờ tích hợp dễ dàng với Google Services.
-          \end{itemize}
-        \end{flushleft}
-
-        \begin{flushleft}
-          \hspace*{0.8cm}Case study:
-          \setlength{\leftmargini}{1.5cm}
-          \begin{itemize}
-              \item Grab (Flutter): Tập trung vào thị trường Đông Nam Á (đa số dùng Android) nhưng vẫn đảm bảo trải nghiệm mượt mà trên iOS.
-          \end{itemize}
-        \end{flushleft}
-
-      \subsubsection{Mô hình "Rẻ – Nhanh – Tốt"}
-        \begin{flushleft}
-          \hspace*{0.8cm}Theo nguyên tắc Iron Triangle trong quản lý dự án, chỉ có thể đạt 2/3 tiêu chí: (Có một cái bảng ở đây)
-        \end{flushleft}
-
-        \begin{flushleft}
-          \hspace*{0.8cm}Giải thích
-          \setlength{\leftmargini}{1.5cm}
-          \begin{itemize}
-              \item React Native: Phù hợp cho dự án cần MVP (Minimum Viable Product) nhanh chóng, nhưng hiệu năng không cao.
-              \item Flutter: Đòi hỏi đầu tư ban đầu để học Dart, nhưng đổi lại hiệu năng và UI tốt hơn.
-          \end{itemize}
-        \end{flushleft}
-
-        \subsubsection{Khả năng tích hợp với hệ sinh thái hiện có}
-        \begin{flushleft}
-          \hspace*{0.8cm}React Native: Tận dụng hệ sinh thái JavaScript (Node.js, npm, Expo) và dễ tích hợp với ứng dụng web.
-        \end{flushleft}
-
-        \begin{flushleft}
-          \hspace*{0.8cm}Flutter: Độc lập hơn nhưng có thể kết hợp với Firebase, Google Cloud qua plugin.
-        \end{flushleft}
-
-        \begin{flushleft}
-          \hspace*{0.8cm}Ví dụ:
-          \setlength{\leftmargini}{1.5cm}
-          \begin{itemize}
-              \item Shopify sử dụng React Native để tích hợp ứng dụng mobile với nền tảng web sẵn có.
-          \end{itemize}
-        \end{flushleft}
+      \hspace*{0.8cm}Thị phần hệ điều hành đóng vai trò quan trọng trong việc xác định nền tảng ưu tiên.
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+        \item iOS hiện chiếm 27\% thị trường toàn cầu, chủ yếu phổ biến tại Mỹ và Châu Âu.
+        \item Android chiếm 73\%, đặc biệt thống trị tại Châu Á và Châu Phi (Statista, 2023).
+      \end{itemize}
     \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Chiến lược tiếp cận người dùng cần phù hợp với đặc thù từng hệ điều hành.
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+          \item Nếu đối tượng mục tiêu là người dùng cao cấp (iOS), nên ưu tiên framework hỗ trợ giao diện Cupertino như Flutter.
+          \item Nếu nhắm tới thị trường đại chúng (Android), React Native là lựa chọn phù hợp nhờ khả năng tích hợp với Google Services.
+      \end{itemize}
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Một ví dụ thực tế giúp minh họa rõ ràng cho lựa chọn nền tảng là Grab.
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+          \item Grab (Flutter): Tập trung vào thị trường Đông Nam Á (đa số dùng Android) nhưng vẫn đảm bảo trải nghiệm mượt mà trên iOS.
+      \end{itemize}
+    \end{flushleft}
+
+    \subsubsection{Mô hình "Rẻ – Nhanh – Tốt"}
+    \begin{flushleft}
+      \hspace*{0.8cm}Nguyên tắc Iron Triangle cho rằng chỉ có thể đạt hai trong ba tiêu chí: rẻ, nhanh và tốt. Mỗi lựa chọn framework cần cân nhắc dựa trên ưu tiên này.
+    \end{flushleft}
+    
+    \begin{flushleft}
+      \centering
+      \includegraphics[width=0.45\textwidth]{images/iron_triangle.png} \\
+      \textit{\small Hình: Mô hình Iron Triangle – Rẻ, Nhanh, Tốt – Chọn hai}
+    \end{flushleft}
+    
+    \begin{flushleft}
+      \hspace*{0.8cm}Tùy vào mục tiêu dự án, mỗi framework sẽ phù hợp với một chiến lược khác nhau.
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+          \item React Native: Phù hợp cho dự án cần MVP (Minimum Viable Product) nhanh chóng, nhưng hiệu năng không cao.
+          \item Flutter: Đòi hỏi đầu tư ban đầu để học Dart, nhưng mang lại hiệu năng cao và giao diện tùy biến tốt hơn.
+      \end{itemize}
+    \end{flushleft}
+    
+
+  \subsubsection{Khả năng tích hợp với hệ sinh thái hiện có}
+    \begin{flushleft}
+      \hspace*{0.8cm}React Native tận dụng tốt hệ sinh thái JavaScript (Node.js, npm, Expo) và dễ tích hợp với ứng dụng web hiện tại.
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Flutter mặc dù độc lập hơn, nhưng vẫn có thể kết nối hiệu quả với Firebase hoặc Google Cloud thông qua plugin.
+    \end{flushleft}
+
+    \begin{flushleft}
+      \hspace*{0.8cm}Một ví dụ điển hình cho khả năng tích hợp là Shopify.
+      \setlength{\leftmargini}{1.5cm}
+      \begin{itemize}
+          \item Shopify sử dụng React Native để tích hợp ứng dụng mobile với nền tảng web sẵn có.
+      \end{itemize}
+    \end{flushleft}
+
+\end{flushleft}
+
 
 % 2.3
 \subsection{Lịch sử phát triển của kiến trúc đa nền tảng}
 \renewcommand{\labelitemi}{--}    
-    \begin{flushleft}
-      \subsubsection{Thế hệ đầu tiên (2010–2015): WebView-based Frameworks}
-        \begin{flushleft}
-          \hspace*{0.8cm}Công cụ tiêu biểu: PhoneGap, Cordova, Ionic.
-        \end{flushleft}
+\begin{flushleft}
 
-        \begin{flushleft}
-          \hspace*{0.8cm}Cơ chế hoạt động: Đóng gói ứng dụng dưới dạng WebView để hiển thị nội dung HTML/CSS/JavaScript.
-        \end{flushleft}
+  \subsubsection{Thế hệ đầu tiên (2010–2015): WebView-based Frameworks}
+  
+  \begin{flushleft}
+    Giai đoạn đầu tiên trong kiến trúc đa nền tảng là sự xuất hiện của các framework dựa trên WebView. 
+    \textbf{Công cụ tiêu biểu} gồm: PhoneGap, Cordova, và Ionic.
+  \end{flushleft}
 
-        \begin{flushleft}
-          \hspace*{0.8cm}Ưu điểm:
-          \setlength{\leftmargini}{1.5cm}
-          \begin{itemize}
-              \item Dễ học cho lập trình viên web.
-              \item Chi phí thấp.
-          \end{itemize}
-        \end{flushleft}
+  \begin{flushleft}
+    Các framework này hoạt động bằng cách đóng gói nội dung HTML/CSS/JavaScript trong WebView, 
+    tức là bản chất ứng dụng chỉ là một trình duyệt bên trong native shell.
+  \end{flushleft}
 
-        \begin{flushleft}
-          \hspace*{0.8cm}Hạn chế:
-          \setlength{\leftmargini}{1.5cm}
-          \begin{itemize}
-              \item Hiệu năng thấp: Không xử lý được animation phức tạp.
-              \item Giao diện kém: UI giống trang web, không tương tác được với native features (camera, GPS).
-          \end{itemize}
-        \end{flushleft}
+  \begin{flushleft}
+    \textbf{Ưu điểm} của cách tiếp cận này là:
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+      \item Lập trình viên web có thể dễ dàng tiếp cận và phát triển ứng dụng.
+      \item Chi phí phát triển và bảo trì thấp.
+    \end{itemize}
+  \end{flushleft}
 
-        \begin{flushleft}
-          \hspace*{0.8cm}Ví dụ thất bại:
-          \setlength{\leftmargini}{1.5cm}
-          \begin{itemize}
-              \item Ứng dụng Uber ban đầu dùng Cordova nhưng phải chuyển sang native do lag khi hiển thị bản đồ.
-          \end{itemize}
-        \end{flushleft}
-      
-      \subsubsection{Thế hệ thứ hai (2015–2017): Hybrid Frameworks}
-        \begin{flushleft}
-          \hspace*{0.8cm}Công cụ tiêu biểu: Xamarin, NativeScript.
-        \end{flushleft}
+  \begin{flushleft}
+    Tuy nhiên, \textbf{hạn chế} rõ ràng nhất là:
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+      \item Hiệu năng thấp, không xử lý tốt các animation phức tạp.
+      \item Giao diện không mượt, thiếu tính bản địa hoá do không sử dụng native UI components.
+    \end{itemize}
+  \end{flushleft}
 
-        \begin{flushleft}
-          \hspace*{0.8cm}Cơ chế hoạt động: Kết hợp WebView với native components thông qua bridge.
-        \end{flushleft}
+  \begin{flushleft}
+    Một ví dụ điển hình là ứng dụng Uber: 
+    ban đầu phát triển bằng Cordova nhưng phải chuyển sang native do hiện tượng lag khi hiển thị bản đồ.
+  \end{flushleft}
 
-        \begin{flushleft}
-          \hspace*{0.8cm}Ưu điểm:
-          \setlength{\leftmargini}{1.5cm}
-          \begin{itemize}
-              \item Cải thiện hiệu năng so với thế hệ đầu.
-              \item Truy cập được một số native API.
-          \end{itemize}
-        \end{flushleft}
+  \vspace{0.5cm}
+  \subsubsection{Thế hệ thứ hai (2015–2017): Hybrid Frameworks}
+  
+  \begin{flushleft}
+    Sau WebView, thế hệ thứ hai đã ra đời với nỗ lực kết hợp WebView và native components, 
+    gọi là Hybrid Frameworks. \textbf{Các công cụ tiêu biểu} là Xamarin và NativeScript.
+  \end{flushleft}
 
-        \begin{flushleft}
-          \hspace*{0.8cm}Hạn chế:
-          \setlength{\leftmargini}{1.5cm}
-          \begin{itemize}
-              \item Phức tạp trong cấu hình.
-              \item Vẫn phụ thuộc vào WebView cho một số tác vụ.
-          \end{itemize}
-        \end{flushleft}
-
-        \begin{flushleft}
-          \hspace*{0.8cm}Ví dụ:
-          \setlength{\leftmargini}{1.5cm}
-          \begin{itemize}
-              \item Microsoft Outlook sử dụng Xamarin để phát triển ứng dụng đa nền tảng.
-          \end{itemize}
-        \end{flushleft}
-
-      \subsubsection{Thế hệ hiện đại (2017–nay): Native-Reactive Frameworks}
-        \begin{flushleft}
-          \hspace*{0.8cm}Thế hệ hiện đại (2017–nay): Native-Reactive Frameworks
-        \end{flushleft}
-
-        \begin{flushleft}
-          \hspace*{0.8cm}Cơ chế hoạt động:
-          \setlength{\leftmargini}{1.5cm}
-          \begin{itemize}
-              \item React Native: Sử dụng JavaScript và Native Modules để render UI qua native components.
-              \item Flutter: Sử dụng Dart và Skia Engine để render UI độc lập, không phụ thuộc vào hệ điều hành.
-          \end{itemize}
-        \end{flushleft}
-
-        \begin{flushleft}
-          \hspace*{0.8cm}Ưu điểm:
-          \setlength{\leftmargini}{1.5cm}
-          \begin{itemize}
-              \item Hiệu năng gần native.
-              \item Hỗ trợ đa nền tảng (mobile, web, desktop).
-          \end{itemize}
-        \end{flushleft}
-
-        \begin{flushleft}
-          \hspace*{0.8cm}Bước đột phá:
-          \setlength{\leftmargini}{1.5cm}
-          \begin{itemize}
-              \item Flutter 2.0 (2020): Hỗ trợ web và desktop, trở thành framework "đa nền tảng toàn diện".
-              \item React Native New Architecture (2022): TurboModules và Fabric giúp tăng tốc độ render.
-          \end{itemize}
-        \end{flushleft}
-
-        \begin{flushleft}
-          \hspace*{0.8cm}Ví dụ thành công:
-          \setlength{\leftmargini}{1.5cm}
-          \begin{itemize}
-              \item Alibaba sử dụng Flutter để xây dựng ứng dụng Xianyu với 200 triệu người dùng, đạt hiệu năng tương đương native.
-          \end{itemize}
-        \end{flushleft}
+  \begin{flushleft}
+    Cơ chế hoạt động của chúng dựa vào \textit{bridge} để kết nối code JavaScript (hoặc C\#) với native APIs, cho phép sử dụng một số thành phần giao diện bản địa.
     \end{flushleft}
 
+  \begin{flushleft}
+    \textbf{Ưu điểm} nổi bật:
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+      \item Hiệu năng được cải thiện đáng kể so với thế hệ WebView.
+      \item Truy cập được các native APIs như camera, GPS.
+    \end{itemize}
+  \end{flushleft}
+
+  \begin{flushleft}
+    Tuy vậy, vẫn còn \textbf{nhiều hạn chế}:
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+      \item Quá trình cấu hình phức tạp và dễ lỗi.
+      \item Một số phần vẫn phụ thuộc vào WebView.
+    \end{itemize}
+  \end{flushleft}
+
+  \begin{flushleft}
+    Ví dụ điển hình: Microsoft Outlook ứng dụng Xamarin để phát triển ứng dụng đa nền tảng một cách hiệu quả.
+  \end{flushleft}
+
+  \vspace{0.5cm}
+  \subsubsection{Thế hệ hiện đại (2017–nay): Native-Reactive Frameworks}
+  
+  \begin{flushleft}
+    Từ năm 2017 đến nay, kiến trúc đa nền tảng bước sang giai đoạn hiện đại với sự xuất hiện của 
+    các \textbf{framework reactive sử dụng native rendering}. Tiêu biểu là React Native và Flutter.
+  \end{flushleft}
+
+  \begin{flushleft}
+    \textbf{Cơ chế hoạt động} của mỗi framework:
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+      \item React Native: Dùng JavaScript để điều khiển native components thông qua bridge.
+      \item Flutter: Dùng Dart và engine Skia để tự vẽ giao diện mà không phụ thuộc hệ điều hành.
+    \end{itemize}
+  \end{flushleft}
+
+  \begin{flushleft}
+    Nhờ cơ chế hiện đại, các framework này mang lại \textbf{nhiều ưu điểm}:
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+      \item Hiệu năng gần tương đương ứng dụng native.
+      \item Hỗ trợ đa nền tảng: từ mobile đến web và desktop.
+    \end{itemize}
+  \end{flushleft}
+
+  \begin{flushleft}
+    Một số \textbf{bước đột phá} quan trọng trong giai đoạn này:
+    \setlength{\leftmargini}{1.5cm}
+    \begin{itemize}
+      \item Flutter 2.0 (2020): Mở rộng hỗ trợ cho nền tảng web và desktop.
+      \item React Native New Architecture (2022): Ứng dụng TurboModules và Fabric để tối ưu hiệu suất.
+    \end{itemize}
+  \end{flushleft}
+
+  \begin{flushleft}
+    Một ví dụ thành công: Ứng dụng Xianyu của Alibaba sử dụng Flutter để phục vụ hơn 200 triệu người dùng, 
+    đạt hiệu năng tương đương ứng dụng native.
+  \end{flushleft}
+\end{flushleft}
 % 2.4
 \subsection{Xu hướng tương lai của kiến trúc đa nền tảng}
-\renewcommand{\labelitemi}{--}    
-  \subsubsection{Tích hợp AI/ML trong phát triển}
-    \begin{flushleft}
-      \hspace*{0.8cm}Tự động hóa code: Công cụ như Google’s ML Kit cho phép tích hợp machine learning vào ứng dụng đa nền tảng để nhận diện hình ảnh, xử lý ngôn ngữ tự nhiên.
-    \end{flushleft}
+\renewcommand{\labelitemi}{--}
 
-    \begin{flushleft}
-      \hspace*{0.8cm}Tối ưu hiệu năng: AI phân tích code để đề xuất cải thiện FPS hoặc giảm tiêu thụ RAM.
-    \end{flushleft}
+\subsubsection{Tích hợp AI/ML trong phát triển}
 
-    \begin{flushleft}
-      \hspace*{0.8cm}Ví dụ:
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-        \item Adobe XD sử dụng AI để tự động điều chỉnh UI/UX dựa trên hành vi người dùng.
-      \end{itemize}
-    \end{flushleft}
+Một trong những xu hướng quan trọng là việc tích hợp trí tuệ nhân tạo và học máy vào quy trình phát triển ứng dụng đa nền tảng.  
+Thông qua công cụ như Google’s ML Kit, lập trình viên có thể tự động hóa các tác vụ như nhận diện hình ảnh và xử lý ngôn ngữ tự nhiên.
 
-  \subsubsection{WebAssembly (Wasm) và Progressive Web Apps (PWA)}
-    \begin{flushleft}
-      \hspace*{0.8cm}WebAssembly: Cho phép ứng dụng chạy trên trình duyệt với tốc độ gần native, mở rộng khả năng đa nền tảng.
-    \end{flushleft}
+AI không chỉ hỗ trợ tính năng thông minh, mà còn giúp tối ưu hiệu năng ứng dụng.  
+Cụ thể, các hệ thống AI có thể phân tích mã nguồn để đề xuất cải thiện tốc độ khung hình (FPS) hoặc giảm tiêu thụ bộ nhớ RAM.
 
-    \begin{flushleft}
-      \hspace*{0.8cm}PWA: Kết hợp giữa web và mobile app, hỗ trợ offline và push notifications.
-    \end{flushleft}
+Một ví dụ điển hình là Adobe XD, trong đó AI được sử dụng để tự động điều chỉnh giao diện người dùng dựa trên hành vi thực tế của người dùng.
 
-    \begin{flushleft}
-      \hspace*{0.8cm}Ví dụ:
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-        \item Starbucks xây dựng PWA để tăng tốc độ tải trang và trải nghiệm người dùng.
-      \end{itemize}
-    \end{flushleft}
+\vspace{0.5cm}
 
-  \subsubsection{Low-Code/No-Code Platforms}
-    \begin{flushleft}
-      \hspace*{0.8cm}Nền tảng kéo thả: Cho phép người dùng không chuyên tạo ứng dụng đa nền tảng mà không cần viết code.
-    \end{flushleft}
+\subsubsection{WebAssembly (Wasm) và Progressive Web Apps (PWA)}
 
-    \begin{flushleft}
-      \hspace*{0.8cm}Ưu điểm: Giảm thời gian phát triển và chi phí đào tạo.
-    \end{flushleft}
-    
-    \begin{flushleft}
-      \hspace*{0.8cm}Ví dụ:
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-        \item Microsoft Power Apps giúp doanh nghiệp xây dựng ứng dụng nội bộ chỉ trong vài giờ.
-      \end{itemize}
-    \end{flushleft}
+WebAssembly đang nổi lên như một công nghệ quan trọng giúp ứng dụng chạy trên trình duyệt với hiệu năng gần tương đương ứng dụng native.  
+Khả năng này giúp mở rộng phạm vi triển khai ứng dụng đa nền tảng trên môi trường web một cách hiệu quả.
+
+Cùng với đó, Progressive Web Apps (PWA) mang lại sự kết hợp giữa ứng dụng web và mobile app,  
+hỗ trợ hoạt động offline và cho phép gửi thông báo đẩy đến người dùng như các ứng dụng native.
+
+Một ví dụ tiêu biểu là Starbucks, hãng đã triển khai PWA để tăng tốc độ tải trang và nâng cao trải nghiệm người dùng ngay cả khi không có kết nối mạng ổn định.
+
+\vspace{0.5cm}
+
+\subsubsection{Low-Code/No-Code Platforms}
+
+Low-code và no-code platforms đang mở ra cơ hội mới cho cả những người không chuyên trong lĩnh vực lập trình.  
+Với các nền tảng kéo–thả trực quan, người dùng có thể xây dựng ứng dụng đa nền tảng mà không cần viết bất kỳ dòng code nào.
+
+Lợi ích lớn nhất của mô hình này là rút ngắn thời gian phát triển và giảm thiểu chi phí đào tạo kỹ thuật,  
+đặc biệt phù hợp với doanh nghiệp nhỏ hoặc bộ phận nội bộ cần triển khai nhanh giải pháp công nghệ.
+
+Chẳng hạn, Microsoft Power Apps đã giúp nhiều doanh nghiệp tạo ra ứng dụng quản lý nội bộ chỉ trong vài giờ làm việc.
+
 
 % 2.5
 \subsection{Case Study Chi Tiết}
-\renewcommand{\labelitemi}{--}    
-    \begin{flushleft}
-      \subsubsection{Airbnb và bài học từ React Native}
-        \begin{flushleft}
-          \hspace*{0.8cm}Thách thức:
-          \setlength{\leftmargini}{1.5cm}
-          \begin{itemize}
-            \item Gặp khó khăn khi tùy chỉnh UI phức tạp cho các nền tảng.
-            \item Hiệu năng không đáp ứng được yêu cầu khi mở rộng tính năng đặt phòng thời gian thực.
-          \end{itemize}
-        \end{flushleft}
+\renewcommand{\labelitemi}{--}
 
-        \begin{flushleft}
-          \hspace*{0.8cm}Giải pháp: Chuyển sang phát triển native cho các module quan trọng, giữ React Native cho phần admin.
-        \end{flushleft}
+\subsubsection{Airbnb và bài học từ React Native}
 
-        \begin{flushleft}
-          \hspace*{0.8cm}Kết quả: Cải thiện 30\% hiệu năng nhưng tăng 40\% chi phí bảo trì.
-        \end{flushleft}
+Airbnb đã từng áp dụng React Native với kỳ vọng tận dụng khả năng chia sẻ code giữa các nền tảng.  
+Tuy nhiên, trong quá trình phát triển, họ gặp phải một số thách thức lớn.
 
-      \subsubsection{Google Pay: Thành công với Flutter}
-        \begin{flushleft}
-          \hspace*{0.8cm}Chiến lược: Sử dụng Flutter để triển khai đồng bộ trên iOS, Android và web.
-        \end{flushleft}
+Cụ thể, nhóm phát triển gặp khó khăn trong việc tùy chỉnh giao diện người dùng phức tạp cho từng nền tảng,  
+đặc biệt là khi phải đảm bảo trải nghiệm nhất quán và mượt mà.
 
-        \begin{flushleft}
-          \hspace*{0.8cm}Lợi ích:
-          \setlength{\leftmargini}{1.5cm}
-          \begin{itemize}
-            \item Giảm 50\% thời gian phát triển.
-            \item Đạt FPS ổn định ở mức 60 trên mọi thiết bị.
-          \end{itemize}
-        \end{flushleft}
+Ngoài ra, hiệu năng ứng dụng không đủ đáp ứng yêu cầu khi tích hợp tính năng đặt phòng theo thời gian thực,  
+gây ảnh hưởng đến trải nghiệm người dùng cuối.
 
-        \begin{flushleft}
-          \hspace*{0.8cm}Thách thức: Đào tạo đội ngũ về Dart và Skia Engine.
-        \end{flushleft}
-    \end{flushleft}
+Để giải quyết vấn đề này, Airbnb quyết định chuyển sang phát triển native cho các module quan trọng,  
+đồng thời giữ lại React Native cho phần quản trị nội bộ nhằm tiết kiệm chi phí.
+
+Kết quả của chiến lược này là hiệu năng hệ thống được cải thiện 30\%,  
+nhưng chi phí bảo trì cũng tăng lên khoảng 40\% do cần duy trì song song hai mã nguồn.
+
+\vspace{0.5cm}
+
+\subsubsection{Google Pay: Thành công với Flutter}
+
+Google Pay là một trong những ví dụ điển hình cho việc ứng dụng thành công Flutter vào phát triển đa nền tảng.  
+Chiến lược của nhóm phát triển là sử dụng một codebase duy nhất cho cả iOS, Android và web.
+
+Nhờ khả năng đồng bộ cao của Flutter, thời gian phát triển đã giảm tới 50\%,  
+giúp nhóm ra mắt sản phẩm nhanh hơn mà vẫn đảm bảo chất lượng.
+
+Bên cạnh đó, hiệu năng ứng dụng cũng được đảm bảo, với tốc độ khung hình (FPS) ổn định ở mức 60 trên mọi thiết bị,  
+tạo nên trải nghiệm người dùng mượt mà và đáng tin cậy.
+
+Tuy nhiên, nhóm cũng đối mặt với thách thức trong việc đào tạo đội ngũ kỹ thuật,  
+đặc biệt là làm quen với ngôn ngữ Dart và cơ chế vẽ giao diện qua Skia Engine.
 
 % 2.6
 \subsection{So Sánh Chi Tiết React Native vs. Flutter}
 \renewcommand{\labelitemi}{--}    
-    \begin{flushleft}
-        \hspace*{0.8cm}(Có một cái bảng ở đây)
-    \end{flushleft}
+\begin{flushleft}
+    \hspace*{0.8cm}Biểu đồ dưới đây so sánh mức độ quan tâm giữa hai framework di động phổ biến: \textbf{Flutter (xanh)} và \textbf{React Native (đỏ)} trong 12 tháng qua tại Hoa Kỳ, dựa trên dữ liệu tìm kiếm từ Google Trends.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\textwidth]{images/reactNative_flutter.png}
+        \caption{So sánh xu hướng tìm kiếm giữa Flutter và React Native (Google Trends, US, 12 tháng)}
+    \end{figure}
+
+    \vspace{0.5cm}
+    Dưới đây là bảng so sánh một số khía cạnh chính giữa React Native và Flutter:
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|p{6cm}|p{6cm}|}
+            \hline
+            \textbf{Tiêu chí} & \textbf{React Native} & \textbf{Flutter} \\
+            \hline
+            Ngôn ngữ lập trình & JavaScript (hoặc TypeScript) & Dart \\
+            \hline
+            Hiệu suất & Gần với native, phụ thuộc vào bridge & Cao hơn nhờ rendering engine riêng (Skia) \\
+            \hline
+            Giao diện người dùng & Dựa vào native components & Tùy chỉnh hoàn toàn, nhất quán mọi nền tảng \\
+            \hline
+            Cộng đồng & Lâu đời hơn, cộng đồng lớn & Đang phát triển nhanh chóng, được Google hỗ trợ mạnh \\
+            \hline
+            Tài liệu & Đầy đủ, nhiều ví dụ thực tiễn & Rõ ràng, cấu trúc tốt, phù hợp cho người mới bắt đầu \\
+            \hline
+        \end{tabular}
+        \caption{So sánh các yếu tố giữa React Native và Flutter}
+    \end{table}
+\end{flushleft}
 
 % 2.7
 \subsection{Kết luận phần Cơ Sở Lý Thuyết}
