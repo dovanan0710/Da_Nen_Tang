@@ -37,48 +37,49 @@
     \subsection{Các mô hình kiến trúc phổ biến trong ứng dụng di động}
     \renewcommand{\labelitemi}{--}
     \begin{flushleft}
-        \hspace*{0.8cm}Hiện nay có một số kiến trúc phổ biến trong ứng dụng di động bao gồm:
-        \setlength{\leftmargini}{1.5cm}
-        \begin{itemize}
-            \item Kiến trúc Layers (3 thành phần): Kiến trúc này chia ứng dụng thành ba lớp chính: lớp giao diện người dùng (UI), lớp logic nghiệp vụ (Business Logic), và lớp dữ liệu (Data). Mô hình này giúp tách biệt các thành phần của ứng dụng, làm cho ứng dụng dễ bảo trì và mở rộng.
-            \item Kiến trúc MVC (Model-View-Controller): Ở kiến trúc này, ứng dụng được phân chia thành ba thành phần chính: Model (dữ liệu và logic), View (giao diện người dùng), và Controller (xử lý sự kiện và giao tiếp giữa Model và View).
-            \item Kiến trúc MVVM (Model-View-ViewModel): Tương tự như MVC nhưng có sự bổ sung của ViewModel, giúp quản lý dữ liệu giữa View và Model, tạo sự tách biệt rõ ràng hơn giữa các thành phần trong ứng dụng.
-            \item Kiến trúc MVI (Model-View-Intent): Kiến trúc này phân chia mỗi hành động người dùng (Intent) thành các sự kiện, gửi đến View, rồi View trả lại trạng thái mới cho Model, giúp duy trì tính nhất quán và đồng bộ trong ứng dụng.
-            \item Kiến trúc Client-Server: Mô hình này chia ứng dụng thành hai phần: Client (ứng dụng di động) và Server (máy chủ). Client gửi yêu cầu đến Server, Server xử lý và trả về kết quả cho Client. Mô hình này thường được sử dụng trong các ứng dụng cần giao tiếp với cơ sở dữ liệu hoặc dịch vụ trực tuyến.
-        \end{itemize}     
+        \hspace*{0.8cm}Hiện nay, trong phát triển ứng dụng di động, có một số mô hình kiến trúc được sử dụng phổ biến nhằm đảm bảo tính tổ chức và hiệu quả trong vận hành.
     \end{flushleft}
+
+    \begin{flushleft}
+        \hspace*{0.8cm}Mô hình Layers (hay kiến trúc ba lớp) là một cách tiếp cận cơ bản, trong đó ứng dụng được chia thành ba thành phần: lớp giao diện người dùng (UI), lớp xử lý nghiệp vụ (Business Logic), và lớp dữ liệu (Data). Cách chia lớp rõ ràng này giúp tách biệt các chức năng, tạo điều kiện thuận lợi cho việc bảo trì và mở rộng ứng dụng.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Một mô hình quen thuộc khác là MVC (Model-View-Controller), trong đó phần dữ liệu và logic được tách biệt rõ ràng với giao diện và phần xử lý sự kiện. Model chịu trách nhiệm quản lý dữ liệu và logic nghiệp vụ, View đảm nhiệm việc hiển thị giao diện, còn Controller xử lý các hành động của người dùng và điều phối tương tác giữa Model và View.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}So với MVC, mô hình MVVM (Model-View-ViewModel) cải tiến hơn bằng cách đưa vào thành phần ViewModel nhằm xử lý logic hiển thị. Điều này giúp giảm phụ thuộc giữa View và Model, đồng thời hỗ trợ việc kiểm thử và tái sử dụng mã nguồn hiệu quả hơn.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Một mô hình hiện đại nữa là MVI (Model-View-Intent). Mô hình này tiếp cận theo hướng xử lý mọi tương tác của người dùng dưới dạng các Intent. Các Intent này sẽ tạo ra một trạng thái mới được truyền ngược về cho View. Cách tiếp cận này giúp đảm bảo sự đồng bộ trạng thái trong toàn bộ ứng dụng.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Cuối cùng, mô hình Client-Server là nền tảng của hầu hết các ứng dụng hiện đại. Ở mô hình này, ứng dụng di động đóng vai trò Client sẽ gửi các yêu cầu đến Server để xử lý, và sau đó nhận phản hồi trở lại. Mô hình này phù hợp với các ứng dụng có nhu cầu giao tiếp dữ liệu thường xuyên với máy chủ hoặc các dịch vụ đám mây.
+      \end{flushleft}
 
     % 1.4.
     \subsection{Công nghệ và công cụ hỗ trợ}
     \renewcommand{\labelitemi}{--}
-    \begin{itemize}
-        \item[] Backend cho ứng dụng di động:
-        \begin{itemize}
-            \item Node.js với NestJS: Node.js là môi trường runtime cho JavaScript, cho phép xử lý các tác vụ bất đồng bộ hiệu quả. NestJS là framework dựa trên Node.js, giúp phát triển các ứng dụng server-side bằng cách sử dụng TypeScript, mang lại sự tổ chức và cấu trúc tốt cho dự án.
-            \item Django: Một framework Python mạnh mẽ, Django cung cấp các công cụ để xây dựng ứng dụng web an toàn và nhanh chóng. Django thường được sử dụng trong các ứng dụng yêu cầu bảo mật cao và khả năng mở rộng tốt.
-            \item Spring Boot: Là framework Java giúp phát triển các ứng dụng backend nhanh chóng và dễ dàng, đặc biệt là các ứng dụng có tính mở rộng cao và yêu cầu quản lý phức tạp.
-        \end{itemize}
-    
-        \item[] Database:
-        \begin{itemize}
-            \item MySQL: Hệ quản trị cơ sở dữ liệu quan hệ mã nguồn mở phổ biến, MySQL phù hợp với các ứng dụng yêu cầu tính ổn định cao và khả năng mở rộng.
-            \item PostgreSQL: Hệ quản trị cơ sở dữ liệu quan hệ mạnh mẽ, hỗ trợ các tính năng phức tạp hơn MySQL, phù hợp cho các ứng dụng yêu cầu tính nhất quán và linh hoạt cao.
-            \item Firebase Firestore: Dịch vụ cơ sở dữ liệu NoSQL của Google, cung cấp tính năng đồng bộ thời gian thực, phù hợp cho các ứng dụng di động yêu cầu đồng bộ dữ liệu nhanh chóng và liên tục.
-        \end{itemize}
-    
-        \item[] Frontend và Mobile Frameworks:
-        \begin{itemize}
-            \item React Native: Framework giúp phát triển ứng dụng di động cross-platform sử dụng JavaScript và React, tiết kiệm thời gian phát triển với mã nguồn chung cho cả iOS và Android.
-            \item Flutter: Framework của Google sử dụng ngôn ngữ Dart, giúp xây dựng giao diện người dùng đẹp mắt và mượt mà cho các ứng dụng di động.
-            \item Swift: Ngôn ngữ lập trình dành riêng cho iOS, tối ưu hóa cho các ứng dụng di động trên hệ sinh thái Apple.
-            \item Kotlin: Ngôn ngữ chính để phát triển ứng dụng Android, mang lại cú pháp đơn giản và dễ duy trì, tương thích tốt với Java.
-        \end{itemize}
-    
-        \item[] CI/CD và DevOps trong phát triển hệ thống:
-        \begin{itemize}
-            \item GitHub Actions: Công cụ tự động hóa tích hợp với GitHub, giúp quản lý quy trình CI/CD cho các dự án phần mềm.
-            \item Jenkins: Công cụ tự động hóa mã nguồn mở giúp quản lý các quy trình tích hợp và triển khai liên tục.
-            \item Docker: Công cụ giúp đóng gói và triển khai ứng dụng trong các container, đảm bảo tính nhất quán giữa các môi trường khác nhau.
-        \end{itemize}
-    \end{itemize}
+    \begin{flushleft}
+        \hspace*{0.8cm}Để triển khai và vận hành một kiến trúc hệ thống hiệu quả, việc lựa chọn công nghệ và công cụ phù hợp là điều không thể thiếu.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Ở phía backend, một số framework phổ biến hiện nay bao gồm Node.js với NestJS, Django, và Spring Boot. Trong đó, NestJS – xây dựng trên nền Node.js – cho phép phát triển server-side sử dụng TypeScript, giúp tổ chức mã nguồn tốt hơn. Django là lựa chọn mạnh mẽ từ Python, nổi bật với tính bảo mật và khả năng mở rộng. Còn Spring Boot là framework Java đáng tin cậy, thường được dùng trong các hệ thống lớn cần quản lý phức tạp.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Về cơ sở dữ liệu, có thể sử dụng các hệ quản trị quan hệ như MySQL hoặc PostgreSQL, tùy theo độ phức tạp của dữ liệu và yêu cầu về hiệu năng. MySQL phù hợp cho các ứng dụng cần tính ổn định cao, trong khi PostgreSQL cung cấp nhiều tính năng nâng cao hơn. Đối với các ứng dụng di động yêu cầu đồng bộ dữ liệu theo thời gian thực, Firebase Firestore là một lựa chọn phù hợp nhờ khả năng cập nhật nhanh và hỗ trợ tốt cho môi trường di động.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Phía frontend và mobile, các framework như React Native, Flutter, Swift, và Kotlin là những lựa chọn phổ biến. React Native và Flutter hỗ trợ phát triển ứng dụng đa nền tảng, trong khi Swift và Kotlin là lựa chọn tối ưu cho phát triển ứng dụng gốc trên iOS và Android tương ứng.
+      \end{flushleft}
+
+      \begin{flushleft}
+        \hspace*{0.8cm}Cuối cùng, để tăng tính tự động hóa và đảm bảo chất lượng phần mềm, các công cụ CI/CD như GitHub Actions hoặc Jenkins thường được tích hợp vào quy trình phát triển. Bên cạnh đó, việc sử dụng Docker giúp đóng gói và triển khai hệ thống một cách nhất quán trên nhiều môi trường khác nhau.
+      \end{flushleft}
    
