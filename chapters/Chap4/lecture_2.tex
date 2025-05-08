@@ -132,146 +132,43 @@
     
 
   \subsubsection{Khả năng tích hợp với hệ sinh thái hiện có}
-    \begin{flushleft}
       \hspace*{0.8cm}React Native tận dụng tốt hệ sinh thái JavaScript (Node.js, npm, Expo) và dễ tích hợp với ứng dụng web hiện tại.
-    \end{flushleft}
 
-    \begin{flushleft}
       \hspace*{0.8cm}Flutter mặc dù độc lập hơn, nhưng vẫn có thể kết nối hiệu quả với Firebase hoặc Google Cloud thông qua plugin.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Một ví dụ điển hình cho khả năng tích hợp là Shopify.
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item Shopify sử dụng React Native để tích hợp ứng dụng mobile với nền tảng web sẵn có.
-      \end{itemize}
-    \end{flushleft}
+  
+      \hspace*{0.8cm}Một ví dụ điển hình cho khả năng tích hợp là Shopify. Shopify sử dụng React Native để tích hợp ứng dụng mobile với nền tảng web sẵn có.    
 
 \end{flushleft}
 
 
 % 2.3
 \subsection{Lịch sử phát triển của kiến trúc đa nền tảng}
-\renewcommand{\labelitemi}{--}    
-\begin{flushleft}
 
-  \subsubsection{Thế hệ đầu tiên (2010–2015): WebView-based Frameworks}
-  
-  \begin{flushleft}
-    Giai đoạn đầu tiên trong kiến trúc đa nền tảng là sự xuất hiện của các framework dựa trên WebView. 
-    \textbf{Công cụ tiêu biểu} gồm: PhoneGap, Cordova, và Ionic.
-  \end{flushleft}
+\subsubsection{Thế hệ đầu tiên (2010–2015): WebView-based Frameworks}
+\hspace*{1.3em} Giai đoạn đầu tiên trong kiến trúc đa nền tảng là sự xuất hiện của các framework dựa trên WebView, điển hình là PhoneGap, Cordova, và Ionic. Các framework này hoạt động bằng cách đóng gói nội dung HTML/CSS/JavaScript trong WebView, tức bản chất ứng dụng chỉ là trình duyệt bên trong native shell.
 
-  \begin{flushleft}
-    Các framework này hoạt động bằng cách đóng gói nội dung HTML/CSS/JavaScript trong WebView, 
-    tức là bản chất ứng dụng chỉ là một trình duyệt bên trong native shell.
-  \end{flushleft}
+\indent Một ưu điểm lớn của các framework này là lập trình viên web có thể dễ dàng phát triển ứng dụng với chi phí phát triển và bảo trì thấp. Tuy nhiên, chúng có những hạn chế rõ ràng như hiệu năng thấp, không xử lý tốt các animation phức tạp, và giao diện thiếu tính bản địa hoá. Một ví dụ điển hình là ứng dụng Uber, ban đầu phát triển bằng Cordova nhưng phải chuyển sang native do hiện tượng lag khi hiển thị bản đồ.
 
-  \begin{flushleft}
-    \textbf{Ưu điểm} của cách tiếp cận này là:
-    \setlength{\leftmargini}{1.5cm}
-    \begin{itemize}
-      \item Lập trình viên web có thể dễ dàng tiếp cận và phát triển ứng dụng.
-      \item Chi phí phát triển và bảo trì thấp.
-    \end{itemize}
-  \end{flushleft}
+\subsubsection{Thế hệ thứ hai (2015–2017): Hybrid Frameworks}
 
-  \begin{flushleft}
-    Tuy nhiên, \textbf{hạn chế} rõ ràng nhất là:
-    \setlength{\leftmargini}{1.5cm}
-    \begin{itemize}
-      \item Hiệu năng thấp, không xử lý tốt các animation phức tạp.
-      \item Giao diện không mượt, thiếu tính bản địa hoá do không sử dụng native UI components.
-    \end{itemize}
-  \end{flushleft}
+\hspace*{1.3em} Sau WebView, thế hệ thứ hai ra đời với sự kết hợp giữa WebView và native components, gọi là Hybrid Frameworks, điển hình là Xamarin và NativeScript. Các framework này sử dụng cơ chế \textit{bridge} để kết nối JavaScript (hoặc C\#) với native APIs, cho phép sử dụng một số thành phần giao diện bản địa.
 
-  \begin{flushleft}
-    Một ví dụ điển hình là ứng dụng Uber: 
-    ban đầu phát triển bằng Cordova nhưng phải chuyển sang native do hiện tượng lag khi hiển thị bản đồ.
-  \end{flushleft}
+\indent Hybrid frameworks mang lại hiệu năng cải thiện so với WebView và cho phép truy cập các native APIs như camera, GPS. Tuy nhiên, chúng vẫn có một số hạn chế như quá trình cấu hình phức tạp và dễ lỗi, và một số phần vẫn phải phụ thuộc vào WebView. Microsoft Outlook là ví dụ điển hình khi sử dụng Xamarin để phát triển ứng dụng đa nền tảng hiệu quả.
 
-  \vspace{0.5cm}
-  \subsubsection{Thế hệ thứ hai (2015–2017): Hybrid Frameworks}
-  
-  \begin{flushleft}
-    Sau WebView, thế hệ thứ hai đã ra đời với nỗ lực kết hợp WebView và native components, 
-    gọi là Hybrid Frameworks. \textbf{Các công cụ tiêu biểu} là Xamarin và NativeScript.
-  \end{flushleft}
+\subsubsection{Thế hệ hiện đại (2017–nay): Native-Reactive Frameworks}
 
-  \begin{flushleft}
-    Cơ chế hoạt động của chúng dựa vào \textit{bridge} để kết nối code JavaScript (hoặc C\#) với native APIs, cho phép sử dụng một số thành phần giao diện bản địa.
-    \end{flushleft}
+\hspace*{1.3em} Từ năm 2017, kiến trúc đa nền tảng đã chuyển sang giai đoạn hiện đại với sự xuất hiện của các framework sử dụng native rendering, ví dụ như React Native và Flutter. Các framework này sử dụng cơ chế điều khiển native components thông qua bridge (React Native) hoặc tự vẽ giao diện mà không phụ thuộc vào hệ điều hành (Flutter).
 
-  \begin{flushleft}
-    \textbf{Ưu điểm} nổi bật:
-    \setlength{\leftmargini}{1.5cm}
-    \begin{itemize}
-      \item Hiệu năng được cải thiện đáng kể so với thế hệ WebView.
-      \item Truy cập được các native APIs như camera, GPS.
-    \end{itemize}
-  \end{flushleft}
+\indent Nhờ cơ chế hiện đại, các framework này mang lại hiệu năng gần tương đương ứng dụng native và hỗ trợ đa nền tảng, từ mobile đến web và desktop. Một số bước đột phá quan trọng trong giai đoạn này gồm Flutter 2.0 (2020) mở rộng hỗ trợ nền tảng web và desktop, và React Native New Architecture (2022) sử dụng TurboModules và Fabric để tối ưu hiệu suất.
 
-  \begin{flushleft}
-    Tuy vậy, vẫn còn \textbf{nhiều hạn chế}:
-    \setlength{\leftmargini}{1.5cm}
-    \begin{itemize}
-      \item Quá trình cấu hình phức tạp và dễ lỗi.
-      \item Một số phần vẫn phụ thuộc vào WebView.
-    \end{itemize}
-  \end{flushleft}
-
-  \begin{flushleft}
-    Ví dụ điển hình: Microsoft Outlook ứng dụng Xamarin để phát triển ứng dụng đa nền tảng một cách hiệu quả.
-  \end{flushleft}
-
-  \vspace{0.5cm}
-  \subsubsection{Thế hệ hiện đại (2017–nay): Native-Reactive Frameworks}
-  
-  \begin{flushleft}
-    Từ năm 2017 đến nay, kiến trúc đa nền tảng bước sang giai đoạn hiện đại với sự xuất hiện của 
-    các \textbf{framework reactive sử dụng native rendering}. Tiêu biểu là React Native và Flutter.
-  \end{flushleft}
-
-  \begin{flushleft}
-    \textbf{Cơ chế hoạt động} của mỗi framework:
-    \setlength{\leftmargini}{1.5cm}
-    \begin{itemize}
-      \item React Native: Dùng JavaScript để điều khiển native components thông qua bridge.
-      \item Flutter: Dùng Dart và engine Skia để tự vẽ giao diện mà không phụ thuộc hệ điều hành.
-    \end{itemize}
-  \end{flushleft}
-
-  \begin{flushleft}
-    Nhờ cơ chế hiện đại, các framework này mang lại \textbf{nhiều ưu điểm}:
-    \setlength{\leftmargini}{1.5cm}
-    \begin{itemize}
-      \item Hiệu năng gần tương đương ứng dụng native.
-      \item Hỗ trợ đa nền tảng: từ mobile đến web và desktop.
-    \end{itemize}
-  \end{flushleft}
-
-  \begin{flushleft}
-    Một số \textbf{bước đột phá} quan trọng trong giai đoạn này:
-    \setlength{\leftmargini}{1.5cm}
-    \begin{itemize}
-      \item Flutter 2.0 (2020): Mở rộng hỗ trợ cho nền tảng web và desktop.
-      \item React Native New Architecture (2022): Ứng dụng TurboModules và Fabric để tối ưu hiệu suất.
-    \end{itemize}
-  \end{flushleft}
-
-  \begin{flushleft}
-    Một ví dụ thành công: Ứng dụng Xianyu của Alibaba sử dụng Flutter để phục vụ hơn 200 triệu người dùng, 
-    đạt hiệu năng tương đương ứng dụng native.
-  \end{flushleft}
-\end{flushleft}
+\indent Ứng dụng Xianyu của Alibaba là ví dụ thành công khi sử dụng Flutter để phục vụ hơn 200 triệu người dùng, đạt hiệu năng tương đương ứng dụng native.
 % 2.4
 \subsection{Xu hướng tương lai của kiến trúc đa nền tảng}
 \renewcommand{\labelitemi}{--}
 
 \subsubsection{Tích hợp AI/ML trong phát triển}
 
-Một trong những xu hướng quan trọng là việc tích hợp trí tuệ nhân tạo và học máy vào quy trình phát triển ứng dụng đa nền tảng.  
+\hspace*{1.5em}Một trong những xu hướng quan trọng là việc tích hợp trí tuệ nhân tạo và học máy vào quy trình phát triển ứng dụng đa nền tảng.  
 Thông qua công cụ như Google’s ML Kit, lập trình viên có thể tự động hóa các tác vụ như nhận diện hình ảnh và xử lý ngôn ngữ tự nhiên.
 
 AI không chỉ hỗ trợ tính năng thông minh, mà còn giúp tối ưu hiệu năng ứng dụng.  
@@ -283,7 +180,7 @@ Một ví dụ điển hình là Adobe XD, trong đó AI được sử dụng đ
 
 \subsubsection{WebAssembly (Wasm) và Progressive Web Apps (PWA)}
 
-WebAssembly đang nổi lên như một công nghệ quan trọng giúp ứng dụng chạy trên trình duyệt với hiệu năng gần tương đương ứng dụng native.  
+\hspace*{1.5em}WebAssembly đang nổi lên như một công nghệ quan trọng giúp ứng dụng chạy trên trình duyệt với hiệu năng gần tương đương ứng dụng native.  
 Khả năng này giúp mở rộng phạm vi triển khai ứng dụng đa nền tảng trên môi trường web một cách hiệu quả.
 
 Cùng với đó, Progressive Web Apps (PWA) mang lại sự kết hợp giữa ứng dụng web và mobile app,  
@@ -295,7 +192,7 @@ Một ví dụ tiêu biểu là Starbucks, hãng đã triển khai PWA để tă
 
 \subsubsection{Low-Code/No-Code Platforms}
 
-Low-code và no-code platforms đang mở ra cơ hội mới cho cả những người không chuyên trong lĩnh vực lập trình.  
+\hspace*{1.5em}Low-code và no-code platforms đang mở ra cơ hội mới cho cả những người không chuyên trong lĩnh vực lập trình.  
 Với các nền tảng kéo–thả trực quan, người dùng có thể xây dựng ứng dụng đa nền tảng mà không cần viết bất kỳ dòng code nào.
 
 Lợi ích lớn nhất của mô hình này là rút ngắn thời gian phát triển và giảm thiểu chi phí đào tạo kỹ thuật,  
@@ -310,32 +207,24 @@ Chẳng hạn, Microsoft Power Apps đã giúp nhiều doanh nghiệp tạo ra �
 
 \subsubsection{Airbnb và bài học từ React Native}
 
-Airbnb đã từng áp dụng React Native với kỳ vọng tận dụng khả năng chia sẻ code giữa các nền tảng.  
-Tuy nhiên, trong quá trình phát triển, họ gặp phải một số thách thức lớn.
-
-Cụ thể, nhóm phát triển gặp khó khăn trong việc tùy chỉnh giao diện người dùng phức tạp cho từng nền tảng,  
-đặc biệt là khi phải đảm bảo trải nghiệm nhất quán và mượt mà.
-
-Ngoài ra, hiệu năng ứng dụng không đủ đáp ứng yêu cầu khi tích hợp tính năng đặt phòng theo thời gian thực,  
+\hspace*{1.5em}Airbnb đã từng áp dụng React Native với kỳ vọng tận dụng khả năng chia sẻ code giữa các nền tảng.  
+Tuy nhiên, trong quá trình phát triển, họ gặp phải một số thách thức lớn. Cụ thể, nhóm phát triển gặp khó khăn trong việc tùy chỉnh giao diện người dùng phức tạp cho từng nền tảng,  
+đặc biệt là khi phải đảm bảo trải nghiệm nhất quán và mượt mà. Ngoài ra, hiệu năng ứng dụng không đủ đáp ứng yêu cầu khi tích hợp tính năng đặt phòng theo thời gian thực,  
 gây ảnh hưởng đến trải nghiệm người dùng cuối.
 
 Để giải quyết vấn đề này, Airbnb quyết định chuyển sang phát triển native cho các module quan trọng,  
-đồng thời giữ lại React Native cho phần quản trị nội bộ nhằm tiết kiệm chi phí.
-
-Kết quả của chiến lược này là hiệu năng hệ thống được cải thiện 30\%,  
+đồng thời giữ lại React Native cho phần quản trị nội bộ nhằm tiết kiệm chi phí. Kết quả của chiến lược này là hiệu năng hệ thống được cải thiện 30\%,  
 nhưng chi phí bảo trì cũng tăng lên khoảng 40\% do cần duy trì song song hai mã nguồn.
 
 \vspace{0.5cm}
 
 \subsubsection{Google Pay: Thành công với Flutter}
 
-Google Pay là một trong những ví dụ điển hình cho việc ứng dụng thành công Flutter vào phát triển đa nền tảng.  
+\hspace*{1.5em}Google Pay là một trong những ví dụ điển hình cho việc ứng dụng thành công Flutter vào phát triển đa nền tảng.  
 Chiến lược của nhóm phát triển là sử dụng một codebase duy nhất cho cả iOS, Android và web.
 
 Nhờ khả năng đồng bộ cao của Flutter, thời gian phát triển đã giảm tới 50\%,  
-giúp nhóm ra mắt sản phẩm nhanh hơn mà vẫn đảm bảo chất lượng.
-
-Bên cạnh đó, hiệu năng ứng dụng cũng được đảm bảo, với tốc độ khung hình (FPS) ổn định ở mức 60 trên mọi thiết bị,  
+giúp nhóm ra mắt sản phẩm nhanh hơn mà vẫn đảm bảo chất lượng. Bên cạnh đó, hiệu năng ứng dụng cũng được đảm bảo, với tốc độ khung hình (FPS) ổn định ở mức 60 trên mọi thiết bị,  
 tạo nên trải nghiệm người dùng mượt mà và đáng tin cậy.
 
 Tuy nhiên, nhóm cũng đối mặt với thách thức trong việc đào tạo đội ngũ kỹ thuật,  

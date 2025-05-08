@@ -6,131 +6,103 @@
 
 % 5.1
 \subsection{Yếu tố kỹ thuật}
-\renewcommand{\labelitemi}{--}    
-    \begin{flushleft}
-        \hspace*{0.8cm}Yếu tố kỹ thuật đóng vai trò quan trọng trong việc đảm bảo ứng dụng hoạt động ổn định, dễ mở rộng và tương thích đa nền tảng. Hai framework này có cách tiếp cận khác biệt về UI, hiệu suất và khả năng tích hợp.
-    \end{flushleft}
-    \subsubsection{Khả năng tùy biến UI}
-    \begin{flushleft}
-      \hspace*{0.8cm}Flutter: Flutter sử dụng engine rendering riêng (Skia) và widget được xây dựng từ pixel, cho phép nhà phát triển kiểm soát hoàn toàn giao diện người dùng. Điều này giúp tạo ra các UI độc đáo, phá vỡ giới hạn của components mặc định trên iOS/Android. Ví dụ, ứng dụng Alibaba đã tận dụng Flutter để thiết kế giao diện đồng nhất trên cả hai nền tảng mà không cần chỉnh sửa riêng biệt.
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-        \item Ưu điểm: Tùy chỉnh mọi chi tiết, từ animation đến layout. Đồng thời không phụ thuộc vào native components, giảm rủi ro về sự không nhất quán giữa các phiên bản OS.
-        \item Nhược điểm: Đòi hỏi nhiều thời gian để thiết kế từ đầu.
-      \end{itemize}
-    \end{flushleft}
 
-    \begin{flushleft}
-      \hspace*{0.8cm}React Native: React Native dựa trên native components (như UIView của iOS hoặc View của Android), nên giao diện mặc định sẽ tuân thủ chuẩn thiết kế của từng nền tảng. Tuy nhiên, để tùy biến sâu, nhà phát triển phải sử dụng thư viện bên thứ ba (React Native Elements, NativeBase) hoặc viết mã native (Swift, Kotlin). Ví dụ, ứng dụng Instagram đã kết hợp React Native với mã native để tối ưu hiệu suất.
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item Ưu điểm: UI gần với native, phù hợp ứng dụng cần trải nghiệm "nguyên bản". Tận dụng thư viện có sẵn để tiết kiệm thời gian.
-          \item Nhược điểm: Khó đạt được sự đồng nhất giữa các nền tảng nếu không chỉnh sửa riêng.
-      \end{itemize}
-    \end{flushleft}
+\hspace*{1.3em} Yếu tố kỹ thuật đóng vai trò cốt lõi trong việc đảm bảo ứng dụng hoạt động ổn định, dễ dàng mở rộng và có khả năng tương thích với nhiều nền tảng. Trong bối cảnh đó, Flutter và React Native thể hiện sự khác biệt đáng kể về phương pháp tiếp cận giao diện người dùng, hiệu suất xử lý và mức độ tích hợp hệ điều hành.
 
-    \subsubsection{Tương thích nền tảng}
-    \begin{flushleft}
-      \hspace*{0.8cm}Flutter: Flutter hỗ trợ đa nền tảng (iOS, Android, Web, Windows, macOS) từ một codebase duy nhất nhờ kiến trúc layer-based. Ví dụ, ứng dụng Google Ads triển khai trên cả mobile và web mà không cần viết lại code.
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-        \item Ưu điểm: Giảm 70–80\% thời gian phát triển cho đa nền tảng và tránh xung đột code giữa các nền tảng.
-        \item Hạn chế: Hiệu suất trên web chưa bằng các framework chuyên biệt như ReactJS.
-      \end{itemize}
-    \end{flushleft}
+\subsubsection{Khả năng tùy biến UI}
 
-    \begin{flushleft}
-      \hspace*{0.8cm}React Native: React Native tập trung vào mobile (iOS/Android), nhưng cần chỉnh sửa riêng biệt cho từng OS. Ví dụ, Facebook phải duy trì hai codebase riêng cho một số tính năng.
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item Ưu điểm: Tối ưu hóa trải nghiệm native cho từng nền tảng.
-          \item Nhược điểm: Tăng thời gian phát triển nếu muốn hỗ trợ web hoặc desktop.
-      \end{itemize}
-    \end{flushleft}
+\hspace*{1.3em} Về khả năng tùy biến UI, Flutter sử dụng engine render riêng là Skia và hệ thống widget được dựng từ pixel thay vì các thành phần giao diện mặc định của hệ điều hành. Điều này cho phép nhà phát triển kiểm soát hoàn toàn giao diện người dùng.
+
+\indent Cách tiếp cận này giúp tạo ra các giao diện độc đáo, không bị giới hạn bởi khuôn mẫu native UI. Ví dụ, ứng dụng Alibaba đã áp dụng Flutter để xây dựng giao diện đồng nhất cho cả hai nền tảng mà không cần điều chỉnh riêng biệt.
+
+\indent Điểm mạnh lớn nhất của Flutter là khả năng tùy chỉnh sâu từng chi tiết, từ animation đến layout. Việc không phụ thuộc vào native components giúp giảm thiểu rủi ro do sự không tương thích giữa các phiên bản hệ điều hành.
+
+\indent Tuy nhiên, vì không tái sử dụng các thành phần sẵn có, quá trình thiết kế giao diện bằng Flutter thường đòi hỏi nhiều thời gian và công sức hơn để xây dựng từ đầu.
+
+\indent Ngược lại, React Native tận dụng các thành phần native như \texttt{UIView} trên iOS hoặc \texttt{View} trên Android để xây dựng giao diện. Nhờ đó, giao diện mặc định luôn tuân thủ chuẩn thiết kế gốc của từng nền tảng.
+
+\indent Khi cần mở rộng khả năng tùy biến, nhà phát triển phải tích hợp thêm thư viện bên thứ ba như \texttt{React Native Elements} hoặc viết mã native bằng Swift hoặc Kotlin. Ví dụ, ứng dụng Instagram đã kết hợp React Native với mã native để tối ưu hiệu suất mà vẫn giữ được sự nhất quán về giao diện.
+
+\indent Nhìn chung, React Native giúp tạo trải nghiệm người dùng gần gũi với native và tận dụng được nhiều thư viện sẵn có để rút ngắn thời gian phát triển. Tuy nhiên, tùy biến giao diện giữa các nền tảng có thể dẫn đến sự không đồng nhất nếu không được xử lý riêng biệt.
+
+\subsubsection{Tương thích nền tảng}
+
+\hspace*{1.3em} Xét về khả năng tương thích, Flutter nổi bật với khả năng phát triển ứng dụng đa nền tảng — bao gồm iOS, Android, Web, Windows và macOS — chỉ với một codebase duy nhất. Kiến trúc layer-based của Flutter được thiết kế đồng nhất trên mọi nền tảng.
+
+\indent Điều này giúp nhà phát triển dễ dàng mở rộng ứng dụng mà không cần viết lại mã. Ví dụ, Google Ads đã được triển khai đồng thời trên cả thiết bị di động và nền web chỉ với một cơ sở mã.
+
+\indent Flutter giúp tiết kiệm đến 70–80\% thời gian và chi phí phát triển, đồng thời duy trì tính thống nhất về giao diện và logic xử lý. Tuy nhiên, hiệu suất của Flutter trên nền web vẫn chưa đạt mức tối ưu so với các framework chuyên biệt như ReactJS.
+
+\indent Trong khi đó, React Native chủ yếu được thiết kế cho iOS và Android. Để đạt hiệu suất tốt nhất, các nhà phát triển thường phải tinh chỉnh hoặc phân tách codebase cho từng nền tảng.
+
+\indent Ví dụ, Facebook từng duy trì hai codebase riêng biệt cho một số tính năng trong ứng dụng của mình. Cách làm này cho phép tối ưu hóa sâu nhưng lại khiến việc mở rộng sang web hoặc desktop trở nên phức tạp và tốn nhiều thời gian hơn.
+
+
 
 % 5.2
 \subsection{Yếu tố kinh tế}
-\renewcommand{\labelitemi}{--}    
-    \begin{flushleft}
-        \hspace*{0.8cm}Chi phí phát triển và bảo trì là yếu tố quyết định quan trọng, đặc biệt với startups hoặc doanh nghiệp vừa và nhỏ.
-    \end{flushleft}
 
-    \subsubsection{Chi phí đào tạo}
-    \begin{flushleft}
-      \hspace*{0.8cm}Flutter: Ngôn ngữ Dart được Google phát triển riêng cho Flutter, ít phổ biến hơn JavaScript. Điều này đòi hỏi đội ngũ phải học từ đầu, làm tăng thời gian onboarding.
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-        \item Giải pháp: Tận dụng tài liệu chính thức và cộng đồng hỗ trợ. Ưu tiên tuyển dụng developer có kinh nghiệm với C\#/Java (cú pháp tương tự Dart).
-      \end{itemize}
-    \end{flushleft}
+\begin{flushleft}
+    \hspace*{0.8cm}Yếu tố kinh tế, đặc biệt là chi phí phát triển và bảo trì, đóng vai trò then chốt trong việc lựa chọn framework, nhất là đối với các startup hoặc doanh nghiệp vừa và nhỏ vốn có nguồn lực hạn chế.
+\end{flushleft}
 
-    \begin{flushleft}
-      \hspace*{0.8cm}React Native: JavaScript là ngôn ngữ phổ biến nhất theo khảo sát Stack Overflow (2023), nên dễ dàng tìm kiếm nhân sự. Tuy nhiên, việc học cách tích hợp native modules (như TurboModules) vẫn có độ phức tạp.
-    \end{flushleft}
+\subsubsection{Chi phí đào tạo}
 
-    \subsubsection{Chi phí bảo trì}
-    \begin{flushleft}
-      \hspace*{0.8cm}Flutter: Nhờ render engine độc lập, Flutter ít bị ảnh hưởng bởi bản cập nhật OS. Ví dụ, khi iOS 15 thay đổi UI components, ứng dụng Flutter không cần sửa đổi.
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-        \item Lợi ích: Giảm 30–40\% chi phí bảo trì dài hạn.
-      \end{itemize}
-    \end{flushleft}
+\begin{flushleft}
+    \hspace*{0.8cm}Xét về chi phí đào tạo, Flutter sử dụng ngôn ngữ Dart – một ngôn ngữ do Google phát triển riêng cho nền tảng này – hiện vẫn còn khá ít phổ biến so với JavaScript. Việc làm quen với một ngôn ngữ mới khiến các thành viên trong nhóm phát triển phải dành thêm thời gian để học từ đầu, từ đó kéo dài quá trình onboarding và gây ảnh hưởng đến tốc độ triển khai dự án. Tuy vậy, các doanh nghiệp có thể giải quyết vấn đề này bằng cách tận dụng tài liệu chính thức phong phú và cộng đồng lập trình viên đang phát triển mạnh của Flutter. Ngoài ra, việc ưu tiên tuyển dụng những lập trình viên có nền tảng từ C\# hoặc Java – vốn có cú pháp tương đối giống Dart – cũng giúp rút ngắn thời gian làm quen và thích nghi.
 
-    \begin{flushleft}
-      \hspace*{0.8cm}React Native: Phụ thuộc vào native components, nên mỗi lần OS cập nhật (ví dụ: Android 14), developer phải kiểm tra và sửa lỗi tương thích. Điều này dẫn đến chi phí phát sinh không nhỏ, đặc biệt với ứng dụng quy mô lớn.
-    \end{flushleft}
+    \vspace{0.5em}
+
+    \hspace*{1.5em}Ngược lại, React Native được xây dựng dựa trên JavaScript – ngôn ngữ lập trình phổ biến nhất theo khảo sát Stack Overflow năm 2023 – nên quá trình tuyển dụng và đào tạo trở nên đơn giản và tiết kiệm hơn đáng kể. Đa số các lập trình viên frontend đã quen với JavaScript, điều này giúp rút ngắn thời gian đào tạo ban đầu. Tuy nhiên, khi cần mở rộng ứng dụng hoặc tùy chỉnh sâu hơn, đặc biệt là tích hợp các native module như TurboModules, lập trình viên vẫn phải đối mặt với mức độ phức tạp nhất định, đòi hỏi kỹ năng chuyên sâu về cả JavaScript và native code.
+\end{flushleft}
+
+\subsubsection{Chi phí bảo trì}
+
+\begin{flushleft}
+    \hspace*{0.8cm}Xét đến khía cạnh chi phí bảo trì, Flutter cho thấy ưu thế rõ rệt nhờ việc sử dụng render engine độc lập thay vì dựa trên các native components của hệ điều hành. Cách tiếp cận này giúp ứng dụng Flutter ít bị ảnh hưởng bởi các bản cập nhật hệ điều hành. Một minh chứng điển hình là khi iOS 15 thay đổi một số thành phần giao diện người dùng, các ứng dụng Flutter không cần thực hiện bất kỳ chỉnh sửa đáng kể nào. Nhờ vậy, các doanh nghiệp có thể giảm được từ 30–40\% chi phí bảo trì dài hạn so với các giải pháp phụ thuộc nhiều vào hệ điều hành.
+
+    \vspace{0.5em}
+
+    \hspace*{1.5em}Ngược lại, React Native vốn phụ thuộc vào native components nên dễ bị ảnh hưởng mỗi khi hệ điều hành phát hành phiên bản mới. Chẳng hạn, khi Android 14 ra mắt, đội ngũ phát triển buộc phải kiểm tra và cập nhật để đảm bảo tương thích, tránh lỗi phát sinh. Đối với các ứng dụng có quy mô lớn, việc này dẫn đến phát sinh chi phí bảo trì đáng kể, đặc biệt là khi cần duy trì trải nghiệm người dùng nhất quán trên nhiều thiết bị và phiên bản OS khác nhau.
+\end{flushleft}
 
 % 5.3
 \subsection{Yếu tố người dùng}
-\renewcommand{\labelitemi}{--}    
-    \begin{flushleft}
-        \hspace*{0.8cm}Trải nghiệm người dùng (UX) là yếu tố quyết định sự thành công của ứng dụng.
-    \end{flushleft}
 
-    \subsubsection{Hiệu suất animation}
-    \begin{flushleft}
-      \hspace*{0.8cm}Flutter: Flutter xử lý animation thông qua Skia engine, đạt FPS ổn định 60–120 fps. Ứng dụng như Reflectly sử dụng animation phức tạp vẫn mượt mà.
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-        \item Ưu điểm: Phù hợp ứng dụng game, multimedia.
-      \end{itemize}
-    \end{flushleft}
+\begin{flushleft}
+    \hspace*{0.8cm}Trải nghiệm người dùng (UX) là yếu tố cốt lõi quyết định mức độ thành công và mức độ giữ chân người dùng đối với một ứng dụng di động. Do đó, các yếu tố như hiệu suất animation và cảm giác native đóng vai trò then chốt trong việc lựa chọn framework phát triển.
+\end{flushleft}
 
-    \begin{flushleft}
-      \hspace*{0.8cm}React Native: Animation phụ thuộc vào bridge JavaScript-Native, dễ gây giật lag khi xử lý nhiều tác vụ. Thư viện như Reanimated 2.0 giúp cải thiện nhưng vẫn kém hiệu quả hơn Flutter.
-    \end{flushleft}
+\subsubsection{Hiệu suất animation}
 
-    \subsubsection{Cảm nhận native}
-    \begin{flushleft}
-      \hspace*{0.8cm}React Native: Sử dụng native components nên UI/UX sát với ứng dụng gốc. Ví dụ, ứng dụng Bloomberg duy trì trải nghiệm native trên iOS/Android nhờ React Native.
-    \end{flushleft}
+\begin{flushleft}
+    \hspace*{0.8cm}Về hiệu suất xử lý animation, Flutter tỏ ra vượt trội nhờ việc sử dụng Skia engine – một công cụ đồ họa hiệu năng cao giúp duy trì tốc độ khung hình ổn định từ 60 đến 120 fps ngay cả khi hiển thị các hiệu ứng phức tạp. Một ví dụ tiêu biểu là ứng dụng Reflectly, sử dụng animation phong phú mà vẫn hoạt động mượt mà trên nhiều thiết bị. Nhờ đó, Flutter đặc biệt phù hợp cho các ứng dụng thiên về multimedia hoặc trò chơi, nơi hiệu suất hình ảnh đóng vai trò quan trọng.
 
-    \begin{flushleft}
-      \hspace*{0.8cm}Flutter: UI được render độc lập, đôi khi gây cảm giác "khác lạ" so với ứng dụng native. Tuy nhiên, điều này có thể khắc phục bằng cách tuân thủ Material Design/Cupertino.
-    \end{flushleft}
+    \vspace{0.5em}
 
-    \subsubsection{Tổng kết và khuyến nghị}
-    \begin{flushleft}
-      \hspace*{0.8cm}Chọn Flutter nếu:
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-        \item Ưu tiên UI tùy biến cao, đa nền tảng.
-        \item Cần giảm chi phí bảo trì dài hạn.
-        \item Dự án có animation phức tạp.
-      \end{itemize}
-    \end{flushleft}
+    \hspace*{1.5em}Trong khi đó, React Native gặp hạn chế về mặt này do animation được xử lý thông qua cầu nối giữa JavaScript và native code. Cơ chế này có thể gây giật, lag nếu animation được thực hiện đồng thời với các tác vụ nặng khác. Mặc dù các thư viện như Reanimated 2.0 đã cải thiện phần nào hiệu năng, React Native vẫn khó đạt được mức mượt mà như Flutter trong các kịch bản animation phức tạp.
+\end{flushleft}
 
-    \begin{flushleft}
-      \hspace*{0.8cm}Chọn React Native nếu:
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item Đội ngũ đã thành thạo JavaScript.
-          \item Cần trải nghiệm native thuần túy.
-          \item Ưu tiên thời gian phát triển nhanh cho mobile.
-      \end{itemize}
-    \end{flushleft}
+\subsubsection{Cảm nhận native}
 
-    \begin{flushleft}
-      \hspace*{0.8cm}Việc lựa chọn framework phụ thuộc vào mục tiêu dự án, nguồn lực và đặc thù người dùng. Cả hai đều có ưu nhược điểm riêng, nhưng Flutter đang dẫn đầu về khả năng mở rộng và hiệu suất, trong khi React Native phù hợp cho ứng dụng đơn giản, tận dụng sẵn nguồn nhân lực.
-    \end{flushleft}
+\begin{flushleft}
+    \hspace*{0.8cm}Về mặt cảm nhận native, React Native có ưu thế khi sử dụng trực tiếp các thành phần UI gốc của nền tảng (như UIView trên iOS và View trên Android). Điều này giúp giao diện ứng dụng tạo được cảm giác quen thuộc, tự nhiên với người dùng, đồng thời dễ dàng tuân thủ các nguyên tắc thiết kế riêng của từng hệ điều hành. Một ví dụ điển hình là ứng dụng Bloomberg, đã sử dụng React Native để mang đến trải nghiệm người dùng đồng nhất mà vẫn đậm chất native trên cả hai nền tảng.
+
+    \vspace{0.5em}
+
+    \hspace*{1.5em}Ngược lại, Flutter sử dụng hệ thống widget tùy chỉnh được render độc lập, không phụ thuộc vào native components. Cách tiếp cận này giúp mở rộng khả năng tùy biến giao diện nhưng đôi khi lại tạo cảm giác “khác lạ” so với ứng dụng truyền thống. Tuy nhiên, điều này có thể được khắc phục nếu nhà phát triển tuân thủ nghiêm ngặt các bộ guideline như Material Design cho Android hoặc Cupertino cho iOS nhằm tạo cảm giác quen thuộc hơn cho người dùng cuối.
+\end{flushleft}
+
+\subsubsection{Tổng kết và khuyến nghị}
+
+\begin{flushleft}
+    \hspace*{0.8cm}Việc lựa chọn giữa Flutter và React Native nên dựa trên mục tiêu kỹ thuật và đặc thù người dùng của từng dự án. Flutter là lựa chọn lý tưởng cho những dự án đòi hỏi giao diện tùy biến cao, hỗ trợ đa nền tảng từ một codebase duy nhất và yêu cầu hiệu suất đồ họa cao như animation phức tạp. Đồng thời, Flutter giúp giảm đáng kể chi phí bảo trì dài hạn nhờ ít phụ thuộc vào cập nhật hệ điều hành.
+
+    \vspace{0.5em}
+
+    \hspace*{1.5em}Ngược lại, React Native phù hợp hơn với các đội ngũ đã có sẵn kỹ năng JavaScript, cần phát triển nhanh ứng dụng mobile và ưu tiên trải nghiệm native thuần túy. Khả năng tận dụng các thư viện JavaScript phong phú và cộng đồng đông đảo cũng giúp rút ngắn thời gian triển khai.
+
+    \vspace{0.5em}
+
+    \hspace*{1.5em}Tóm lại, cả hai framework đều có thế mạnh riêng. Flutter đang dẫn đầu về hiệu năng và khả năng mở rộng, trong khi React Native phù hợp với những dự án cần triển khai nhanh, tiết kiệm chi phí ban đầu và tận dụng nguồn lực sẵn có.
+\end{flushleft}
