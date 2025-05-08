@@ -15,6 +15,7 @@
 \usepackage{fancyhdr}
 \usepackage{setspace}
 \usepackage{times}
+\usepackage{ragged2e}
 \geometry{a4paper, margin=2.5cm}
 \definecolor{darkblue}{RGB}{0, 0, 139}
 
@@ -24,6 +25,7 @@
 \renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
 \renewcommand{\thesubsubsection}{\thesubsection\arabic{subsubsection}.}
 \titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\chapter}[hang]{\bfseries\LARGE}{Chương \thechapter:}{1em}{}
 \setcounter{secnumdepth}{22}
 
 \begin{document}
@@ -92,13 +94,14 @@
 \begin{center}
     \textit{\textbf{Hà Nội, Tháng 4 năm 2025}}
 \end{center}
-\restoregeometry
+
+\newgeometry{top=2.5cm, bottom=2.5cm, left=3.5cm, right=2.5cm}
 
 % ========== NỘI DUNG CHÍNH ==========
 \tableofcontents
 \listoffigures
 \listoftables
-
+\justifying
 \include{chapters/Chap1/Chap1}
 \include{chapters/Chap2/Android}
 \include{chapters/IOS/IOS}
