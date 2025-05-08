@@ -17,6 +17,7 @@
 \usepackage{times}
 \usepackage{ragged2e}
 \usepackage{abstract}
+\usepackage{xcolor}
 \geometry{a4paper, margin=2.5cm}
 \definecolor{darkblue}{RGB}{0, 0, 139}
 
@@ -27,6 +28,7 @@
 \renewcommand{\thesubsubsection}{\thesubsection\arabic{subsubsection}.}
 \titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
 \titleformat{\chapter}[hang]{\bfseries\LARGE\centering}{Chương \thechapter:}{1em}{}
+\titlespacing*{\chapter}{0pt}{-15pt}{30pt}
 \setcounter{secnumdepth}{22}
 
 \begin{document}
@@ -104,6 +106,24 @@
 \listoftables
 \justifying
 \include{abstract}
+
+% Định nghĩa header/footer kiểu fancy
+\pagestyle{fancy}
+\fancyhead[L]{\textcolor{gray}{\textbf{Nhóm 3}}}
+\fancyfoot[L]{\textcolor{gray}{\textbf{IT4409 – Phát triển ứng dụng đa nền tảng}}}
+\fancyfoot[C]{}
+\fancyfoot[R]{\textcolor{gray}{\thepage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\fancypagestyle{plain}{
+  \fancyhead[L]{\textcolor{gray}{\textbf{Nhóm 3}}} 
+  \fancyfoot[L]{\textcolor{gray}{\textbf{IT4409 – Phát triển ứng dụng đa nền tảng}}}
+  \fancyfoot[C]{}
+  \fancyfoot[R]{\textcolor{gray}{\thepage}}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
 \include{chapters/Chap1/Chap1}
 \include{chapters/Chap2/Android}
 \include{chapters/IOS/IOS}
@@ -157,10 +177,6 @@
 
   \bibitem{bkhostWAP}
   BKHOST, “WAP là gì? Wireless Application Protocol là gì?”, BKHOST Blog, [Online]. Available: \url{https://bkhost.vn/blog/wap-wireless-application-protocol/}. [Accessed: May 8, 2025].
-
-
-  \bibitem{aphelia2023}
-  Aphelia, “Best Backend for Mobile App Development [Comprehensive Guide],” Aphelia, [Online]. Available: \url{https://www.aphelia.co/blogs/best-backend-for-mobile-app-development-guide}. [Accessed: May 8, 2025].
 
 
   \bibitem{wap-vs-http}
