@@ -6,7 +6,7 @@ iOS là hệ điều hành di động do Apple phát triển, được sử dụ
             \begin{figure}[H] % hoặc [h], [t], [b] tùy vị trí
                 \centering
                 \includegraphics[width=0.8\textwidth]{images/kientrucios.png}
-                \caption{Kiến trúc phân tầng IOS}
+                \caption{Kiến trúc phân tầng IOS\cite{kientrucios}.}
                 \label{fig:kientrucios}
             \end{figure}
 
@@ -24,7 +24,7 @@ iOS là hệ điều hành di động do Apple phát triển, được sử dụ
         \begin{figure}[H] % hoặc [h], [t], [b] tùy vị trí
             \centering
             \includegraphics[width=0.8\textwidth]{images/vongdoiios.png}
-             \caption{Vòng đời ứng dụng IOS}
+             \caption{Vòng đời ứng dụng IOS\cite{life cycle-IOS}.} 
             \label{fig:vongdoiios}
         \end{figure}
          \begin{flushleft}
@@ -35,7 +35,7 @@ iOS là hệ điều hành di động do Apple phát triển, được sử dụ
             \textbf{Suspended:} Ứng dụng ở background nhưng không chạy mã, có thể bị hệ thống chấm dứt để giải phóng tài nguyên.
          \end{flushleft}
          \subsection{App Delegate và Scene Delegate}
-         Trong iOS, hai thành phần quan trọng đảm nhận việc quản lý vòng đời và giao diện của ứng dụng là \textbf{AppDelegate} và \textbf{SceneDelegate}. \textbf{AppDelegate} chịu trách nhiệm xử lý các sự kiện cấp cao liên quan đến vòng đời tổng thể của ứng dụng, chẳng hạn như khi ứng dụng được khởi động, chuyển sang chế độ nền, hoặc bị chấm dứt. Bên cạnh đó, nó cũng đảm nhiệm các tác vụ cấu hình ban đầu như đăng ký notification, khởi tạo dịch vụ, và thiết lập dữ liệu dùng chung.
+         Trong iOS, hai thành phần quan trọng đảm nhận việc quản lý vòng đời và giao diện của ứng dụng là \textbf{AppDelegate} và \textbf{SceneDelegate}. \textbf{AppDelegate}\cite{ App-Scene Delegate} chịu trách nhiệm xử lý các sự kiện cấp cao liên quan đến vòng đời tổng thể của ứng dụng, chẳng hạn như khi ứng dụng được khởi động, chuyển sang chế độ nền, hoặc bị chấm dứt. Bên cạnh đó, nó cũng đảm nhiệm các tác vụ cấu hình ban đầu như đăng ký notification, khởi tạo dịch vụ, và thiết lập dữ liệu dùng chung.
          Kể từ iOS 13, Apple giới thiệu khái niệm \textbf{Scene} để hỗ trợ việc chạy nhiều cửa sổ giao diện (\textit{multi-window}) trong cùng một ứng dụng, đặc biệt trên iPad. Chính vì thế, \textbf{SceneDelegate} ra đời nhằm tách riêng trách nhiệm quản lý giao diện người dùng (UI lifecycle) cho từng scene. \textbf{SceneDelegate} xử lý các sự kiện như scene được kết nối, hiển thị, vào nền hoặc bị hủy, từ đó cho phép quản lý độc lập từng cửa sổ ứng dụng.
          Sự phân tách giữa \texttt{AppDelegate} và \texttt{SceneDelegate} giúp ứng dụng có kiến trúc rõ ràng hơn, dễ dàng mở rộng cho các thiết bị hỗ trợ đa cửa sổ, đồng thời tuân thủ tốt hơn nguyên lý phân chia trách nhiệm trong lập trình.
 

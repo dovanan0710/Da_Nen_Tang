@@ -10,7 +10,7 @@ Quản lý trạng thái có thể được thực hiện qua nhiều phương p
 Trạng thái có thể được lưu trữ trong ViewController thông qua các thuộc tính của nó. Phương pháp này giúp duy trì sự đơn giản trong các ứng dụng nhỏ và dễ dàng quản lý. Một cách để phản ứng với các thay đổi trạng thái là sử dụng \texttt{Property Observers} với \texttt{didSet}, giúp theo dõi và cập nhật khi trạng thái thay đổi.
 
 \paragraph*{2. Reactive Programming:}
-Khi cần sự linh hoạt và tính đồng bộ trong quản lý trạng thái, Reactive Programming là một lựa chọn phổ biến. Apple cung cấp framework reactive chính thức của mình là \textbf{Combine Framework}, hỗ trợ quản lý trạng thái và dòng sự kiện một cách dễ dàng. Bên cạnh đó, \textbf{RxSwift} là thư viện reactive phổ biến trong cộng đồng iOS, giúp quản lý trạng thái và sự kiện trong ứng dụng.
+Khi cần sự linh hoạt và tính đồng bộ trong quản lý trạng thái, Reactive Programming là một lựa chọn phổ biến. Apple cung cấp framework reactive chính thức của mình là \textbf{Combine Framework}\cite{Combine-Framework}, hỗ trợ quản lý trạng thái và dòng sự kiện một cách dễ dàng. Bên cạnh đó, \textbf{RxSwift} là thư viện reactive phổ biến trong cộng đồng iOS, giúp quản lý trạng thái và sự kiện trong ứng dụng.
 
 \paragraph*{3. Redux-like Architecture:}
 Một cách tiếp cận khác là sử dụng kiến trúc giống Redux, trong đó trạng thái được lưu trữ toàn cục trong một \textbf{Store}. Khi có nhu cầu thay đổi trạng thái, các \textbf{Actions} được gửi để mô tả ý định thay đổi. Các \textbf{Reducers} sau đó sẽ xử lý các Action và trả về trạng thái mới, giúp duy trì tính nhất quán và dễ kiểm soát trong việc quản lý trạng thái toàn cục của ứng dụng.
