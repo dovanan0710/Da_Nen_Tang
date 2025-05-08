@@ -67,7 +67,7 @@
   \end{figure}
 
     
-      \hspace*{0.8cm}Thành phần cốt lõi giúp MVVM trở nên nổi bật chính là ViewModel – lớp trung gian giữa View và Model. ViewModel không chứa tham chiếu trực tiếp tới View, mà hoạt động dựa trên cơ chế observer pattern, cho phép dữ liệu được quan sát và cập nhật tự động từ ViewModel lên View mỗi khi có thay đổi. Nhờ đó, View trở nên “mỏng” hơn vì chỉ tập trung vào hiển thị, còn toàn bộ logic xử lý sự kiện, tính toán hoặc tương tác với dữ liệu được chuyển giao sang ViewModel. Cách tiếp cận này không những giúp giảm sự ràng buộc giữa các lớp, mà còn tăng khả năng tái sử dụng, kiểm thử tự động và phát triển song song giữa các thành viên trong nhóm \cite{testability_mvvm}.
+      \hspace*{0.8cm}Thành phần cốt lõi giúp MVVM trở nên nổi bật chính là ViewModel – lớp trung gian giữa View và Model. ViewModel không chứa tham chiếu trực tiếp tới View, mà hoạt động dựa trên cơ chế Observer Pattern, cho phép dữ liệu được quan sát và cập nhật tự động từ ViewModel lên View mỗi khi có thay đổi. Nhờ đó, View trở nên “mỏng” hơn vì chỉ tập trung vào hiển thị, còn toàn bộ logic xử lý sự kiện, tính toán hoặc tương tác với dữ liệu được chuyển giao sang ViewModel. Cách tiếp cận này không những giúp giảm sự ràng buộc giữa các lớp, mà còn tăng khả năng tái sử dụng, kiểm thử tự động và phát triển song song giữa các thành viên trong nhóm \cite{testability_mvvm}.
     
       \vspace{0.5em}
     
@@ -101,5 +101,13 @@
     
         \vspace{0.5em}
     
-        \hspace*{0.8cm}Trong khi đó, Android hiện đại hóa cách tổ chức ứng dụng thông qua mô hình MVVM, tận dụng sức mạnh từ các thành phần như LiveData, ViewModel và Data Binding. Nhờ vậy, lập trình viên có thể giảm mạnh sự phụ thuộc giữa giao diện và logic nghiệp vụ, đồng thời tối ưu khả năng tái sử dụng và kiểm thử mã nguồn. Ngoài ra, cả iOS và Android đều đồng thuận trong việc triển khai mô hình Client–Server nhằm tăng khả năng mở rộng, giảm tải cho thiết bị người dùng và hỗ trợ ứng dụng hoạt động ổn định trong môi trường mạng. Việc nắm rõ đặc điểm, ưu điểm cũng như nhược điểm của từng mô hình kiến trúc sẽ giúp lập trình viên không chỉ lựa chọn đúng giải pháp cho từng dự án cụ thể, mà còn góp phần nâng cao hiệu quả phát triển, khả năng bảo trì và mở rộng sản phẩm trong dài hạn.
+        \hspace*{0.8cm}Trong khi đó, Android hiện đại hóa cách tổ chức ứng dụng thông qua mô hình MVVM, tận dụng sức mạnh từ các thành phần như LiveData, ViewModel và Data Binding. Nhờ vậy, lập trình viên có thể giảm mạnh sự phụ thuộc giữa giao diện và logic nghiệp vụ, đồng thời tối ưu khả năng tái sử dụng và kiểm thử mã nguồn. 
+
+        \vspace{0.5em}
+        
+        \hspace*{0.8cm}Bên cạnh mô hình kiến trúc, đặc điểm hệ điều hành cũng tác động không nhỏ đến trải nghiệm của lập trình viên trong quá trình phát triển ứng dụng. Trên iOS, sự đồng nhất về phần cứng và phiên bản hệ điều hành giúp giảm thiểu rủi ro phân mảnh, từ đó đơn giản hóa công tác kiểm thử và tối ưu hiệu năng. Tuy nhiên, môi trường phát triển iOS lại yêu cầu lập trình viên phải sử dụng hệ sinh thái phần mềm riêng biệt của Apple như macOS và Xcode, điều này có thể gây bất tiện cho những người không quen thuộc. Ngược lại, Android mở ra không gian phát triển linh hoạt hơn với nhiều lựa chọn công cụ và hệ điều hành, nhưng lại đặt ra thách thức lớn về mặt phân mảnh thiết bị và phiên bản. Lập trình viên Android thường phải kiểm tra ứng dụng trên nhiều cấu hình khác nhau để đảm bảo tính tương thích, đặc biệt là với những ứng dụng cần hiệu năng cao hoặc sử dụng phần cứng chuyên biệt.
+        
+        \vspace{0.5em}
+
+        \hspace*{0.8cm}Ngoài ra, cả iOS và Android đều đồng thuận trong việc triển khai mô hình Client–Server nhằm tăng khả năng mở rộng, giảm tải cho thiết bị người dùng và hỗ trợ ứng dụng hoạt động ổn định trong môi trường mạng. Việc nắm rõ đặc điểm, ưu điểm cũng như nhược điểm của từng mô hình kiến trúc sẽ giúp lập trình viên không chỉ lựa chọn đúng giải pháp cho từng dự án cụ thể, mà còn góp phần nâng cao hiệu quả phát triển, khả năng bảo trì và mở rộng sản phẩm trong dài hạn.
     
