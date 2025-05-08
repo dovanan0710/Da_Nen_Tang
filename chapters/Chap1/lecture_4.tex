@@ -9,90 +9,67 @@
 % 4.1
 \subsection{Kiến trúc phần mềm ba tầng (Three-tier architecture)}
 \renewcommand{\labelitemi}{--}    
-    \begin{flushleft}
-        \hspace*{0.8cm}Trong các mô hình thiết kế phần mềm hiện đại, kiến trúc ba tầng được xem là một phương pháp tổ chức phần mềm hiệu quả, đặc biệt phù hợp với các hệ thống có quy mô lớn và yêu cầu cao về khả năng bảo trì cũng như mở rộng \cite{three_tier_overview}.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Kiến trúc này được chia thành ba tầng riêng biệt: trình diễn (Presentation), nghiệp vụ (Business Logic) và dữ liệu (Data) \cite{tiered_architecture_design}. Mỗi tầng có một vai trò cụ thể, tách biệt nhưng có mối liên hệ chặt chẽ với nhau nhằm đảm bảo tính ổn định, dễ dàng phát triển cũng như tái sử dụng mã nguồn.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Ở tầng đầu tiên, tầng trình diễn là nơi tiếp xúc trực tiếp với người dùng.
-      Tầng trình diễn chịu trách nhiệm hiển thị thông tin một cách rõ ràng, trực quan thông qua giao diện đồ họa, từ đó hỗ trợ người dùng tương tác dễ dàng với hệ thống.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Thông tin được hiển thị ở tầng này thường được lấy từ tầng nghiệp vụ đã xử lý sẵn, điều đó giúp giao diện luôn giữ được sự đơn giản và dễ thay đổi.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Việc không xử lý logic nghiệp vụ tại tầng giao diện mang lại lợi ích lớn trong việc tái sử dụng mã nguồn giao diện cho nhiều ngữ cảnh khác nhau, chẳng hạn như khi chuyển đổi giữa phiên bản web và mobile mà không cần thay đổi logic cốt lõi.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Tiếp theo là tầng nghiệp vụ, tầng trung tâm và đóng vai trò quan trọng nhất trong toàn bộ kiến trúc.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Tầng nghiệp vụ là nơi hiện thực các quy tắc, quy trình và logic nghiệp vụ của ứng dụng.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Mọi yêu cầu từ tầng trình diễn sẽ được tầng nghiệp vụ tiếp nhận, xử lý và gửi tới tầng dữ liệu khi cần.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Ngược lại, khi dữ liệu được truy xuất từ tầng dữ liệu, tầng nghiệp vụ sẽ định dạng lại hoặc xử lý tiếp trước khi gửi trả về cho tầng giao diện.
-      Điểm mạnh của tầng nghiệp vụ nằm ở khả năng cô lập các thao tác phức tạp và kiểm soát luồng thông tin, từ đó giúp nâng cao khả năng kiểm thử, bảo trì và phát triển mở rộng hệ thống trong tương lai.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Cuối cùng là tầng dữ liệu, nơi lưu trữ toàn bộ thông tin cần thiết của hệ thống.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Tầng dữ liệu đảm nhận nhiệm vụ lưu trữ, truy vấn, cập nhật và bảo vệ dữ liệu thông qua các hệ quản trị cơ sở dữ liệu như SQL hoặc NoSQL \cite{database_layer_sql}.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Tại tầng này, hệ thống có thể thực hiện các thao tác tối ưu hóa truy vấn, quản lý kết nối đến cơ sở dữ liệu từ xa hoặc tích hợp với các dịch vụ lưu trữ đám mây.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Tầng dữ liệu càng được tối ưu thì hiệu suất toàn hệ thống càng cao, đặc biệt với các ứng dụng có khối lượng dữ liệu lớn và nhu cầu xử lý đồng thời cao.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Tổng thể, kiến trúc ba tầng mang lại nhiều lợi ích vượt trội như dễ bảo trì, dễ mở rộng, dễ kiểm thử và thuận lợi cho phát triển theo nhóm.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Tổng thể, kiến trúc ba tầng mang lại nhiều lợi ích vượt trội như dễ bảo trì, dễ mở rộng, dễ kiểm thử và thuận lợi cho phát triển theo nhóm.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}
-      Việc phân tách rõ vai trò của từng tầng không chỉ giúp quá trình phát triển trở nên mạch lạc và dễ quản lý mà còn giúp ứng dụng thích nghi tốt với các thay đổi trong tương lai.
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Chính vì thế, kiến trúc ba tầng đã và đang được sử dụng rộng rãi trong nhiều hệ thống phần mềm từ ứng dụng nội bộ, ứng dụng thương mại điện tử, đến hệ thống phân tán quy mô lớn \cite{enterprise_three_tier}.
-    \end{flushleft}
+\begin{flushleft}
+  \hspace*{0.8cm}Trong lĩnh vực phát triển phần mềm hiện đại, một trong những mô hình kiến trúc được áp dụng phổ biến và hiệu quả nhất chính là kiến trúc phần mềm ba tầng. Mô hình này đặc biệt phù hợp với các hệ thống quy mô lớn, có yêu cầu cao về tính bảo trì, khả năng mở rộng và dễ dàng tích hợp các công nghệ mới.
+  \end{flushleft}
+  
+  \begin{flushleft}
+  \hspace*{0.8cm}Kiến trúc ba tầng phân chia ứng dụng thành ba lớp riêng biệt, bao gồm: tầng trình diễn (Presentation Layer), tầng nghiệp vụ (Business Logic Layer) và tầng dữ liệu (Data Layer). Mỗi tầng này đảm nhận một vai trò cụ thể và được thiết kế để hoạt động độc lập, tuy nhiên vẫn giữ mối liên kết chặt chẽ với nhau thông qua các giao diện lập trình ứng dụng (API) hoặc các giao thức truyền thông nội bộ. Sự tách biệt này giúp nâng cao tính linh hoạt, giảm thiểu sự phụ thuộc giữa các phần và tạo điều kiện thuận lợi cho việc kiểm thử, phát triển song song cũng như tái sử dụng mã nguồn.
+  \end{flushleft}
+  
+  \begin{flushleft}
+  \hspace*{0.8cm}Ở tầng cao nhất của kiến trúc, tầng trình diễn đóng vai trò là điểm tiếp xúc trực tiếp giữa người dùng và hệ thống phần mềm. Chức năng chính của tầng trình diễn là đảm nhận việc hiển thị thông tin đầu ra và nhận các dữ liệu đầu vào từ người dùng thông qua giao diện đồ họa hoặc giao diện điều khiển. Việc sử dụng các công nghệ như HTML, CSS, JavaScript trong các ứng dụng web hoặc framework giao diện trong ứng dụng mobile, cho phép tầng này cung cấp trải nghiệm người dùng mượt mà và trực quan.
+  \end{flushleft}
+  
+  \begin{flushleft}
+  \hspace*{0.8cm}Thông tin được hiển thị tại tầng giao diện không được xử lý trực tiếp tại đây mà được chuyển tiếp từ tầng nghiệp vụ đã xử lý sẵn. Điều này giúp giao diện người dùng trở nên đơn giản, linh hoạt và dễ dàng thay đổi mà không ảnh hưởng đến các tầng khác. Ví dụ, một chức năng tính toán giá sau khi áp dụng khuyến mãi sẽ được xử lý hoàn toàn ở tầng nghiệp vụ, và kết quả cuối cùng chỉ được hiển thị lên giao diện.
+  \end{flushleft}
+  
+  \begin{flushleft}
+  \hspace*{0.8cm}Sự phân tách này còn mang lại lợi thế lớn trong việc phát triển đa nền tảng. Khi cùng một logic nghiệp vụ có thể được dùng lại trên cả ứng dụng web và ứng dụng mobile, nhóm phát triển chỉ cần xây dựng lại giao diện riêng biệt cho từng nền tảng mà không cần viết lại phần xử lý chính bên trong.
+  \end{flushleft}
+  
+  \begin{flushleft}
+  \hspace*{0.8cm}Tầng thứ hai trong mô hình là tầng nghiệp vụ, đóng vai trò trung tâm và là nơi diễn ra toàn bộ quá trình xử lý logic của hệ thống. Tầng này là nơi hiện thực các quy tắc hoạt động của ứng dụng, như các thuật toán tính toán, kiểm tra ràng buộc dữ liệu, xử lý yêu cầu nghiệp vụ và điều phối luồng dữ liệu giữa các tầng.
+  \end{flushleft}
+  
+  \begin{flushleft}
+  \hspace*{0.8cm}Khi người dùng thực hiện một hành động từ tầng trình diễn, yêu cầu tương ứng sẽ được gửi tới tầng nghiệp vụ để phân tích và xử lý. Nếu cần thiết, tầng nghiệp vụ sẽ tiếp tục giao tiếp với tầng dữ liệu để truy xuất hoặc ghi nhận thông tin, sau đó định dạng kết quả và chuyển trả lại tầng giao diện. Cách tổ chức này giúp cô lập hoàn toàn các logic phức tạp, đảm bảo việc thay đổi giao diện hoặc cơ sở dữ liệu không làm ảnh hưởng đến phần cốt lõi của ứng dụng.
+  \end{flushleft}
+  
+  \begin{flushleft}
+  \hspace*{0.8cm}Một điểm nổi bật của tầng nghiệp vụ là khả năng hỗ trợ kiểm thử đơn vị (unit testing) dễ dàng hơn. Nhờ vào tính độc lập và không phụ thuộc vào giao diện người dùng hay cơ sở dữ liệu, các chức năng tại tầng nghiệp vụ có thể được kiểm thử tự động nhằm đảm bảo độ chính xác và tính ổn định lâu dài của hệ thống.
+  \end{flushleft}
+  
+  \begin{flushleft}
+  \hspace*{0.8cm}Tầng cuối cùng là tầng dữ liệu, chịu trách nhiệm quản lý và lưu trữ toàn bộ thông tin phục vụ cho hoạt động của hệ thống. Dữ liệu ở tầng này thường được tổ chức và xử lý thông qua các hệ quản trị cơ sở dữ liệu như MySQL, PostgreSQL, MongoDB hoặc các giải pháp lưu trữ đám mây như Firebase, Amazon S3.
+  \end{flushleft}
+  
+  \begin{flushleft}
+  \hspace*{0.8cm}Tầng dữ liệu cung cấp các cơ chế truy vấn, cập nhật, xoá và bảo mật dữ liệu một cách có hệ thống. Bên cạnh đó, tầng này cũng đảm nhiệm việc tối ưu hóa hiệu suất truy vấn và đảm bảo tính nhất quán dữ liệu thông qua các ràng buộc và transaction. Với các hệ thống có khối lượng dữ liệu lớn hoặc phải phục vụ nhiều người dùng đồng thời, việc thiết kế và tối ưu tầng dữ liệu trở thành yếu tố then chốt ảnh hưởng trực tiếp đến hiệu năng tổng thể.
+  \end{flushleft}
+  
+  \begin{flushleft}
+  \hspace*{0.8cm}Nhìn chung, kiến trúc phần mềm ba tầng cung cấp một khung tổ chức rõ ràng, trong đó mỗi tầng đóng một vai trò cụ thể nhưng hỗ trợ lẫn nhau nhằm đảm bảo tính ổn định, dễ bảo trì và dễ mở rộng cho hệ thống. Sự tách biệt về mặt chức năng giữa các tầng giúp nhóm phát triển có thể làm việc song song, dễ dàng kiểm thử từng phần riêng biệt và nhanh chóng thích ứng với các yêu cầu thay đổi từ khách hàng hoặc thị trường.
+  \end{flushleft}
+  
+  \begin{flushleft}
+  \hspace*{0.8cm}Với những lợi ích nổi bật đó, kiến trúc ba tầng đã trở thành sự lựa chọn phổ biến trong nhiều lĩnh vực, từ các ứng dụng doanh nghiệp nội bộ, hệ thống thương mại điện tử, đến các nền tảng dịch vụ trực tuyến lớn như hệ thống ngân hàng, cổng thanh toán điện tử hay hệ thống quản lý chuỗi cung ứng.
+  \end{flushleft}
 
 % 4.2
 \subsection{Kiến trúc MVC (Model – View – Controller)}
 \renewcommand{\labelitemi}{--}    
     \begin{flushleft}
-        \hspace*{0.8cm}Trong quá trình phát triển phần mềm, đặc biệt là trong các ứng dụng di động trên nền tảng iOS, kiến trúc MVC (Model – View – Controller) đóng vai trò như một nền tảng tổ chức mã nguồn kinh điển, giúp lập trình viên tách biệt các chức năng chính của ứng dụng thành ba phần riêng biệt \cite{mvc_history}.
+        \hspace*{0.8cm}Trong quá trình phát triển phần mềm, đặc biệt là trong các ứng dụng di động trên nền tảng iOS, kiến trúc MVC (Model – View – Controller) đóng vai trò như một nền tảng tổ chức mã nguồn kinh điển, giúp lập trình viên tách biệt các chức năng chính của ứng dụng thành ba phần riêng biệt.
     \end{flushleft}
 
     \begin{flushleft}
-      \hspace*{0.8cm}Việc phân chia này không chỉ nhằm giảm độ phức tạp của hệ thống mà còn tạo điều kiện thuận lợi cho quá trình bảo trì, kiểm thử và mở rộng về sau. Theo mô hình này, toàn bộ hệ thống được chia thành ba thành phần chính: Model (xử lý dữ liệu và logic nghiệp vụ), View (hiển thị giao diện người dùng), và Controller (điều phối luồng xử lý giữa Model và View) \cite{mvc_definition}. Mỗi thành phần trong ba thành phần này đảm nhiệm một vai trò cụ thể và độc lập, tuy nhiên lại phối hợp chặt chẽ để tạo nên một hệ thống vận hành ổn định và linh hoạt.
+      \hspace*{0.8cm}Việc phân chia này không chỉ nhằm giảm độ phức tạp của hệ thống mà còn tạo điều kiện thuận lợi cho quá trình bảo trì, kiểm thử và mở rộng về sau. Theo mô hình này, toàn bộ hệ thống được chia thành ba thành phần chính: Model (xử lý dữ liệu và logic nghiệp vụ), View (hiển thị giao diện người dùng), và Controller (điều phối luồng xử lý giữa Model và View). Mỗi thành phần trong ba thành phần này đảm nhiệm một vai trò cụ thể và độc lập, tuy nhiên lại phối hợp chặt chẽ để tạo nên một hệ thống vận hành ổn định và linh hoạt.
     \end{flushleft}
 
     \begin{flushleft}
-      \hspace*{0.8cm}Với vai trò là trung tâm lưu trữ dữ liệu, thành phần Model trong kiến trúc MVC chịu trách nhiệm định nghĩa các đối tượng dữ liệu, quản lý logic nghiệp vụ và thực hiện các thao tác như truy xuất, cập nhật hoặc lưu trữ dữ liệu từ các nguồn như cơ sở dữ liệu hoặc API bên ngoài. Điều đáng chú ý là Model hoạt động hoàn toàn độc lập với giao diện hiển thị, tức là nó không biết và không quan tâm đến cách dữ liệu sẽ được trình bày ra sao trước người dùng, từ đó tạo ra tính tái sử dụng cao. Trong thực tế, một Model có thể được dùng chung cho nhiều giao diện khác nhau mà không cần thay đổi logic bên trong\cite{mvc_reusability}.
+      \hspace*{0.8cm}Với vai trò là trung tâm lưu trữ dữ liệu, thành phần Model trong kiến trúc MVC chịu trách nhiệm định nghĩa các đối tượng dữ liệu, quản lý logic nghiệp vụ và thực hiện các thao tác như truy xuất, cập nhật hoặc lưu trữ dữ liệu từ các nguồn như cơ sở dữ liệu hoặc API bên ngoài. Điều đáng chú ý là Model hoạt động hoàn toàn độc lập với giao diện hiển thị, tức là nó không biết và không quan tâm đến cách dữ liệu sẽ được trình bày ra sao trước người dùng, từ đó tạo ra tính tái sử dụng cao. Trong thực tế, một Model có thể được dùng chung cho nhiều giao diện khác nhau mà không cần thay đổi logic bên trong.
     \end{flushleft}
 
     \begin{flushleft}
@@ -104,14 +81,14 @@
     \end{flushleft}
 
     \begin{flushleft}
-      \hspace*{0.8cm}Một điểm mạnh lớn của kiến trúc MVC là khả năng tách biệt vai trò, điều này cho phép các lập trình viên làm việc song song trên cùng một dự án mà không gây ra xung đột. Ví dụ, người thiết kế giao diện có thể xây dựng View mà không cần hiểu chi tiết về logic xử lý, trong khi lập trình viên backend có thể phát triển Model một cách độc lập. Controller đóng vai trò là cầu nối giữa hai nhóm này, đảm bảo toàn bộ ứng dụng vận hành nhịp nhàng. Thêm vào đó, do Model và View hoạt động độc lập, nên khi có nhu cầu mở rộng ứng dụng hoặc thay đổi một phần giao diện, lập trình viên chỉ cần điều chỉnh View mà không phải can thiệp vào các phần xử lý bên trong, từ đó tiết kiệm thời gian và công sức phát triển. Tất cả những yếu tố đó khiến MVC vẫn là một lựa chọn phổ biến trong nhiều dự án iOS hiện đại, đặc biệt là khi sử dụng Xcode và Swift – hai công cụ hỗ trợ tốt cho mô hình này \cite{mvc_ios_xcode_swift}.
+      \hspace*{0.8cm}Một điểm mạnh lớn của kiến trúc MVC là khả năng tách biệt vai trò, điều này cho phép các lập trình viên làm việc song song trên cùng một dự án mà không gây ra xung đột. Ví dụ, người thiết kế giao diện có thể xây dựng View mà không cần hiểu chi tiết về logic xử lý, trong khi lập trình viên backend có thể phát triển Model một cách độc lập. Controller đóng vai trò là cầu nối giữa hai nhóm này, đảm bảo toàn bộ ứng dụng vận hành nhịp nhàng. Thêm vào đó, do Model và View hoạt động độc lập, nên khi có nhu cầu mở rộng ứng dụng hoặc thay đổi một phần giao diện, lập trình viên chỉ cần điều chỉnh View mà không phải can thiệp vào các phần xử lý bên trong, từ đó tiết kiệm thời gian và công sức phát triển. Tất cả những yếu tố đó khiến MVC vẫn là một lựa chọn phổ biến trong nhiều dự án iOS hiện đại, đặc biệt là khi sử dụng Xcode và Swift – hai công cụ hỗ trợ tốt cho mô hình này.
     \end{flushleft}
 
 % 4.3
 \subsection{Kiến trúc MVVM (Model - View - ViewModel)}
 \renewcommand{\labelitemi}{--}    
     \begin{flushleft}
-        \hspace*{0.8cm}Đối với các ứng dụng hiện đại, đặc biệt là trên nền tảng Android với sự hỗ trợ mạnh mẽ từ Jetpack và Kotlin, kiến trúc MVVM (Model – View – ViewModel) đã nhanh chóng trở thành một giải pháp thay thế lý tưởng cho MVC \cite{mvvm-overview}, nhờ khả năng giảm thiểu sự phụ thuộc giữa các thành phần và tự động hóa cập nhật giao diện thông qua cơ chế Data Bin \cite{data-binding}. Mặc dù MVVM vẫn duy trì ba thành phần chính tương tự MVC, gồm Model, View và một thành phần trung gian, nhưng điểm khác biệt quan trọng nằm ở cách các thành phần này tương tác. Cụ thể, View không còn giao tiếp trực tiếp với Model như trong MVC, mà thay vào đó tương tác với ViewModel – một lớp trung gian thông minh có khả năng phản hồi tự động mỗi khi dữ liệu thay đổi, nhờ các cơ chế như LiveData hoặc Observable \cite{livedata-observable}.
+        \hspace*{0.8cm}Đối với các ứng dụng hiện đại, đặc biệt là trên nền tảng Android với sự hỗ trợ mạnh mẽ từ Jetpack và Kotlin, kiến trúc MVVM (Model – View – ViewModel) đã nhanh chóng trở thành một giải pháp thay thế lý tưởng cho MVC, nhờ khả năng giảm thiểu sự phụ thuộc giữa các thành phần và tự động hóa cập nhật giao diện thông qua cơ chế Data Bin. Mặc dù MVVM vẫn duy trì ba thành phần chính tương tự MVC, gồm Model, View và một thành phần trung gian, nhưng điểm khác biệt quan trọng nằm ở cách các thành phần này tương tác. Cụ thể, View không còn giao tiếp trực tiếp với Model như trong MVC, mà thay vào đó tương tác với ViewModel – một lớp trung gian thông minh có khả năng phản hồi tự động mỗi khi dữ liệu thay đổi, nhờ các cơ chế như LiveData hoặc Observable \cite{livedata-observable}.
     \end{flushleft}
 
     \begin{flushleft}
@@ -127,7 +104,7 @@
     \end{flushleft}
 
     \begin{flushleft}
-      \hspace*{0.8cm}Một lợi thế rõ rệt của MVVM so với MVC chính là mức độ giảm phụ thuộc giữa các thành phần, từ đó giúp hệ thống linh hoạt hơn khi mở rộng hoặc thay đổi một phần cụ thể. Do View và Model không còn liên kết trực tiếp, nên việc thay đổi cấu trúc giao diện hoặc định dạng dữ liệu trong Model sẽ không gây ảnh hưởng đến phần còn lại của hệ thống. Đồng thời, với sự hỗ trợ mạnh mẽ từ Jetpack (Android Architecture Components) \cite{jetpack}, việc triển khai MVVM trên Android trở nên thuận tiện hơn bao giờ hết nhờ các thư viện tích hợp như ViewModel, LiveData, Room và Data Binding.
+      \hspace*{0.8cm}Một lợi thế rõ rệt của MVVM so với MVC chính là mức độ giảm phụ thuộc giữa các thành phần, từ đó giúp hệ thống linh hoạt hơn khi mở rộng hoặc thay đổi một phần cụ thể. Do View và Model không còn liên kết trực tiếp, nên việc thay đổi cấu trúc giao diện hoặc định dạng dữ liệu trong Model sẽ không gây ảnh hưởng đến phần còn lại của hệ thống. Đồng thời, với sự hỗ trợ mạnh mẽ từ Jetpack (Android Architecture Components), việc triển khai MVVM trên Android trở nên thuận tiện hơn bao giờ hết nhờ các thư viện tích hợp như ViewModel, LiveData, Room và Data Binding.
     \end{flushleft}
 
     \begin{flushleft}
@@ -138,15 +115,15 @@
 \subsection{Kiến trúc Client/Server}
 \renewcommand{\labelitemi}{--}    
     \begin{flushleft}
-        \hspace*{0.8cm}Trong bối cảnh số hóa mạnh mẽ hiện nay, nơi mà hầu hết các ứng dụng đều cần tương tác và trao đổi dữ liệu với hệ thống bên ngoài thông qua Internet, kiến trúc Client/Server đã trở thành một nền tảng không thể thiếu trong thiết kế hệ thống phần mềm hiện đại \cite{client-server}. Đặc biệt, với các ứng dụng yêu cầu đồng bộ dữ liệu liên tục, cập nhật thông tin theo thời gian thực hoặc sử dụng tài nguyên được lưu trữ trên máy chủ từ xa, mô hình Client/Server đóng vai trò cốt lõi trong việc đảm bảo quá trình trao đổi dữ liệu diễn ra mượt mà, chính xác và có khả năng mở rộng cao. Tuy nhiên, để phát huy tối đa hiệu quả, kiến trúc Client/Server thường được sử dụng kết hợp với các kiến trúc nội bộ như MVC hoặc MVVM nhằm tách biệt rõ ràng giữa xử lý logic, giao diện người dùng và việc giao tiếp với hệ thống bên ngoài, từ đó giúp quá trình phát triển ứng dụng trở nên rõ ràng, có cấu trúc và dễ bảo trì hơn.
+        \hspace*{0.8cm}Trong bối cảnh số hóa mạnh mẽ hiện nay, nơi mà hầu hết các ứng dụng đều cần tương tác và trao đổi dữ liệu với hệ thống bên ngoài thông qua Internet, kiến trúc Client/Server đã trở thành một nền tảng không thể thiếu trong thiết kế hệ thống phần mềm hiện đại. Đặc biệt, với các ứng dụng yêu cầu đồng bộ dữ liệu liên tục, cập nhật thông tin theo thời gian thực hoặc sử dụng tài nguyên được lưu trữ trên máy chủ từ xa, mô hình Client/Server đóng vai trò cốt lõi trong việc đảm bảo quá trình trao đổi dữ liệu diễn ra mượt mà, chính xác và có khả năng mở rộng cao. Tuy nhiên, để phát huy tối đa hiệu quả, kiến trúc Client/Server thường được sử dụng kết hợp với các kiến trúc nội bộ như MVC hoặc MVVM nhằm tách biệt rõ ràng giữa xử lý logic, giao diện người dùng và việc giao tiếp với hệ thống bên ngoài, từ đó giúp quá trình phát triển ứng dụng trở nên rõ ràng, có cấu trúc và dễ bảo trì hơn.
     \end{flushleft}
 
     \begin{flushleft}
-      \hspace*{0.8cm}Về bản chất, kiến trúc Client/Server mô tả mô hình trong đó có sự phân chia rõ ràng giữa hai vai trò chính: Client (ứng dụng phía người dùng) và Server (máy chủ xử lý trung tâm). Trong mô hình này, các thiết bị đầu cuối như điện thoại, máy tính bảng hay trình duyệt web sẽ đóng vai trò là Client – nơi người dùng thực hiện các thao tác như gửi yêu cầu truy vấn dữ liệu, cập nhật thông tin cá nhân hoặc thao tác với giao diện ứng dụng. Những yêu cầu này, thường được gửi đi thông qua các giao thức phổ biến như HTTP, HTTPS hoặc WebSocket \cite{web-protocols}, sẽ được máy chủ tiếp nhận, xử lý và phản hồi tương ứng. Máy chủ, tức Server, sẽ tiếp nhận request từ Client, thực hiện các tác vụ cần thiết như truy xuất cơ sở dữ liệu, xử lý logic nghiệp vụ hoặc tính toán nâng cao, rồi trả lại kết quả phù hợp dưới dạng dữ liệu (thường là JSON hoặc XML).
+      \hspace*{0.8cm}Về bản chất, kiến trúc Client/Server mô tả mô hình trong đó có sự phân chia rõ ràng giữa hai vai trò chính: Client (ứng dụng phía người dùng) và Server (máy chủ xử lý trung tâm). Trong mô hình này, các thiết bị đầu cuối như điện thoại, máy tính bảng hay trình duyệt web sẽ đóng vai trò là Client – nơi người dùng thực hiện các thao tác như gửi yêu cầu truy vấn dữ liệu, cập nhật thông tin cá nhân hoặc thao tác với giao diện ứng dụng. Những yêu cầu này, thường được gửi đi thông qua các giao thức phổ biến như HTTP, HTTPS hoặc WebSocket, sẽ được máy chủ tiếp nhận, xử lý và phản hồi tương ứng. Máy chủ, tức Server, sẽ tiếp nhận request từ Client, thực hiện các tác vụ cần thiết như truy xuất cơ sở dữ liệu, xử lý logic nghiệp vụ hoặc tính toán nâng cao, rồi trả lại kết quả phù hợp dưới dạng dữ liệu (thường là JSON hoặc XML).
     \end{flushleft}
 
     \begin{flushleft}
-      \hspace*{0.8cm}Một điểm quan trọng trong kiến trúc Client/Server là tính phân tán và độc lập giữa hai thành phần. Trong khi Client tập trung vào trải nghiệm người dùng như hiển thị giao diện, điều hướng màn hình, thu thập và hiển thị dữ liệu, thì Server lại tập trung vào việc xử lý các logic phức tạp, đảm bảo tính nhất quán của dữ liệu, bảo mật truy cập, và cung cấp tài nguyên theo cách tối ưu nhất \cite{server-role}. Mối quan hệ giữa Client và Server là một mối quan hệ chặt chẽ nhưng độc lập: mỗi bên có thể được nâng cấp hoặc thay đổi mà không ảnh hưởng trực tiếp đến bên còn lại, miễn là giao diện lập trình ứng dụng (API) giữa hai bên vẫn được tuân thủ nhất quán. Nhờ sự phân chia nhiệm vụ rõ ràng này, hệ thống có thể dễ dàng mở rộng về quy mô, nâng cấp từng thành phần riêng biệt và tối ưu hiệu suất xử lý.
+      \hspace*{0.8cm}Một điểm quan trọng trong kiến trúc Client/Server là tính phân tán và độc lập giữa hai thành phần. Trong khi Client tập trung vào trải nghiệm người dùng như hiển thị giao diện, điều hướng màn hình, thu thập và hiển thị dữ liệu, thì Server lại tập trung vào việc xử lý các logic phức tạp, đảm bảo tính nhất quán của dữ liệu, bảo mật truy cập, và cung cấp tài nguyên theo cách tối ưu nhất. Mối quan hệ giữa Client và Server là một mối quan hệ chặt chẽ nhưng độc lập: mỗi bên có thể được nâng cấp hoặc thay đổi mà không ảnh hưởng trực tiếp đến bên còn lại, miễn là giao diện lập trình ứng dụng (API) giữa hai bên vẫn được tuân thủ nhất quán. Nhờ sự phân chia nhiệm vụ rõ ràng này, hệ thống có thể dễ dàng mở rộng về quy mô, nâng cấp từng thành phần riêng biệt và tối ưu hiệu suất xử lý.
     \end{flushleft}
 
     \begin{flushleft}
