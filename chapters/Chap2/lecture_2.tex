@@ -1,12 +1,13 @@
 \section{Cơ chế hoạt động của hệ điều hành Android}
 
+    \hspace*{0.8cm}Android được xây dựng dựa trên nhân Linux, tận dụng tính ổn định, bảo mật và khả năng quản lý tiến trình hiệu quả của hệ điều hành mã nguồn mở này. Mỗi ứng dụng Android hoạt động trong một tiến trình độc lập, có UID, máy ảo và vùng nhớ riêng, đảm bảo cách ly an toàn thông qua cơ chế sandbox. Android sử dụng máy ảo Dalvik (trước Android 5.0) và ART (từ Android 5.0 trở đi) để thực thi mã ứng dụng, giúp tăng hiệu suất và bảo mật. Nhờ kiến trúc này, Android có thể bảo vệ người dùng khỏi các ứng dụng độc hại và tối ưu hóa tài nguyên hệ thống.
+
 % 2.1
 \subsection{Android trên nền tảng Linux}
 \renewcommand{\labelitemi}{--}    
 \begin{flushleft}
     \hspace*{0.8cm}Android được xây dựng trên nhân (kernel) của hệ điều hành Linux, tức là sử dụng Linux kernel làm lớp điều khiển phần cứng như quản lý bộ nhớ, tiến trình, thiết bị ngoại vi và bảo mật hệ thống. Trong khi đó, các thành phần còn lại như giao diện người dùng, framework ứng dụng và dịch vụ hệ thống đều do Google phát triển riêng biệt, không sử dụng giao diện truyền thống của Linux. Android chọn Linux kernel vì đây là nền tảng mã nguồn mở, ổn định, có tính bảo mật cao và hỗ trợ tốt cho các tính năng quan trọng của thiết bị di động như xử lý đa tiến trình, cấp quyền truy cập theo người dùng và hỗ trợ phần cứng đa dạng. Việc kế thừa nhân Linux giúp Android tăng tính linh hoạt, tiết kiệm thời gian phát triển và dễ dàng tùy biến cho từng nhà sản xuất thiết bị.\\
-    \newpage
-    Google đã tùy biến kernel Linux để phù hợp hơn với điện thoại:
+    \hspace*{0.8cm}Google đã tùy biến kernel Linux để phù hợp hơn với điện thoại:
     \begin{table}[H]
         \centering
         \renewcommand{\arraystretch}{1.5}
@@ -77,7 +78,7 @@
             \end{table}
             
     \end{flushleft}
-
+\newpage
     \begin{flushleft}
       \hspace*{0.8cm}Sandbox bảo vệ những thứ sau:
       \setlength{\leftmargini}{1.5cm}
@@ -124,7 +125,7 @@
         \label{fig:android}
     \end{figure}  
 \end{flushleft}
-
+\newpage
 \begin{flushleft}
     \hspace*{0.8cm}Quy trình thực thi của Dalvik VM và ART:
     \begin{table}[H]
@@ -152,7 +153,6 @@
     \begin{flushleft}
         \hspace*{0.8cm}Mỗi ứng dụng là một tiến trình độc lập. Trong Android, mỗi ứng dụng (app) khi được khởi chạy sẽ được cấp phát một tiến trình riêng biệt (process). Tiến trình này có vùng nhớ riêng, UID riêng, máy ảo riêng, hoạt động độc lập, không can thiệp lẫn nhau.
     \end{flushleft}
-\newpage
     \begin{flushleft}
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
