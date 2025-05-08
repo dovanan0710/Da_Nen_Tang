@@ -1,8 +1,20 @@
 \section{Các yếu tố ảnh hưởng đến chi phí phát triển ứng dụng}
-
+\begin{flushleft}
+  \hspace*{0.8cm}Chi phí phát triển ứng dụng là một yếu tố quan trọng mà các doanh nghiệp cần cân nhắc kỹ lưỡng trước khi triển khai dự án phần mềm. Trong thực tế, chi phí này không chỉ phụ thuộc vào quy mô hay mục tiêu của sản phẩm, mà còn bị chi phối bởi nhiều yếu tố kỹ thuật và chiến lược khác nhau. Từ đặc điểm của tính năng, kiến trúc hạ tầng, đến vị trí địa lý của đội ngũ phát triển, mỗi yếu tố đều có thể tạo ra sự chênh lệch đáng kể về ngân sách đầu tư. Phần này sẽ trình bày hai nhóm nội dung chính: (1) các yếu tố cốt lõi tác động đến chi phí xây dựng và duy trì ứng dụng, và (2) sự khác biệt về chi phí nhân sự theo khu vực địa lý trên thế giới. Qua đó, doanh nghiệp có thể xác định các điểm cần ưu tiên, tối ưu nguồn lực và lựa chọn chiến lược phát triển phù hợp với điều kiện thực tế của mình.
+  \end{flushleft}
+  
+  
 % 5.1
-\subsection{Các yếu tố chính}
-\renewcommand{\labelitemi}{--}    
+\subsection{Các yếu tố chính ảnh hưởng đến chi phí phát triển ứng dụng}
+\renewcommand{\labelitemi}{--}  
+
+% https://assets.goodfirms.co/pdfs/how-much-does-it-cost-to-develop-an-app.pdf
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\textwidth]{images/appCosst.png}
+  \caption{Các yếu tố chính ảnh hưởng đến chi phí phát triển ứng dụng}
+  \label{fig:fig20}
+\end{figure}
     \begin{flushleft}
       \hspace*{0.8cm}Trong quá trình phát triển ứng dụng, nhiều yếu tố đóng vai trò quyết định đến tổng chi phí, cả trong giai đoạn thiết kế lẫn sau triển khai. Các yếu tố chính bao gồm:
       \setlength{\leftmargini}{1.5cm}
@@ -30,6 +42,30 @@
 
 % 5.2
 \subsection{Chi phí thuê nhân sự theo khu vực địa lý}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{|l|c|c|c|c|}
+  \hline
+  \textbf{Title of Employee} & \textbf{United States} & \textbf{Latin America} & \textbf{Eastern Europe} & \textbf{Asia} \\
+  \hline
+  Business Analyst    & \$110 -- \$205 & \$45 -- \$55 & \$40 -- \$63 & \$30 -- \$42 \\
+  Architect           & \$198 -- \$292 & \$60 -- \$72 & \$50 -- \$77 & \$35 -- \$48 \\
+  Project Manager     & \$133 -- \$233 & \$55 -- \$66 & \$45 -- \$70 & \$35 -- \$48 \\
+  Jr. Developer       & \$105 -- \$111 & \$35 -- \$44 & \$25 -- \$42 & \$18 -- \$24 \\
+  Mid-Level Developer & \$132 -- \$140 & \$30 -- \$52 & \$35 -- \$49 & \$25 -- \$34 \\
+  Sr. Developer       & \$154 -- \$163 & \$45 -- \$55 & \$45 -- \$70 & \$30 -- \$42 \\
+  Lead Developer      & \$176 -- \$187 & \$50 -- \$61 & \$45 -- \$70 & \$35 -- \$50 \\
+  Junior QA           & \$77 -- \$81   & \$30 -- \$39 & \$25 -- \$42 & \$20 -- \$30 \\
+  Mid-Level QA        & \$99 -- \$105  & \$35 -- \$44 & \$30 -- \$48 & \$25 -- \$32 \\
+  Senior QA           & \$143 -- \$169 & \$40 -- \$51 & \$35 -- \$60 & \$30 -- \$40 \\
+  Graphic Designer    & \$79 -- \$163  & \$40 -- \$50 & \$35 -- \$56 & \$25 -- \$36 \\
+  \hline
+  \end{tabular}
+  \caption{Mức lương cho các vai trò nhân viên khác nhau trên khắp các khu vực}
+  \label{tab:salary-comparison}
+  \end{table}
+  
 \renewcommand{\labelitemi}{--}    
     \begin{flushleft}
         \hspace*{0.8cm}Một trong những yếu tố quan trọng ảnh hưởng đến tổng chi phí phát triển phần mềm chính là chi phí thuê nhân sự theo khu vực địa lý. Các công ty phần mềm, đặc biệt là những doanh nghiệp quốc tế hoặc các dự án có nhu cầu thuê ngoài (outsourcing), thường căn cứ vào mức chi phí trung bình theo giờ làm việc của các vai trò chuyên môn trong ngành công nghệ thông tin để ra quyết định tuyển dụng. Dữ liệu trong bảng ở phần trên được tổng hợp từ 4 khu vực tiêu biểu trên toàn cầu gồm United States (Hoa Kỳ), Latin America (Mỹ Latin), Eastern Europe (Đông Âu) và Asia (Châu Á). Mỗi khu vực có mức chi phí khác nhau rõ rệt, phản ánh sự chênh lệch về mức sống, kỹ năng lao động cũng như nhu cầu thị trường. Thống kê này bao phủ 12 vai trò phổ biến trong các dự án phát triển phần mềm hiện nay, giúp đưa ra cái nhìn tổng quan về chi phí nhân sự theo từng nhóm chức năng.
