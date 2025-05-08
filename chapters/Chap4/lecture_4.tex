@@ -45,15 +45,10 @@
   \caption{So sánh FPS và độ trễ tối đa giữa các framework}
   \end{table}
   
-\begin{flushleft}
-  \hspace*{0.8cm}Phân Tích:
-  \setlength{\leftmargini}{1.5cm}
-  \begin{itemize}
-      \item Flutter đạt FPS tối đa 60 nhờ Skia Engine render trực tiếp lên canvas, không phụ thuộc vào native components.
-      \item React Native giảm FPS do Bridge gây độ trễ khi chuyển dữ liệu từ JavaScript sang native thread. Đặc biệt, việc sử dụng VirtualizedList (cơ chế lazy load) chỉ cải thiện FPS lên 50, nhưng vẫn thấp hơn native.
-      \item Native (Kotlin) tận dụng tối ưu hệ thống render của Android, đạt hiệu suất ổn định.
-  \end{itemize}
-\end{flushleft}
+  \begin{flushleft}
+    \hspace*{0.8cm}Về mặt hiệu suất khung hình, Flutter cho thấy ưu thế nhờ sử dụng Skia Engine để render trực tiếp lên canvas mà không phụ thuộc vào native components. Nhờ đó, Flutter có thể duy trì tốc độ khung hình tối đa 60 FPS một cách ổn định trên hầu hết các thiết bị. Trong khi đó, React Native gặp hạn chế do cơ chế Bridge gây ra độ trễ khi truyền dữ liệu giữa luồng JavaScript và native. Dù React Native đã áp dụng các kỹ thuật tối ưu như VirtualizedList để thực hiện lazy loading, nhưng FPS chỉ cải thiện lên mức tối đa 50, vẫn thấp hơn so với hiệu suất đạt được ở native. Về phía native (sử dụng Kotlin), hệ thống render của Android được tận dụng một cách tối ưu, giúp ứng dụng đạt hiệu suất khung hình ổn định và mượt mà hơn trong hầu hết các kịch bản sử dụng thực tế.
+  \end{flushleft}
+  
 
 \begin{flushleft}
   \hspace*{0.8cm}Hạn Chế:
@@ -93,7 +88,7 @@
     
     \begin{table}[H]
       \centering
-      \begin{tabular}{|l|p{5cm}|}
+      \begin{tabular}{|p{5cm}|p{7cm}|}
       \hline
       \textbf{Framework} & \textbf{RAM Sử Dụng (MB)} \\
       \hline
@@ -106,34 +101,17 @@
   \end{table}
   
 
-    \begin{flushleft}
-      \hspace*{0.8cm}Phân Tích:
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item Native tiết kiệm RAM nhất do không cần runtime engine phụ trợ.
-          \item React Native tiêu thụ thêm 30MB RAM từ JavaScriptCore và Bridge.
-          \item Flutter sử dụng nhiều RAM nhất (~200MB) do nhúng Dart runtime và Skia Engine, nhưng đánh đổi này giúp UI mượt mà hơn.
-      \end{itemize}
-    \end{flushleft}
+  \begin{flushleft}
+    \hspace*{0.8cm}Phân Tích:
+    Native là giải pháp tiết kiệm RAM nhất vì không cần đến runtime engine phụ trợ. Trong khi đó, React Native tiêu thụ thêm 30MB RAM do JavaScriptCore và Bridge. Flutter, với việc nhúng Dart runtime và Skia Engine, sử dụng nhiều RAM nhất (khoảng 200MB), nhưng sự đánh đổi này giúp cải thiện hiệu suất UI mượt mà hơn.
+  \end{flushleft}
+  \begin{flushleft}
+    \hspace*{0.8cm}Kịch Bản Tải Dữ Liệu Nặng: Khi tải 50 ảnh độ phân giải cao (1920x1080px), mức tiêu thụ RAM có sự khác biệt rõ rệt. Flutter tiêu thụ 280MB RAM do việc cache ảnh trong ImageCache. React Native tiêu thụ 250MB RAM nhờ sử dụng FastImage để tối ưu hiệu suất. Trong khi đó, Native chỉ tiêu thụ 210MB RAM nhờ tận dụng Glide cho Android.
+  \end{flushleft}
 
-    \begin{flushleft}
-      \hspace*{0.8cm}Kịch Bản Tải Dữ Liệu Nặng: Khi tải 50 ảnh độ phân giải cao (1920x1080px), mức tiêu thụ RAM tăng:
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item Flutter: 280MB (do cache ảnh trong ImageCache).
-          \item React Native: 250MB (sử dụng FastImage để tối ưu).
-          \item Native: 210MB (tận dụng Glide cho Android).
-      \end{itemize}
-    \end{flushleft}
-
-    \begin{flushleft}
-      \hspace*{0.8cm}Kết Luận:
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item Flutter phù hợp cho thiết bị cao cấp, nhưng gây áp lực lên thiết bị giá rẻ.
-          \item React Native cân bằng giữa hiệu năng và tài nguyên.
-      \end{itemize}
-    \end{flushleft}
+  \begin{flushleft}
+      \hspace*{0.8cm}Kết Luận: Flutter phù hợp với các thiết bị cao cấp, nhưng có thể tạo ra áp lực đối với các thiết bị giá rẻ. React Native, ngược lại, mang lại sự cân bằng giữa hiệu năng và tài nguyên.
+  \end{flushleft}
 
 % 4.2
 \subsection{Bảng So Sánh Tổng Hợp}
@@ -153,31 +131,17 @@
   \end{table}
   
 
-    \begin{flushleft}
-      \hspace*{0.8cm}FPS:
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item Native/Flutter đạt 60 FPS nhờ tối ưu render engine.
-          \item React Native giới hạn ở 50 FPS do giao tiếp qua Bridge.
-      \end{itemize}
-    \end{flushleft}
+  \begin{flushleft}
+      \hspace*{0.8cm}FPS: Native và Flutter đều đạt 60 FPS nhờ vào việc tối ưu render engine. Tuy nhiên, React Native chỉ đạt giới hạn 50 FPS do giao tiếp qua Bridge, dẫn đến một sự chậm trễ trong quá trình render.
+  \end{flushleft}
 
-    \begin{flushleft}
-      \hspace*{0.8cm}RAM:
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item Native tiết kiệm nhất, Flutter cao nhất do kiến trúc tự render.
-      \end{itemize}
-    \end{flushleft}
+  \begin{flushleft}
+      \hspace*{0.8cm}RAM: Native là giải pháp tiết kiệm RAM nhất, trong khi Flutter tiêu thụ RAM nhiều nhất do kiến trúc tự render, yêu cầu nhiều tài nguyên hơn để duy trì hiệu suất.
+  \end{flushleft}
 
-    \begin{flushleft}
-      \hspace*{0.8cm}Thời Gian Phát Triển:
-      \setlength{\leftmargini}{1.5cm}
-      \begin{itemize}
-          \item React Native giảm 50\% thời gian nhờ tái sử dụng code web.
-          \item Flutter cần thời gian học Dart và widget tree.
-      \end{itemize}
-    \end{flushleft}
+  \begin{flushleft}
+      \hspace*{0.8cm}Thời Gian Phát Triển: React Native giúp giảm 50\% thời gian phát triển nhờ khả năng tái sử dụng code từ các dự án web. Ngược lại, Flutter yêu cầu thời gian học thêm Dart và hiểu rõ về widget tree để làm việc hiệu quả với framework này.
+  \end{flushleft}
 
 % 4.3
 \subsection{Thảo Luận}
