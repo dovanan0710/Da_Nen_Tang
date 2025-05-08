@@ -14,11 +14,11 @@
             \item Mặc định khi một ứng dụng được cài đặt, hệ điều hành Android sẽ tạo một UID (User ID) riêng biệt cho nó, mỗi app chỉ có thể truy cập tài nguyên của chính nó (sandbox).
             \item Hai hoặc nhiều ứng dụng có thể dùng chung UID nếu chúng được ký bằng cùng một khóa chứng thực số (digital certificate) và chúng khai báo "android:sharedUserId" giống nhau trong AndroidManifest.xml
             \item Yêu cầu bắt buộc là chứng chỉ số giống nhau, Android dùng digital signature để đảm bảo chỉ các app thuộc cùng một nhà phát triển mới có thể chia sẻ UID. Điều này ngăn chặn app lạ cố tình khai báo sharedUserId để xâm nhập dữ liệu của app khác.
-            Ví dụ nếu app A và app B có sharedUserId giống nhau nhưng ký bằng chứng chỉ khác nhau → Hệ thống từ chối cài đặt!
+            Ví dụ nếu app A và app B có sharedUserId giống nhau nhưng ký bằng chứng chỉ khác nhau do đó hệ thống từ chối cài đặt!
             \item Lợi ích là các app có thể truy cập dữ liệu và file của nhau, có thể dùng chung database, file cấu hình…, có thể chia sẻ quyền như đọc SMS, camera… nếu quyền được cấp
         \end{itemize}
     \end{flushleft}
-
+\newpage
 % 3.2
 \subsection{ContentProvider và Intent}    
     \begin{flushleft}
@@ -36,13 +36,21 @@
     \begin{flushleft}
       \hspace*{0.8cm}$\Rightarrow$ Tóm lại, Android cung cấp nhiều phương thức để chia sẻ dữ liệu giữa các ứng dụng, mỗi phương thức phù hợp với từng nhu cầu khác nhau. Tuy nhiên, tất cả các cơ chế này đều được thiết kế với tiêu chí an toàn và bảo vệ quyền riêng tư người dùng. Việc chia sẻ dữ liệu phải luôn được thực hiện thông qua cơ chế kiểm soát, có sự đồng ý của người dùng, và hạn chế tối đa quyền truy cập không cần thiết. Trong thời điểm hiện tại, Google cũng khuyến khích các nhà phát triển di chuyển sang những cơ chế chia sẻ an toàn như FileProvider, ContentProvider hoặc sử dụng các API hệ thống để tương tác dữ liệu.
     \end{flushleft}
-
+\newpage
 % 3.4
 \subsection{Một số quyền truy cập phổ biến}
     \begin{flushleft}
-        \hspace*{0.8cm}Trong quá trình phát triển ứng dụng Android, nhà phát triển thường cần truy cập đến các tài nguyên nhạy cảm trên thiết bị, và mỗi loại tài nguyên đều tương ứng với một hoặc nhiều quyền truy cập cụ thể mà ứng dụng cần khai báo trong file AndroidManifest.xml, đồng thời phải xin phép người dùng tại thời điểm chạy (runtime) nếu thuộc nhóm nguy hiểm. Ví dụ, để truy cập danh bạ người dùng, ứng dụng cần khai báo quyền android.permission.READ-CONTACTS. Đây là quyền nguy hiểm vì liên quan đến thông tin cá nhân, nên bắt buộc phải xin người dùng cho phép khi chạy ứng dụng.\\
+        \hspace*{0.8cm}Trong quá trình phát triển ứng dụng Android, nhà phát triển thường cần truy cập đến các tài nguyên nhạy cảm trên thiết bị, và mỗi loại tài nguyên đều tương ứng với một hoặc nhiều quyền truy cập cụ thể mà ứng dụng cần khai báo trong file AndroidManifest.xml, đồng thời phải xin phép người dùng tại thời điểm chạy (runtime) nếu thuộc nhóm nguy hiểm. Ví dụ, để truy cập danh bạ người dùng, cần khai báo quyền android.permission.READ-CONTACTS. Đây là quyền nguy hiểm vì liên quan đến thông tin cá nhân, nên bắt buộc phải xin người dùng cho phép khi chạy ứng dụng.\\
         \hspace*{0.8cm}Tương tự, nếu ứng dụng cần gửi hoặc nhận tin nhắn SMS, nhà phát triển phải sử dụng các quyền như SEND-SMS, RECEIVE-SMS và READ-SMS. Đây là những quyền cực kỳ nhạy cảm, liên quan đến quyền riêng tư và chi phí tài chính của người dùng, nên Android yêu cầu phải có lý do rõ ràng và được người dùng cho phép rõ ràng tại runtime.\\
         \hspace*{0.8cm}Việc truy cập thông tin trạng thái thiết bị, như số IMEI hay tình trạng cuộc gọi, đòi hỏi quyền READ-PHONE-STATE. Tuy nhiên, kể từ Android 10, quyền này bị giới hạn mạnh và chỉ cho phép truy cập một số thông tin cơ bản, trừ khi ứng dụng được cấp quyền đặc biệt thông qua Google Play Console. Đối với thông tin vị trí, Android cung cấp hai loại quyền là ACCESS-FINE-LOCATION (vị trí chính xác qua GPS) và ACCESS-COARSE-LOCATION (vị trí tương đối qua mạng). Từ Android 10 trở đi, hệ thống yêu cầu người dùng phải xác định rõ ứng dụng có được quyền truy cập vị trí liên tục không, hay chỉ khi đang sử dụng.\\
         \hspace*{0.8cm}Truy cập vào phần cứng như camera và micro cũng cần xin quyền rõ ràng. Để sử dụng camera, ứng dụng cần có android.permission.CAMERA, và để ghi âm giọng nói, phải khai báo android.permission.RECORD-AUDIO. Cả hai quyền này đều được xếp vào nhóm quyền nhạy cảm, yêu cầu phải xin ở runtime và được người dùng cấp phép rõ ràng. Ngoài ra, để tăng tính minh bạch và tuân thủ chính sách Google Play, ứng dụng cũng nên thông báo trước cho người dùng về lý do cần các quyền này và cách chúng sẽ được sử dụng.
+    
+        \begin{figure}[H] 
+            \centering
+            \includegraphics[width=1\textwidth]{images/permission.png}
+            \caption{Quy trình sử dụng các quyền trên Android ở cấp cao}
+            \label{fig:android}
+        \end{figure}
     \end{flushleft} 
 \newpage
+

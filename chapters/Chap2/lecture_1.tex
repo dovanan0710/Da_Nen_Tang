@@ -38,31 +38,41 @@
     \begin{flushleft}
         \hspace*{0.8cm}APK (Android Package) là định dạng tập tin được sử dụng để phân phối và cài đặt ứng dụng trên hệ điều hành Android, có đuôi mở rộng .apk, tương tự như .exe trong Windows hoặc .ipa trong IOS. Là gói nén chứa toàn bộ tài nguyên và mã thực thi của ứng dụng.\\
         Cấu trúc bên trong một file APK
-        \begin{center}
+        \begin{figure}[H] 
+            \centering
+            \includegraphics[width=0.5\textwidth]{images/apk.png}
+            \caption{Cấu trúc file APK}
+            \label{fig:android}
+        \end{figure}
+        
+        \begin{table}[H]
+            \centering
             \renewcommand{\arraystretch}{1.5}
             \begin{tabular}{|l|p{11cm}|}
-            \hline
-            \textbf{Thành phần} & \textbf{Mô tả} \\
-            \hline
-            AndroidManifest.xml & Thông tin cấu hình của ứng dụng: tên, version, quyền truy cập, activity... \\
-            \hline
-            classes.dex & Mã bytecode của ứng dụng, được biên dịch từ Java/Kotlin \\
-            \hline
-            resources.arsc & Các tài nguyên đã được biên dịch (strings, style…) \\
-            \hline
-            res/ & 	Các tài nguyên như hình ảnh, layout XML, v.v. \\
-            \hline
-            lib/ & 	Thư viện native (C/C++) cho từng nền tảng CPU \\
-            \hline
-            META-INF/ & Chứa chữ ký số, thông tin chứng thực của ứng dụng \\
-            \hline
-            assets/ & Các tài nguyên thô (raw), lập trình viên tự đưa vào \\
-            \hline
+                \hline
+                \textbf{Thành phần} & \textbf{Mô tả} \\
+                \hline
+                \texttt{AndroidManifest.xml} & Chứa thông tin cấu hình ứng dụng: tên gói, phiên bản, các quyền truy cập, khai báo thành phần như Activity, Service, Receiver... \\
+                \hline
+                \texttt{classes.dex} & Chứa mã bytecode đã được biên dịch từ mã nguồn Java hoặc Kotlin. Đây là phần chính được thực thi trong máy ảo Dalvik hoặc ART. \\
+                \hline
+                \texttt{resources.arsc} & Tập hợp các tài nguyên đã được biên dịch như chuỗi ký tự (string), style, màu sắc và các giá trị được lưu trong XML. \\
+                \hline
+                \texttt{res/} & Thư mục chứa các tài nguyên chưa biên dịch như hình ảnh, layout XML, drawable, v.v. \\
+                \hline
+                \texttt{lib/} & Thư mục chứa các thư viện native (viết bằng C/C++) tương ứng với từng kiến trúc CPU (như ARM, x86...). \\
+                \hline
+                \texttt{META-INF/} & Lưu trữ các tệp liên quan đến chứng chỉ số, thông tin chữ ký APK để xác thực và bảo vệ toàn vẹn nội dung. \\
+                \hline
+                \texttt{assets/} & Chứa các tài nguyên thô (raw) do lập trình viên thêm vào, có thể truy cập qua `AssetManager`. \\
+                \hline
             \end{tabular}
-            \end{center}
-            
-        \hspace*{0.8cm}Quy trình khi đưa ứng dụng lên Google Play phải tuân theo các quy trình sau:  \\
-        \setlength{\parskip}{1em}\hspace*{0.6cm}Build APK: Từ mã nguồn Android (bằng Android Studio), tạo ra file .apk \\$\rightarrow$ Ký số (Signing): Ứng dụng được ký bằng private key để xác thực nguồn gốc \\$\rightarrow$ Upload lên Google Play: Google kiểm tra, và nếu muốn, có thể dùng App \hspace*{0.6cm}Signing by Google Play – dịch vụ Google giữ private key \\$\rightarrow$ Phân phối và cài đặt: Người dùng tải về và cài đặt ứng dụng trực tiếp từ APK.\\
+            \caption{Cấu trúc các thành phần bên trong file APK}
+            \label{table:apk-structure}
+            \end{table}            
+    
+        \hspace*{0.8cm}Quy trình khi đưa ứng dụng lên Google Play:  \\
+        \setlength{\parskip}{1em}\hspace*{0.6cm}Build APK, từ mã nguồn Android (bằng Android Studio), tạo ra file .apk. Ký số (Signing), ứng dụng được ký bằng private key để xác thực nguồn gốc. Upload lên Google Play, Google kiểm tra, và nếu muốn, có thể dùng App Signing by Google Play, là dịch vụ Google giữ private key. Phân phối và cài đặt, người dùng tải về và cài đặt ứng dụng trực tiếp từ APK.\\
 
         \hspace*{0.8cm}Tóm lại APK là đơn vị triển khai duy nhất trên Android, có thể chia sẻ trực tiếp (qua web, Bluetooth, email…) mà không cần qua Play Store, dễ dàng trích xuất hoặc phân tích để debug hoặc reverse engineering (nên phải cẩn thận bảo vệ mã nguồn).
     \end{flushleft}
