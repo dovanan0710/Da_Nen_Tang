@@ -3,7 +3,7 @@
 Xử lý tác vụ bất đồng bộ là một phần thiết yếu trong kiến trúc ứng dụng iOS hiện đại, giúp đảm bảo giao diện người dùng mượt mà và phản hồi tốt. Swift cung cấp nhiều phương pháp để xử lý bất đồng bộ, từ truyền thống đến hiện đại, mỗi phương pháp có ưu và nhược điểm riêng phù hợp với từng hoàn cảnh.
 
 \subsection{Completion Handlers}
-\textbf{Định nghĩa:} Completion handlers là cơ chế truyền thống trong iOS để xử lý các tác vụ bất đồng bộ, trong đó closures được sử dụng để thông báo khi một tác vụ hoàn thành. Khi hàm bất đồng bộ hoàn thành, closure sẽ được gọi để tiếp tục xử lý.
+\textbf{Định nghĩa:} Completion handlers\cite{Completion-handlers} là cơ chế truyền thống trong iOS để xử lý các tác vụ bất đồng bộ, trong đó closures được sử dụng để thông báo khi một tác vụ hoàn thành. Khi hàm bất đồng bộ hoàn thành, closure sẽ được gọi để tiếp tục xử lý.
 
 \textbf{Cơ chế hoạt động:} Một hàm bất đồng bộ trong iOS sẽ nhận một closure làm tham số. Closure này được gọi khi tác vụ bất đồng bộ kết thúc, cho phép người phát triển thực hiện các hành động tiếp theo. Thường thì, kiểu dữ liệu \texttt{Result} được sử dụng để phân biệt giữa thành công và thất bại của tác vụ, giúp việc xử lý lỗi và kết quả trở nên rõ ràng hơn.
 
