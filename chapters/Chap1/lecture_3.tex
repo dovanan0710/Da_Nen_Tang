@@ -10,6 +10,14 @@
 \begin{flushleft}
     \hspace*{0.8cm}Một trong những mẫu kiến trúc nền tảng và phổ biến nhất trong phát triển phần mềm là kiến trúc phân lớp (Layers). Mô hình này được áp dụng rộng rãi trên cả hai nền tảng iOS và Android do khả năng tổ chức mã nguồn theo hướng tách biệt rõ ràng từng chức năng. Trong kiến trúc Layers, ứng dụng được chia thành ba lớp chính: lớp giao diện (Presentation Layer), lớp xử lý nghiệp vụ (Business Logic Layer), và lớp dữ liệu (Data Layer). Mỗi lớp đảm nhiệm một vai trò riêng biệt, giúp cấu trúc hệ thống trở nên rõ ràng, dễ hiểu và dễ kiểm soát.
 \end{flushleft}
+
+% https://viquynh.wordpress.com/2018/02/05/mo-hinh-mvc2-code-demo-jsp-servlet-javabe/
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\textwidth]{images/layer.png}
+    \caption{Mô hình kiến trúc 3 tầng (3-tiers)}
+    \label{fig:fig11}
+  \end{figure}
     
     \begin{flushleft}
         \hspace*{0.8cm}Cụ thể, lớp Presentation đóng vai trò là điểm tương tác giữa người dùng và hệ thống, chịu trách nhiệm hiển thị thông tin và thu nhận thao tác từ phía người dùng. Lớp Business Logic là nơi xử lý toàn bộ logic nghiệp vụ, từ kiểm tra dữ liệu nhập vào đến các phép tính, xử lý trạng thái và ra quyết định. Cuối cùng, lớp Data đảm nhiệm vai trò giao tiếp với nguồn dữ liệu – có thể là cơ sở dữ liệu cục bộ hoặc server từ xa – và thực hiện các thao tác đọc, ghi hoặc đồng bộ hóa.
@@ -31,6 +39,14 @@
         \hspace*{0.8cm}Trong số các mô hình kiến trúc phần mềm được áp dụng trên nền tảng iOS, Model–View–Controller (MVC) là một trong những mô hình lâu đời và phổ biến nhất. MVC chia ứng dụng thành ba thành phần chính, từ đó giúp lập trình viên dễ dàng tổ chức mã nguồn và phân tách nhiệm vụ của từng bộ phận trong quá trình phát triển. Trong đó, thành phần Model đảm nhiệm vai trò quản lý dữ liệu và xử lý các quy tắc nghiệp vụ, đóng vai trò như “bộ não” của ứng dụng. Tiếp theo, thành phần View chịu trách nhiệm hiển thị thông tin tới người dùng, phản ánh đúng trạng thái hiện tại của dữ liệu từ Model. Cuối cùng, thành phần Controller đóng vai trò trung gian, cầu nối giữa View và Model, đảm nhận việc xử lý các sự kiện tương tác của người dùng, đồng thời cập nhật lại giao diện khi dữ liệu thay đổi.
     \end{flushleft}
 
+    % https://daynhauhoc.com/t/loi-load-du-lieu-len-jsp/109965/10
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/mvc.png}
+    \caption{Mô hình kiến trúc MVC}
+    \label{fig:fig12}
+  \end{figure}
+
     \begin{flushleft}
       \hspace*{0.8cm}Với cấu trúc như vậy, mô hình MVC mang đến cho lập trình viên iOS một cách tiếp cận đơn giản, dễ hiểu, phù hợp với những người mới bắt đầu tiếp cận lập trình giao diện người dùng. Tuy nhiên, trong thực tế triển khai, một vấn đề lớn phát sinh là hiện tượng “Massive View Controller” \cite{massive_vc}, khi Controller bị quá tải do chứa cả logic giao diện lẫn logic nghiệp vụ. Điều này dẫn đến mã nguồn trở nên khó bảo trì, khó kiểm thử và dễ phát sinh lỗi khi mở rộng chức năng. Chính vì thế, ngày càng nhiều lập trình viên iOS hiện đại chuyển sang các mô hình khác như MVVM hoặc VIPER để giảm thiểu sự phụ thuộc và tách biệt rõ ràng các thành phần chức năng hơn. Nhìn chung, mặc dù MVC vẫn giữ được tính phổ biến nhất định, đặc biệt trong các ứng dụng đơn giản, nhưng nó không còn là lựa chọn tối ưu trong các dự án phức tạp hoặc quy mô lớn.
     \end{flushleft}
@@ -41,6 +57,14 @@
     \begin{flushleft}
         \hspace*{0.8cm}Trên nền tảng Android, mô hình kiến trúc Model–View–ViewModel (MVVM) ngày càng trở nên phổ biến nhờ khả năng tương thích cao với các thư viện hỗ trợ hiện đại như LiveData, ViewModel, và Data Binding. MVVM được thiết kế để tách biệt rõ ràng giữa giao diện người dùng và logic nghiệp vụ, đồng thời hỗ trợ tốt cho việc phát triển theo hướng phản ứng (reactive programming). Trong mô hình này, Model tiếp tục đảm nhiệm vai trò quản lý dữ liệu và xử lý các quy tắc nghiệp vụ, tương tự như trong mô hình MVC. View, tức giao diện người dùng, có nhiệm vụ hiển thị dữ liệu và nhận tương tác từ người dùng, tuy nhiên, thay vì xử lý trực tiếp các thao tác đó, View sẽ truyền tín hiệu cho ViewModel để xử lý.
     \end{flushleft}
+
+    % https://teky.edu.vn/blog/lap-trinh-web-mvc/
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.67\textwidth]{images/mvvm.jpg}
+    \caption{Mô hình kiến trúc MVVM}
+    \label{fig:fig13}
+  \end{figure}
 
     \begin{flushleft}
       \hspace*{0.8cm}Thành phần cốt lõi giúp MVVM trở nên nổi bật chính là ViewModel – lớp trung gian giữa View và Model. ViewModel không chứa tham chiếu trực tiếp tới View, mà hoạt động dựa trên cơ chế observer pattern, cho phép dữ liệu được quan sát và cập nhật tự động từ ViewModel lên View mỗi khi có thay đổi. Nhờ đó, View trở nên “mỏng” hơn vì chỉ tập trung vào hiển thị, còn toàn bộ logic xử lý sự kiện, tính toán hoặc tương tác với dữ liệu được chuyển giao sang ViewModel. Cách tiếp cận này không những giúp giảm sự ràng buộc giữa các lớp, mà còn tăng khả năng tái sử dụng, kiểm thử tự động và phát triển song song giữa các thành viên trong nhóm \cite{testability_mvvm}.
@@ -56,6 +80,14 @@
     \begin{flushleft}
         \hspace*{0.8cm}Trong quá trình xây dựng ứng dụng di động hiện đại, mô hình Client–Server luôn đóng vai trò then chốt trong việc hỗ trợ các chức năng có kết nối mạng. Cả hai nền tảng iOS và Android đều cung cấp đầy đủ công cụ để triển khai mô hình này một cách hiệu quả. Trong mô hình Client–Server, ứng dụng di động đóng vai trò như Client, có nhiệm vụ gửi các yêu cầu (request) tới một máy chủ từ xa (Server) thông qua các giao thức HTTP với các phương thức như GET, POST, PUT, DELET. Sau khi tiếp nhận yêu cầu, Server sẽ xử lý thông tin, truy xuất cơ sở dữ liệu và trả về kết quả dưới dạng JSON hoặc XML để Client hiển thị hoặc xử lý tiếp theo.
     \end{flushleft}
+
+    % https://codelearn.io/sharing/tim-hieu-ve-mo-hinh-client-server
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\textwidth]{images/client-server.jpg}
+    \caption{Mô hình Client – Server}
+    \label{fig:fig14}
+  \end{figure}
 
     \begin{flushleft}
       \hspace*{0.8cm}Để hỗ trợ tốt cho mô hình này, các hệ điều hành di động đều cung cấp nhiều thư viện mạnh mẽ. Trên iOS, lập trình viên có thể sử dụng URLSession như một công cụ tiêu chuẩn từ Apple hoặc tích hợp thư viện bên thứ ba như Alamofire để đơn giản hóa các tác vụ mạng. Tương tự, Android cung cấp các thư viện Retrofit và OkHttp giúp việc gửi yêu cầu và xử lý phản hồi trở nên nhanh chóng, dễ mở rộng và dễ kiểm thử. Thông qua mô hình Client–Server, ứng dụng di động có thể hoạt động nhẹ nhàng hơn vì dữ liệu và logic nặng được xử lý ở phía máy chủ. Ngoài ra, tính năng đồng bộ dữ liệu và cập nhật thời gian thực giữa nhiều thiết bị người dùng cũng được hiện thực hóa dễ dàng thông qua mô hình này. Điều này cho thấy Client–Server không chỉ là một mô hình kết nối, mà còn là nền tảng cốt lõi giúp ứng dụng thích ứng linh hoạt trong môi trường đa thiết bị và thay đổi liên tục ngày nay \cite{scalable_mobile_arch}.
