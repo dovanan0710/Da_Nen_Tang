@@ -4,7 +4,7 @@
 
 
 \subsection{Core Data}
-Core Data\cite{Core-Data} là một framework của Apple được thiết kế để quản lý graph đối tượng và vòng đời dữ liệu trong ứng dụng iOS, không phải là một cơ sở dữ liệu thuần túy. Nó cung cấp một cách tiếp cận mạnh mẽ để làm việc với dữ liệu có cấu trúc phức tạp và lưu trữ trong các ứng dụng iOS.
+Core Data \cite{Core-Data} là một framework của Apple được thiết kế để quản lý graph đối tượng và vòng đời dữ liệu trong ứng dụng iOS, không phải là một cơ sở dữ liệu thuần túy. Nó cung cấp một cách tiếp cận mạnh mẽ để làm việc với dữ liệu có cấu trúc phức tạp và lưu trữ trong các ứng dụng iOS.
 
 \textbf{Kiến trúc Core Data} bao gồm một số thành phần quan trọng. Đầu tiên là \textbf{NSManagedObjectModel}, mô tả cấu trúc của các entities, attributes và relationships trong ứng dụng. \textbf{NSManagedObjectContext} là không gian làm việc để thực hiện các thao tác CRUD (Create, Read, Update, Delete), trong khi \textbf{NSPersistentStoreCoordinator} điều phối giữa object model và persistent store. Đối với các ứng dụng từ iOS 10 trở lên, \textbf{NSPersistentContainer} cung cấp một cách dễ dàng để đóng gói toàn bộ stack Core Data, giúp đơn giản hóa việc cấu hình và quản lý dữ liệu. Để truy vấn dữ liệu, \textbf{NSFetchRequest} được sử dụng để lấy dữ liệu từ persistent store.
 
