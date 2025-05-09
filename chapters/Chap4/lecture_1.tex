@@ -1,5 +1,9 @@
 
 \section{Giới thiệu}
+\begin{flushleft}  
+    \hspace*{0.8cm}Trong bối cảnh số lượng người dùng thiết bị di động không ngừng tăng, nhu cầu phát triển ứng dụng hoạt động mượt mà trên cả iOS và Android ngày càng trở nên cấp thiết. Kiến trúc đa nền tảng (cross-platform) đã nổi lên như một giải pháp giúp doanh nghiệp tối ưu chi phí, rút ngắn thời gian phát hành và đơn giản hóa quy trình bảo trì so với phương pháp native truyền thống. Các framework như React Native và Flutter cho phép tái sử dụng 50--80\% mã nguồn, đồng thời cung cấp công cụ phát triển hiện đại như hot reload và bộ widget tùy biến cao. Nghiên cứu này tập trung phân tích ưu nhược điểm của hai framework trên qua các khía cạnh: hiệu năng (FPS, RAM), chi phí, thời gian triển khai và khả năng ứng dụng vào các loại dự án khác nhau, từ đó đề xuất tiêu chí lựa chọn phù hợp cho từng trường hợp sử dụng cụ thể.  
+\end{flushleft}
+    
 % 1.1.
 \subsection{Bối cảnh nghiên cứu}
 \renewcommand{\labelitemi}{--}    
@@ -12,27 +16,18 @@
 \end{flushleft}
 
 \begin{flushleft}
-    \hspace*{0.8cm}Chỉ riêng chi phí nhân sự đã là gánh nặng: theo Business of Apps, mức lương trung bình của một lập trình viên mobile native tại Mỹ dao động từ 100.000 đến 133.000 USD mỗi năm. Với hai lập trình viên trong 18 tháng, chi phí nhân sự có thể lên đến 300.000--400.000 USD, chưa kể đến chi phí thiết kế, kiểm thử và quản lý dự án.
+    \hspace*{0.8cm}Chỉ riêng chi phí nhân sự đã là gánh nặng: theo Business of Apps, mức lương trung bình của một lập trình viên mobile native tại Mỹ dao động từ 100.000 đến 133.000 USD mỗi năm. Với hai lập trình viên trong 18 tháng, chi phí nhân sự có thể lên đến 300.000 --400.000 USD, chưa kể đến chi phí thiết kế, kiểm thử và quản lý dự án.
 \end{flushleft}
 
 \begin{flushleft}
     \hspace*{0.8cm}Để giải quyết những hạn chế này, các công nghệ phát triển ứng dụng đa nền tảng (cross-platform) bắt đầu nổi lên như một giải pháp tiềm năng. Kể từ khi Facebook giới thiệu React Native vào năm 2015, lập trình viên đã có thể sử dụng JavaScript để viết giao diện và logic nghiệp vụ, từ đó giảm thiểu đáng kể lượng mã cần viết riêng cho từng hệ điều hành.
-\end{flushleft}
-
-\begin{flushleft}
-    \hspace*{0.8cm}Tiếp đó, năm 2017, Google ra mắt Flutter, framework sử dụng ngôn ngữ Dart và engine Skia, cho phép render UI trực tiếp mà không phụ thuộc vào widget native.
+Tiếp đó, năm 2017, Google ra mắt Flutter, framework sử dụng ngôn ngữ Dart và engine Skia, cho phép render UI trực tiếp mà không phụ thuộc vào widget native.
 \end{flushleft}
 
 \begin{flushleft}
     \hspace*{0.8cm}Nhờ khả năng tái sử dụng mã nguồn lên tới 50--80\% giữa hai nền tảng, giải pháp cross-platform giúp các startup cắt giảm 30--40\% chi phí phát triển so với native thuần túy.
-\end{flushleft}
-
-\begin{flushleft}
-    \hspace*{0.8cm}Báo cáo của Cleveroad cũng ghi nhận rằng, chi phí phát triển ứng dụng cross-platform thường dao động từ 60.000--200.000 USD, thấp hơn đáng kể so với mức 70.000--250.000 USD nếu phát triển từng ứng dụng riêng biệt.
-\end{flushleft}
-
-\begin{flushleft}
-    \hspace*{0.8cm}Không chỉ tiết kiệm ngân sách, thời gian đưa sản phẩm ra thị trường cũng được rút ngắn nhờ sử dụng chung codebase và quy trình kiểm thử tập trung. Ví dụ, một ứng dụng phức tạp thường mất 7--16 tuần để phát triển native độc lập, nhưng chỉ cần 11--20 tuần với React Native hoặc Flutter, nhờ tính năng hot reload và workflow thống nhất.
+Báo cáo của Cleveroad cũng ghi nhận rằng, chi phí phát triển ứng dụng đa nền tảng thường dao động từ 60.000--200.000 USD, thấp hơn đáng kể so với mức 70.000--250.000 USD nếu phát triển từng ứng dụng riêng biệt.
+Không chỉ tiết kiệm ngân sách, thời gian đưa sản phẩm ra thị trường cũng được rút ngắn nhờ sử dụng chung codebase và quy trình kiểm thử tập trung. Ví dụ, một ứng dụng phức tạp thường mất 7--16 tuần để phát triển native độc lập, nhưng chỉ cần 11--20 tuần với React Native hoặc Flutter, nhờ tính năng hot reload và workflow thống nhất.
 \end{flushleft}
 
 \begin{flushleft}
