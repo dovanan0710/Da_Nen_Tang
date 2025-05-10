@@ -1,7 +1,7 @@
 \section{Phân Tích Các Framework}
-\begin{flushleft}
+
   \hspace*{0.8cm}React Native và Flutter là hai framework đa nền tảng phổ biến, mỗi framework mang đến những ưu điểm và thách thức riêng. React Native, phát triển bởi Facebook, cho phép sử dụng JavaScript và tái sử dụng mã nguồn giữa các nền tảng iOS và Android, giúp tiết kiệm chi phí và thời gian phát triển. Với hệ sinh thái phong phú và cộng đồng lớn, React Native dễ dàng tích hợp với các công nghệ khác. Ngược lại, Flutter, do Google phát triển, sử dụng ngôn ngữ Dart và engine render riêng, giúp tối ưu hóa hiệu suất và tạo giao diện người dùng đẹp mắt, đồng thời mang lại hiệu quả cao trong việc phát triển ứng dụng yêu cầu đồ họa phức tạp. Tuy nhiên, Flutter còn thiếu sự phong phú của các plugin và thư viện như React Native. Việc lựa chọn giữa hai framework này phụ thuộc vào yêu cầu dự án, với React Native phù hợp cho các ứng dụng cần phát triển nhanh và dễ dàng tích hợp, còn Flutter thích hợp cho những ứng dụng yêu cầu hiệu suất và giao diện đặc biệt.
-\end{flushleft}
+\vspace{0.5em}
 
 % 3.1
 \subsection{React Native}
@@ -138,9 +138,9 @@ Tính đến 2023, Flutter có khoảng 25.000 package trên pub.dev, so với h
 \renewcommand{\labelitemi}{--}
 
 \subsubsection{Hiệu năng khi cuộn (Scrolling)}
-\begin{flushleft}
+
   \hspace*{0.8cm}Theo biểu đồ Figure~\ref{fig:scrolling}, Flutter duy trì tốc độ khung hình ổn định gần 60 FPS trong khi React Native có hiện tượng drop mạnh xuống dưới 30 FPS do độ trễ từ bridge giữa UI thread và JavaScript thread. Điều này cho thấy Flutter có hiệu năng cuộn mượt mà hơn, thích hợp với các ứng dụng có nhiều tương tác như game hoặc trình chỉnh sửa ảnh.
-\end{flushleft}
+\vspace{0.5em}
 
 \begin{figure}[H]
     \centering
@@ -150,9 +150,9 @@ Tính đến 2023, Flutter có khoảng 25.000 package trên pub.dev, so với h
 \end{figure}
 
 \subsubsection{Ghi dữ liệu (Write Performance)}
-\begin{flushleft}
+
   \hspace*{0.8cm}Biểu đồ Figure~\ref{fig:write} cho thấy thời gian ghi đơn lẻ và trung bình của React Native thấp hơn Flutter, phản ánh hiệu suất tốt hơn ở tác vụ ghi nhẹ. Tuy nhiên, chênh lệch không quá lớn và có thể không đáng kể trong hầu hết ứng dụng thực tế.
-\end{flushleft}
+\vspace{0.5em}
 
 \begin{figure}[H]
     \centering
@@ -162,9 +162,9 @@ Tính đến 2023, Flutter có khoảng 25.000 package trên pub.dev, so với h
 \end{figure}
 
 \subsubsection{Hiệu năng tổng thể theo nghiên cứu mới nhất}
-\begin{flushleft}
+
   \hspace*{0.8cm}Theo Biorn-Hansen (2021), React Native và Flutter có điểm tổng thể thấp hơn Native, MAML/MD\textsuperscript{2} và NativeScript về hiệu năng cầu nối (bridge performance). Flutter đạt tổng điểm 15, thấp hơn React Native (16), chủ yếu do sử dụng nhiều RAM tính toán hơn. Tuy nhiên, Flutter vẫn là lựa chọn đáng cân nhắc nếu hiệu năng hình ảnh (UI performance) là yếu tố ưu tiên.
-\end{flushleft}
+\vspace{0.5em}
 
 \begin{figure}[H]
     \centering
@@ -174,37 +174,37 @@ Tính đến 2023, Flutter có khoảng 25.000 package trên pub.dev, so với h
 \end{figure}
 
 \subsubsection{Ngôn ngữ lập trình}
-\begin{flushleft}
+
   \hspace*{0.8cm}React Native sử dụng JavaScript – một ngôn ngữ phổ biến, dễ học, hỗ trợ từ hệ sinh thái Node.js và thư viện lớn. Trong khi đó, Flutter dùng Dart – một ngôn ngữ được Google phát triển với ưu điểm về type safety và khả năng biên dịch AOT, giúp giảm lỗi runtime nhưng đòi hỏi thời gian làm quen.
-\end{flushleft}
+\vspace{0.5em}
 
 \subsubsection{Phát triển đa nền tảng}
-\begin{flushleft}
+
   \hspace*{0.8cm}React Native chủ yếu nhắm đến iOS và Android, tuy có hỗ trợ web nhưng chưa ổn định. Ngược lại, Flutter hỗ trợ 6 nền tảng gồm mobile, web và desktop (Windows, macOS, Linux), phù hợp với ứng dụng cần độ bao phủ rộng và giao diện đồng nhất.
-\end{flushleft}
+\vspace{0.5em}
 
 \subsubsection{Cộng đồng và tài nguyên}
-\begin{flushleft}
+
   \hspace*{0.8cm}React Native sở hữu cộng đồng lớn với hơn 2 triệu developer, tài nguyên phong phú trên Stack Overflow, GitHub và blog kỹ thuật. Flutter tuy mới hơn nhưng đang tăng trưởng nhanh, đặc biệt ở thị trường châu Á, được Google đầu tư mạnh về tài liệu và hỗ trợ chính thức.
-\end{flushleft}
+\vspace{0.5em}
 
 % 3.4
 \subsection{Case Study}
 \renewcommand{\labelitemi}{--}    
 \subsubsection{React Native: Instagram}
-\begin{flushleft}
+
   \hspace*{0.8cm}Instagram đã tích hợp React Native vào ứng dụng native hiện có nhằm tăng tốc độ phát triển các tính năng như \textit{Stories} và giao diện máy ảnh (\textit{Camera UI}). Một trong những thách thức chính là đảm bảo hiệu năng ổn định trên các thiết bị cũ như iPhone 6s. Đội ngũ phát triển đã áp dụng kỹ thuật \textit{lazy loading} để tải component khi cần thiết và tối ưu cầu nối (\textit{bridge}) bằng cách giảm thiểu số lần tương tác giữa JavaScript và native thread. Kết quả, họ tái sử dụng được khoảng 85\% mã nguồn giữa hai nền tảng iOS và Android, đồng thời rút ngắn 30\% thời gian phát triển tính năng.
-\end{flushleft}
+\vspace{0.5em}
 
 \subsubsection{Flutter: Google Ads}
-\begin{flushleft}
+
   \hspace*{0.8cm}Ứng dụng Google Ads được xây dựng bằng Flutter nhằm hỗ trợ quản lý quảng cáo trên nhiều nền tảng. Ứng dụng này xử lý trung bình 5 triệu request mỗi ngày từ 16 quốc gia, với yêu cầu độ trễ phản hồi không vượt quá 200ms. Nhóm phát triển đã tận dụng \textit{Dart isolates} để thực hiện các tác vụ tính toán nặng ở luồng phụ, kết hợp với Firebase để đồng bộ dữ liệu thời gian thực (\textit{real-time}). Kết quả là thời gian tải dữ liệu giảm 40\%, đồng thời giao diện người dùng duy trì tốc độ khung hình 60 FPS trên tất cả thiết bị, bao gồm cả thiết bị cấu hình thấp.
-\end{flushleft}
+\vspace{0.5em}
 
 % 3.5
 \subsection{Kết Luận}
 \renewcommand{\labelitemi}{--}    
-\begin{flushleft}
+
   \hspace*{0.8cm}Cả React Native và Flutter đều là những framework hàng đầu cho phát triển ứng dụng đa nền tảng. Tuy nhiên, mỗi công nghệ lại phù hợp với những mục tiêu và điều kiện cụ thể trong quá trình phát triển.
   
   \setlength{\leftmargini}{1.5cm}
@@ -212,9 +212,9 @@ Tính đến 2023, Flutter có khoảng 25.000 package trên pub.dev, so với h
     \item Đối với các startup mong muốn đưa sản phẩm ra thị trường nhanh chóng, React Native là lựa chọn lý tưởng nhờ khả năng tái sử dụng mã JavaScript và cộng đồng phát triển rộng lớn.
     \item Trong khi đó, Flutter thể hiện ưu thế vượt trội ở những dự án yêu cầu hiệu năng cao và giao diện người dùng tuỳ chỉnh phức tạp nhờ engine đồ hoạ tích hợp và khả năng biên dịch trực tiếp sang mã máy.
   \end{itemize}
-\end{flushleft}
+\vspace{0.5em}
 
-\begin{flushleft}
+
   \hspace*{0.8cm}Trong tương lai, cả hai framework đều đang theo đuổi các hướng phát triển mới nhằm mở rộng phạm vi ứng dụng.
 
   \setlength{\leftmargini}{1.5cm}
@@ -222,9 +222,9 @@ Tính đến 2023, Flutter có khoảng 25.000 package trên pub.dev, so với h
     \item Flutter được kỳ vọng sẽ mở rộng sang các hệ thống nhúng như thiết bị IoT hoặc ô tô thông minh, đặc biệt thông qua dự án Hummingbird.
     \item Ngược lại, React Native đang tập trung vào cải thiện hiệu năng lõi bằng các sáng kiến như Fabric và TurboModules, giúp tối ưu giao tiếp giữa native và JavaScript.
   \end{itemize}
-\end{flushleft}
+\vspace{0.5em}
 
-\begin{flushleft}
+
   \hspace*{0.8cm}Việc lựa chọn framework phù hợp nên dựa trên các tiêu chí rõ ràng về kỹ thuật và nguồn lực.
 
   \setlength{\leftmargini}{1.5cm}
@@ -232,4 +232,4 @@ Tính đến 2023, Flutter có khoảng 25.000 package trên pub.dev, so với h
     \item Trước khi quyết định, nhóm phát triển nên đánh giá yêu cầu về giao diện, hiệu năng, cũng như kỹ năng sẵn có trong đội ngũ.
     \item Bên cạnh đó, việc xây dựng nguyên mẫu (\textit{prototype}) bằng cả hai công nghệ để kiểm thử hiệu suất thực tế là cách tiếp cận thực tiễn và hiệu quả.
   \end{itemize}
-\end{flushleft}
+\vspace{0.5em}

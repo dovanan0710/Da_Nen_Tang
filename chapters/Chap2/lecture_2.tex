@@ -33,7 +33,7 @@
         Mỗi ứng dụng gắn với một định danh người dùng riêng. UID (User ID) là mã định danh người dùng cấp hệ điều hành. Trong Android, mỗi ứng dụng (app) được xem như một người dùng độc lập, và hệ thống cấp cho nó một UID riêng biệt.
         \setlength{\leftmargini}{1.5cm}
         \begin{itemize}
-            \item Nguồn gốc UID: Android dựa trên Linux kernel, và Linux có mô hình đa người dùng. Mỗi tiến trình (process) trong Linux chạy dưới quyền của một user cụ thể, phân biệt bằng UID.Android tận dụng mô hình này để tăng tính bảo mật cho các ứng dụng.
+            \item Nguồn gốc UID: Android dựa trên Linux kernel, và Linux có mô hình đa người dùng. Mỗi tiến trình (process) trong Linux chạy dưới quyền của một user cụ thể, phân biệt bằng UID. Android tận dụng mô hình này để tăng tính bảo mật cho các ứng dụng.
             \item Mỗi app có vùng dữ liệu riêng (trong /data/data/<tên gói>) mà chỉ UID đó mới truy cập được. Không app nào có thể truy cập trực tiếp vào dữ liệu của app khác, trừ khi quyền được cấp thông qua hệ thống permission và kiểm soát quyền truy cập tập tin, cơ sở dữ liệu, socket. Ghi log và debug app. Cấp phép hoặc từ chối quyền (ví dụ camera, GPS...), do đó UID rất quan trọng.
         \end{itemize}
 
@@ -76,7 +76,7 @@
     Sandbox bảo vệ những thứ sau:
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
-          \item Dữ liệu app(database, file, cache...): Không app nào khác có thể truy cập nếu không được cấp quyền
+          \item Dữ liệu app (database, file, cache...): Không app nào khác có thể truy cập nếu không được cấp quyền
             \item Mã nguồn (classes.dex): Không bị sửa đổi/thay thế bởi app khác
             \item Giao tiếp giữa app: Chỉ có thể qua các cơ chế an toàn như Intent, ContentProvider, Binder
             \item Tài nguyên hệ thống (camera, GPS, v.v.): Chỉ truy cập được nếu người dùng cho phép thông qua hệ thống permission
@@ -137,7 +137,7 @@
         Mỗi ứng dụng là một tiến trình độc lập. Trong Android, mỗi ứng dụng (app) khi được khởi chạy sẽ được cấp phát một tiến trình riêng biệt (process). Tiến trình này có vùng nhớ riêng, UID riêng, máy ảo riêng, hoạt động độc lập, không can thiệp lẫn nhau.
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
-        \item Lợi ích: App không thể truy cập dữ liệu, bộ nhớ hay tiến trình của app khác (bảo mật), nếu 1 app lag/crash, không ảnh hưởng app khác(tối ưu hiệu năng), có thể theo dõi, dừng, hoặc khởi động lại tiến trình một cách riêng lẻ(quản lí tài nguyên), khi hệ thống cần RAM, Android có thể tắt tiến trình app ít dùng mà không ảnh hưởng toàn hệ thống(tự động giải phóng)
+        \item Lợi ích: App không thể truy cập dữ liệu, bộ nhớ hay tiến trình của app khác (bảo mật), nếu 1 app lag/crash, không ảnh hưởng app khác (tối ưu hiệu năng), có thể theo dõi, dừng, hoặc khởi động lại tiến trình một cách riêng lẻ (quản lí tài nguyên), khi hệ thống cần RAM, Android có thể tắt tiến trình app ít dùng mà không ảnh hưởng toàn hệ thống (tự động giải phóng)
         \item Android tạo ra một tiến trình mới: khi người dùng mở ứng dụng lần đầu, app được khởi động lại sau khi bị hệ thống giải phóng
         \item Vùng nhớ riêng trong mỗi tiến trình: mỗi tiến trình chỉ "thấy" được biến, đối tượng trong phạm vi của nó, dữ liệu trong thư mục app, không thể trực tiếp truy cập đến vùng nhớ của tiến trình khác (do cơ chế sandbox, UID, VM kết hợp bảo vệ).
       \end{itemize}

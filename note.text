@@ -1,0 +1,16 @@
+1. đổi chương thành phần, thêm tên chương 2 done
+2. xóa footer IT-... done
+3. kiểm tra lại tài liệu tham khảo, sửa lại toàn bộ tài liệu tham khảo
+
+4. python code android done
+5. Sửa lại đoạn sau
+Mỗi app có vùng dữ liệu riêng (trong /data/data/<tên gói>) mà chỉ UID đó mới
+truy cập được. Không app nào có thể truy cập trực tiếp vào dữ liệu của app khác,
+trừ khi quyền được cấp thông qua hệ thống permission và kiểm soát quyền truy
+cập tập tin, cơ sở dữ liệu, socket. Ghi log và debug app. Cấp phép hoặc từ chối
+quyền (ví dụ camera, GPS...), do đó UID rất quan trọng.
+
+6. Một số trang chưa được căn đều các bên done
+7. Một số đoạn chưa lùi đầu dòng
+
+

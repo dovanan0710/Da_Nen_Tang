@@ -1,46 +1,46 @@
 \section{Cơ Sở Lý Thuyết }
-\begin{flushleft}
+
   \hspace*{0.8cm}Trong quá trình phát triển phần mềm hiện đại, kiến trúc hệ thống đóng vai trò then chốt trong việc đảm bảo hiệu quả và khả năng mở rộng của ứng dụng. Đặc biệt đối với các ứng dụng di động, việc lựa chọn kiến trúc phù hợp có thể ảnh hưởng trực tiếp đến chi phí, thời gian phát triển và trải nghiệm người dùng cuối. Trong phần này, chúng tôi trình bày các khái niệm nền tảng liên quan đến kiến trúc đa nền tảng như một hướng tiếp cận thay thế cho phát triển native truyền thống.
-\end{flushleft}
+\vspace{0.5em}
 % 2.1
 \subsection{Khái niệm kiến trúc đa nền tảng}
 \renewcommand{\labelitemi}{--}
 
 \subsubsection{Định nghĩa}
-\begin{flushleft}
-    \hspace*{0.8cm}Kiến trúc đa nền tảng (cross-platform architecture) là một phương pháp phát triển ứng dụng dựa trên một bộ mã nguồn chung, giúp triển khai đồng thời trên nhiều hệ điều hành như iOS, Android, cũng như các nền tảng khác như web hoặc desktop. Thay vì xây dựng từng phiên bản riêng biệt cho từng hệ điều hành, lập trình viên sử dụng các framework hoặc công cụ trung gian để biên dịch mã nguồn và tối ưu hóa cho từng môi trường cụ thể.
-\end{flushleft}
 
-\begin{flushleft}
+    \hspace*{0.8cm}Kiến trúc đa nền tảng (cross-platform architecture) là một phương pháp phát triển ứng dụng dựa trên một bộ mã nguồn chung, giúp triển khai đồng thời trên nhiều hệ điều hành như iOS, Android, cũng như các nền tảng khác như web hoặc desktop. Thay vì xây dựng từng phiên bản riêng biệt cho từng hệ điều hành, lập trình viên sử dụng các framework hoặc công cụ trung gian để biên dịch mã nguồn và tối ưu hóa cho từng môi trường cụ thể.
+\vspace{0.5em}
+
+
     \hspace*{0.8cm}Các framework tiêu biểu cho kiến trúc đa nền tảng bao gồm:
     \setlength{\leftmargini}{1.5cm}
     \begin{itemize}
         \item \textbf{React Native}: Sử dụng JavaScript và biên dịch mã qua "bridge" thành mã máy tương ứng (Objective-C/Swift cho iOS, Java/Kotlin cho Android).
         \item \textbf{Flutter}: Dựa trên ngôn ngữ Dart và sử dụng Skia Engine để render giao diện trực tiếp, độc lập với hệ điều hành.
     \end{itemize}
-\end{flushleft}
+\vspace{0.5em}
 
-\subsubsection{Nguyên tắc "Write Once, Run Anywhere" (WORA)}
-\begin{flushleft}
+\subsubsection{Nguyên tắc "Write Once, Run Anywhere"-(WORA)}
+
     \hspace*{0.8cm}Nguyên tắc WORA, được Sun Microsystems giới thiệu từ thập niên 1990, nhấn mạnh vào khả năng tái sử dụng mã nguồn tối đa và giảm chi phí phát triển. Nguyên tắc này dựa trên hai yếu tố cốt lõi:
     \setlength{\leftmargini}{1.5cm}
     \begin{itemize}
         \item \textbf{Tính độc lập nền tảng}: Mã nguồn không bị phụ thuộc vào hệ điều hành hoặc phần cứng cụ thể.
         \item \textbf{Tính nhất quán}: Logic nghiệp vụ và giao diện hoạt động đồng bộ trên mọi thiết bị.
     \end{itemize}
-\end{flushleft}
+\vspace{0.5em}
 
-\begin{flushleft}
+
     \hspace*{0.8cm}Một số ứng dụng thực tế đã áp dụng hiệu quả nguyên tắc này:
     \setlength{\leftmargini}{1.5cm}
     \begin{itemize}
         \item \textbf{Microsoft Teams}: Dùng React Native để triển khai trên iOS, Android và Windows với hơn 90\% mã nguồn dùng chung.
         \item \textbf{Google Pay}: Xây dựng trên Flutter, hỗ trợ cả mobile và web từ một codebase duy nhất.
     \end{itemize}
-\end{flushleft}
+\vspace{0.5em}
 
 \subsubsection{Lợi ích của kiến trúc đa nền tảng}
-\begin{flushleft}
+
     \hspace*{0.8cm}So với phát triển native, kiến trúc đa nền tảng mang lại nhiều lợi ích về mặt chi phí, thời gian và khả năng bảo trì:
     \setlength{\leftmargini}{1.5cm}
     \begin{itemize}
@@ -49,10 +49,10 @@
         \item \textbf{Bảo trì dễ dàng}: Việc cập nhật tính năng hoặc sửa lỗi được thực hiện một lần và áp dụng đồng thời cho mọi nền tảng.
         \item \textbf{Tích hợp CI/CD}: Quy trình phát hành được tự động hóa, giảm rủi ro và nâng cao tốc độ triển khai.
     \end{itemize}
-\end{flushleft}
+\vspace{0.5em}
 
 \subsubsection{Thách thức và hạn chế}
-\begin{flushleft}
+
     \hspace*{0.8cm}Mặc dù mang lại nhiều lợi thế, kiến trúc đa nền tảng vẫn tồn tại những điểm hạn chế nhất định:
     \setlength{\leftmargini}{1.5cm}
     \begin{itemize}
@@ -63,10 +63,10 @@
         \item \textbf{Phụ thuộc vào cộng đồng và công cụ}: Nhiều plugin do cộng đồng phát triển có thể thiếu ổn định hoặc ngừng duy trì.
         \item \textbf{Ví dụ}: React Native Maps từng gặp lỗi nghiêm trọng trên iOS 14, dẫn đến crash hàng loạt.
     \end{itemize}
-\end{flushleft}
+\vspace{0.5em}
 
 \subsubsection{Công cụ phát triển}
-\begin{flushleft}
+
   \hspace*{0.8cm}Phát triển ứng dụng đa nền tảng đòi hỏi lập trình viên sử dụng các công cụ chuyên biệt nhằm tối ưu quy trình xây dựng, kiểm thử và triển khai. Những công cụ này bao gồm IDE (môi trường phát triển tích hợp), bộ giả lập thiết bị, công cụ kiểm thử và hệ thống quản lý mã nguồn.
 
   \begin{figure}[H]
@@ -77,60 +77,62 @@
   \end{figure}
 
   \hspace*{0.8cm}Hình~\ref{fig:android_ios_tools} thể hiện sự khác biệt giữa các công cụ được sử dụng trong hệ sinh thái Android và iOS. Việc lựa chọn công cụ phù hợp phụ thuộc vào hệ điều hành mục tiêu, ngôn ngữ lập trình và kinh nghiệm của lập trình viên.
-\end{flushleft}
+\vspace{0.5em}
 
 
 % 2.2
 \subsection{Các yếu tố quyết định khi lựa chọn đa nền tảng}
 \renewcommand{\labelitemi}{--}    
-\begin{flushleft}
+
 
   \subsubsection{Phân tích nhóm người dùng mục tiêu}
-    \begin{flushleft}
+    
       \hspace*{0.8cm}Thị phần hệ điều hành đóng vai trò quan trọng trong việc xác định nền tảng ưu tiên.
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
         \item iOS hiện chiếm 27\% thị trường toàn cầu, chủ yếu phổ biến tại Mỹ và Châu Âu.
         \item Android chiếm 73\%, đặc biệt thống trị tại Châu Á và Châu Phi (Statista, 2023) ~\cite{biornhansen2021} .
       \end{itemize}
-    \end{flushleft}
+    \vspace{0.5em}
 
-    \begin{flushleft}
+    
       \hspace*{0.8cm}Chiến lược tiếp cận người dùng cần phù hợp với đặc thù từng hệ điều hành.
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
           \item Nếu đối tượng mục tiêu là người dùng cao cấp (iOS), nên ưu tiên framework hỗ trợ giao diện Cupertino như Flutter.
           \item Nếu nhắm tới thị trường đại chúng (Android), React Native là lựa chọn phù hợp nhờ khả năng tích hợp với Google Services.
       \end{itemize}
-    \end{flushleft}
+    \vspace{0.5em}
 
-    \begin{flushleft}
+    
       \hspace*{0.8cm}Một ví dụ thực tế giúp minh họa rõ ràng cho lựa chọn nền tảng là Grab.
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
           \item Grab (Flutter): Tập trung vào thị trường Đông Nam Á (đa số dùng Android) nhưng vẫn đảm bảo trải nghiệm mượt mà trên iOS.
       \end{itemize}
-    \end{flushleft}
+    \vspace{0.5em}
 
     \subsubsection{Mô hình "Rẻ – Nhanh – Tốt"}
-    \begin{flushleft}
-      \hspace*{0.8cm}Nguyên tắc Iron Triangle cho rằng chỉ có thể đạt hai trong ba tiêu chí: rẻ, nhanh và tốt. Mỗi lựa chọn framework cần cân nhắc dựa trên ưu tiên này.
-    \end{flushleft}
     
-    \begin{flushleft}
+      \hspace*{0.8cm}Nguyên tắc Iron Triangle cho rằng chỉ có thể đạt hai trong ba tiêu chí: rẻ, nhanh và tốt. Mỗi lựa chọn framework cần cân nhắc dựa trên ưu tiên này.
+    \vspace{0.5em}
+    
+    \begin{figure}[H]
       \centering
       \includegraphics[width=0.45\textwidth]{images/iron_triangle.png} \\
       \textit{\small Hình: Mô hình Iron Triangle – Rẻ, Nhanh, Tốt – Chọn hai}
-    \end{flushleft}
+        \label{fig:fig34}
+    \end{figure}
+    \vspace{0.5em}
     
-    \begin{flushleft}
+    
       \hspace*{0.8cm}Tùy vào mục tiêu dự án, mỗi framework sẽ phù hợp với một chiến lược khác nhau.
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
           \item React Native: Phù hợp cho dự án cần MVP (Minimum Viable Product) nhanh chóng, nhưng hiệu năng không cao.
           \item Flutter: Đòi hỏi đầu tư ban đầu để học Dart, nhưng mang lại hiệu năng cao và giao diện tùy biến tốt hơn.
       \end{itemize}
-    \end{flushleft}
+    \vspace{0.5em}
     
 
   \subsubsection{Khả năng tích hợp với hệ sinh thái hiện có}
@@ -140,7 +142,7 @@
   
       \hspace*{0.8cm}Một ví dụ điển hình cho khả năng tích hợp là Shopify. Shopify sử dụng React Native để tích hợp ứng dụng mobile với nền tảng web sẵn có.    
 
-\end{flushleft}
+\vspace{0.5em}
 
 
 % 2.3
@@ -159,9 +161,11 @@
 
 \subsubsection{Thế hệ hiện đại (2017–nay): Native-Reactive Frameworks}
 
-\hspace*{1.3em} Từ năm 2017, kiến trúc đa nền tảng đã chuyển sang giai đoạn hiện đại với sự xuất hiện của các framework sử dụng native rendering, ví dụ như React Native và Flutter. Các framework này sử dụng cơ chế điều khiển native components thông qua bridge (React Native) hoặc tự vẽ giao diện mà không phụ thuộc vào hệ điều hành (Flutter).
+\hspace*{0.8cm} Từ năm 2017, kiến trúc đa nền tảng đã chuyển sang giai đoạn hiện đại với sự xuất hiện của các framework sử dụng native rendering, ví dụ như React Native và Flutter. Các framework này sử dụng cơ chế điều khiển native components thông qua bridge (React Native) hoặc tự vẽ giao diện mà không phụ thuộc vào hệ điều hành (Flutter).
 
-\indent Nhờ cơ chế hiện đại, các framework này mang lại hiệu năng gần tương đương ứng dụng native và hỗ trợ đa nền tảng, từ mobile đến web và desktop. Một số bước đột phá quan trọng trong giai đoạn này gồm Flutter 2.0 (2020) mở rộng hỗ trợ nền tảng web và desktop, và React Native New Architecture (2022) sử dụng TurboModules và Fabric để tối ưu hiệu suất.
+\vspace{0.5em}
+
+\hspace*{0.8cm}Nhờ cơ chế hiện đại, các framework này mang lại hiệu năng gần tương đương ứng dụng native và hỗ trợ đa nền tảng, từ mobile đến web và desktop. Một số bước đột phá quan trọng trong giai đoạn này gồm Flutter 2.0 (2020) mở rộng hỗ trợ nền tảng web và desktop, và React Native New Architecture (2022) sử dụng TurboModules và Fabric để tối ưu hiệu suất.
 
 \indent Ứng dụng Xianyu của Alibaba là ví dụ thành công khi sử dụng Flutter để phục vụ hơn 200 triệu người dùng, đạt hiệu năng tương đương ứng dụng native.
 % 2.4
@@ -235,7 +239,7 @@ Tuy nhiên, nhóm cũng đối mặt với thách thức trong việc đào tạ
 % 2.6
 \subsection{So Sánh Chi Tiết React Native vs. Flutter}
 \renewcommand{\labelitemi}{--}    
-\begin{flushleft}
+
     \hspace*{0.8cm}Biểu đồ dưới đây so sánh mức độ quan tâm giữa hai framework di động phổ biến: \textbf{Flutter (xanh)} và \textbf{React Native (đỏ)} trong 12 tháng qua tại Hoa Kỳ, dựa trên dữ liệu tìm kiếm từ Google Trends.
 
     \begin{figure}[H]
@@ -266,11 +270,11 @@ Tuy nhiên, nhóm cũng đối mặt với thách thức trong việc đào tạ
         \end{tabular}
         \caption{So sánh các yếu tố giữa React Native và Flutter}
     \end{table}
-\end{flushleft}
+\vspace{0.5em}
 
 % 2.7
 \subsection{Kết luận phần Cơ Sở Lý Thuyết}
 \renewcommand{\labelitemi}{--}    
-    \begin{flushleft}
+    
         \hspace*{0.8cm}Kiến trúc đa nền tảng đã phát triển qua nhiều giai đoạn, từ các giải pháp dựa trên WebView đến các framework hiện đại như React Native và Flutter. Mỗi công cụ có ưu nhược điểm riêng, phù hợp với từng loại dự án. Việc lựa chọn phụ thuộc vào sự cân nhắc giữa chi phí, thời gian, và chất lượng, cùng với định hướng dài hạn của doanh nghiệp. Xu hướng tương lai hứa hẹn sự tích hợp sâu rộng của AI, WebAssembly và low-code platforms, mở ra kỷ nguyên mới cho phát triển ứng dụng linh hoạt và hiệu quả.
-    \end{flushleft}
+    \vspace{0.5em}
