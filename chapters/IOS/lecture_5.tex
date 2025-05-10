@@ -1,27 +1,40 @@
 \section{Cách thiết kế giao diện người dùng}
-\hspace*{0.8cm}iOS cung cấp hai framework chính để xây dựng giao diện người dùng: \textbf{UIKit} và \textbf{SwiftUI}.
+iOS cung cấp hai framework chính để xây dựng giao diện người dùng: \textbf{UIKit} và \textbf{SwiftUI}.
 
 \subsection{UIKit}
 UIKit là framework UI truyền thống cho iOS, được thiết kế dựa trên mô hình lập trình mệnh lệnh và sử dụng kiến trúc lớp. Trong UIKit, các thành phần giao diện người dùng được tổ chức theo cấu trúc lớp, giúp dễ dàng phát triển các ứng dụng iOS với khả năng tùy chỉnh cao và tính tương thích tốt.
 
+\vspace{0.5em}
+
 Một trong những tính năng quan trọng của UIKit là \textbf{Auto Layout}. Tính năng này giúp thiết kế giao diện người dùng linh hoạt và thích ứng với các kích thước màn hình khác nhau, đảm bảo rằng ứng dụng có thể hoạt động trên mọi loại thiết bị iOS mà không gặp vấn đề về hiển thị.
 
+\vspace{0.5em}
+
 Tiếp theo, \textbf{View Controller Lifecycle} là một khái niệm quan trọng mà các lập trình viên iOS cần nắm vững. Hiểu rõ vòng đời của \textbf{UIViewController} sẽ giúp quản lý hiệu quả tài nguyên hệ thống, cũng như duy trì trạng thái của ứng dụng, từ đó tối ưu hóa hiệu suất và giảm thiểu các lỗi có thể xảy ra trong quá trình sử dụng.
+
+\vspace{0.5em}
 
 Cuối cùng, \textbf{Reusable Views} đóng vai trò quan trọng trong việc cải thiện hiệu suất và khả năng bảo trì của ứng dụng. Việc tái sử dụng views cho phép giảm thiểu việc tạo dựng các phần tử giao diện mới, từ đó làm giảm độ phức tạp và tăng tốc độ phát triển ứng dụng.
 
 \subsection{SwiftUI}
 SwiftUI \cite{swiftui} là framework UI khai báo mới của Apple, được giới thiệu từ iOS 13. Với SwiftUI, Apple hướng đến việc làm đơn giản hóa quá trình xây dựng giao diện người dùng, nhấn mạnh vào tính khai báo và sự dễ sử dụng trong lập trình UI.
 
+\vspace{0.5em}
+
 \textbf{View Basics} là yếu tố cơ bản trong SwiftUI. Nó sử dụng cấu trúc \texttt{protocol View} để xây dựng giao diện. Các views trong SwiftUI không phải là các lớp như trong UIKit, mà là các cấu trúc (struct), điều này giúp giảm thiểu sự phức tạp và làm tăng hiệu suất của ứng dụng.
 
+\vspace{0.5em}
+
 Tiếp theo, SwiftUI cung cấp \textbf{State và Binding} thông qua \texttt{property wrappers}, giúp dễ dàng quản lý trạng thái của các thành phần trong giao diện. \texttt{State} là nơi lưu trữ dữ liệu cục bộ của một view, trong khi \texttt{Binding} cho phép truyền dữ liệu hai chiều giữa các view và giúp đảm bảo đồng bộ hóa trạng thái giữa chúng.
+
+\vspace{0.5em}
 
 Cuối cùng, \textbf{ObservableObject và EnvironmentObject} \cite{ObservableObject} là các cơ chế trong SwiftUI dùng để quản lý trạng thái phức tạp hơn. \texttt{ObservableObject} cho phép các view quan sát và tự động cập nhật khi trạng thái của nó thay đổi, còn \texttt{EnvironmentObject} giúp chia sẻ trạng thái giữa các view trong một ứng dụng mà không cần truyền qua các tham số. Những cơ chế này giúp ứng dụng linh hoạt và dễ dàng quản lý các trạng thái phức tạp trong các ứng dụng quy mô lớn.
 
 \subsection{So sánh UIKit và SwiftUI}
 
-\begin{center}
+\begin{table}[H] % Sử dụng [H] nếu bạn dùng \usepackage{float}
+\centering
 \begin{tabular}{|l|l|l|}
 \hline
 \textbf{Khía cạnh} & \textbf{UIKit} & \textbf{SwiftUI} \\
@@ -43,4 +56,5 @@ Học tập & Phức tạp & Dễ dàng hơn \\
 Tùy biến & Rất linh hoạt & Hạn chế hơn \\
 \hline
 \end{tabular}
-\end{center}
+\caption{So sánh giữa UIKit và SwiftUI}
+\end{table}

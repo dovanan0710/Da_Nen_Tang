@@ -1,28 +1,26 @@
 \section{Cơ Sở Lý Thuyết }
 
-  \hspace*{0.8cm}Trong quá trình phát triển phần mềm hiện đại, kiến trúc hệ thống đóng vai trò then chốt trong việc đảm bảo hiệu quả và khả năng mở rộng của ứng dụng. Đặc biệt đối với các ứng dụng di động, việc lựa chọn kiến trúc phù hợp có thể ảnh hưởng trực tiếp đến chi phí, thời gian phát triển và trải nghiệm người dùng cuối. Trong phần này, chúng tôi trình bày các khái niệm nền tảng liên quan đến kiến trúc đa nền tảng như một hướng tiếp cận thay thế cho phát triển native truyền thống.
-\vspace{0.5em}
+  Trong quá trình phát triển phần mềm hiện đại, kiến trúc hệ thống đóng vai trò then chốt trong việc đảm bảo hiệu quả và khả năng mở rộng của ứng dụng. Đặc biệt đối với các ứng dụng di động, việc lựa chọn kiến trúc phù hợp có thể ảnh hưởng trực tiếp đến chi phí, thời gian phát triển và trải nghiệm người dùng cuối. Trong phần này, chúng tôi trình bày các khái niệm nền tảng liên quan đến kiến trúc đa nền tảng như một hướng tiếp cận thay thế cho phát triển native truyền thống.
 % 2.1
 \subsection{Khái niệm kiến trúc đa nền tảng}
 \renewcommand{\labelitemi}{--}
 
 \subsubsection{Định nghĩa}
 
-    \hspace*{0.8cm}Kiến trúc đa nền tảng (cross-platform architecture) là một phương pháp phát triển ứng dụng dựa trên một bộ mã nguồn chung, giúp triển khai đồng thời trên nhiều hệ điều hành như iOS, Android, cũng như các nền tảng khác như web hoặc desktop. Thay vì xây dựng từng phiên bản riêng biệt cho từng hệ điều hành, lập trình viên sử dụng các framework hoặc công cụ trung gian để biên dịch mã nguồn và tối ưu hóa cho từng môi trường cụ thể.
+    Kiến trúc đa nền tảng (cross-platform architecture) là một phương pháp phát triển ứng dụng dựa trên một bộ mã nguồn chung, giúp triển khai đồng thời trên nhiều hệ điều hành như iOS, Android, cũng như các nền tảng khác như web hoặc desktop. Thay vì xây dựng từng phiên bản riêng biệt cho từng hệ điều hành, lập trình viên sử dụng các framework hoặc công cụ trung gian để biên dịch mã nguồn và tối ưu hóa cho từng môi trường cụ thể.
 \vspace{0.5em}
 
 
-    \hspace*{0.8cm}Các framework tiêu biểu cho kiến trúc đa nền tảng bao gồm:
+    Các framework tiêu biểu cho kiến trúc đa nền tảng bao gồm:
     \setlength{\leftmargini}{1.5cm}
     \begin{itemize}
         \item \textbf{React Native}: Sử dụng JavaScript và biên dịch mã qua "bridge" thành mã máy tương ứng (Objective-C/Swift cho iOS, Java/Kotlin cho Android).
         \item \textbf{Flutter}: Dựa trên ngôn ngữ Dart và sử dụng Skia Engine để render giao diện trực tiếp, độc lập với hệ điều hành.
     \end{itemize}
-\vspace{0.5em}
 
 \subsubsection{Nguyên tắc "Write Once, Run Anywhere"-(WORA)}
 
-    \hspace*{0.8cm}Nguyên tắc WORA, được Sun Microsystems giới thiệu từ thập niên 1990, nhấn mạnh vào khả năng tái sử dụng mã nguồn tối đa và giảm chi phí phát triển. Nguyên tắc này dựa trên hai yếu tố cốt lõi:
+    Nguyên tắc WORA, được Sun Microsystems giới thiệu từ thập niên 1990, nhấn mạnh vào khả năng tái sử dụng mã nguồn tối đa và giảm chi phí phát triển. Nguyên tắc này dựa trên hai yếu tố cốt lõi:
     \setlength{\leftmargini}{1.5cm}
     \begin{itemize}
         \item \textbf{Tính độc lập nền tảng}: Mã nguồn không bị phụ thuộc vào hệ điều hành hoặc phần cứng cụ thể.
@@ -31,17 +29,16 @@
 \vspace{0.5em}
 
 
-    \hspace*{0.8cm}Một số ứng dụng thực tế đã áp dụng hiệu quả nguyên tắc này:
+    Một số ứng dụng thực tế đã áp dụng hiệu quả nguyên tắc này:
     \setlength{\leftmargini}{1.5cm}
     \begin{itemize}
         \item \textbf{Microsoft Teams}: Dùng React Native để triển khai trên iOS, Android và Windows với hơn 90\% mã nguồn dùng chung.
         \item \textbf{Google Pay}: Xây dựng trên Flutter, hỗ trợ cả mobile và web từ một codebase duy nhất.
     \end{itemize}
-\vspace{0.5em}
 
 \subsubsection{Lợi ích của kiến trúc đa nền tảng}
 
-    \hspace*{0.8cm}So với phát triển native, kiến trúc đa nền tảng mang lại nhiều lợi ích về mặt chi phí, thời gian và khả năng bảo trì:
+    So với phát triển native, kiến trúc đa nền tảng mang lại nhiều lợi ích về mặt chi phí, thời gian và khả năng bảo trì:
     \setlength{\leftmargini}{1.5cm}
     \begin{itemize}
         \item \textbf{Tiết kiệm thời gian và chi phí}: Theo InfoQ (2022) ~\cite{infoq2022}, thời gian phát triển có thể giảm 50–80\%, đồng thời chỉ cần một đội ngũ phát triển thay vì nhiều nhóm chuyên biệt.
@@ -49,11 +46,10 @@
         \item \textbf{Bảo trì dễ dàng}: Việc cập nhật tính năng hoặc sửa lỗi được thực hiện một lần và áp dụng đồng thời cho mọi nền tảng.
         \item \textbf{Tích hợp CI/CD}: Quy trình phát hành được tự động hóa, giảm rủi ro và nâng cao tốc độ triển khai.
     \end{itemize}
-\vspace{0.5em}
 
 \subsubsection{Thách thức và hạn chế}
 
-    \hspace*{0.8cm}Mặc dù mang lại nhiều lợi thế, kiến trúc đa nền tảng vẫn tồn tại những điểm hạn chế nhất định:
+    Mặc dù mang lại nhiều lợi thế, kiến trúc đa nền tảng vẫn tồn tại những điểm hạn chế nhất định:
     \setlength{\leftmargini}{1.5cm}
     \begin{itemize}
         \item \textbf{Hiệu năng thấp hơn native}: Theo Biorn-Hansen (2021)~\cite{biornhansen2021}, ứng dụng đa nền tảng có thể chậm hơn 15–30\% khi xử lý đồ họa nặng như animation hoặc game 3D.
@@ -63,11 +59,10 @@
         \item \textbf{Phụ thuộc vào cộng đồng và công cụ}: Nhiều plugin do cộng đồng phát triển có thể thiếu ổn định hoặc ngừng duy trì.
         \item \textbf{Ví dụ}: React Native Maps từng gặp lỗi nghiêm trọng trên iOS 14, dẫn đến crash hàng loạt.
     \end{itemize}
-\vspace{0.5em}
 
 \subsubsection{Công cụ phát triển}
 
-  \hspace*{0.8cm}Phát triển ứng dụng đa nền tảng đòi hỏi lập trình viên sử dụng các công cụ chuyên biệt nhằm tối ưu quy trình xây dựng, kiểm thử và triển khai. Những công cụ này bao gồm IDE (môi trường phát triển tích hợp), bộ giả lập thiết bị, công cụ kiểm thử và hệ thống quản lý mã nguồn.
+  Phát triển ứng dụng đa nền tảng đòi hỏi lập trình viên sử dụng các công cụ chuyên biệt nhằm tối ưu quy trình xây dựng, kiểm thử và triển khai. Những công cụ này bao gồm IDE (môi trường phát triển tích hợp), bộ giả lập thiết bị, công cụ kiểm thử và hệ thống quản lý mã nguồn.
 
   \begin{figure}[H]
     \centering
@@ -76,8 +71,7 @@
     \label{fig:android_ios_tools}
   \end{figure}
 
-  \hspace*{0.8cm}Hình~\ref{fig:android_ios_tools} thể hiện sự khác biệt giữa các công cụ được sử dụng trong hệ sinh thái Android và iOS. Việc lựa chọn công cụ phù hợp phụ thuộc vào hệ điều hành mục tiêu, ngôn ngữ lập trình và kinh nghiệm của lập trình viên.
-\vspace{0.5em}
+  Hình~\ref{fig:android_ios_tools} thể hiện sự khác biệt giữa các công cụ được sử dụng trong hệ sinh thái Android và iOS. Việc lựa chọn công cụ phù hợp phụ thuộc vào hệ điều hành mục tiêu, ngôn ngữ lập trình và kinh nghiệm của lập trình viên.
 
 
 % 2.2
@@ -87,7 +81,7 @@
 
   \subsubsection{Phân tích nhóm người dùng mục tiêu}
     
-      \hspace*{0.8cm}Thị phần hệ điều hành đóng vai trò quan trọng trong việc xác định nền tảng ưu tiên.
+      Thị phần hệ điều hành đóng vai trò quan trọng trong việc xác định nền tảng ưu tiên.
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
         \item iOS hiện chiếm 27\% thị trường toàn cầu, chủ yếu phổ biến tại Mỹ và Châu Âu.
@@ -96,7 +90,7 @@
     \vspace{0.5em}
 
     
-      \hspace*{0.8cm}Chiến lược tiếp cận người dùng cần phù hợp với đặc thù từng hệ điều hành.
+      Chiến lược tiếp cận người dùng cần phù hợp với đặc thù từng hệ điều hành.
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
           \item Nếu đối tượng mục tiêu là người dùng cao cấp (iOS), nên ưu tiên framework hỗ trợ giao diện Cupertino như Flutter.
@@ -105,67 +99,70 @@
     \vspace{0.5em}
 
     
-      \hspace*{0.8cm}Một ví dụ thực tế giúp minh họa rõ ràng cho lựa chọn nền tảng là Grab.
+      Một ví dụ thực tế giúp minh họa rõ ràng cho lựa chọn nền tảng là Grab.
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
           \item Grab (Flutter): Tập trung vào thị trường Đông Nam Á (đa số dùng Android) nhưng vẫn đảm bảo trải nghiệm mượt mà trên iOS.
       \end{itemize}
-    \vspace{0.5em}
 
     \subsubsection{Mô hình "Rẻ – Nhanh – Tốt"}
     
-      \hspace*{0.8cm}Nguyên tắc Iron Triangle cho rằng chỉ có thể đạt hai trong ba tiêu chí: rẻ, nhanh và tốt. Mỗi lựa chọn framework cần cân nhắc dựa trên ưu tiên này.
+      Nguyên tắc Iron Triangle cho rằng chỉ có thể đạt hai trong ba tiêu chí: rẻ, nhanh và tốt. Mỗi lựa chọn framework cần cân nhắc dựa trên ưu tiên này.
     \vspace{0.5em}
-    
+
     \begin{figure}[H]
-      \centering
-      \includegraphics[width=0.45\textwidth]{images/iron_triangle.png} \\
-      \textit{\small Hình: Mô hình Iron Triangle – Rẻ, Nhanh, Tốt – Chọn hai}
-        \label{fig:fig34}
-    \end{figure}
-    \vspace{0.5em}
+    \centering
+    \includegraphics[width=0.45\textwidth]{images/iron_triangle.png}
+    \caption{Mô hình Iron Triangle – Rẻ, Nhanh, Tốt – Chọn hai}
+    \label{fig:android_ios_tools2}
+  \end{figure}
     
-    
-      \hspace*{0.8cm}Tùy vào mục tiêu dự án, mỗi framework sẽ phù hợp với một chiến lược khác nhau.
+      Tùy vào mục tiêu dự án, mỗi framework sẽ phù hợp với một chiến lược khác nhau.
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}
           \item React Native: Phù hợp cho dự án cần MVP (Minimum Viable Product) nhanh chóng, nhưng hiệu năng không cao.
           \item Flutter: Đòi hỏi đầu tư ban đầu để học Dart, nhưng mang lại hiệu năng cao và giao diện tùy biến tốt hơn.
       \end{itemize}
-    \vspace{0.5em}
     
 
   \subsubsection{Khả năng tích hợp với hệ sinh thái hiện có}
-      \hspace*{0.8cm}React Native tận dụng tốt hệ sinh thái JavaScript (Node.js, npm, Expo) và dễ tích hợp với ứng dụng web hiện tại.
+      React Native tận dụng tốt hệ sinh thái JavaScript (Node.js, npm, Expo) và dễ tích hợp với ứng dụng web hiện tại.
 
-      \hspace*{0.8cm}Flutter mặc dù độc lập hơn, nhưng vẫn có thể kết nối hiệu quả với Firebase hoặc Google Cloud thông qua plugin.
+      \vspace{0.5em}
+
+      Flutter mặc dù độc lập hơn, nhưng vẫn có thể kết nối hiệu quả với Firebase hoặc Google Cloud thông qua plugin.
+
+      \vspace{0.5em}
   
-      \hspace*{0.8cm}Một ví dụ điển hình cho khả năng tích hợp là Shopify. Shopify sử dụng React Native để tích hợp ứng dụng mobile với nền tảng web sẵn có.    
-
-\vspace{0.5em}
-
+      Một ví dụ điển hình cho khả năng tích hợp là Shopify. Shopify sử dụng React Native để tích hợp ứng dụng mobile với nền tảng web sẵn có.
 
 % 2.3
 \subsection{Lịch sử phát triển của kiến trúc đa nền tảng}
 
 \subsubsection{Thế hệ đầu tiên (2010–2015): WebView-based Frameworks}
-\hspace*{1.3em} Giai đoạn đầu tiên trong kiến trúc đa nền tảng là sự xuất hiện của các framework dựa trên WebView, điển hình là PhoneGap, Cordova, và Ionic. Các framework này hoạt động bằng cách đóng gói nội dung HTML/CSS/JavaScript trong WebView, tức bản chất ứng dụng chỉ là trình duyệt bên trong native shell.
+Giai đoạn đầu tiên trong kiến trúc đa nền tảng là sự xuất hiện của các framework dựa trên WebView, điển hình là PhoneGap, Cordova, và Ionic. Các framework này hoạt động bằng cách đóng gói nội dung HTML/CSS/JavaScript trong WebView, tức bản chất ứng dụng chỉ là trình duyệt bên trong native shell.
+
+\vspace{0.5em}
 
 \indent Một ưu điểm lớn của các framework này là lập trình viên web có thể dễ dàng phát triển ứng dụng với chi phí phát triển và bảo trì thấp. Tuy nhiên, chúng có những hạn chế rõ ràng như hiệu năng thấp, không xử lý tốt các animation phức tạp, và giao diện thiếu tính bản địa hoá. Một ví dụ điển hình là ứng dụng Uber, ban đầu phát triển bằng Cordova nhưng phải chuyển sang native do hiện tượng lag khi hiển thị bản đồ.
 
 \subsubsection{Thế hệ thứ hai (2015–2017): Hybrid Frameworks}
 
-\hspace*{1.3em} Sau WebView, thế hệ thứ hai ra đời với sự kết hợp giữa WebView và native components, gọi là Hybrid Frameworks, điển hình là Xamarin và NativeScript. Các framework này sử dụng cơ chế \textit{bridge} để kết nối JavaScript (hoặc C\#) với native APIs, cho phép sử dụng một số thành phần giao diện bản địa.
+Sau WebView, thế hệ thứ hai ra đời với sự kết hợp giữa WebView và native components, gọi là Hybrid Frameworks, điển hình là Xamarin và NativeScript. Các framework này sử dụng cơ chế \textit{bridge} để kết nối JavaScript (hoặc C\#) với native APIs, cho phép sử dụng một số thành phần giao diện bản địa.
+
+\vspace{0.5em}
 
 \indent Hybrid frameworks mang lại hiệu năng cải thiện so với WebView và cho phép truy cập các native APIs như camera, GPS. Tuy nhiên, chúng vẫn có một số hạn chế như quá trình cấu hình phức tạp và dễ lỗi, và một số phần vẫn phải phụ thuộc vào WebView. Microsoft Outlook là ví dụ điển hình khi sử dụng Xamarin để phát triển ứng dụng đa nền tảng hiệu quả.
 
 \subsubsection{Thế hệ hiện đại (2017–nay): Native-Reactive Frameworks}
 
-\hspace*{0.8cm} Từ năm 2017, kiến trúc đa nền tảng đã chuyển sang giai đoạn hiện đại với sự xuất hiện của các framework sử dụng native rendering, ví dụ như React Native và Flutter. Các framework này sử dụng cơ chế điều khiển native components thông qua bridge (React Native) hoặc tự vẽ giao diện mà không phụ thuộc vào hệ điều hành (Flutter).
+ Từ năm 2017, kiến trúc đa nền tảng đã chuyển sang giai đoạn hiện đại với sự xuất hiện của các framework sử dụng native rendering, ví dụ như React Native và Flutter. Các framework này sử dụng cơ chế điều khiển native components thông qua bridge (React Native) hoặc tự vẽ giao diện mà không phụ thuộc vào hệ điều hành (Flutter).
 
 \vspace{0.5em}
 
-\hspace*{0.8cm}Nhờ cơ chế hiện đại, các framework này mang lại hiệu năng gần tương đương ứng dụng native và hỗ trợ đa nền tảng, từ mobile đến web và desktop. Một số bước đột phá quan trọng trong giai đoạn này gồm Flutter 2.0 (2020) mở rộng hỗ trợ nền tảng web và desktop, và React Native New Architecture (2022) sử dụng TurboModules và Fabric để tối ưu hiệu suất.
+Nhờ cơ chế hiện đại, các framework này mang lại hiệu năng gần tương đương ứng dụng native và hỗ trợ đa nền tảng, từ mobile đến web và desktop. Một số bước đột phá quan trọng trong giai đoạn này gồm Flutter 2.0 (2020) mở rộng hỗ trợ nền tảng web và desktop, và React Native New Architecture (2022) sử dụng TurboModules và Fabric để tối ưu hiệu suất.
+
+\vspace{0.5em}
 
 \indent Ứng dụng Xianyu của Alibaba là ví dụ thành công khi sử dụng Flutter để phục vụ hơn 200 triệu người dùng, đạt hiệu năng tương đương ứng dụng native.
 % 2.4
@@ -174,35 +171,41 @@
 
 \subsubsection{Tích hợp AI/ML trong phát triển}
 
-\hspace*{1.5em}Một trong những xu hướng quan trọng là việc tích hợp trí tuệ nhân tạo và học máy vào quy trình phát triển ứng dụng đa nền tảng.  
-Thông qua công cụ như Google’s ML Kit, lập trình viên có thể tự động hóa các tác vụ như nhận diện hình ảnh và xử lý ngôn ngữ tự nhiên.
+Một trong những xu hướng quan trọng là việc tích hợp trí tuệ nhân tạo và học máy vào quy trình phát triển ứng dụng đa nền tảng. Thông qua công cụ như Google’s ML Kit, lập trình viên có thể tự động hóa các tác vụ như nhận diện hình ảnh và xử lý ngôn ngữ tự nhiên.
 
-AI không chỉ hỗ trợ tính năng thông minh, mà còn giúp tối ưu hiệu năng ứng dụng.  
-Cụ thể, các hệ thống AI có thể phân tích mã nguồn để đề xuất cải thiện tốc độ khung hình (FPS) hoặc giảm tiêu thụ bộ nhớ RAM.
+\vspace{0.5em}
+
+AI không chỉ hỗ trợ tính năng thông minh, mà còn giúp tối ưu hiệu năng ứng dụng. Cụ thể, các hệ thống AI có thể phân tích mã nguồn để đề xuất cải thiện tốc độ khung hình (FPS) hoặc giảm tiêu thụ bộ nhớ RAM.
+
+\vspace{0.5em}
 
 Một ví dụ điển hình là Adobe XD, trong đó AI được sử dụng để tự động điều chỉnh giao diện người dùng dựa trên hành vi thực tế của người dùng.
 
-\vspace{0.5cm}
 
 \subsubsection{WebAssembly (Wasm) và Progressive Web Apps (PWA)}
 
-\hspace*{1.5em}WebAssembly đang nổi lên như một công nghệ quan trọng giúp ứng dụng chạy trên trình duyệt với hiệu năng gần tương đương ứng dụng native.  
+WebAssembly đang nổi lên như một công nghệ quan trọng giúp ứng dụng chạy trên trình duyệt với hiệu năng gần tương đương ứng dụng native.  
 Khả năng này giúp mở rộng phạm vi triển khai ứng dụng đa nền tảng trên môi trường web một cách hiệu quả.
+
+\vspace{0.5em}
 
 Cùng với đó, Progressive Web Apps (PWA) mang lại sự kết hợp giữa ứng dụng web và mobile app,  
 hỗ trợ hoạt động offline và cho phép gửi thông báo đẩy đến người dùng như các ứng dụng native.
 
+\vspace{0.5em}
+
 Một ví dụ tiêu biểu là Starbucks, hãng đã triển khai PWA để tăng tốc độ tải trang và nâng cao trải nghiệm người dùng ngay cả khi không có kết nối mạng ổn định.
 
-\vspace{0.5cm}
 
 \subsubsection{Low-Code/No-Code Platforms}
 
-\hspace*{1.5em}Low-code và no-code platforms đang mở ra cơ hội mới cho cả những người không chuyên trong lĩnh vực lập trình.  
-Với các nền tảng kéo–thả trực quan, người dùng có thể xây dựng ứng dụng đa nền tảng mà không cần viết bất kỳ dòng code nào.
+Low-code và no-code platforms đang mở ra cơ hội mới cho cả những người không chuyên trong lĩnh vực lập trình. Với các nền tảng kéo–thả trực quan, người dùng có thể xây dựng ứng dụng đa nền tảng mà không cần viết bất kỳ dòng code nào.
 
-Lợi ích lớn nhất của mô hình này là rút ngắn thời gian phát triển và giảm thiểu chi phí đào tạo kỹ thuật,  
-đặc biệt phù hợp với doanh nghiệp nhỏ hoặc bộ phận nội bộ cần triển khai nhanh giải pháp công nghệ.
+\vspace{0.5em}
+
+Lợi ích lớn nhất của mô hình này là rút ngắn thời gian phát triển và giảm thiểu chi phí đào tạo kỹ thuật, đặc biệt phù hợp với doanh nghiệp nhỏ hoặc bộ phận nội bộ cần triển khai nhanh giải pháp công nghệ.
+
+\vspace{0.5em}
 
 Chẳng hạn, Microsoft Power Apps đã giúp nhiều doanh nghiệp tạo ra ứng dụng quản lý nội bộ chỉ trong vài giờ làm việc.
 
@@ -213,25 +216,24 @@ Chẳng hạn, Microsoft Power Apps đã giúp nhiều doanh nghiệp tạo ra �
 
 \subsubsection{Airbnb và bài học từ React Native}
 
-\hspace*{1.5em}Airbnb đã từng áp dụng React Native với kỳ vọng tận dụng khả năng chia sẻ code giữa các nền tảng.  
-Tuy nhiên, trong quá trình phát triển, họ gặp phải một số thách thức lớn. Cụ thể, nhóm phát triển gặp khó khăn trong việc tùy chỉnh giao diện người dùng phức tạp cho từng nền tảng,  
-đặc biệt là khi phải đảm bảo trải nghiệm nhất quán và mượt mà. Ngoài ra, hiệu năng ứng dụng không đủ đáp ứng yêu cầu khi tích hợp tính năng đặt phòng theo thời gian thực,  
-gây ảnh hưởng đến trải nghiệm người dùng cuối.
+Airbnb đã từng áp dụng React Native với kỳ vọng tận dụng khả năng chia sẻ code giữa các nền tảng.  
+Tuy nhiên, trong quá trình phát triển, họ gặp phải một số thách thức lớn. Cụ thể, nhóm phát triển gặp khó khăn trong việc tùy chỉnh giao diện người dùng phức tạp cho từng nền tảng, đặc biệt là khi phải đảm bảo trải nghiệm nhất quán và mượt mà. Ngoài ra, hiệu năng ứng dụng không đủ đáp ứng yêu cầu khi tích hợp tính năng đặt phòng theo thời gian thực, gây ảnh hưởng đến trải nghiệm người dùng cuối.
+
+\vspace{0.5em}
 
 Để giải quyết vấn đề này, Airbnb quyết định chuyển sang phát triển native cho các module quan trọng,  
 đồng thời giữ lại React Native cho phần quản trị nội bộ nhằm tiết kiệm chi phí. Kết quả của chiến lược này là hiệu năng hệ thống được cải thiện 30\%,  
 nhưng chi phí bảo trì cũng tăng lên khoảng 40\% do cần duy trì song song hai mã nguồn.
 
-\vspace{0.5cm}
-
 \subsubsection{Google Pay: Thành công với Flutter}
 
-\hspace*{1.5em}Google Pay là một trong những ví dụ điển hình cho việc ứng dụng thành công Flutter vào phát triển đa nền tảng.  
-Chiến lược của nhóm phát triển là sử dụng một codebase duy nhất cho cả iOS, Android và web.
+Google Pay là một trong những ví dụ điển hình cho việc ứng dụng thành công Flutter vào phát triển đa nền tảng. Chiến lược của nhóm phát triển là sử dụng một codebase duy nhất cho cả iOS, Android và web.
 
-Nhờ khả năng đồng bộ cao của Flutter, thời gian phát triển đã giảm tới 50\%,  
-giúp nhóm ra mắt sản phẩm nhanh hơn mà vẫn đảm bảo chất lượng. Bên cạnh đó, hiệu năng ứng dụng cũng được đảm bảo, với tốc độ khung hình (FPS) ổn định ở mức 60 trên mọi thiết bị,  
-tạo nên trải nghiệm người dùng mượt mà và đáng tin cậy.
+\vspace{0.5em}
+
+Nhờ khả năng đồng bộ cao của Flutter, thời gian phát triển đã giảm tới 50\%, giúp nhóm ra mắt sản phẩm nhanh hơn mà vẫn đảm bảo chất lượng. Bên cạnh đó, hiệu năng ứng dụng cũng được đảm bảo, với tốc độ khung hình (FPS) ổn định ở mức 60 trên mọi thiết bị, tạo nên trải nghiệm người dùng mượt mà và đáng tin cậy.
+
+\vspace{0.5em}
 
 Tuy nhiên, nhóm cũng đối mặt với thách thức trong việc đào tạo đội ngũ kỹ thuật,  
 đặc biệt là làm quen với ngôn ngữ Dart và cơ chế vẽ giao diện qua Skia Engine.
@@ -240,7 +242,7 @@ Tuy nhiên, nhóm cũng đối mặt với thách thức trong việc đào tạ
 \subsection{So Sánh Chi Tiết React Native vs. Flutter}
 \renewcommand{\labelitemi}{--}    
 
-    \hspace*{0.8cm}Biểu đồ dưới đây so sánh mức độ quan tâm giữa hai framework di động phổ biến: \textbf{Flutter (xanh)} và \textbf{React Native (đỏ)} trong 12 tháng qua tại Hoa Kỳ, dựa trên dữ liệu tìm kiếm từ Google Trends.
+    Biểu đồ dưới đây so sánh mức độ quan tâm giữa hai framework di động phổ biến: \textbf{Flutter (xanh)} và \textbf{React Native (đỏ)} trong 12 tháng qua tại Hoa Kỳ, dựa trên dữ liệu tìm kiếm từ Google Trends.
 
     \begin{figure}[H]
         \centering
@@ -248,7 +250,6 @@ Tuy nhiên, nhóm cũng đối mặt với thách thức trong việc đào tạ
         \caption{So sánh xu hướng tìm kiếm giữa Flutter và React Native (Google Trends, US, 12 tháng)}
     \end{figure}
 
-    \vspace{0.5cm}
     Dưới đây là bảng so sánh một số khía cạnh chính giữa React Native và Flutter:
 
     \begin{table}[H]
@@ -270,11 +271,9 @@ Tuy nhiên, nhóm cũng đối mặt với thách thức trong việc đào tạ
         \end{tabular}
         \caption{So sánh các yếu tố giữa React Native và Flutter}
     \end{table}
-\vspace{0.5em}
 
 % 2.7
 \subsection{Kết luận phần Cơ Sở Lý Thuyết}
 \renewcommand{\labelitemi}{--}    
     
-        \hspace*{0.8cm}Kiến trúc đa nền tảng đã phát triển qua nhiều giai đoạn, từ các giải pháp dựa trên WebView đến các framework hiện đại như React Native và Flutter. Mỗi công cụ có ưu nhược điểm riêng, phù hợp với từng loại dự án. Việc lựa chọn phụ thuộc vào sự cân nhắc giữa chi phí, thời gian, và chất lượng, cùng với định hướng dài hạn của doanh nghiệp. Xu hướng tương lai hứa hẹn sự tích hợp sâu rộng của AI, WebAssembly và low-code platforms, mở ra kỷ nguyên mới cho phát triển ứng dụng linh hoạt và hiệu quả.
-    \vspace{0.5em}
+        Kiến trúc đa nền tảng đã phát triển qua nhiều giai đoạn, từ các giải pháp dựa trên WebView đến các framework hiện đại như React Native và Flutter. Mỗi công cụ có ưu nhược điểm riêng, phù hợp với từng loại dự án. Việc lựa chọn phụ thuộc vào sự cân nhắc giữa chi phí, thời gian, và chất lượng, cùng với định hướng dài hạn của doanh nghiệp. Xu hướng tương lai hứa hẹn sự tích hợp sâu rộng của AI, WebAssembly và low-code platforms, mở ra kỷ nguyên mới cho phát triển ứng dụng linh hoạt và hiệu quả.

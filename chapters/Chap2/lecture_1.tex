@@ -1,13 +1,15 @@
 
 \section{Tổng quan về kiến trúc ứng dụng Android}
 
-    \hspace*{0.8cm}Android sử dụng nhiều ngôn ngữ lập trình để phát triển ứng dụng, phổ biến nhất là Java và Kotlin. Java là ngôn ngữ truyền thống với cộng đồng lớn, trong khi Kotlin hiện đại, dễ học và được Google khuyến khích. Ngoài ra, C++, Python cũng được sử dụng trong các trường hợp đặc biệt. Việc lựa chọn ngôn ngữ phụ thuộc vào mục tiêu phát triển, loại ứng dụng và kinh nghiệm của lập trình viên. Ứng dụng Android được đóng gói dưới dạng file APK và có thể phân phối qua Google Play hoặc trực tiếp tới người dùng.
+    Android sử dụng nhiều ngôn ngữ lập trình để phát triển ứng dụng, phổ biến nhất là Java và Kotlin. Java là ngôn ngữ truyền thống với cộng đồng lớn, trong khi Kotlin hiện đại, dễ học và được Google khuyến khích. Ngoài ra, C++, Python cũng được sử dụng trong các trường hợp đặc biệt. Việc lựa chọn ngôn ngữ phụ thuộc vào mục tiêu phát triển, loại ứng dụng và kinh nghiệm của lập trình viên. Ứng dụng Android được đóng gói dưới dạng file APK và có thể phân phối qua Google Play hoặc trực tiếp tới người dùng.
 
     % 1.1.
     \subsection{Các ngôn ngữ lập trình sử dụng (Java, các công nghệ đa nền tảng)}
     \renewcommand{\labelitemi}{--}    
 
-        \hspace*{0.8cm}Ngôn ngữ lập trình Android là tập hợp các ngôn ngữ được sử dụng để viết ứng dụng cho hệ điều hành Android. Hệ điều hành này phổ biến nhất trên thế giới, với hơn 2 tỷ thiết bị đang hoạt động. Với Android Studio là môi trường phát triển tích hợp chính thức từ Google, việc lập trình ứng dụng Android trở nên dễ dàng hơn bao giờ hết. Ngôn ngữ lập trình Android không chỉ là công cụ để xây dựng các ứng dụng di động phức tạp, mà còn mở ra cơ hội cho các nhà phát triển tạo ra các trải nghiệm đa dạng, từ ứng dụng doanh nghiệp đến trò chơi giải trí độc đáo.
+        Ngôn ngữ lập trình Android là tập hợp các ngôn ngữ được sử dụng để viết ứng dụng cho hệ điều hành Android. Hệ điều hành này phổ biến nhất trên thế giới, với hơn 2 tỷ thiết bị đang hoạt động. Với Android Studio là môi trường phát triển tích hợp chính thức từ Google, việc lập trình ứng dụng Android trở nên dễ dàng hơn bao giờ hết. Ngôn ngữ lập trình Android không chỉ là công cụ để xây dựng các ứng dụng di động phức tạp, mà còn mở ra cơ hội cho các nhà phát triển tạo ra các trải nghiệm đa dạng, từ ứng dụng doanh nghiệp đến trò chơi giải trí độc đáo.
+
+        \vspace{0.5em}
     
         Các ngôn ngữ lập trình phổ biến cho việc phát triển ứng dụng Android hiện nay:
         \setlength{\leftmargini}{1.5cm}
@@ -33,7 +35,7 @@
     % 1.2.
     \subsection{File APK và quá trình đưa ứng dụng lên Google Play, App Store}
     \renewcommand{\labelitemi}{--}
-        \hspace*{0.8cm}APK (Android Package) là định dạng tập tin được sử dụng để phân phối và cài đặt ứng dụng trên hệ điều hành Android, có đuôi mở rộng .apk, tương tự như .exe trong Windows hoặc .ipa trong IOS. Là gói nén chứa toàn bộ tài nguyên và mã thực thi của ứng dụng.\\
+        APK (Android Package) là định dạng tập tin được sử dụng để phân phối và cài đặt ứng dụng trên hệ điều hành Android, có đuôi mở rộng .apk, tương tự như .exe trong Windows hoặc .ipa trong IOS. Là gói nén chứa toàn bộ tài nguyên và mã thực thi của ứng dụng.\\
         Cấu trúc bên trong một file APK
         \begin{figure}[H] 
             \centering
@@ -68,6 +70,8 @@
             \label{table:apk-structure}
             \end{table}            
     
-        Quy trình khi đưa ứng dụng lên Google Play: Build APK, từ mã nguồn Android (bằng Android Studio), tạo ra file .apk. Ký số (Signing), ứng dụng được ký bằng private key để xác thực nguồn gốc. Upload lên Google Play, Google kiểm tra, và nếu muốn, có thể dùng App Signing by Google Play, là dịch vụ Google giữ private key. Phân phối và cài đặt, người dùng tải về và cài đặt ứng dụng trực tiếp từ APK.\\
+        Quy trình khi đưa ứng dụng lên Google Play: Build APK, từ mã nguồn Android (bằng Android Studio), tạo ra file .apk. Ký số (Signing), ứng dụng được ký bằng private key để xác thực nguồn gốc. Upload lên Google Play, Google kiểm tra, và nếu muốn, có thể dùng App Signing by Google Play, là dịch vụ Google giữ private key. Phân phối và cài đặt, người dùng tải về và cài đặt ứng dụng trực tiếp từ APK.
+        
+        \vspace{0.5em}
 
         Tóm lại APK là đơn vị triển khai duy nhất trên Android, có thể chia sẻ trực tiếp (qua web, Bluetooth, email…) mà không cần qua Play Store, dễ dàng trích xuất hoặc phân tích để debug hoặc reverse engineering (nên phải cẩn thận bảo vệ mã nguồn).

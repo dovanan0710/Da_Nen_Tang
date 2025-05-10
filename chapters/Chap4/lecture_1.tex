@@ -1,54 +1,52 @@
 \section{Giới thiệu}
   
-    \hspace*{0.8cm}Trong bối cảnh số lượng người dùng thiết bị di động không ngừng tăng, nhu cầu phát triển ứng dụng hoạt động mượt mà trên cả iOS và Android ngày càng trở nên cấp thiết. Kiến trúc đa nền tảng (cross-platform) đã nổi lên như một giải pháp giúp doanh nghiệp tối ưu chi phí, rút ngắn thời gian phát hành và đơn giản hóa quy trình bảo trì so với phương pháp native truyền thống. Các framework như React Native và Flutter cho phép tái sử dụng 50--80\% mã nguồn, đồng thời cung cấp công cụ phát triển hiện đại như hot reload và bộ widget tùy biến cao. Nghiên cứu này tập trung phân tích ưu nhược điểm của hai framework trên qua các khía cạnh: hiệu năng (FPS, RAM), chi phí, thời gian triển khai và khả năng ứng dụng vào các loại dự án khác nhau, từ đó đề xuất tiêu chí lựa chọn phù hợp cho từng trường hợp sử dụng cụ thể.  
-\vspace{0.5em}
+    Trong bối cảnh số lượng người dùng thiết bị di động không ngừng tăng, nhu cầu phát triển ứng dụng hoạt động mượt mà trên cả iOS và Android ngày càng trở nên cấp thiết. Kiến trúc đa nền tảng (cross-platform) đã nổi lên như một giải pháp giúp doanh nghiệp tối ưu chi phí, rút ngắn thời gian phát hành và đơn giản hóa quy trình bảo trì so với phương pháp native truyền thống. Các framework như React Native và Flutter cho phép tái sử dụng 50--80\% mã nguồn, đồng thời cung cấp công cụ phát triển hiện đại như hot reload và bộ widget tùy biến cao. Nghiên cứu này tập trung phân tích ưu nhược điểm của hai framework trên qua các khía cạnh: hiệu năng (FPS, RAM), chi phí, thời gian triển khai và khả năng ứng dụng vào các loại dự án khác nhau, từ đó đề xuất tiêu chí lựa chọn phù hợp cho từng trường hợp sử dụng cụ thể.
 
 \subsection{Bối cảnh nghiên cứu}
 \renewcommand{\labelitemi}{--}    
 
-    \hspace*{0.8cm}Sự phát triển nhanh chóng của thị trường di động trong những năm gần đây đã làm thay đổi đáng kể cách thức xây dựng ứng dụng. Theo báo cáo của Statista (2023)~\cite{statista2023}, số lượng người dùng smartphone toàn cầu đạt 6.92 tỷ vào năm 2023 và dự kiến sẽ tăng lên 7.5 tỷ vào năm 2025. Trước thực tế này, các nhà phát triển đứng trước bài toán lớn: làm thế nào để tạo ra ứng dụng chạy trơn tru trên cả iOS và Android mà không cần xây dựng hai hệ thống riêng biệt?
+    Sự phát triển nhanh chóng của thị trường di động trong những năm gần đây đã làm thay đổi đáng kể cách thức xây dựng ứng dụng. Theo báo cáo của Statista (2023)~\cite{statista2023}, số lượng người dùng smartphone toàn cầu đạt 6.92 tỷ vào năm 2023 và dự kiến sẽ tăng lên 7.5 tỷ vào năm 2025. Trước thực tế này, các nhà phát triển đứng trước bài toán lớn: làm thế nào để tạo ra ứng dụng chạy trơn tru trên cả iOS và Android mà không cần xây dựng hai hệ thống riêng biệt?
 \vspace{0.5em}
 
 
-    \hspace*{0.8cm}Phát triển ứng dụng native cho từng nền tảng từng là giải pháp phổ biến, nhưng nó kéo theo chi phí cao, thời gian dài và yêu cầu nguồn nhân lực lớn. Ví dụ, một công ty startup có thể mất tới 18 tháng và khoảng 500.000 USD để xây dựng song song hai ứng dụng native cho iOS và Android.
+    Phát triển ứng dụng native cho từng nền tảng từng là giải pháp phổ biến, nhưng nó kéo theo chi phí cao, thời gian dài và yêu cầu nguồn nhân lực lớn. Ví dụ, một công ty startup có thể mất tới 18 tháng và khoảng 500.000 USD để xây dựng song song hai ứng dụng native cho iOS và Android.
 \vspace{0.5em}
 
 
-    \hspace*{0.8cm}Chỉ riêng chi phí nhân sự đã là gánh nặng: theo Business of Apps~\cite{businessofapps2025}, mức lương trung bình hàng năm của lập trình viên ứng dụng di động tại Mỹ dao động từ 80.000 đến 150.000 USD, tùy thuộc vào công nghệ và kinh nghiệm. Ví dụ, lập trình viên Flutter có thể nhận khoảng 7.800 USD/tháng, trong khi React Native là khoảng 8.000 USD/tháng. Với hai lập trình viên làm việc trong 18 tháng, tổng chi phí nhân sự có thể lên đến 280.000--350.000 USD, chưa kể đến chi phí thiết kế, kiểm thử và quản lý dự án.
+    Chỉ riêng chi phí nhân sự đã là gánh nặng: theo Business of Apps~\cite{businessofapps2025}, mức lương trung bình hàng năm của lập trình viên ứng dụng di động tại Mỹ dao động từ 80.000 đến 150.000 USD, tùy thuộc vào công nghệ và kinh nghiệm. Ví dụ, lập trình viên Flutter có thể nhận khoảng 7.800 USD/tháng, trong khi React Native là khoảng 8.000 USD/tháng. Với hai lập trình viên làm việc trong 18 tháng, tổng chi phí nhân sự có thể lên đến 280.000--350.000 USD, chưa kể đến chi phí thiết kế, kiểm thử và quản lý dự án.
 \vspace{0.5em}
 
 
-    \hspace*{0.8cm}Để giải quyết những hạn chế này, các công nghệ phát triển ứng dụng đa nền tảng (cross-platform) bắt đầu nổi lên như một giải pháp tiềm năng. Kể từ khi Facebook giới thiệu React Native vào năm 2015, lập trình viên đã có thể sử dụng JavaScript để viết giao diện và logic nghiệp vụ, từ đó giảm thiểu đáng kể lượng mã cần viết riêng cho từng hệ điều hành. Tiếp đó, năm 2017, Google ra mắt Flutter, framework sử dụng ngôn ngữ Dart và engine Skia, cho phép render UI trực tiếp mà không phụ thuộc vào widget native.
+    Để giải quyết những hạn chế này, các công nghệ phát triển ứng dụng đa nền tảng (cross-platform) bắt đầu nổi lên như một giải pháp tiềm năng. Kể từ khi Facebook giới thiệu React Native vào năm 2015, lập trình viên đã có thể sử dụng JavaScript để viết giao diện và logic nghiệp vụ, từ đó giảm thiểu đáng kể lượng mã cần viết riêng cho từng hệ điều hành. Tiếp đó, năm 2017, Google ra mắt Flutter, framework sử dụng ngôn ngữ Dart và engine Skia, cho phép render UI trực tiếp mà không phụ thuộc vào widget native.
 \vspace{0.5em}
 
 
-    \hspace*{0.8cm}Nhờ khả năng tái sử dụng mã nguồn lên tới 50--80\% giữa hai nền tảng, giải pháp cross-platform giúp các startup cắt giảm 30--40\% chi phí phát triển so với native thuần túy. Báo cáo của Cleveroad~\cite{cleveroad} cũng ghi nhận rằng, chi phí phát triển ứng dụng đa nền tảng thường dao động từ 60.000--200.000 USD, thấp hơn đáng kể so với mức 70.000--250.000 USD nếu phát triển từng ứng dụng riêng biệt. Không chỉ tiết kiệm ngân sách, thời gian đưa sản phẩm ra thị trường cũng được rút ngắn nhờ sử dụng chung codebase và quy trình kiểm thử tập trung. Ví dụ, một ứng dụng phức tạp thường mất 7--16 tuần để phát triển native độc lập, nhưng chỉ cần 11--20 tuần với React Native hoặc Flutter, nhờ tính năng hot reload và workflow thống nhất.
+    Nhờ khả năng tái sử dụng mã nguồn lên tới 50--80\% giữa hai nền tảng, giải pháp cross-platform giúp các startup cắt giảm 30--40\% chi phí phát triển so với native thuần túy. Báo cáo của Cleveroad~\cite{cleveroad} cũng ghi nhận rằng, chi phí phát triển ứng dụng đa nền tảng thường dao động từ 60.000--200.000 USD, thấp hơn đáng kể so với mức 70.000--250.000 USD nếu phát triển từng ứng dụng riêng biệt. Không chỉ tiết kiệm ngân sách, thời gian đưa sản phẩm ra thị trường cũng được rút ngắn nhờ sử dụng chung codebase và quy trình kiểm thử tập trung. Ví dụ, một ứng dụng phức tạp thường mất 7--16 tuần để phát triển native độc lập, nhưng chỉ cần 11--20 tuần với React Native hoặc Flutter, nhờ tính năng hot reload và workflow thống nhất.
 \vspace{0.5em}
 
 
-    \hspace*{0.8cm}Tổng thể, thay vì mất 18 tháng và 500.000 USD, các công ty hiện nay chỉ cần 12--14 tháng và khoảng 200.000--250.000 USD để hoàn thiện sản phẩm cho cả hai nền tảng, thể hiện rõ ưu thế của các framework cross-platform trong việc tối ưu chi phí và thời gian phát triển.
+    Tổng thể, thay vì mất 18 tháng và 500.000 USD, các công ty hiện nay chỉ cần 12--14 tháng và khoảng 200.000--250.000 USD để hoàn thiện sản phẩm cho cả hai nền tảng, thể hiện rõ ưu thế của các framework cross-platform trong việc tối ưu chi phí và thời gian phát triển.
 \vspace{0.5em}
 
 
-    \hspace*{0.8cm}Theo khảo sát của Stack Overflow (2023)~\cite{stackoverflow2023}, Flutter hiện được 42\% nhà phát triển ưu tiên lựa chọn, trong khi React Native chiếm 38\%. Sự cạnh tranh giữa hai framework này không chỉ phản ánh xu hướng ``Write Once, Run Anywhere'' mà còn đặt ra câu hỏi mới về hiệu năng, khả năng mở rộng và tùy biến trong các ứng dụng hiện đại.
-\vspace{0.5em}
+    Theo khảo sát của Stack Overflow (2023)~\cite{stackoverflow2023}, Flutter hiện được 42\% nhà phát triển ưu tiên lựa chọn, trong khi React Native chiếm 38\%. Sự cạnh tranh giữa hai framework này không chỉ phản ánh xu hướng ``Write Once, Run Anywhere'' mà còn đặt ra câu hỏi mới về hiệu năng, khả năng mở rộng và tùy biến trong các ứng dụng hiện đại.
+
 
 \subsection{Mục tiêu nghiên cứu}
 \renewcommand{\labelitemi}{--}    
 
-    \hspace*{0.8cm}Bài nghiên cứu này hướng đến ba mục tiêu chính:
+    Bài nghiên cứu này hướng đến ba mục tiêu chính:
     \setlength{\leftmargini}{1.0cm}
     \begin{itemize}
         \item Mục tiêu thứ nhất là phân tích ưu điểm và hạn chế của kiến trúc đa nền tảng so với phát triển native, nhằm đánh giá khả năng tiết kiệm chi phí, rút ngắn thời gian phát triển, đồng thời nhận diện các thách thức liên quan đến hiệu năng và trải nghiệm người dùng.
         \item Mục tiêu thứ hai là đo lường và phân tích các rào cản về mặt kỹ thuật của ứng dụng đa nền tảng, thông qua các chỉ số như tốc độ khung hình (FPS), mức tiêu thụ RAM, và thời gian phản hồi. Từ đó, so sánh các giá trị này với ứng dụng native để xác định mức độ chênh lệch rõ ràng.
         \item Mục tiêu thứ ba là đề xuất tiêu chí lựa chọn framework phù hợp với từng loại dự án, dựa trên ngân sách, thời gian triển khai và đặc thù ứng dụng. Ví dụ, Flutter có thể phù hợp với ứng dụng thiên về đồ họa như game, trong khi React Native có thể là lựa chọn tối ưu cho ứng dụng doanh nghiệp.
     \end{itemize}
-\vspace{0.5em}
 
 \subsection{Phạm vi và đối tượng}
 \renewcommand{\labelitemi}{--}    
 
-    \hspace*{0.8cm}Phạm vi nghiên cứu tập trung vào hai framework hàng đầu trong phát triển ứng dụng đa nền tảng hiện nay, bao gồm:
+    Phạm vi nghiên cứu tập trung vào hai framework hàng đầu trong phát triển ứng dụng đa nền tảng hiện nay, bao gồm:
     \setlength{\leftmargini}{1.0cm}
     \begin{itemize}
         \item \textbf{React Native}, do Facebook phát triển, dựa trên ngôn ngữ JavaScript. Framework này nổi bật nhờ hệ sinh thái mở rộng (npm, Expo) và khả năng tích hợp dễ dàng vào các hệ thống web sẵn có.
@@ -57,7 +55,7 @@
 \vspace{0.5em}
 
 
-    \hspace*{0.8cm}Lý do lựa chọn hai framework này đến từ vị thế dẫn đầu thị trường của chúng:
+    Lý do lựa chọn hai framework này đến từ vị thế dẫn đầu thị trường của chúng:
     \setlength{\leftmargini}{1.0cm}
     \begin{itemize}
         \item Theo báo cáo của SlashData (2023)~\cite{slashdata2023}, React Native và Flutter chiếm đến 80\% thị phần framework đa nền tảng.
@@ -66,7 +64,7 @@
 \vspace{0.5em}
 
 
-    \hspace*{0.8cm}Nguồn dữ liệu trong nghiên cứu được tổng hợp từ các công trình thực nghiệm uy tín:
+    Nguồn dữ liệu trong nghiên cứu được tổng hợp từ các công trình thực nghiệm uy tín:
     \setlength{\leftmargini}{1.0cm}
     \begin{itemize}
         \item \textbf{Nghiên cứu của Wenhao (2018)}~\cite{wenhao2018} tập trung vào đo hiệu năng FPS khi cuộn màn hình trên 10 ứng dụng mẫu. Kết quả cho thấy: \textit{Flutter đạt 60 FPS}, trong khi \textit{React Native đạt 45–50 FPS}.
@@ -75,7 +73,7 @@
 \vspace{0.5em}
 
 
-    \hspace*{0.8cm}Giới hạn của nghiên cứu cũng được xác định rõ ràng:
+    Giới hạn của nghiên cứu cũng được xác định rõ ràng:
     \setlength{\leftmargini}{1.0cm}
     \begin{itemize}
         \item Các framework ít phổ biến như Xamarin hay Ionic không nằm trong phạm vi phân tích.
@@ -84,9 +82,8 @@
 \vspace{0.5em}
 
 
-    \hspace*{0.8cm}Phần giới thiệu khép lại bằng định hướng ứng dụng của nghiên cứu:
+    Phần giới thiệu khép lại bằng định hướng ứng dụng của nghiên cứu:
     \setlength{\leftmargini}{1.0cm}
     \begin{itemize}
         \item Việc lựa chọn kiến trúc đa nền tảng không chỉ dựa trên công nghệ, mà còn phụ thuộc vào mục tiêu kinh doanh và nguồn lực của doanh nghiệp. Nghiên cứu này hướng đến cung cấp cái nhìn toàn diện về React Native và Flutter, giúp nhà phát triển đưa ra quyết định dựa trên dữ liệu định lượng và phân tích chuyên sâu.
     \end{itemize}
-\vspace{0.5em}

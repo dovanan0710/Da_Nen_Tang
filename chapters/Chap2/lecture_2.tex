@@ -1,12 +1,12 @@
 \section{Cơ chế hoạt động của hệ điều hành Android}
 
-    \hspace*{0.8cm}Android được xây dựng dựa trên nhân Linux, tận dụng tính ổn định, bảo mật và khả năng quản lý tiến trình hiệu quả của hệ điều hành mã nguồn mở này. Mỗi ứng dụng Android hoạt động trong một tiến trình độc lập, có UID, máy ảo và vùng nhớ riêng, đảm bảo cách ly an toàn thông qua cơ chế sandbox. Android sử dụng máy ảo Dalvik (trước Android 5.0) và ART (từ Android 5.0 trở đi) để thực thi mã ứng dụng, giúp tăng hiệu suất và bảo mật. Nhờ kiến trúc này, Android có thể bảo vệ người dùng khỏi các ứng dụng độc hại và tối ưu hóa tài nguyên hệ thống.
+    Android được xây dựng dựa trên nhân Linux, tận dụng tính ổn định, bảo mật và khả năng quản lý tiến trình hiệu quả của hệ điều hành mã nguồn mở này. Mỗi ứng dụng Android hoạt động trong một tiến trình độc lập, có UID, máy ảo và vùng nhớ riêng, đảm bảo cách ly an toàn thông qua cơ chế sandbox. Android sử dụng máy ảo Dalvik (trước Android 5.0) và ART (từ Android 5.0 trở đi) để thực thi mã ứng dụng, giúp tăng hiệu suất và bảo mật. Nhờ kiến trúc này, Android có thể bảo vệ người dùng khỏi các ứng dụng độc hại và tối ưu hóa tài nguyên hệ thống.
 \newpage
 % 2.1
 \subsection{Android trên nền tảng Linux}
 \renewcommand{\labelitemi}{--}    
-    \hspace*{0.8cm}Android được xây dựng trên nhân (kernel) của hệ điều hành Linux, tức là sử dụng Linux kernel làm lớp điều khiển phần cứng như quản lý bộ nhớ, tiến trình, thiết bị ngoại vi và bảo mật hệ thống. Trong khi đó, các thành phần còn lại như giao diện người dùng, framework ứng dụng và dịch vụ hệ thống đều do Google phát triển riêng biệt, không sử dụng giao diện truyền thống của Linux. Android chọn Linux kernel vì đây là nền tảng mã nguồn mở, ổn định, có tính bảo mật cao và hỗ trợ tốt cho các tính năng quan trọng của thiết bị di động như xử lý đa tiến trình, cấp quyền truy cập theo người dùng và hỗ trợ phần cứng đa dạng. Việc kế thừa nhân Linux giúp Android tăng tính linh hoạt, tiết kiệm thời gian phát triển và dễ dàng tùy biến cho từng nhà sản xuất thiết bị.\\
-    \hspace*{0.8cm}Google đã tùy biến kernel Linux để phù hợp hơn với điện thoại:
+    Android được xây dựng trên nhân (kernel) của hệ điều hành Linux, tức là sử dụng Linux kernel làm lớp điều khiển phần cứng như quản lý bộ nhớ, tiến trình, thiết bị ngoại vi và bảo mật hệ thống. Trong khi đó, các thành phần còn lại như giao diện người dùng, framework ứng dụng và dịch vụ hệ thống đều do Google phát triển riêng biệt, không sử dụng giao diện truyền thống của Linux. Android chọn Linux kernel vì đây là nền tảng mã nguồn mở, ổn định, có tính bảo mật cao và hỗ trợ tốt cho các tính năng quan trọng của thiết bị di động như xử lý đa tiến trình, cấp quyền truy cập theo người dùng và hỗ trợ phần cứng đa dạng. Việc kế thừa nhân Linux giúp Android tăng tính linh hoạt, tiết kiệm thời gian phát triển và dễ dàng tùy biến cho từng nhà sản xuất thiết bị.\\
+    Google đã tùy biến kernel Linux để phù hợp hơn với điện thoại:
     \begin{table}[H]
         \centering
         \renewcommand{\arraystretch}{1.5}
@@ -47,9 +47,9 @@
 % 2.2
 \subsection{Cơ chế sandbox}
 \renewcommand{\labelitemi}{--}    
-        \hspace*{0.8cm}Sandbox trong Android là một môi trường cách ly, nơi mỗi ứng dụng (app) được “nhốt” vào một không gian riêng biệt, không thể trực tiếp can thiệp hay truy cập vào dữ liệu hoặc tiến trình của ứng dụng khác. Hình dung như mỗi app sống trong một “phòng riêng” với cửa khóa, không ai ra vào nếu không có chìa khóa (quyền được cấp) \cite{app-sandbox}.\\
+        Sandbox trong Android là một môi trường cách ly, nơi mỗi ứng dụng (app) được “nhốt” vào một không gian riêng biệt, không thể trực tiếp can thiệp hay truy cập vào dữ liệu hoặc tiến trình của ứng dụng khác. Hình dung như mỗi app sống trong một “phòng riêng” với cửa khóa, không ai ra vào nếu không có chìa khóa (quyền được cấp) \cite{app-sandbox}.\\
         \setlength{\leftmargini}{1.5cm}
-        \hspace*{0.8cm}Cách Android thực hiện sandbox là kết hợp nhiều công nghệ.
+        Cách Android thực hiện sandbox là kết hợp nhiều công nghệ.
         \begin{table}[H]
             \centering
             \renewcommand{\arraystretch}{1.5}
@@ -81,16 +81,23 @@
             \item Giao tiếp giữa app: Chỉ có thể qua các cơ chế an toàn như Intent, ContentProvider, Binder
             \item Tài nguyên hệ thống (camera, GPS, v.v.): Chỉ truy cập được nếu người dùng cho phép thông qua hệ thống permission
         \end{itemize}
-        \hspace*{0.8cm}Ví dụ: Giả sử có 2 app:
+        
+        \vspace{0.5em}
+        Ví dụ: Giả sử có 2 app:
         App1 là ghi chú cá nhân,
         App2 là trò chơi.
-        Cơ chế bảo vệ làm cho App2 không thể đọc được ghi chú của App1, trừ khi App1 cung cấp dữ liệu qua Intent, ContentProvider\\
-        \hspace*{0.8cm}Tóm lại, Sandbox là lá chắn vô hình bảo vệ mỗi ứng dụng Android như một thế giới riêng biệt. Nó giúp người dùng yên tâm cài đặt nhiều ứng dụng mà không sợ bị can thiệp trái phép
+        Cơ chế bảo vệ làm cho App2 không thể đọc được ghi chú của App1, trừ khi App1 cung cấp dữ liệu qua Intent, ContentProvider.
+
+        \vspace{0.5em}
+
+        Tóm lại, Sandbox là lá chắn vô hình bảo vệ mỗi ứng dụng Android như một thế giới riêng biệt. Nó giúp người dùng yên tâm cài đặt nhiều ứng dụng mà không sợ bị can thiệp trái phép.
 
 % 2.3
 \subsection{Máy ảo (VM) riêng cho mỗi ứng dụng}
 
-  \hspace*{0.8cm}Máy ảo là một chương trình mô phỏng một hệ thống máy tính khác, cho phép chạy phần mềm như thể đang chạy trực tiếp trên một máy vật lý. Máy ảo không tương tác trực tiếp với phần cứng, mà thay vào đó hoạt động như một lớp trung gian giữa phần mềm và phần cứng thật. Mỗi máy ảo có môi trường thực thi riêng biệt, được cách ly hoàn toàn, giúp đảm bảo an toàn, ổn định và khả năng quản lý tài nguyên hiệu quả. Trong Android, máy ảo (cụ thể là Dalvik VM hoặc Android Runtime – ART) giữ vai trò trung gian để chạy các ứng dụng Android được biên dịch dưới dạng bytecode. Mã bytecode này được đóng gói trong tệp .dex, và là thành phần quan trọng nằm trong gói cài đặt ứng dụng .apk. Nhờ máy ảo, các ứng dụng có thể được chạy một cách độc lập, không ảnh hưởng đến các ứng dụng khác và bị giới hạn trong vùng tài nguyên mà hệ điều hành cho phép, giúp thực hiện cơ chế sandbox hiệu quả. Máy ảo cũng là yếu tố giúp hệ thống có khả năng phát hiện, cô lập lỗi và ngăn chặn hành vi xâm nhập không mong muốn từ ứng dụng độc hại.
+  Máy ảo là một chương trình mô phỏng một hệ thống máy tính khác, cho phép chạy phần mềm như thể đang chạy trực tiếp trên một máy vật lý. Máy ảo không tương tác trực tiếp với phần cứng, mà thay vào đó hoạt động như một lớp trung gian giữa phần mềm và phần cứng thật. Mỗi máy ảo có môi trường thực thi riêng biệt, được cách ly hoàn toàn, giúp đảm bảo an toàn, ổn định và khả năng quản lý tài nguyên hiệu quả. Trong Android, máy ảo (cụ thể là Dalvik VM hoặc Android Runtime – ART) giữ vai trò trung gian để chạy các ứng dụng Android được biên dịch dưới dạng bytecode. Mã bytecode này được đóng gói trong tệp .dex, và là thành phần quan trọng nằm trong gói cài đặt ứng dụng .apk. Nhờ máy ảo, các ứng dụng có thể được chạy một cách độc lập, không ảnh hưởng đến các ứng dụng khác và bị giới hạn trong vùng tài nguyên mà hệ điều hành cho phép, giúp thực hiện cơ chế sandbox hiệu quả. Máy ảo cũng là yếu tố giúp hệ thống có khả năng phát hiện, cô lập lỗi và ngăn chặn hành vi xâm nhập không mong muốn từ ứng dụng độc hại.
+
+  \vspace{0.5em}
 
   Dalvik VM ($Android \leq 4.x$): Là máy ảo đầu tiên của Android,  được thiết kế để chạy các ứng dụng Android trên các thiết bị di động với tài nguyên hạn chế. Dalvik sử dụng register-based architecture, khác với các máy ảo khác như Java Virtual Machine (JVM) vốn dựa trên stack-based architecture. Điều này có nghĩa là phần lớn các phép toán trong Dalvik được thực hiện trên các thanh ghi thay vì bộ nhớ, giúp giảm độ phức tạp và tối ưu hóa hiệu suất. Dalvik còn sử dụng Just-In-Time (JIT) compilation, nghĩa là mã ứng dụng được biên dịch thành mã máy khi ứng dụng đang chạy, thay vì biên dịch toàn bộ trước khi cài đặt. Điều này giúp tiết kiệm bộ nhớ và rút ngắn thời gian cài đặt ứng dụng, vì không cần biên dịch mã trước khi triển khai. Tuy nhiên, Dalvik cũng có một số nhược điểm. Quá trình khởi động ứng dụng có thể bị chậm vì mã phải được biên dịch khi chạy, dẫn đến trải nghiệm người dùng không mượt mà. Bên cạnh đó, hiệu suất tổng thể của Dalvik cũng không cao bằng các máy ảo khác, vì việc biên dịch mã trong thời gian chạy có thể gây ra sự chậm trễ trong quá trình thực thi ứng dụng. Mặc dù vậy, Dalvik vẫn là nền tảng quan trọng trong sự phát triển của Android cho đến khi được thay thế bởi ART (Android Runtime) trong các phiên bản Android sau này.
   Dùng từ Android 1.0 đến Android 4.4 (KitKat) \cite{art-dalvik}.
@@ -131,9 +138,10 @@
         \label{tab:dalvik-vs-art}
         \end{table}
           
-    Lý do Google chuyển từ Dalvik sang ART: Hiệu suất tăng mạnh (app khởi động nhanh hơn), tiết kiệm pin hơn, tối ưu RAM và bộ nhớ tốt hơn, chuẩn bị cho tương lai với các công nghệ như: Android Instant Apps, Dynamic Delivery
+    Lý do Google chuyển từ Dalvik sang ART: Hiệu suất tăng mạnh (app khởi động nhanh hơn), tiết kiệm pin hơn, tối ưu RAM và bộ nhớ tốt hơn, chuẩn bị cho tương lai với các công nghệ như: Android Instant Apps, Dynamic Delivery.
 
-\renewcommand{\labelitemi}{--}    
+\renewcommand{\labelitemi}{--} 
+        \vspace{0.5em}  
         Mỗi ứng dụng là một tiến trình độc lập. Trong Android, mỗi ứng dụng (app) khi được khởi chạy sẽ được cấp phát một tiến trình riêng biệt (process). Tiến trình này có vùng nhớ riêng, UID riêng, máy ảo riêng, hoạt động độc lập, không can thiệp lẫn nhau.
       \setlength{\leftmargini}{1.5cm}
       \begin{itemize}

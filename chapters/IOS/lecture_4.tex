@@ -1,18 +1,21 @@
 \section{Quản lý phụ thuộc}
-\hspace*{0.8cm}Quản lý phụ thuộc (Dependency Injection - DI) là một kỹ thuật quan trọng để tạo ra mã có thể kiểm thử và bảo trì.
+Quản lý phụ thuộc (Dependency Injection - DI) là một kỹ thuật quan trọng để tạo ra mã có thể kiểm thử và bảo trì.
 
 \subsection{Các loại Dependency Injection}
 
 Dependency Injection (DI) là một kỹ thuật thiết kế phần mềm giúp tăng tính linh hoạt và khả năng kiểm thử của ứng dụng. DI cho phép các đối tượng cần các phụ thuộc (dependencies) của chúng được cung cấp từ bên ngoài thay vì tự tạo ra. Có ba loại Dependency Injection phổ biến trong lập trình iOS:
 
-\paragraph*{1. Constructor Injection}
-Constructor Injection là một phương pháp cung cấp dependencies thông qua một initializer (hàm khởi tạo) của lớp. Các đối tượng cần phụ thuộc sẽ được truyền vào trong quá trình khởi tạo của lớp, giúp đối tượng có thể sử dụng ngay lập tức những dependencies cần thiết mà không cần phải tự tạo chúng. Phương pháp này giúp đảm bảo rằng các đối tượng luôn được khởi tạo với các giá trị hợp lệ và không có tình trạng thiếu dependencies.
+\vspace{0.5em}
 
-\paragraph*{2. Property Injection}
-Property Injection là một phương pháp cung cấp dependencies thông qua các thuộc tính của lớp sau khi đối tượng đã được khởi tạo. Thay vì truyền phụ thuộc vào trong initializer, các dependencies sẽ được gán trực tiếp vào các thuộc tính của đối tượng. Phương pháp này mang lại sự linh hoạt trong việc thay đổi hoặc thay thế các dependencies sau khi đối tượng đã được tạo ra.
+\textbf{1. Constructor Injection: }Constructor Injection là một phương pháp cung cấp dependencies thông qua một initializer (hàm khởi tạo) của lớp. Các đối tượng cần phụ thuộc sẽ được truyền vào trong quá trình khởi tạo của lớp, giúp đối tượng có thể sử dụng ngay lập tức những dependencies cần thiết mà không cần phải tự tạo chúng. Phương pháp này giúp đảm bảo rằng các đối tượng luôn được khởi tạo với các giá trị hợp lệ và không có tình trạng thiếu dependencies.
 
-\paragraph*{3. Method Injection}
-  Method Injection là một phương pháp cung cấp dependencies cho một phương thức cụ thể. Thay vì cung cấp dependencies ở cấp độ lớp như Constructor Injection hay Property Injection, Method Injection cho phép một phương thức nhận vào dependencies mà nó cần trong khi gọi. Phương pháp này rất hữu ích khi chỉ có một số phương thức cụ thể yêu cầu một phụ thuộc đặc biệt mà không cần phải cung cấp nó cho toàn bộ lớp.
+\vspace{0.5em}
+
+\textbf{2. Property Injection: }Property Injection là một phương pháp cung cấp dependencies thông qua các thuộc tính của lớp sau khi đối tượng đã được khởi tạo. Thay vì truyền phụ thuộc vào trong initializer, các dependencies sẽ được gán trực tiếp vào các thuộc tính của đối tượng. Phương pháp này mang lại sự linh hoạt trong việc thay đổi hoặc thay thế các dependencies sau khi đối tượng đã được tạo ra.
+
+\vspace{0.5em}
+
+\textbf{3. Method Injection: }  Method Injection là một phương pháp cung cấp dependencies cho một phương thức cụ thể. Thay vì cung cấp dependencies ở cấp độ lớp như Constructor Injection hay Property Injection, Method Injection cho phép một phương thức nhận vào dependencies mà nó cần trong khi gọi. Phương pháp này rất hữu ích khi chỉ có một số phương thức cụ thể yêu cầu một phụ thuộc đặc biệt mà không cần phải cung cấp nó cho toàn bộ lớp.
 
   \subsection{DI Containers}
     DI Containers (Dependency Injection Containers) giúp quản lý và cung cấp dependencies một cách tự động và có tổ chức. Thay vì phải tạo đối tượng một cách thủ công và tự mình xử lý tất cả các dependencies, DI Containers cho phép bạn khai báo các phụ thuộc và giải quyết chúng một cách tự động, giúp mã nguồn trở nên dễ duy trì và mở rộng hơn. Một số DI Containers phổ biến trong iOS bao gồm:

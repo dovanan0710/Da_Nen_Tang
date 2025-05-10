@@ -1,37 +1,65 @@
 \section{Xử lý bất đồng bộ}
 
-\hspace*{0.8cm}Xử lý tác vụ bất đồng bộ là một phần thiết yếu trong kiến trúc ứng dụng iOS hiện đại, giúp đảm bảo giao diện người dùng mượt mà và phản hồi tốt. Swift cung cấp nhiều phương pháp để xử lý bất đồng bộ, từ truyền thống đến hiện đại, mỗi phương pháp có ưu và nhược điểm riêng phù hợp với từng hoàn cảnh.
+Xử lý tác vụ bất đồng bộ là một phần thiết yếu trong kiến trúc ứng dụng iOS hiện đại, giúp đảm bảo giao diện người dùng mượt mà và phản hồi tốt. Swift cung cấp nhiều phương pháp để xử lý bất đồng bộ, từ truyền thống đến hiện đại, mỗi phương pháp có ưu và nhược điểm riêng phù hợp với từng hoàn cảnh.
 
 \subsection{Completion Handlers}
 \textbf{Định nghĩa:} Completion handlers \cite{Completion-handlers} là cơ chế truyền thống trong iOS để xử lý các tác vụ bất đồng bộ, trong đó closures được sử dụng để thông báo khi một tác vụ hoàn thành. Khi hàm bất đồng bộ hoàn thành, closure sẽ được gọi để tiếp tục xử lý.
 
+\vspace{0.5em}
+
 \textbf{Cơ chế hoạt động:} Một hàm bất đồng bộ trong iOS sẽ nhận một closure làm tham số. Closure này được gọi khi tác vụ bất đồng bộ kết thúc, cho phép người phát triển thực hiện các hành động tiếp theo. Thường thì, kiểu dữ liệu \texttt{Result} được sử dụng để phân biệt giữa thành công và thất bại của tác vụ, giúp việc xử lý lỗi và kết quả trở nên rõ ràng hơn.
+
+\vspace{0.5em}
 
 \textbf{Ưu điểm:} Completion handlers rất dễ hiểu và sử dụng rộng rãi trong cộng đồng lập trình iOS. Không cần phải cài đặt thêm thư viện bên ngoài, việc sử dụng closure giúp tiết kiệm thời gian và đơn giản hóa mã nguồn. Ngoài ra, completion handlers tương thích với tất cả các phiên bản iOS, không yêu cầu tính năng đặc biệt.
 
+\vspace{0.5em}
+
 \textbf{Nhược điểm:} Tuy nhiên, việc sử dụng completion handlers cũng gặp phải một số vấn đề. Khi chuỗi nhiều tác vụ bất đồng bộ được gọi, rất dễ rơi vào tình trạng \textit{callback hell}, nơi mã trở nên khó hiểu và khó bảo trì. Thêm vào đó, việc truyền lỗi giữa các callback có thể gặp khó khăn, và nếu không cẩn thận, việc quên gọi completion handler có thể gây lỗi trong ứng dụng. Hơn nữa, khi cần thực hiện các tác vụ song song hoặc tuần tự một cách tối ưu, completion handlers có thể không phải là giải pháp hiệu quả nhất.
+
+\vspace{0.5em}
 
 \subsection{Promises}
 \textbf{Định nghĩa:} Promises là một mô hình xử lý bất đồng bộ dựa trên hướng đối tượng, giúp các tác vụ bất đồng bộ được thực hiện tuần tự và dễ dàng quản lý. Mô hình này thường được sử dụng thông qua các thư viện như \texttt{PromiseKit} trong iOS, và nó cung cấp một cách tiếp cận rõ ràng hơn so với completion handlers truyền thống.
 
+\vspace{0.5em}
+
 \textbf{Cơ chế hoạt động:} Một \texttt{Promise} đại diện cho kết quả sẽ có trong tương lai, giúp mã nguồn dễ hiểu hơn khi xử lý bất đồng bộ. Để xử lý kết quả, ta sử dụng \texttt{.then}, cho phép tiếp tục chuỗi các tác vụ bất đồng bộ. Khi có lỗi xảy ra, \texttt{.catch} sẽ giúp xử lý lỗi một cách tập trung, thay vì phải làm điều này ở nhiều nơi trong mã nguồn. Mô hình Promise cũng dễ dàng kết hợp và biến đổi, giúp việc quản lý các tác vụ bất đồng bộ trở nên thuận tiện và linh hoạt hơn.
 
+\vspace{0.5em}
+
 \textbf{Ưu điểm:} Promises cung cấp cú pháp rõ ràng và dễ hiểu, đặc biệt là giúp tránh tình trạng \textit{callback hell} khi chuỗi các tác vụ trở nên dài và phức tạp. Chúng hỗ trợ thực hiện các tác vụ song song hoặc tuần tự một cách dễ dàng và hiệu quả, đồng thời quản lý lỗi tập trung, giúp mã nguồn trở nên gọn gàng hơn. Hơn nữa, Promises hỗ trợ chaining (nối tiếp các tác vụ) và transform (biến đổi) dữ liệu, cho phép tạo ra các chuỗi bất đồng bộ phức tạp một cách mượt mà.
+
+\vspace{0.5em}
 
 \textbf{Nhược điểm:} Tuy nhiên, Promises yêu cầu cài đặt các thư viện bên thứ ba như \texttt{PromiseKit}, điều này có thể làm tăng độ phức tạp của dự án ban đầu. Ngoài ra, mặc dù Promises giúp đơn giản hóa mã nguồn về lâu dài, nhưng người lập trình có thể cần thời gian để làm quen với mô hình này. Cuối cùng, việc debug mã sử dụng Promises có thể khó khăn hơn so với mã đồng bộ truyền thống, do các kết quả và lỗi được xử lý sau khi tác vụ hoàn thành.
 \subsection{Async/Await}
 \textbf{Định nghĩa:} Từ iOS 15 trở đi, Swift hỗ trợ cú pháp \texttt{async/await}, một mô hình mới cho phép viết mã bất đồng bộ theo cách dễ đọc và dễ quản lý hơn, giống như code đồng bộ truyền thống. Với \texttt{async/await}, mã bất đồng bộ không còn cần đến các callback hoặc closure phức tạp, giúp cải thiện khả năng duy trì và mở rộng ứng dụng.
 
+\vspace{0.5em}
+
 \textbf{Cơ chế hoạt động:} Cú pháp \texttt{async} được sử dụng để đánh dấu một hàm là bất đồng bộ, trong khi \texttt{await} giúp tạm dừng thực thi của hàm cho đến khi có kết quả trả về. Điều này cho phép viết mã theo kiểu tuần tự mà không bị chặn lại bởi các tác vụ bất đồng bộ. Swift cũng hỗ trợ cấu trúc concurrency rõ ràng thông qua \texttt{Task} và \texttt{TaskGroup}, giúp dễ dàng quản lý và tổ chức các tác vụ đồng thời. Mô hình này cũng dễ dàng kết hợp với \texttt{try-catch} để xử lý lỗi, giúp mã nguồn trở nên mượt mà và dễ đọc hơn.
+
+\vspace{0.5em}
 
 \textbf{Ưu điểm:} Cú pháp \texttt{async/await} giúp mã nguồn trở nên gọn gàng, dễ đọc và dễ duy trì, đặc biệt khi so với các mô hình callback truyền thống. Quản lý luồng logic và xử lý lỗi trở nên tự nhiên và trực quan hơn, do không cần phải lồng nhiều closure vào nhau. Hơn nữa, cú pháp này tích hợp sâu vào hệ sinh thái của Apple, từ iOS, macOS đến các dịch vụ như CloudKit và URLSession, giúp lập trình viên dễ dàng tiếp cận và sử dụng.
 
+\vspace{0.5em}
+
 \textbf{Nhược điểm:} Một nhược điểm lớn của cú pháp \texttt{async/await} là yêu cầu phiên bản iOS 15 trở lên, điều này có thể gây khó khăn khi phát triển ứng dụng cần hỗ trợ các phiên bản cũ hơn. Thêm vào đó, để tận dụng được lợi ích của \texttt{async/await}, có thể cần phải refactor lại call stack của các hàm, điều này có thể mất thời gian. Cuối cùng, nếu không quản lý cẩn thận việc hủy các tác vụ bằng \texttt{Task.cancel()}, có thể gây ra vấn đề rò rỉ bộ nhớ.
+
 \subsection{Combine Framework}
+
 \textbf{Định nghĩa:} Combine là một framework lập trình reactive được Apple phát triển, ra mắt từ iOS 13, nhằm hỗ trợ xử lý bất đồng bộ dựa trên dữ liệu và sự kiện. Combine cung cấp một cách tiếp cận hiệu quả để xử lý các luồng dữ liệu và sự kiện trong ứng dụng, giúp lập trình viên có thể dễ dàng quản lý và biến đổi dữ liệu theo cách thức phản ứng với các thay đổi.
+
+\vspace{0.5em}
 
 \textbf{Cơ chế hoạt động:} Combine dựa trên mô hình \textit{Publisher/Subscriber}, trong đó \texttt{Publisher} phát ra giá trị, và \texttt{Subscriber} nhận và xử lý những giá trị này. Lập trình viên có thể tạo ra các chuỗi pipeline để xử lý và biến đổi dữ liệu, bao gồm việc lọc, kết hợp, hoặc áp dụng các phép toán phức tạp lên dữ liệu. Framework này hỗ trợ việc quản lý backpressure, giúp đảm bảo rằng hệ thống không bị quá tải bởi các sự kiện đến quá nhanh. Combine kết hợp mạnh mẽ với \texttt{SwiftUI}, cho phép xây dựng giao diện người dùng động và phản ứng với các thay đổi trong dữ liệu.
 
+\vspace{0.5em}
+
 \textbf{Ưu điểm:} Một trong những ưu điểm lớn của Combine là khả năng tích hợp chặt chẽ với Swift và toàn bộ hệ sinh thái Apple, làm cho việc xây dựng ứng dụng trở nên liền mạch và hiệu quả. Framework cung cấp hàng trăm operators hỗ trợ biến đổi và lọc dữ liệu, giúp lập trình viên có thể thực hiện các tác vụ phức tạp một cách dễ dàng. Ngoài ra, Combine tự động quản lý bộ nhớ thông qua \texttt{AnyCancellable}, giúp giảm bớt nỗi lo về việc giải phóng tài nguyên. Combine cho phép xử lý đồng bộ và bất đồng bộ một cách nhất quán, giúp quản lý dữ liệu và sự kiện một cách hiệu quả.
+
+\vspace{0.5em}
 
 \textbf{Nhược điểm:} Một nhược điểm của Combine là learning curve khá cao, yêu cầu lập trình viên phải hiểu rõ về lập trình reactive và các khái niệm liên quan. Thêm vào đó, Combine yêu cầu iOS 13 trở lên, điều này có thể hạn chế việc sử dụng trong các ứng dụng cần hỗ trợ các phiên bản iOS cũ hơn. Việc debugging các pipeline phức tạp cũng có thể gặp khó khăn, đặc biệt khi chuỗi các phép toán trở nên dài và khó theo dõi. Cuối cùng, mặc dù Combine mạnh mẽ, nhưng nó không hỗ trợ đa nền tảng như \texttt{RxSwift}, điều này có thể là một hạn chế nếu bạn muốn phát triển ứng dụng trên nhiều nền tảng.

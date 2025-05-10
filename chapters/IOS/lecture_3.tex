@@ -1,24 +1,41 @@
 \section{Quản lý trạng thái trong ứng dụng iOS}
 
-\hspace*{0.8cm}Quản lý trạng thái hiệu quả là một phần quan trọng trong kiến trúc ứng dụng iOS, đặc biệt khi ứng dụng phát triển về quy mô và độ phức tạp.
+Quản lý trạng thái hiệu quả là một phần quan trọng trong kiến trúc ứng dụng iOS, đặc biệt khi ứng dụng phát triển về quy mô và độ phức tạp.
 
 \subsection{Các cách tiếp cận quản lý trạng thái}
 
-\hspace*{0.8cm}Quản lý trạng thái có thể được thực hiện qua nhiều phương pháp khác nhau. Dưới đây là ba cách tiếp cận phổ biến:
+Quản lý trạng thái có thể được thực hiện qua nhiều phương pháp khác nhau. Dưới đây là ba cách tiếp cận phổ biến:
 
-\paragraph*{1. Quản lý trạng thái cục bộ:}Trạng thái có thể được lưu trữ trong ViewController thông qua các thuộc tính của nó. Phương pháp này giúp duy trì sự đơn giản trong các ứng dụng nhỏ và dễ dàng quản lý. Một cách để phản ứng với các thay đổi trạng thái là sử dụng \texttt{Property Observers} với \texttt{didSet}, giúp theo dõi và cập nhật khi trạng thái thay đổi.
+\vspace{0.5em}
 
-\paragraph*{2. Reactive Programming:}Khi cần sự linh hoạt và tính đồng bộ trong quản lý trạng thái, Reactive Programming là một lựa chọn phổ biến. Apple cung cấp framework reactive chính thức của mình là \textbf{Combine Framework} \cite{Combine-Framework}, hỗ trợ quản lý trạng thái và dòng sự kiện một cách dễ dàng. Bên cạnh đó, \textbf{RxSwift} là thư viện reactive phổ biến trong cộng đồng iOS, giúp quản lý trạng thái và sự kiện trong ứng dụng.
+\textbf{1. Quản lý trạng thái cục bộ:} Trạng thái có thể được lưu trữ trong ViewController thông qua các thuộc tính của nó. Phương pháp này giúp duy trì sự đơn giản trong các ứng dụng nhỏ và dễ dàng quản lý. Một cách để phản ứng với các thay đổi trạng thái là sử dụng \texttt{Property Observers} với \texttt{didSet}, giúp theo dõi và cập nhật khi trạng thái thay đổi.
 
-\paragraph*{3. Redux-like Architecture:}Một cách tiếp cận khác là sử dụng kiến trúc giống Redux, trong đó trạng thái được lưu trữ toàn cục trong một \textbf{Store}. Khi có nhu cầu thay đổi trạng thái, các \textbf{Actions} được gửi để mô tả ý định thay đổi. Các \textbf{Reducers} sau đó sẽ xử lý các Action và trả về trạng thái mới, giúp duy trì tính nhất quán và dễ kiểm soát trong việc quản lý trạng thái toàn cục của ứng dụng.
+\vspace{0.5em}
+
+\textbf{2. Reactive Programming:} Khi cần sự linh hoạt và tính đồng bộ trong quản lý trạng thái, Reactive Programming là một lựa chọn phổ biến. Apple cung cấp framework reactive chính thức của mình là \textbf{Combine Framework} \cite{Combine-Framework}, hỗ trợ quản lý trạng thái và dòng sự kiện một cách dễ dàng. Bên cạnh đó, \textbf{RxSwift} là thư viện reactive phổ biến trong cộng đồng iOS, giúp quản lý trạng thái và sự kiện trong ứng dụng.
+
+\vspace{0.5em}
+
+\textbf{3. Redux-like Architecture:} Một cách tiếp cận khác là sử dụng kiến trúc giống Redux, trong đó trạng thái được lưu trữ toàn cục trong một \textbf{Store}. Khi có nhu cầu thay đổi trạng thái, các \textbf{Actions} được gửi để mô tả ý định thay đổi. Các \textbf{Reducers} sau đó sẽ xử lý các Action và trả về trạng thái mới, giúp duy trì tính nhất quán và dễ kiểm soát trong việc quản lý trạng thái toàn cục của ứng dụng.
 
 
 \subsection{State Containers}
 
-\hspace*{0.8cm}\textbf{The Composable Architecture (TCA)} là một framework được phát triển bởi Point-Free, cung cấp cách tiếp cận có nguyên tắc để xây dựng ứng dụng iOS. Framework này giúp tổ chức mã nguồn một cách rõ ràng và dễ kiểm tra.
-Cách thức hoạt động của TCA dựa trên bốn thành phần chính:
-\paragraph*{1.State:}State mô tả trạng thái của một tính năng trong ứng dụng. Mỗi tính năng trong TCA sẽ có một State riêng, giúp quản lý và theo dõi trạng thái dễ dàng.
-\paragraph*{2.Action:}Action là các sự kiện có thể xảy ra trong ứng dụng, chúng mô tả những thay đổi có thể xảy ra đối với trạng thái. Mỗi Action có thể dẫn đến việc thay đổi trạng thái của ứng dụng.
-\paragraph*{3.Environment:}Environment là các dependency cần thiết cho logic của tính năng, như các API hoặc các dịch vụ bên ngoài mà ứng dụng cần để hoạt động. Đây là yếu tố giúp logic trở nên dễ kiểm soát và có thể thay đổi khi cần thiết.
-\paragraph*{4.Reducer:}Reducer xử lý logic và cập nhật trạng thái tương ứng khi có Action xảy ra. Nó nhận vào Action và State hiện tại để tính toán và trả về trạng thái mới.
+\textbf{The Composable Architecture (TCA)} là một framework được phát triển bởi Point-Free, cung cấp cách tiếp cận có nguyên tắc để xây dựng ứng dụng iOS. Framework này giúp tổ chức mã nguồn một cách rõ ràng và dễ kiểm tra. Cách thức hoạt động của TCA dựa trên bốn thành phần chính:
+
+\vspace{0.5em}
+
+\textbf{1. State:} State mô tả trạng thái của một tính năng trong ứng dụng. Mỗi tính năng trong TCA sẽ có một State riêng, giúp quản lý và theo dõi trạng thái dễ dàng.
+
+\vspace{0.5em}
+
+\textbf{2. Action:} Action là các sự kiện có thể xảy ra trong ứng dụng, chúng mô tả những thay đổi có thể xảy ra đối với trạng thái. Mỗi Action có thể dẫn đến việc thay đổi trạng thái của ứng dụng.
+
+\vspace{0.5em}
+
+\textbf{3. Environment:} Environment là các dependency cần thiết cho logic của tính năng, như các API hoặc các dịch vụ bên ngoài mà ứng dụng cần để hoạt động. Đây là yếu tố giúp logic trở nên dễ kiểm soát và có thể thay đổi khi cần thiết.
+
+\vspace{0.5em}
+
+\textbf{4. Reducer:} Reducer xử lý logic và cập nhật trạng thái tương ứng khi có Action xảy ra. Nó nhận vào Action và State hiện tại để tính toán và trả về trạng thái mới.
 
