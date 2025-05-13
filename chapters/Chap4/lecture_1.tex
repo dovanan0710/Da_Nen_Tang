@@ -5,7 +5,7 @@
 \subsection{Bối cảnh nghiên cứu}
 \renewcommand{\labelitemi}{--}    
 
-    Sự phát triển nhanh chóng của thị trường di động trong những năm gần đây đã làm thay đổi đáng kể cách thức xây dựng ứng dụng. Theo báo cáo của Statista (2023)~\cite{statista2023}, số lượng người dùng smartphone toàn cầu đạt 6.92 tỷ vào năm 2023 và dự kiến sẽ tăng lên 7.5 tỷ vào năm 2025. Trước thực tế này, các nhà phát triển đứng trước bài toán lớn: làm thế nào để tạo ra ứng dụng chạy trơn tru trên cả iOS và Android mà không cần xây dựng hai hệ thống riêng biệt?
+    Sự phát triển nhanh chóng của thị trường di động trong những năm gần đây đã làm thay đổi đáng kể cách thức xây dựng ứng dụng. Theo VTV~\cite{statista2023}, số lượng người dùng smartphone toàn cầu đạt 6.92 tỷ vào năm 2023 và dự kiến sẽ tăng lên 7.33 tỷ vào năm 2025. Trước thực tế này, các nhà phát triển đứng trước bài toán lớn: làm thế nào để tạo ra ứng dụng chạy trơn tru trên cả iOS và Android mà không cần xây dựng hai hệ thống riêng biệt?
 \vspace{0.5em}
 
 
@@ -13,7 +13,7 @@
 \vspace{0.5em}
 
 
-    Chỉ riêng chi phí nhân sự đã là gánh nặng: theo Business of Apps~\cite{businessofapps2025}, mức lương trung bình hàng năm của lập trình viên ứng dụng di động tại Mỹ dao động từ 80.000 đến 150.000 USD, tùy thuộc vào công nghệ và kinh nghiệm. Ví dụ, lập trình viên Flutter có thể nhận khoảng 7.800 USD/tháng, trong khi React Native là khoảng 8.000 USD/tháng. Với hai lập trình viên làm việc trong 18 tháng, tổng chi phí nhân sự có thể lên đến 280.000--350.000 USD, chưa kể đến chi phí thiết kế, kiểm thử và quản lý dự án.
+    Chỉ riêng chi phí nhân sự đã là gánh nặng: theo Business of Apps~\cite{businessofapps2025}, mức lương trung bình hàng năm của lập trình viên ứng dụng di động tại Mỹ dao động từ 80.000 đến 150.000 USD, tùy thuộc vào công nghệ và kinh nghiệm. Ví dụ, lập trình viên Flutter có thể nhận khoảng 8.200 USD/tháng \cite{fluttersalary}, trong khi React Native là khoảng 10.500 USD/tháng \cite{reactnativesalary}. Với hai lập trình viên làm việc trong 18 tháng, tổng chi phí nhân sự có thể lên đến 280.000--350.000 USD, chưa kể đến chi phí thiết kế, kiểm thử và quản lý dự án.
 \vspace{0.5em}
 
 
@@ -21,7 +21,7 @@
 \vspace{0.5em}
 
 
-    Nhờ khả năng tái sử dụng mã nguồn lên tới 50--80\% giữa hai nền tảng, giải pháp cross-platform giúp các startup cắt giảm 30--40\% chi phí phát triển so với native thuần túy. Báo cáo của Cleveroad~\cite{cleveroad} cũng ghi nhận rằng, chi phí phát triển ứng dụng đa nền tảng thường dao động từ 60.000--200.000 USD, thấp hơn đáng kể so với mức 70.000--250.000 USD nếu phát triển từng ứng dụng riêng biệt. Không chỉ tiết kiệm ngân sách, thời gian đưa sản phẩm ra thị trường cũng được rút ngắn nhờ sử dụng chung codebase và quy trình kiểm thử tập trung. Ví dụ, một ứng dụng phức tạp thường mất 7--16 tuần để phát triển native độc lập, nhưng chỉ cần 11--20 tuần với React Native hoặc Flutter, nhờ tính năng hot reload và workflow thống nhất.
+    Nhờ khả năng tái sử dụng mã nguồn lên tới 50--80\% giữa hai nền tảng, giải pháp cross-platform giúp các startup cắt giảm 30--40\% chi phí phát triển so với native thuần túy. Báo cáo của Ptolemay~\cite{cleveroad} cũng ghi nhận rằng, chi phí phát triển ứng dụng đa nền tảng thường dao động từ 25.000--125.000 USD, thấp hơn đáng kể so với mức 10.000--700.000 USD nếu phát triển từng ứng dụng riêng biệt. Không chỉ tiết kiệm ngân sách, thời gian đưa sản phẩm ra thị trường cũng được rút ngắn nhờ sử dụng chung codebase và quy trình kiểm thử tập trung. Ví dụ, một ứng dụng phức tạp thường mất 7--16 tuần để phát triển native độc lập, nhưng chỉ cần 11--20 tuần với React Native hoặc Flutter, nhờ tính năng hot reload và workflow thống nhất.
 \vspace{0.5em}
 
 
@@ -29,7 +29,7 @@
 \vspace{0.5em}
 
 
-    Theo khảo sát của Stack Overflow (2023)~\cite{stackoverflow2023}, Flutter hiện được 42\% nhà phát triển ưu tiên lựa chọn, trong khi React Native chiếm 38\%. Sự cạnh tranh giữa hai framework này không chỉ phản ánh xu hướng ``Write Once, Run Anywhere'' mà còn đặt ra câu hỏi mới về hiệu năng, khả năng mở rộng và tùy biến trong các ứng dụng hiện đại.
+    Theo khảo sát của Stack Overflow (2023)~\cite{stackoverflow2023}, Flutter hiện được 9.12\% nhà phát triển ưu tiên lựa chọn, trong khi React Native chiếm 8.43\%. Sự cạnh tranh giữa hai framework này không chỉ phản ánh xu hướng ``Write Once, Run Anywhere'' mà còn đặt ra câu hỏi mới về hiệu năng, khả năng mở rộng và tùy biến trong các ứng dụng hiện đại.
 
 
 \subsection{Mục tiêu nghiên cứu}
@@ -58,7 +58,7 @@
     Lý do lựa chọn hai framework này đến từ vị thế dẫn đầu thị trường của chúng:
     \setlength{\leftmargini}{1.0cm}
     \begin{itemize}
-        \item Theo báo cáo của SlashData (2023)~\cite{slashdata2023}, React Native và Flutter chiếm đến 80\% thị phần framework đa nền tảng.
+        \item Theo báo cáo của Statista (2023)~\cite{slashdata2023}, React Native và Flutter chiếm hơn 80\% (với React Native là 35\% và Flutter là 46\%) thị phần framework đa nền tảng.
         \item Cả hai đều sở hữu cộng đồng lập trình viên lớn, tài liệu kỹ thuật phong phú, và đã được triển khai rộng rãi trong các dự án thực tế.
     \end{itemize}
 \vspace{0.5em}
@@ -67,8 +67,9 @@
     Nguồn dữ liệu trong nghiên cứu được tổng hợp từ các công trình thực nghiệm uy tín:
     \setlength{\leftmargini}{1.0cm}
     \begin{itemize}
-        \item \textbf{Nghiên cứu của Wenhao (2018)}~\cite{wenhao2018} tập trung vào đo hiệu năng FPS khi cuộn màn hình trên 10 ứng dụng mẫu. Kết quả cho thấy: \textit{Flutter đạt 60 FPS}, trong khi \textit{React Native đạt 45–50 FPS}.
-        \item \textbf{Báo cáo của Biorn-Hansen (2021)}~\cite{biornhansen2021} đánh giá mức tiêu thụ RAM và CPU trên 15 ứng dụng thương mại. Kết quả cho thấy: \textit{Ứng dụng native sử dụng trung bình 150MB RAM}, so với \textit{200MB của Flutter} và \textit{180MB của React Native}.
+        \item \textbf{Nghiên cứu của Medium (2024)}~\cite{wenhao2018} đã đánh giá hiệu năng của các nền tảng phát triển ứng dụng di động thông qua chỉ số FPS khi cuộn màn hình.
+Về hiệu năng cuộn, kết quả cho thấy Flutter đạt 60 FPS, trong khi React Native chỉ đạt 52.5 FPS.
+Về mức tiêu thụ tài nguyên, nghiên cứu cũng ghi nhận rằng ứng dụng sử dụng trung bình 125 MB Memory với Flutter và 160-180 MB với React Native.
     \end{itemize}
 \vspace{0.5em}
 

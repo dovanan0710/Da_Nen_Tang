@@ -22,13 +22,13 @@ Kiến trúc của React Native bao gồm ba thành phần chính: \textbf{JavaS
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{images/react_native.png}
-    \caption{Kiến trúc tổng quan của React Native~\cite{react-native-fabric}}
+    \caption{Kiến trúc tổng quan của React Native~\cite{anshulreactnative}}
 \end{figure}
 
 \begin{sloppypar}
 Trước tiên, JavaScript VM (Virtual Machine) là nơi thực thi logic nghiệp vụ của ứng dụng.  
 Khi người dùng tương tác, các hàm JavaScript sẽ xử lý sự kiện, gọi API hoặc thao tác dữ liệu.  
-Trên iOS, React Native sử dụng JavaScriptCore của WebKit; trên Android, Meta ưu tiên dùng Hermes – engine nhẹ giúp giảm thời gian khởi động 30\%.  
+Trên iOS, React Native sử dụng JavaScriptCore của WebKit; trên Android, Meta ưu tiên dùng Hermes – engine nhẹ giúp giảm thời gian khởi động \cite{reactnativehermes}.  
 Ví dụ, Bloomberg đã sử dụng Hermes để tối ưu tốc độ cập nhật dữ liệu chứng khoán thời gian thực.
 \end{sloppypar}
 
@@ -44,9 +44,7 @@ Một ví dụ cụ thể là Walmart sử dụng Native Modules để tích h�
 
 \begin{sloppypar}
 Bridge đóng vai trò là cầu nối giữa JavaScript và native code.  
-Khi JavaScript cần gọi chức năng nền tảng, Bridge sẽ truyền dữ liệu qua định dạng JSON – một quy trình tốn thời gian do phải serialize/\-deserialize.  
-Theo Đại học Oslo (2022), việc giao tiếp này có thể gây trễ 5–15ms.  
-Để khắc phục, Meta giới thiệu kiến trúc mới mang tên Fabric (2023), sử dụng JSI (JavaScript\- Interface) cho phép truy cập trực tiếp native code, giúp cải thiện tốc độ render đến 40\%.
+Khi JavaScript cần gọi chức năng nền tảng, Bridge sẽ truyền dữ liệu qua định dạng JSON – một quy trình tốn thời gian do phải serialize/\-deserialize.Việc giao tiếp này có thể gây trễ 5–15ms. Để khắc phục, Meta giới thiệu kiến trúc mới mang tên Fabric (2023), sử dụng JSI (JavaScript\- Interface) cho phép truy cập trực tiếp native code, giúp cải thiện tốc độ render \cite{viblofabric}.
 \end{sloppypar}
 
 \subsubsection{Ưu Điểm}
@@ -54,7 +52,7 @@ React Native mang lại nhiều lợi ích đáng kể, đặc biệt là khả 
 
 \vspace{0.5em}
 
-Một trong những điểm mạnh lớn nhất là khả năng chia sẻ code giữa web và mobile. Ví dụ, Airbnb đã tái sử dụng đến 60\% codebase giữa hai nền tảng, tiết kiệm đáng kể thời gian phát triển. Thư viện \texttt{React Native Web} giúp chuyển đổi component React Native sang React DOM để chạy trên trình duyệt.
+Một trong những điểm mạnh lớn nhất là khả năng chia sẻ code giữa web và mobile. Thư viện \texttt{React Native Web} giúp chuyển đổi component React Native sang React DOM để chạy trên trình duyệt.
 
 \vspace{0.5em}
 
@@ -62,7 +60,7 @@ Ngoài ra, hệ sinh thái npm khổng lồ (hơn 2.1 triệu package, 2023) gi�
 
 \vspace{0.5em}
 
-Cuối cùng, React Native cung cấp Live Reload và Hot Reload – hai công cụ giúp lập trình viên cập nhật UI ngay tức thì mà không mất trạng thái. Theo khảo sát của JetBrains (2022), tính năng này giúp rút ngắn thời gian debug đến 30\%.
+Cuối cùng, React Native cung cấp Live Reload và Hot Reload – hai công cụ giúp lập trình viên cập nhật UI ngay tức thì mà không mất trạng thái. Tính năng này thật sự giúp các lập trình viên rút ngắn thời gian debug và viết code.
 
 \subsubsection{Nhược Điểm}
 
@@ -70,7 +68,7 @@ Dù có nhiều lợi ích, React Native vẫn tồn tại một số hạn ch�
 
 \vspace{0.5em}
 
-Do phụ thuộc vào Bridge, hiệu năng ứng dụng thấp hơn so với native. Ví dụ, render danh sách 1.000 phần tử trên React Native mất 320ms, trong khi native Android chỉ cần 210ms (Biorn-Hansen, 2021). Các ứng dụng yêu cầu đồ họa cao như game 3D hay video editor không phù hợp với React Native.
+Do phụ thuộc vào Bridge, hiệu năng ứng dụng thấp hơn so với native. Ví dụ, tốc độ render trên React Native mất 320ms, trong khi native Android chỉ cần 210ms (Biorn-Hansen, 2021). Các ứng dụng yêu cầu đồ họa cao như game 3D hay video editor không phù hợp với React Native \cite{quoraunity}.
 
 \vspace{0.5em}
 
@@ -91,10 +89,10 @@ Flutter là framework đa nền tảng do Google phát triển, sử dụng ngô
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{images/flutter.png}
-    \caption{Kiến trúc tổng quan của Flutter~\cite{flutter-impeller}}
+    \caption{Kiến trúc tổng quan của Flutter~\cite{antino2022}}
 \end{figure}
 
-Dart là ngôn ngữ lập trình cốt lõi của Flutter, được thiết kế để kết hợp hiệu suất cao và tính linh hoạt. Dart hỗ trợ hai chế độ biên dịch: AOT (Ahead-of-Time) để tạo mã native tối ưu cho hiệu năng, và JIT (Just-in-Time) cho phép Hot Reload khi phát triển. Ví dụ, Alibaba đã dùng Dart để xử lý tới 50 triệu giao dịch/ngày, tận dụng khả năng xử lý bất đồng bộ hiệu quả với \texttt{Future}, \texttt{async/await}.
+Dart là ngôn ngữ lập trình cốt lõi của Flutter, được thiết kế để kết hợp hiệu suất cao và tính linh hoạt. Dart hỗ trợ hai chế độ biên dịch: AOT (Ahead-of-Time) để tạo mã native tối ưu cho hiệu năng, và JIT (Just-in-Time) cho phép Hot Reload khi phát triển. Ví dụ, Alibaba đã dùng Dart để xử lý những giao dịch của họ, tận dụng khả năng xử lý bất đồng bộ hiệu quả với \texttt{Future}, \texttt{async/await} \cite{dartusers}.
 
 \vspace{0.5em}
 
@@ -122,17 +120,14 @@ Flutter nổi bật nhờ hiệu năng cao và khả năng tùy chỉnh mạnh:
 
 \vspace{0.5em}
 
-Thứ nhất, Flutter có hiệu năng gần như native nhờ sử dụng AOT compilation.  
-Các ứng dụng như Google Pay đạt 60 FPS ngay cả trên thiết bị cấu hình thấp, với độ trễ phản hồi giao dịch dưới 100ms.
-
-\vspace{0.5em}
+Thứ nhất, Flutter đạt hiệu năng gần như native nhờ sử dụng cơ chế biên dịch AOT (Ahead-of-Time), giúp ứng dụng chạy mượt mà ngay cả trên các thiết bị có cấu hình thấp .
 
 Thứ hai, tính năng \textbf{Hot Reload} cho phép lập trình viên cập nhật giao diện tức thì mà không mất trạng thái ứng dụng.  
-Theo báo cáo từ BMW, tính năng này đã giúp nhóm thiết kế UI giảm tới 50\% thời gian phát triển.
+Tính năng này đã giúp nhóm thiết kế UI giảm tới thời gian phát triển khi có thể nhìn ra sự thay đổi gần như ngay lập tức khi thay đổi code.
 
 \vspace{0.5em}
 
-Thứ ba, Flutter hỗ trợ đa nền tảng từ một codebase duy nhất, bao gồm Android, iOS, web, Windows, macOS và Linux. Ví dụ, ứng dụng Reflectly đạt 95\% tái sử dụng mã nguồn, giúp giảm 70\% chi phí bảo trì so với phát triển riêng lẻ từng nền tảng.
+Thứ ba, Flutter hỗ trợ đa nền tảng từ một codebase duy nhất, bao gồm Android, iOS, web, Windows, macOS và Linux. Flutter có thể đạt được hiệu suất nhanh hơn 30\% so với các đối tác được phát triển trong các khung truyền thống. Hiệu quả này bắt nguồn từ phần biên dịch trước (AOT) của DART, dịch mã thành mã máy gốc, đảm bảo thực hiện nhanh chóng trên các thiết bị \cite{moldstud2025}.
 
 \subsubsection{Nhược Điểm}
 
@@ -163,7 +158,7 @@ Cuối cùng, hệ sinh thái thư viện của Flutter nhỏ hơn React Native.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/scrolling.png}
-    \caption{FPS khi cuộn của Flutter và React Native (Wenhao, 2018)}
+    \caption{FPS khi cuộn của Flutter và React Native \cite{quoality2021}}
     \label{fig:scrolling}
 \end{figure}
 
@@ -174,7 +169,7 @@ Cuối cùng, hệ sinh thái thư viện của Flutter nhỏ hơn React Native.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/read_write.png}
-    \caption{Hiệu suất ghi dữ liệu của Flutter và React Native (Wenhao, 2018)}
+    \caption{Hiệu suất ghi dữ liệu của Flutter và React Native \cite{maulana2023}}
     \label{fig:write}
 \end{figure}
 

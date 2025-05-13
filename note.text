@@ -1,18 +1,35 @@
+// Đã xong
 1. đổi chương thành phần, thêm tên chương 2 done
+// Đã xong
 2. xóa footer IT-... done
+// Đã xong
 3. kiểm tra lại tài liệu tham khảo, sửa lại toàn bộ tài liệu tham khảo
 
+// Đã xong
 4. python code android done
-5. Sửa lại đoạn sau
+
+// Đã xong
+6. Một số trang chưa được căn đều các bên done
+
+// Đã xong
+7. Một số đoạn chưa lùi đầu dòng 
+
+// Đã xong
+8. Còn một số phần chưa có tóm tắt phần
+
+9. Sửa lại đoạn sau
 Mỗi app có vùng dữ liệu riêng (trong /data/data/<tên gói>) mà chỉ UID đó mới
 truy cập được. Không app nào có thể truy cập trực tiếp vào dữ liệu của app khác,
 trừ khi quyền được cấp thông qua hệ thống permission và kiểm soát quyền truy
 cập tập tin, cơ sở dữ liệu, socket. Ghi log và debug app. Cấp phép hoặc từ chối
 quyền (ví dụ camera, GPS...), do đó UID rất quan trọng.
 
-6. Một số trang chưa được căn đều các bên done
-7. Một số đoạn chưa lùi đầu dòng done
+10. Sửa lại các bảng sao cho không bị lệch sang lề bên phải
+11. Chưa có tài liệu tham khảo cho bảng, hình ảnh
+12. Kiểm tra lại toàn bộ tài liệu tham khảo
+13. Tài liệu tham khảo (từ trang 93 cũng cần xem xem có bị lệch sang lề bên phải không)
+14. Chương (Phần) 2 3 4 còn một số đoạn câu từ chưa rõ ràng, cần rà soát lại
+15. Chương (Phần) 2 chưa có tóm tắt của toàn bộ chương (phần)
 
-8. Còn một số phần chưa có tóm tắt phần
 
 
