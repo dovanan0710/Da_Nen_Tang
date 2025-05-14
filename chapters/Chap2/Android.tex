@@ -1,6 +1,6 @@
 \chapter{Kiến trúc ứng dụng Android}
 \label{chap:Chap}
-
+Chương này trình bày tổng quan về kiến trúc ứng dụng Android từ tầng nền tảng hệ điều hành đến cách tổ chức và thực thi ứng dụng. Android được xây dựng trên nhân Linux, tận dụng các đặc tính như mã nguồn mở, khả năng quản lý tiến trình, bộ nhớ và bảo mật tốt. Hệ thống sử dụng cơ chế sandbox để cách ly ứng dụng thông qua UID riêng biệt, máy ảo(Dalvik hoặc ART) và hệ thống cấp quyền truy cập chặt chẽ. Các ứng dụng Android được đóng gói dưới dạng tệp APK, chứa mã bytecode(.dex), tài nguyên, cấu hình và chữ ký số. File AndroidManifest.xml đóng vai trò trung tâm trong việc khai báo quyền, cấu hình ứng dụng và các thành phần như Activity, Service, BroadcastReceiver và ContentProvider. Bên cạnh đó, Android hỗ trợ chia sẻ dữ liệu giữa các ứng dụng thông qua các cơ chế an toàn như ContentProvider, Intent hoặc FileProvider. Hệ thống cũng cho phép sử dụng các tính năng của Java 8 thông qua quá trình desugaring trong Gradle và công cụ D8/R8. Cuối cùng, chương đã đề cập đến các cải tiến và cơ chế bổ sung mà Google tích hợp vào nhân Linux như Binder, WakeLocks, SEAndroid để tối ưu cho môi trường di động. Qua đó, có thể thấy kiến trúc Android được thiết kế với mục tiêu tối ưu hóa hiệu suất, tăng tính bảo mật và cung cấp một nền tảng phát triển linh hoạt, mạnh mẽ cho các ứng dụng di động.
 \input{chapters/Chap2/lecture_1}
 \input{chapters/Chap2/lecture_2}
 \input{chapters/Chap2/lecture_3}
